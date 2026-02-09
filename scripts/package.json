@@ -1,0 +1,16 @@
+{
+    "name": "wordpress-migration",
+    "version": "1.0.0",
+    "description": "Script para migrar contenido de WordPress a Supabase",
+    "type": "module",
+    "scripts": {
+        "migrate": "node migrate-wordpress.js"
+    },
+    "dependencies": {
+        "@supabase/supabase-js": "^2.39.0",
+        "xml2js": "^0.6.2",
+        "sharp": "^0.33.0",
+        "p-limit": "^5.0.0",
+        "node-fetch": "^3.3.2"
+    }
+}
