@@ -86,8 +86,8 @@ export default function Hero() {
                         <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/10 group">
                             <div className="absolute inset-0 bg-brand-violet/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                             <Image
-                                src="/maternity.png"
-                                alt="Fertility Center Cancun Success"
+                                src="/medical-team.jpg"
+                                alt="Fertility Center Cancun Medical Team"
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                 priority
