@@ -8,21 +8,21 @@ import { Linkedin } from 'lucide-react';
 
 const doctors = [
     {
-        name: "Dr. Eduardo Manuel Espadas Reyes",
+        name: "Dr. Eduardo Emanuel Espadas Reyes",
         specialty: "Ginecología y Obstetricia / Biología de la Reproducción",
-        image: "/lab.png", // Verify path or use placeholder
+        image: "/dr-eduardo-espadas.jpg",
         delay: 0.1
     },
     {
-        name: "Dr. Alfonso Gerardo Suástegui Navarro",
+        name: "Dr. Everardo Treviño",
         specialty: "Ginecología y Obstetricia / Biología de la Reproducción",
-        image: "/maternity.png",
+        image: "/dr-everardo-trevino.jpg",
         delay: 0.2
     },
     {
         name: "Dra. Esther Iyune Cojab",
         specialty: "Ginecología y Obstetricia / Biología de la Reproducción",
-        image: "/lab.png",
+        image: "/dra-esther-iyune.jpg",
         delay: 0.3
     }
 ];
