@@ -56,7 +56,7 @@ export default function MedicalTeam() {
                                     src={doctor.image}
                                     alt={doctor.name}
                                     fill
-                                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
+                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
