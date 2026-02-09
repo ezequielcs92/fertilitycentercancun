@@ -10,19 +10,19 @@ const doctors = [
     {
         name: "Dr. Eduardo Manuel Espadas Reyes",
         specialty: "Ginecología y Obstetricia / Biología de la Reproducción",
-        image: "/team/dr-espadas.png", // Verify path or use placeholder
+        image: "/lab.png", // Verify path or use placeholder
         delay: 0.1
     },
     {
         name: "Dr. Alfonso Gerardo Suástegui Navarro",
         specialty: "Ginecología y Obstetricia / Biología de la Reproducción",
-        image: "/team/dr-suastegui.png",
+        image: "/maternity.png",
         delay: 0.2
     },
     {
         name: "Dra. Esther Iyune Cojab",
         specialty: "Ginecología y Obstetricia / Biología de la Reproducción",
-        image: "/team/dra-iyune.png",
+        image: "/lab.png",
         delay: 0.3
     }
 ];

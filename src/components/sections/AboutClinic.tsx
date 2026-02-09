@@ -13,7 +13,7 @@ export default function AboutClinic() {
                     <div className="flex-1 relative">
                         <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
                             <Image
-                                src="/clinic-lab.png"
+                                src="/lab.png"
                                 alt="Laboratorio Fertility Center Cancun"
                                 width={600}
                                 height={700}

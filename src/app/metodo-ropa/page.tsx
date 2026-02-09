@@ -1,0 +1,21 @@
+
+import React from 'react';
+import PageHeader from '@/components/layout/PageHeader';
+import { Container } from '@/components/ui/Container';
+
+export default function Page() {
+  return (
+    <main className="bg-white pb-24">
+      <PageHeader 
+        title="Método ROPA" 
+        breadcrumb={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Método ROPA', href: '#' }
+        ]}
+      />
+      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
+        <div dangerouslySetInnerHTML={{ __html: `<h2>Una forma única y especial de compartir la maternidad para todas las familias</h2> \n <p>En <strong>Advanced Fertility Center Cancún</strong> apoyamos y celebramos la diversidad familiar, acompañando con respeto y calidez a todas las parejas, incluyendo a la comunidad LGBT+. El <strong>método ROPA</strong> (Recepción de Óvulos de la Pareja) es un tratamiento diseñado para parejas de mujeres que desean compartir biológicamente la experiencia de ser madres, fortaleciendo su vínculo a través de un camino lleno de amor y colaboración.</p> \n <h2>¿En qué consiste el método ROPA?</h2> \n <p>Este tratamiento de fertilización in vitro permite que una mujer aporte sus óvulos, que son fecundados en laboratorio con <a href=\"https://fertilitycentercancun.com/fertilitycentermexico/tratamientos-de-fertilidad/donacion-de-ovulos/\">esperma de donante</a> , y que su pareja lleve el embarazo, creando así una experiencia compartida y profundamente significativa. Ambas mujeres participan activamente en la maternidad, una como madre genética y la otra como madre gestante.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-¿En-que-consiste-.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-¿En-que-consiste-.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-¿En-que-consiste--300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <h2>¿Para quién está indicado?</h2> \n <ul>\n <li>\n Parejas de mujeres que desean construir su familia compartiendo la maternidad biológica.\n </li>\n <li>\n Mujeres que, por alguna razón, no pueden gestar pero quieren aportar sus óvulos.\n </li>\n <li>\n Parejas que buscan una opción personalizada y respetuosa con sus deseos y valores.\n </li>\n </ul>\n <h2>Ventajas del método ROPA</h2> \n <ul>\n <li>\n Fortalece el vínculo familiar y emocional desde el inicio.\n </li>\n <li>\n Alta tasa de éxito gracias a las técnicas avanzadas de fertilización in vitro.\n </li>\n <li>\n Un proceso inclusivo, seguro y respetuoso con todas las identidades y formas de familia.\n </li>\n <li>\n Permite a ambas mujeres ser parte activa de la experiencia de la maternidad.\n </li>\n </ul>\n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
+      </Container>
+    </main>
+  );
+}
