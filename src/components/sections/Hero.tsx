@@ -81,15 +81,15 @@ export default function Hero() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="relative flex justify-center lg:justify-end"
+                        className="relative flex justify-center lg:justify-end xl:pr-12"
                     >
-                        <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/10 group">
+                        <div className="relative w-full max-w-[520px] lg:max-w-none aspect-[4/5] lg:aspect-auto lg:h-[650px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/10 group">
                             <div className="absolute inset-0 bg-brand-violet/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                             <Image
                                 src="/medical-team.jpg"
                                 alt="Fertility Center Cancun Medical Team"
                                 fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 priority
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 via-transparent to-transparent z-20" />
@@ -99,15 +99,15 @@ export default function Hero() {
                         <motion.div
                             animate={{ y: [0, -20, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-xl p-6 rounded-[2rem] shadow-2xl hidden md:block border border-white/20"
+                            className="absolute -bottom-6 -left-12 bg-white/90 backdrop-blur-xl p-8 rounded-[2rem] shadow-2xl hidden xl:block border border-white/20 z-30"
                         >
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 bg-brand-green/20 rounded-2xl flex items-center justify-center">
-                                    <Heart className="text-brand-green w-6 h-6 fill-brand-green" />
+                                <div className="w-14 h-14 bg-brand-green/20 rounded-2xl flex items-center justify-center">
+                                    <Heart className="text-brand-green w-7 h-7 fill-brand-green" />
                                 </div>
                                 <div>
-                                    <div className="text-brand-violet font-serif text-lg leading-tight">Trato Humano</div>
-                                    <div className="text-slate-500 text-xs font-medium">Atención personalizada 24/7</div>
+                                    <div className="text-brand-violet font-serif text-xl leading-tight">Trato Humano</div>
+                                    <div className="text-slate-500 text-sm font-medium">Atención personalizada 24/7</div>
                                 </div>
                             </div>
                         </motion.div>
