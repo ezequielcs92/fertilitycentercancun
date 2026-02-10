@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export default function RootLayout({
   children,
@@ -25,12 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="scroll-smooth">
       <body
         className={`${playfair.variable} ${inter.variable} antialiased font-sans`}
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

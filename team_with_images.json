@@ -1,0 +1,266 @@
+[
+  {
+    "id": "1354",
+    "slug": "dra-esther-iyune-cojab",
+    "title": "Dra. Esther Iyune Cojab",
+    "especialidad": "Endocrinólogo reproductivo, Especialista en fertilidad, Ginecología, obstetricia y climaterio",
+    "image": {
+      "title": "Dra. Esther Iyune001",
+      "relPath": "2023/12/Dra.-Esther-Iyune001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "1488",
+    "slug": "dr-eduardo-emanuel-espadas-reyes",
+    "title": "Dr. Eduardo Emanuel Espadas Reyes",
+    "especialidad": "Endocrinólogo reproductivo, Especialista en fertilidad, Obstetra ginecólogo, Ginecólogo",
+    "image": {
+      "title": "Dr. Eduardo Espadas001",
+      "relPath": "2023/12/Dr.-Eduardo-Espadas001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "4793",
+    "slug": "dr-everardo-trevino-ortiz",
+    "title": "Dr. Everardo Treviño Ortiz",
+    "especialidad": "Ginecología, obstetricia y Especialista en fertilidad - reproducción asistida",
+    "image": {
+      "title": "Dr. Everardo Treviño001",
+      "relPath": "2025/05/Dr.-Everardo-Trevino001-1.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "5883",
+    "slug": "dra-azul-estefania-torres-rivera",
+    "title": "Dra. Azul Estefanía Torres Rivera",
+    "especialidad": "Médico Cirujano 6957075 / Medicina Hiperbárica y Subacuática",
+    "image": {
+      "title": "Dirección médica001",
+      "relPath": "2025/07/Direccion-medica001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "5891",
+    "slug": "dr-luis-ernesto-segoviano-diaz",
+    "title": "Dr. Luis Ernesto Segoviano Diaz",
+    "especialidad": "Ginecología, obstetricia | Medicina Materno fetal",
+    "image": {
+      "title": "placeholder - copia",
+      "relPath": "2025/05/placeholder-copia.png",
+      "exists": true
+    }
+  },
+  {
+    "id": "5896",
+    "slug": "margarita-beatriz-martinez-manzanares",
+    "title": "Margarita Beatriz Martínez Manzanares",
+    "especialidad": "Directora de Laboratorio de FIV",
+    "image": {
+      "title": "Laboratorio FIV001",
+      "relPath": "2025/07/Laboratorio-FIV001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "5900",
+    "slug": "qfb-carolina-gonzalez-cortes",
+    "title": "QFB. Carolina González Cortés",
+    "especialidad": " Responsable de laboratorio Andrología",
+    "image": {
+      "title": "Laboratorio Andrología001",
+      "relPath": "2025/07/Laboratorio-Andrologia001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "5908",
+    "slug": "elisheva-vianey-garcia-ticante",
+    "title": "Elisheva Vianey García Ticante",
+    "especialidad": "Coordinadora de ciclos",
+    "image": {
+      "title": "Coordinadora de ciclos - Vianney001",
+      "relPath": "2025/07/Coordinadora-de-ciclos-Vianney001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "5910",
+    "slug": "yhadira-sarai-serrano-diaz",
+    "title": "Yhadira Sarai Serrano Díaz",
+    "especialidad": "Coordinadora de donantes",
+    "image": {
+      "title": "Coordinadora donantes Yadhira001",
+      "relPath": "2025/07/Coordinadora-donantes-Yadhira001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "5912",
+    "slug": "inda-ines-estrada-ramos",
+    "title": "Inda Inés Estrada Ramos",
+    "especialidad": "Coordinadora",
+    "image": {
+      "title": "Coordinadora - Inda001",
+      "relPath": "2025/07/Coordinadora-Inda001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "5917",
+    "slug": "wendy-isabel-montes-morales",
+    "title": "Wendy Isabel Montes Morales",
+    "especialidad": "Líder del departamento de Enfermería",
+    "image": {
+      "title": "wendy01",
+      "relPath": "2025/07/wendy01.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6459",
+    "slug": "dr-eduardo-emanuel-espadas-reyes",
+    "title": "Dr. Eduardo Emanuel Espadas Reyes",
+    "especialidad": "Reproductive Endocrinologist, Fertility Specialist, OBGYN, Gynecologist\\r\\n",
+    "image": {
+      "title": "Dr. Eduardo Espadas001",
+      "relPath": "2023/12/Dr.-Eduardo-Espadas001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6483",
+    "slug": "dr-esther-iyune-cojab",
+    "title": "Dr. Esther Iyune Cojab",
+    "especialidad": "Reproductive Endocrinologist, Fertility Specialist, Gynecology, Obstetrics, and Menopause\\r\\n",
+    "image": {
+      "title": "Dra. Esther Iyune001",
+      "relPath": "2023/12/Dra.-Esther-Iyune001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6500",
+    "slug": "dr-everardo-trevino-ortiz",
+    "title": "Dr. Everardo Treviño Ortiz",
+    "especialidad": " Gynecology, Obstetrics, and Fertility Specialist – Assisted Reproduction",
+    "image": {
+      "title": "Dr. Everardo Treviño001",
+      "relPath": "2025/05/Dr.-Everardo-Trevino001-1.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6510",
+    "slug": "dr-azul-estefania-torres-rivera",
+    "title": "Dr. Azul Estefanía Torres Rivera",
+    "especialidad": " General Physician | Hyperbaric and Underwater Medicine",
+    "image": {
+      "title": "Dirección médica001",
+      "relPath": "2025/07/Direccion-medica001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6528",
+    "slug": "dr-luis-ernesto-segoviano-diaz",
+    "title": "Dr. Luis Ernesto Segoviano Diaz",
+    "especialidad": "Gynecology, Obstetrics | Maternal-Fetal Medicine",
+    "image": {
+      "title": "placeholder - copia",
+      "relPath": "2025/05/placeholder-copia.png",
+      "exists": true
+    }
+  },
+  {
+    "id": "6547",
+    "slug": "margarita-beatriz-martinez-manzanares",
+    "title": "Margarita Beatriz Martínez Manzanares",
+    "especialidad": "Director of IVF Laboratory",
+    "image": {
+      "title": "Laboratorio FIV001",
+      "relPath": "2025/07/Laboratorio-FIV001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6567",
+    "slug": "qfb-carolina-gonzalez-cortes",
+    "title": "QFB. Carolina González Cortés",
+    "especialidad": "Head of the Andrology Laboratory",
+    "image": {
+      "title": "Laboratorio Andrología001",
+      "relPath": "2025/07/Laboratorio-Andrologia001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6571",
+    "slug": "luz-clarita-dominguez-millares",
+    "title": "Luz Clarita Domínguez Millares",
+    "especialidad": "Responsable de laboratorio Clínico",
+    "image": {
+      "title": "Luz-Clarita-Domínguez-Millares-01",
+      "relPath": "2025/08/Luz-Clarita-Dominguez-Millares-01.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6582",
+    "slug": "luz-clarita-dominguez-millares",
+    "title": "Luz Clarita Domínguez Millares",
+    "especialidad": "Responsable de laboratorio Clínico",
+    "image": {
+      "title": "Luz-Clarita-Domínguez-Millares-01",
+      "relPath": "2025/08/Luz-Clarita-Dominguez-Millares-01.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6614",
+    "slug": "elisheva-vianey-garcia-ticante",
+    "title": "Elisheva Vianey García Ticante",
+    "especialidad": "Cycle Coordinator",
+    "image": {
+      "title": "Coordinadora de ciclos - Vianney001",
+      "relPath": "2025/07/Coordinadora-de-ciclos-Vianney001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6636",
+    "slug": "yhadira-sarai-serrano-diaz",
+    "title": "Yhadira Sarai Serrano Díaz",
+    "especialidad": "Donor Coordinator",
+    "image": {
+      "title": "Coordinadora donantes Yadhira001",
+      "relPath": "2025/07/Coordinadora-donantes-Yadhira001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6655",
+    "slug": "inda-ines-estrada-ramos",
+    "title": "Inda Inés Estrada Ramos",
+    "especialidad": "Coordinator",
+    "image": {
+      "title": "Coordinadora - Inda001",
+      "relPath": "2025/07/Coordinadora-Inda001.jpg",
+      "exists": true
+    }
+  },
+  {
+    "id": "6969",
+    "slug": "wendy-isabel-montes-morales",
+    "title": "Wendy Isabel Montes Morales",
+    "especialidad": "Leader of the Nursing Department",
+    "image": {
+      "title": "wendy01",
+      "relPath": "2025/07/wendy01.jpg",
+      "exists": true
+    }
+  }
+]

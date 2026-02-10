@@ -11,13 +11,13 @@ export default function AboutClinic() {
             <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-16 items-center">
                     <div className="flex-1 relative">
-                        <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                        <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white h-[600px] lg:h-[700px]">
                             <Image
                                 src="/clinic-labs.jpg"
                                 alt="Laboratorio Fertility Center Cancun"
-                                width={600}
-                                height={700}
-                                className="object-cover"
+                                width={800}
+                                height={1400}
+                                className="object-cover w-full h-full hover:scale-105 transition-transform duration-1000"
                             />
                         </div>
                         {/* Experience Badge */}

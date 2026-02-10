@@ -1,21 +1,77 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Calendar, CheckCircle, Activity, Star } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Transferencia de embriones y Preparación endometrial" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Transferencia de embriones y Preparación endometrial', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>El momento más esperado en el tratamiento de fertilidad.\n</h2> \n <p>La <strong>transferencia embrionaria</strong> es la etapa final del proceso de Fecundación In Vitro (FIV), en la que uno o más embriones previamente cultivados en el laboratorio son colocados cuidadosamente en el útero de la mujer. Para aumentar las probabilidades de implantación y embarazo, es fundamental preparar adecuadamente el endometrio —la capa interna del útero donde el embrión se implantará.</p><p>En <strong>Advanced Fertility Center Cancún</strong>, brindamos un enfoque integral que combina tecnología, experiencia médica y seguimiento personalizado para asegurar que el útero esté en las mejores condiciones posibles al momento de recibir el embrión.</p><p>Después de 5 días de desarrollo en incubadora el embrión llega a una etapa llamada blastocisto, en este momento el embrión estará listo para colocarse dentro del útero. A este procedimiento le conocemos como transferencia embrionaria (o transfer).</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-001.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-001.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-001-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-002.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-002.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-002-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <p>La transferencia puede ser en fresco – al final de un ciclo de estimulación – o diferida, cuando se han vitrificado (congelado) los embriones previamente y se encuentran resguardados en nuestro centro.</p><p>El cuerpo de la mujer deberá prepararse para una transferencia, a esto le llamamos preparación endometrial.</p><p>Existen dos tipos de preparaciones endometriales</p><ol><li><strong>Ciclo natural:</strong> Se aprovecha el ciclo ovulatorio espontáneo de la paciente. Es ideal para mujeres con ciclos regulares y función ovárica adecuada.</li><li><strong>Ciclo sustituido (con hormonas)</strong>: Se administran estrógenos y progesterona para controlar de forma precisa el ambiente uterino. Es útil en mujeres con ciclos irregulares o en procedimientos con embriones congelados (FET).</li></ol> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-003.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-003.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-003-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Transferencia de Embriones"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Transferencia Embrionaria', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        El momento más esperado: el encuentro entre tu bebé y tú.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        La <strong>transferencia embrionaria</strong> es la etapa culminante de la Fertilización In Vitro (FIV). Consiste en depositar cuidadosamente los embriones (generalmente en etapa de blastocisto, día 5) dentro del útero materno. Es un procedimiento indoloro, rápido y cargado de emoción, realizado bajo guía ecográfica para asegurar la máxima precisión.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-001.jpg"
+          alt="Transferencia embrionaria"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Preparación Endometrial</h2>
+      <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5 mb-12">
+        <p className="text-slate-700 mb-6">
+          Para que el embrión se implante, el "nido" (endometrio) debe estar en condiciones óptimas. Personalizamos este proceso según tu cuerpo:
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white p-6 rounded-2xl shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <Activity className="w-6 h-6 text-brand-green" />
+              <h3 className="font-bold text-brand-violet text-lg">Ciclo Natural</h3>
+            </div>
+            <p className="text-sm text-slate-600">
+              Aprovechamos tu ciclo ovulatorio natural. Ideal para mujeres con periodos regulares. Menor medicación y monitoreo del desarrollo natural del endometrio.
+            </p>
+          </div>
+          <div className="bg-white p-6 rounded-2xl shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <Calendar className="w-6 h-6 text-brand-green" />
+              <h3 className="font-bold text-brand-violet text-lg">Ciclo Sustituido</h3>
+            </div>
+            <p className="text-sm text-slate-600">
+              Utilizamos hormonas (estrógenos y progesterona) para preparar el útero de manera controlada. Ideal para mujeres con ciclos irregulares o para mayor flexibilidad en la agenda.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Qué sucede después?</h2>
+      <div className="space-y-4">
+        {[
+          "Reposo relativo de 20-30 minutos en la clínica tras el procedimiento.",
+          "Puedes retomar tus actividades diarias normales (evitando esfuerzos físicos intensos).",
+          "Continuación del soporte hormonal (progesterona) según indicación médica.",
+          "La prueba de embarazo (beta-hCG) se realiza 10-12 días después."
+        ].map((item, i) => (
+          <div key={i} className="flex gap-4 items-center">
+            <CheckCircle className="w-5 h-5 text-brand-violet shrink-0" />
+            <p className="text-slate-700">{item}</p>
+          </div>
+        ))}
+      </div>
+
+    </InnerPageLayout>
   );
 }

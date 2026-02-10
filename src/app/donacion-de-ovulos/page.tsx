@@ -1,21 +1,112 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Check, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Donación de óvulos" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Donación de óvulos', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Una alternativa esperanzadora para lograr el embarazo cuando no es posible usar óvulos propios.\n</h2> \n <p><strong>La ovodonación o FIV con donante de óvulos</strong> es un tratamiento de reproducción asistida de alta complejidad en el que se utilizan óvulos (ovocitos) de una <a href=\"#\">donante anónima</a>, fertilizados con el esperma de la pareja o de un <a href=\"#\">donante</a>, para crear embriones y posteriormente ser transferidos al útero de la paciente receptora.</p><p>Esta técnica ofrece una alternativa esperanzadora para mujeres que no pueden concebir con sus propios óvulos, ya sea por edad, baja reserva ovárica, fallos en tratamientos previos o condiciones genéticas.</p><p>Se utilizan medicamentos para estimular los folículos en los ovarios de la donadora con la intención de obtener el mayor número de óvulos.</p><p>Para este tipo de tratamiento, la receptora (paciente que recibirá los embriones una vez creados) deberá tener una <a href=\"#\">preparación endometrial </a>para recibir los embriones en su cuerpo.</p><p>Los óvulos se capturan mediante aspiración dirigida por ultrasonido en quirófano; este día requerimos que el paciente (o su muestra) esté en la clínica para capacitar (preparar) la muestra de esperma y fecundar los ovocitos.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos.jpg\" alt=\"Estimulación ovárica FIV\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion.jpg\" alt=\"Fertilización In vitro\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n Los ovocitos se fertilizan para crear embriones en el laboratorio: FIV convencional o ICSI (inyección intracitoplásmica de esperma) \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <p>Los embriones se pueden transferir en fresco o en casos en que la receptora no pueda viajar, no esté lista para transferir o se vaya a realizar estudio genético preimplantacional <a href=\"https://fertilitycentercancun.com/fertilitycentermexico/estudios-geneticos/#pgta\">(PGT)</a> a los embriones, se pueden vitrificar (congelar) para su almacenamiento y posterior transferencia.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <h2>¿Para quién está indicada la ovodonación?</h2> \n <ul>\n <li>\n Mujeres con <b>baja o nula reserva ovárica.</b>\n </li>\n <li>\n Pacientes que han experimentado <b>fallos repetidos de FIV.</b>\n </li>\n <li>\n Mujeres con <b>menopausia prematura</b>\n </li>\n <li>\n Portadoras de <b>enfermedades genéticas</b> que podrían transmitir a su hijo.\n </li>\n <li>\n Mujeres mayores de 40 años con baja calidad ovocitaria.\n </li>\n <li>\n Parejas del mismo sexo o mujeres solteras que requieren tanto óvulo como esperma de donante.\n </li>\n </ul>\n <h2>Ventajas del tratamiento con óvulos donados</h2> \n <ul>\n <li>\n <b>Altas tasas de éxito</b>, independientemente de la edad de la receptora.\n </li>\n <li>\n Acceso a <b>donantes jóvenes y sanas</b>, previamente evaluadas médica, genética y psicológicamente.\n </li>\n <li>\n La receptora <b>vive el embarazo desde el inicio</b>, creando un fuerte vínculo con el bebé.\n </li>\n <li>\n Proceso completamente <b>anónimo, seguro y confidencial.</b>\n </li>\n <li>\n Opción ideal para mujeres que desean ser madres, pero que no pueden hacerlo con sus propios óvulos.\n </li>\n </ul>\n <p><strong>En Advanced Fertility Center Cancún</strong> contamos con una amplia selección de donantes cuidadosamente evaluadas, disponibles para ciclos en fresco o a través de nuestro banco de óvulos.<br />Contamos con una coordinadora de donantes dedicada, quien se encarga del reclutamiento y la evaluación exhaustiva de nuestras donantes para garantizar que solo las mejores candidatas formen parte de nuestro catálogo.<br />Nuestro compromiso es brindarte un cuidado seguro, ético y personalizado durante todo tu proceso, ofreciéndote la mejor oportunidad para cumplir tu sueño de ser mamá o papá.</p>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Donación de óvulos"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Donación de óvulos', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Una alternativa esperanzadora para lograr el embarazo cuando no es posible usar óvulos propios.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        La <strong>ovodonación</strong> (FIV con donante de óvulos) es un tratamiento en el que se utilizan óvulos de una donante anónima, fertilizados con el esperma de la pareja o de un donante, para crear embriones que serán transferidos al útero de la paciente.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl mb-12 bg-slate-100">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos.jpg"
+          alt="Proceso de Donación de Óvulos"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-8">¿Cómo funciona el proceso?</h2>
+
+      <div className="space-y-8 mb-12">
+        <div className="flex gap-6 items-start p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="w-12 h-12 rounded-full bg-brand-green/20 text-brand-violet flex items-center justify-center shrink-0 font-bold text-xl">1</div>
+          <div>
+            <h4 className="text-xl font-bold text-brand-violet mb-2">Estimulación de la Donante</h4>
+            <p className="text-slate-600">La donante se somete a un tratamiento de estimulación ovárica para obtener múltiples óvulos maduros de alta calidad.</p>
+          </div>
+        </div>
+
+        <div className="flex gap-6 items-start p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="w-12 h-12 rounded-full bg-brand-green/20 text-brand-violet flex items-center justify-center shrink-0 font-bold text-xl">2</div>
+          <div>
+            <h4 className="text-xl font-bold text-brand-violet mb-2">Preparación de la Receptora</h4>
+            <p className="text-slate-600">Simultáneamente, la paciente receptora prepara su endometrio mediante medicación para asegurar que el útero esté listo para recibir el embrión.</p>
+          </div>
+        </div>
+
+        <div className="flex gap-6 items-start p-6 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="w-12 h-12 rounded-full bg-brand-green/20 text-brand-violet flex items-center justify-center shrink-0 font-bold text-xl">3</div>
+          <div>
+            <h4 className="text-xl font-bold text-brand-violet mb-2">Fertilización y Transferencia</h4>
+            <p className="text-slate-600">Los óvulos se fertilizan en el laboratorio (FIV/ICSI). Los embriones resultantes se transfieren al útero de la paciente o se pueden vitrificar para el futuro.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Ventajas de la Ovodonación</h2>
+      <div className="grid md:grid-cols-2 gap-4 mb-12">
+        {[
+          "Altas tasas de éxito (hasta 70-80%).",
+          "Independiente de la edad de la paciente.",
+          "Donantes rigurosamente seleccionadas.",
+          "Proceso anónimo y confidencial.",
+          "Experiencia completa del embarazo.",
+        ].map((item, i) => (
+          <div key={i} className="flex gap-3 items-center p-4 bg-brand-violet/5 rounded-xl">
+            <Check className="w-5 h-5 text-brand-green shrink-0" />
+            <span className="font-medium text-slate-700">{item}</span>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Nuestras Donantes</h2>
+      <div className="bg-brand-gray p-8 rounded-3xl mb-12 border border-brand-violet/5">
+        <p className="mb-6 text-slate-700 leading-relaxed">
+          En <strong>Advanced Fertility Center Cancún</strong>, contamos con un banco de óvulos propio y una estricta selección de donantes. Todas nuestras candidatas pasan por evaluaciones:
+        </p>
+        <div className="flex flex-wrap gap-3 mb-6">
+          {["Médicas", "Genéticas", "Psicológicas", "Legales"].map(tag => (
+            <span key={tag} className="px-4 py-2 bg-white rounded-full text-sm font-bold text-brand-violet shadow-sm border border-slate-100">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <p className="text-sm text-slate-500 italic">
+          Garantizamos que solo las mejores candidatas forman parte de nuestro programa.
+        </p>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Para quién está indicada?</h2>
+      <ul className="space-y-4 mb-8">
+        {[
+          "Mujeres con baja o nula reserva ovárica.",
+          "Fallos repetidos en ciclos de FIV con óvulos propios.",
+          "Menopausia precoz o edad materna avanzada.",
+          "Riesgo de transmisión de enfermedades genéticas.",
+        ].map((item, i) => (
+          <li key={i} className="flex gap-3 items-start">
+            <Heart className="w-5 h-5 text-brand-violet shrink-0 fill-brand-violet/20" />
+            <span className="text-slate-700">{item}</span>
+          </li>
+        ))}
+      </ul>
+
+    </InnerPageLayout>
   );
 }

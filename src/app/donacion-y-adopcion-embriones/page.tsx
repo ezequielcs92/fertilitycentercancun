@@ -1,21 +1,68 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Gift, HeartHandshake, Smile } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Donación y Adopción embriones" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Donación y Adopción embriones', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Un camino lleno de generosidad y amor para cumplir el sueño de ser padres.</h2> \n <p>La <strong>donación y adopción de embriones</strong> es mucho más que un procedimiento médico; es una oportunidad llena de esperanza para quienes sueñan con formar una familia y enfrentar dificultades para concebir con sus propios óvulos o esperma.</p><ul><li>Este tratamiento brinda la posibilidad de dar vida a un nuevo comienzo a través de embriones donados por otras parejas que, con generosidad y amor, han decidido compartir el regalo más preciado: la oportunidad de ser padres.</li><li>Es un camino que transforma vidas y que abre la puerta a la ilusión, la alegría y el milagro de la maternidad o paternidad cuando parecía inalcanzable.</li></ul><p>Los pacientes pueden elegir adoptar un embrión y transferirlo luego de un proceso de <a href=\"https://fertilitycentercancun.com/fertilitycentermexico/tratamientos-de-fertilidad/transferencia-de-embriones-y-preparacion-endometrial/\">preparación endometrial</a> en el cuerpo de la mujer.</p><p>En <strong>Advanced Fertility Center Cancún</strong> promovemos con pasión la donación de embriones como una forma hermosa de ayudar a quienes desean cumplir su sueño de ser padres. Contamos con un catálogo cuidadosamente organizado que permite a los futuros padres hacer una selección informada y personalizada del embrión que mejor se adapte a sus necesidades y deseos.</p><p>Nuestro compromiso es acompañarte con respeto, ética y cariño en cada etapa del proceso, brindándote seguridad y confianza para que este camino hacia la maternidad o paternidad sea lo más especial posible.</p> \n <a href=\"#\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <h2>Ventajas de la donación y adopción de embriones\n</h2> \n <ul>\n <li>\n Permite que personas con dificultades reproductivas complejas puedan lograr un embarazo exitoso.\n </li>\n <li>\n Utilización de embriones ya desarrollados, lo que puede incrementar las tasas de implantación y embarazo.\n </li>\n <li>\n Es una opción ética y responsable, que da una segunda oportunidad a embriones que de otro modo serían descartados.\n </li>\n <li>\n Proceso confidencial y con acompañamiento profesional durante todo el tratamiento.\n </li>\n </ul>\n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Donación y Adopción de Embriones"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Adopción de Embriones', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Un camino lleno de generosidad y amor para cumplir el sueño de ser padres.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        La <strong>adopción de embriones</strong> es una oportunidad llena de esperanza para quienes enfrentan dificultades para concebir con sus propios gametos. Consiste en recibir embriones donados por otras parejas que, tras completar su familia, deciden compartirlos altruistamente para dar a otros la posibilidad de vivir la paternidad.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial.jpg"
+          alt="Esperanza de vida"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="bg-brand-gray p-8 rounded-3xl col-span-2">
+          <h2 className="text-2xl font-serif text-brand-violet mb-4">¿Cómo funciona el proceso?</h2>
+          <p className="text-slate-600 leading-relaxed">
+            Es un procedimiento más sencillo que una FIV completa. Los pacientes seleccionan un embrión de nuestro programa de donación. La futura madre se somete a una <strong>preparación endometrial</strong> (tratamiento hormonal suave) para acondicionar su útero, y posteriormente se realiza la transferencia embrionaria, similar a una prueba de Papanicolaou.
+          </p>
+        </div>
+        <div className="bg-brand-violet text-white p-8 rounded-3xl flex flex-col justify-center items-center text-center">
+          <HeartHandshake className="w-16 h-16 mb-4 text-brand-green" />
+          <p className="font-serif text-xl">"Un regalo de vida que transforma dos familias para siempre"</p>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Beneficios de la Adopción</h2>
+      <div className="space-y-4 mb-12">
+        {[
+          { title: "Alta Probabilidad", desc: "Se utilizan embriones de calidad probada, lo que incrementa las tasas de éxito." },
+          { title: "Menor Complejidad", desc: "No requiere estimulación ovárica ni punción folicular para la madre receptora." },
+          { title: "Segunda Oportunidad", desc: "Permite a embriones criopreservados cumplir su propósito de dar vida." },
+          { title: "Accesibilidad", desc: "Suele ser más económico que un ciclo completo de FIV con donación de óvulos." }
+        ].map((item, i) => (
+          <div key={i} className="flex gap-4 items-start p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+            <div className="w-10 h-10 rounded-full bg-brand-green/20 flex items-center justify-center shrink-0 text-brand-violet">
+              <Gift className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="font-bold text-brand-violet">{item.title}</h4>
+              <p className="text-sm text-slate-600">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </InnerPageLayout>
   );
 }

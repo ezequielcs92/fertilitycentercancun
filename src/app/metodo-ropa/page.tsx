@@ -1,21 +1,89 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Heart, Users, Star } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Método ROPA" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Método ROPA', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Una forma única y especial de compartir la maternidad para todas las familias</h2> \n <p>En <strong>Advanced Fertility Center Cancún</strong> apoyamos y celebramos la diversidad familiar, acompañando con respeto y calidez a todas las parejas, incluyendo a la comunidad LGBT+. El <strong>método ROPA</strong> (Recepción de Óvulos de la Pareja) es un tratamiento diseñado para parejas de mujeres que desean compartir biológicamente la experiencia de ser madres, fortaleciendo su vínculo a través de un camino lleno de amor y colaboración.</p> \n <h2>¿En qué consiste el método ROPA?</h2> \n <p>Este tratamiento de fertilización in vitro permite que una mujer aporte sus óvulos, que son fecundados en laboratorio con <a href=\"https://fertilitycentercancun.com/fertilitycentermexico/tratamientos-de-fertilidad/donacion-de-ovulos/\">esperma de donante</a> , y que su pareja lleve el embarazo, creando así una experiencia compartida y profundamente significativa. Ambas mujeres participan activamente en la maternidad, una como madre genética y la otra como madre gestante.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-¿En-que-consiste-.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-¿En-que-consiste-.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-¿En-que-consiste--300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <h2>¿Para quién está indicado?</h2> \n <ul>\n <li>\n Parejas de mujeres que desean construir su familia compartiendo la maternidad biológica.\n </li>\n <li>\n Mujeres que, por alguna razón, no pueden gestar pero quieren aportar sus óvulos.\n </li>\n <li>\n Parejas que buscan una opción personalizada y respetuosa con sus deseos y valores.\n </li>\n </ul>\n <h2>Ventajas del método ROPA</h2> \n <ul>\n <li>\n Fortalece el vínculo familiar y emocional desde el inicio.\n </li>\n <li>\n Alta tasa de éxito gracias a las técnicas avanzadas de fertilización in vitro.\n </li>\n <li>\n Un proceso inclusivo, seguro y respetuoso con todas las identidades y formas de familia.\n </li>\n <li>\n Permite a ambas mujeres ser parte activa de la experiencia de la maternidad.\n </li>\n </ul>\n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Método ROPA"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Método ROPA', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Una forma única y especial de compartir la maternidad para todas las familias.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        En <strong>Advanced Fertility Center Cancún</strong> apoyamos y celebramos la diversidad familiar. El <strong>Método ROPA</strong> (Recepción de Óvulos de la Pareja) es un tratamiento diseñado para parejas de mujeres que desean compartir biológicamente la experiencia de ser madres, fortaleciendo su vínculo a través de la maternidad compartida.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-%C2%BFEn-que-consiste-.jpg"
+          alt="Pareja método ROPA"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿En qué consiste el Método ROPA?</h2>
+      <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 mb-12">
+        <p className="text-slate-600 mb-6 leading-relaxed">
+          Este tratamiento permite que ambas mujeres participen activamente:
+        </p>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-brand-violet/5 p-6 rounded-2xl">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm text-brand-violet">
+              <Star className="w-6 h-6" />
+            </div>
+            <h3 className="font-bold text-brand-violet text-lg mb-2">Madre Genética</h3>
+            <p className="text-sm text-slate-600">Aporta sus óvulos, los cuales son extraídos y fertilizados en el laboratorio con semen de donante.</p>
+          </div>
+          <div className="bg-brand-green/20 p-6 rounded-2xl">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm text-brand-green">
+              <Heart className="w-6 h-6" />
+            </div>
+            <h3 className="font-bold text-brand-violet text-lg mb-2">Madre Gestante</h3>
+            <p className="text-sm text-slate-600">Recibe el embrión en su útero para llevar el embarazo el parto y la lactancia.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Ventajas del Método ROPA</h2>
+      <ul className="grid md:grid-cols-2 gap-4 mb-12">
+        {[
+          "Maternidad biológica compartida.",
+          "Fortalece el vínculo emocional de la pareja.",
+          "Alta tasa de éxito con FIV.",
+          "Proceso legalmente reconocido y seguro.",
+          "Inclusivo y respetuoso con la diversidad.",
+        ].map((item, i) => (
+          <li key={i} className="flex gap-3 items-center p-4 bg-brand-gray rounded-xl">
+            <Users className="w-5 h-5 text-brand-violet shrink-0" />
+            <span className="text-slate-700 font-medium">{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Para quién está indicado?</h2>
+      <div className="space-y-4">
+        {[
+          "Parejas de mujeres que desean ambas ser madres biológicas.",
+          "Mujeres que desean aportar óvulos pero no pueden gestar por razones médicas.",
+          "Parejas que buscan una experiencia de maternidad igualitaria.",
+        ].map((item, i) => (
+          <div key={i} className="flex gap-4 items-center">
+            <div className="w-2 h-2 bg-brand-green rounded-full shrink-0" />
+            <p className="text-slate-700">{item}</p>
+          </div>
+        ))}
+      </div>
+
+    </InnerPageLayout>
   );
 }

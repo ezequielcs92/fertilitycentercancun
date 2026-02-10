@@ -1,21 +1,90 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Snowflake, Clock, Shield, Baby } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Preservación de la fertilidad" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Preservación de la fertilidad', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>La mejor forma de cuidar tu futuro reproductivo y decidir cuándo es el momento adecuado.</h2> \n <p>La <strong>preservación de la fertilidad</strong> es un conjunto de técnicas médicas que permiten conservar óvulos, esperma o embriones para su uso futuro, brindando a las personas la posibilidad de postergar la maternidad o paternidad sin perder la oportunidad biológica de concebir.<br />Esta opción es ideal para quienes desean proteger su fertilidad ante situaciones que puedan afectarla, como tratamientos médicos (quimioterapia, radioterapia), edad avanzada, o simplemente por motivos personales y profesionales.</p> \n <img width=\"1920\" height=\"1000\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-criopreservacion-01.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-criopreservacion-01.jpg 1920w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-criopreservacion-01-300x156.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-criopreservacion-01-1024x533.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-criopreservacion-01-768x400.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-criopreservacion-01-1536x800.jpg 1536w\" sizes=\"(max-width: 1920px) 100vw, 1920px\" /> \n <p>Es un método ideal para pacientes:</p><p><strong>1.</strong> Que aún no están listos para ser padres<br /><strong>2</strong>. Que iniciarán tratamiento oncológico<br /><strong>3.</strong> Que están por iniciar una terapia hormonal de transición</p><p><strong>Criopreservación de esperma:</strong> Recolección y congelación de muestras de semen para su uso posterior.</p><p>Cuando vamos a preservar espermatozoides no se requiere ningún medicamento, se requiere abstención sexual por 2-5 días, posteriormente se usa método de congelación en viales, se recomienda dejar varias muestras para tener suficiente material en el futuro.</p><p><strong>Criopreservación de embriones:</strong> Congelación de embriones ya fertilizados, listos para ser transferidos cuando la paciente esté preparada.</p> \n <img width=\"800\" height=\"916\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-masculina-894x1024.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-masculina-894x1024.jpg 894w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-masculina-262x300.jpg 262w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-masculina-768x880.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-masculina.jpg 987w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <img width=\"800\" height=\"918\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-femenina-892x1024.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-femenina-892x1024.jpg 892w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-femenina-261x300.jpg 261w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-femenina-768x882.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-femenina.jpg 983w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <p>Cuando vamos a preservar ovocitos (óvulos) se requiere un procedimiento en quirófano para obtenerlos, para después vitrificarlos (congelarlos) a este proceso le conocemos como criopreservación.</p> \n <h2>Técnicas disponibles</h2> \n <ul><li><strong>Criopreservación de óvulos:</strong> Extracción y congelación de óvulos para usarlos en el futuro mediante fertilización in vitro.</li></ul>Para el proceso se utilizan medicamentos durante aproximadamente 10-12 días para estimular los folículos en los ovarios de una mujer con la intención de obtener el mayor número de óvulos. \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Medicamentos.jpg\" alt=\"Selección de medicamentos de fertilidad para estimulación ovárica\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Medicamentos.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Medicamentos-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Quirofano-captura.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Quirofano-captura.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Quirofano-captura-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <p>Los óvulos se capturan mediante aspiración dirigida por ultrasonido en quirófano.</p> \n <h2>Ventajas de la preservación de la fertilidad</h2> \n <ul>\n <li>\n Permite conservar la calidad y cantidad de óvulos, esperma o embriones en el mejor estado posible.\n </li>\n <li>\n Brinda tranquilidad y control sobre el momento para formar una familia.\n </li>\n <li>\n Incrementa las posibilidades de embarazo exitoso cuando se decida utilizar las muestras criopreservadas.\n </li>\n <li>\n Es un procedimiento seguro, con tasas de supervivencia altas para óvulos y embriones después de la descongelación.\n </li>\n </ul>\n <h2>¿Quién puede beneficiarse?</h2> \n <h2>La inseminación es una opción recomendada en los siguientes casos:</h2> \n <ul>\n <li>\n Mujeres y hombres que se enfrentan a tratamientos oncológicos o médicos que puedan dañar su fertilidad.\n </li>\n <li>\n Mujeres y hombres que realizarán una transición de genero o terapia hormonal.\n </li>\n <li>\n Personas que desean postergar la maternidad o paternidad por razones personales, profesionales o sociales.\n </li>\n <li>\n Pacientes con diagnóstico de enfermedades genéticas que puedan afectar la función reproductiva.\n </li>\n <li>\n Parejas que quieren asegurar la posibilidad de tener hijos en el futuro.\n </li>\n </ul>\n <p>En <strong>Advanced Fertility Center Cancún</strong> contamos con tecnología avanzada y un equipo especializado en criopreservación, garantizando que tus óvulos, esperma o embriones estén protegidos con los más altos estándares de calidad y seguridad.</p> \n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Preservación de la fertilidad"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Preservación', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Cuidamos tu futuro reproductivo para que decidas cuál es el mejor momento.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        La <strong>preservación de la fertilidad</strong> permite conservar óvulos, esperma o embriones mediante técnicas de congelación ultrarrápida (vitrificación). Es la opción ideal para postergar la maternidad o paternidad sin que el paso del tiempo afecte la calidad de tus células reproductivas.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-criopreservacion-01.jpg"
+          alt="Preservación de fertilidad"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Técnicas Disponibles</h2>
+      <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <h3 className="text-xl font-bold text-brand-violet mb-3">Vitrificación de Óvulos</h3>
+          <p className="text-sm text-slate-600 mb-4">
+            Ideal para mujeres que desean posponer el embarazo. Se realiza una estimulación ovárica suave para extraer óvulos y congelarlos a -196°C.
+          </p>
+          <Image
+            src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Medicamentos.jpg"
+            alt="Estimulación"
+            width={400}
+            height={250}
+            className="rounded-xl object-cover w-full h-40"
+            unoptimized
+          />
+        </div>
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <h3 className="text-xl font-bold text-brand-violet mb-3">Criopreservación de Esperma</h3>
+          <p className="text-sm text-slate-600 mb-4">
+            Procedimiento sencillo que no requiere medicación. Recomendado antes de tratamientos médicos o vasectomías.
+          </p>
+          <Image
+            src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-masculina-894x1024.jpg"
+            alt="Criopreservación de esperma"
+            width={400}
+            height={250}
+            className="rounded-xl object-cover w-full h-40"
+            unoptimized
+          />
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Para quién es este tratamiento?</h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        {[
+          { icon: Clock, title: "Postergar Maternidad", desc: "Decide ser madre cuando estés lista personal o profesionalmente." },
+          { icon: Shield, title: "Tratamientos Médicos", desc: "Antes de quimioterapia o radioterapia." },
+          { icon: Baby, title: "Edad Reproductiva", desc: "Mujeres que desean asegurar óvulos de buena calidad antes de los 35." },
+          { icon: Snowflake, title: "Transición de Género", desc: "Preservación antes de iniciar terapia hormonal." },
+        ].map((item, i) => (
+          <div key={i} className="bg-brand-gray p-6 rounded-2xl text-center">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-brand-green">
+              <item.icon className="w-6 h-6" />
+            </div>
+            <h4 className="font-bold text-brand-violet text-sm mb-2">{item.title}</h4>
+            <p className="text-xs text-slate-500">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Por qué elegirnos?</h2>
+      <p className="text-slate-600 mb-6">
+        En <strong>Advanced Fertility Center Cancún</strong> contamos con un laboratorio de alta complejidad y tecnología de punta para garantizar las tasas de supervivencia más altas tras la descongelación.
+      </p>
+
+    </InnerPageLayout>
   );
 }

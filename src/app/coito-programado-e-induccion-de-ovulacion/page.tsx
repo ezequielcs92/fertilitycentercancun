@@ -1,21 +1,99 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Calendar, Clock, DollarSign, Heart } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Coito programado e inducción de ovulación" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Coito programado e inducción de ovulación', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Un método natural y sencillo para favorecer el embarazo en ciclos controlados.</h2> \n <p>Es un tratamiento de reproducción asistida de baja complejidad que requiere el seguimiento del desarrollo del folículo dominante mediante ultrasonido en un ciclo natural femenino (seguimiento folicular). Puede utilizarse algunos medicamentos para estimular el folículo y garantizar la ovulación en el momento adecuado.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"1920\" height=\"1000\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01.jpg 1920w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01-300x156.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01-1024x533.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01-768x400.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01-1536x800.jpg 1536w\" sizes=\"(max-width: 1920px) 100vw, 1920px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <p>El médico les indicará el momento ideal para tener relaciones sexuales (coito) en casa y tener mayores probabilidades de éxito para un embarazo.</p> \n <h2>Ventajas del coito programado</h2> \n <ul>\n <li>\n Es un procedimiento sencillo, no invasivo y natural.\n </li>\n <li>\n Bajo costo en comparación con otros tratamientos de fertilidad.\n </li>\n <li>\n No requiere hospitalización ni procedimientos quirúrgicos.\n </li>\n <li>\n Permite que la pareja mantenga la intimidad y el control durante el proceso.\n </li>\n <li>\n Puede combinarse con otras técnicas de estimulación ovárica para mejorar resultados.\n </li>\n </ul>\n <h2>¿Quién puede ¿Para quién está indicado el coito programado??</h2> \n <ul>\n <li>\n Parejas con infertilidad leve o sin causa aparente (infertilidad idiopática).\n </li>\n <li>\n Mujeres con ciclos menstruales regulares pero con ovulación difícil de predecir.\n </li>\n <li>\n Parejas que desean intentar un método natural antes de recurrir a tratamientos más complejos.\n </li>\n </ul>\n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Coito Programado"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Coito Programado', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Un método natural y sencillo para favorecer el embarazo en ciclos controlados.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        El <strong>Coito Programado</strong> es una técnica de baja complejidad que consiste en monitorear el ciclo natural de la mujer para identificar el momento exacto de la ovulación. Mediante ultrasonidos (seguimiento folicular), determinamos los días más fértiles para indicar el momento ideal para tener relaciones sexuales en casa, maximizando las probabilidades de embarazo.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01.jpg"
+          alt="Pareja feliz"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Cómo funciona?</h2>
+      <div className="grid md:grid-cols-2 gap-8 mb-12 items-center">
+        <div>
+          <p className="text-slate-600 mb-4">
+            El proceso es sencillo y mínimamente invasivo:
+          </p>
+          <ul className="space-y-4">
+            <li className="flex gap-3 items-start">
+              <div className="w-8 h-8 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet">1</div>
+              <p className="text-slate-700"><strong>Seguimiento Folicular:</strong> Realizamos ultrasonidos periódicos para observar el crecimiento del folículo dominante.</p>
+            </li>
+            <li className="flex gap-3 items-start">
+              <div className="w-8 h-8 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet">2</div>
+              <p className="text-slate-700"><strong>Inducción (Opcional):</strong> Si es necesario, recetamos medicamentos suaves para asegurar la ovulación.</p>
+            </li>
+            <li className="flex gap-3 items-start">
+              <div className="w-8 h-8 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet">3</div>
+              <p className="text-slate-700"><strong>Programación:</strong> El médico indica los días exactos para mantener relaciones sexuales.</p>
+            </li>
+          </ul>
+        </div>
+        <div className="relative h-64 md:h-full rounded-2xl overflow-hidden shadow-lg">
+          <Image
+            src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1.jpg"
+            alt="Consulta médica"
+            fill
+            className="object-cover"
+            unoptimized
+          />
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Ventajas Principales</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        {[
+          { icon: Heart, label: "Método Natural" },
+          { icon: DollarSign, label: "Bajo Costo" },
+          { icon: Calendar, label: "Sin Cirugía" },
+          { icon: Clock, label: "Proceso Rápido" },
+        ].map((item, i) => (
+          <div key={i} className="bg-brand-gray p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3">
+            <item.icon className="w-8 h-8 text-brand-green" />
+            <span className="font-bold text-brand-violet text-sm">{item.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Para quién está indicado?</h2>
+      <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+        <ul className="space-y-4">
+          {[
+            "Parejas jóvenes con infertilidad leve o reciente.",
+            "Mujeres con ciclos irregulares (anovulación).",
+            "Infertilidad sin causa aparente (idiopática).",
+            "Parejas que desean iniciar con métodos de baja complejidad."
+          ].map((item, i) => (
+            <li key={i} className="flex gap-3 items-center">
+              <div className="w-2 h-2 bg-brand-green rounded-full shrink-0" />
+              <span className="text-slate-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </InnerPageLayout>
   );
 }

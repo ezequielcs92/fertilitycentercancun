@@ -1,21 +1,86 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Globe, ShieldCheck, CheckCircle } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Donación de espermatozoides" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Donación de espermatozoides', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Una alternativa segura, accesible y confiable para quienes desean formar una familia.\n</h2> \n <p>La donación de esperma es una opción de reproducción asistida que permite lograr el embarazo mediante el uso de semen de un donante anónimo. Este tratamiento es ideal para mujeres solteras, parejas del mismo sexo o parejas heterosexuales con problemas severos de fertilidad masculina.</p><p>En <strong>Advanced Fertility Center Cancún</strong> promovemos el acceso a esta alternativa con el mayor cuidado, confidencialidad y compromiso.</p> \n <h2>Banco de esperma nacional e internacional</h2> \n <p>Contamos con un banco de esperma cuidadosamente seleccionado que incluye <strong>donantes locales e internacionales</strong>. Todos los donantes son evaluados bajo estrictos protocolos médicos, genéticos y psicológicos, garantizando seguridad y calidad en cada muestra.</p><p>Además, tenemos convenios con bancos internacionales certificados para importar viales de donantes que cumplan con las características específicas que cada paciente busca, como grupo étnico, tipo de sangre, complexión física, nivel educativo, entre otros.</p> \n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/09/Banco-de-espermas-internacional.png\" alt=\"Banco internacional de espermas\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/09/Banco-de-espermas-internacional.png 1024w, https://fertilitycentercancun.com/wp-content/uploads/2025/09/Banco-de-espermas-internacional-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/09/Banco-de-espermas-internacional-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2025/09/Banco-de-espermas-internacional-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <img width=\"800\" height=\"582\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Traslados-internacionales-002.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Traslados-internacionales-002.jpg 917w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Traslados-internacionales-002-300x218.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Traslados-internacionales-002-768x559.jpg 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2>Experiencia en traslados internacionales</h2> \n <p>En Advanced Fertility Center Cancún contamos con la experiencia y el equipo legal y logístico necesarios para realizar traslados internacionales de muestras de esperma con total cumplimiento de las regulaciones aduanales y sanitarias. Nos encargamos de todo el proceso, desde la solicitud del donante hasta la recepción y resguardo del material en nuestras instalaciones.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <h2>¿Para quién está indicada la donación de esperma?</h2> \n <ul>\n <li>\n Mujeres con <b>baja o nula reserva ovárica.</b>\n </li>\n <li>\n Pacientes que han experimentado <b>fallos repetidos de FIV.</b>\n </li>\n <li>\n Mujeres con <b>menopausia prematura</b>\n </li>\n <li>\n Portadoras de <b>enfermedades genéticas</b> que podrían transmitir a su hijo.\n </li>\n <li>\n Mujeres mayores de 40 años con baja calidad ovocitaria.\n </li>\n <li>\n Parejas del mismo sexo o mujeres solteras que requieren tanto óvulo como esperma de donante.\n </li>\n </ul>\n <h2>Ventajas del tratamiento con donante de esperma:</h2> \n <ul>\n <li>\n Opción segura y confidencial.\n </li>\n <li>\n Donantes seleccionados rigurosamente y previamente evaluados.\n </li>\n <li>\n Posibilidad de elegir entre un amplio catálogo nacional e internacional.\n </li>\n <li>\n Alta tasa de éxito cuando se combina con técnicas como Inseminación Intrauterina (IIU) o Fertilización In Vitro (FIV).\n </li>\n </ul>\n <h2>Nuestros bancos aliados de alto prestigio</h2> \n <a href=\"https://www.xytex.com\" target=\"_blank\" rel=\"nofollow\">\n <img width=\"529\" height=\"386\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-xytex.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-xytex.png 529w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-xytex-300x219.png 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> </a>\n <a href=\"https://www.europeanspermbank.com/en/\" target=\"_blank\" rel=\"nofollow\">\n <img width=\"529\" height=\"386\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-european.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-european.png 529w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-european-300x219.png 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> </a>\n <a href=\"https://www.cryosinternational.com\" target=\"_blank\" rel=\"nofollow\">\n <img width=\"529\" height=\"386\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-cryos.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-cryos.png 529w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-cryos-300x219.png 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> </a>\n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Donación de esperma"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Donación de esperma', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Una alternativa segura, accesible y confiable para formar una familia.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        La donación de esperma es una técnica de reproducción asistida que utiliza muestras de donantes anónimos para lograr el embarazo. Es una opción fundamental para mujeres solteras, parejas del mismo sexo y parejas heterosexuales con factor masculino severo.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Traslados-internacionales-002.jpg"
+          alt="Muestras de laboratorio"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Banco de Esperma Internacional</h2>
+      <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5 mb-12">
+        <p className="text-slate-700 mb-6 font-light">
+          Contamos con alianzas con los bancos de esperma más prestigiosos del mundo. Esto nos permite ofrecerte un catálogo diverso donde puedes seleccionar donantes basándote en:
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {["Grupo Étnico", "Características Físicas", "Nivel Educativo", "Historial Médico"].map(tag => (
+            <div key={tag} className="bg-white px-4 py-3 rounded-xl shadow-sm text-center text-sm font-bold text-brand-violet">
+              {tag}
+            </div>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-8 items-center justify-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+          <Image src="https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-xytex.png" alt="Xytex" width={120} height={50} className="object-contain" unoptimized />
+          <Image src="https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-european.png" alt="European Sperm Bank" width={120} height={50} className="object-contain" unoptimized />
+          <Image src="https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-cryos.png" alt="Cryos International" width={100} height={40} className="object-contain" unoptimized />
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <Globe className="w-10 h-10 text-brand-green mb-4" />
+          <h3 className="text-xl font-bold text-brand-violet mb-2">Logística Internacional</h3>
+          <p className="text-slate-600 text-sm">
+            Gestionamos integralmente la importación de muestras cumpliendo todas las regulaciones sanitarias y aduanales de México.
+          </p>
+        </div>
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <ShieldCheck className="w-10 h-10 text-brand-green mb-4" />
+          <h3 className="text-xl font-bold text-brand-violet mb-2">Seguridad Garantizada</h3>
+          <p className="text-slate-600 text-sm">
+            Todos los donantes pasan por rigurosos filtros médicos, genéticos y psicológicos antes de ser aceptados en el programa.
+          </p>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Para quién es?</h2>
+      <ul className="space-y-4">
+        {[
+          "Mujeres solteras que desean ser madres (Maternidad en Solitario).",
+          "Parejas de mujeres (lesbomaternidad).",
+          "Parejas con infertilidad masculina severa (azoospermia, alteraciones genéticas).",
+          "Riesgo de transmitir enfermedades hereditarias por parte del padre."
+        ].map((item, i) => (
+          <li key={i} className="flex gap-3 items-center p-3 bg-brand-violet/5 rounded-lg border border-transparent hover:border-brand-violet/20 transition-colors">
+            <CheckCircle className="w-5 h-5 text-brand-violet shrink-0" />
+            <span className="text-slate-700">{item}</span>
+          </li>
+        ))}
+      </ul>
+
+    </InnerPageLayout>
   );
 }

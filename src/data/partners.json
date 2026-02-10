@@ -1,0 +1,46 @@
+[
+    {
+        "id": "partner-1",
+        "name": "Dr. Masashigue Kuwayama",
+        "role": "Padre de la Vitrificación",
+        "institution": "ReproSupport Medical Research Center, Japón",
+        "description": "Inventor de la vitrificación, el método base de todas las técnicas actualmente utilizadas en las clínicas a nivel mundial. Brinda capacitación continua a nuestras embriólogas.",
+        "image": "/medical-team.jpg",
+        "videoUrl": "#"
+    },
+    {
+        "id": "partner-2",
+        "name": "Dr. Gabriel Dalvit",
+        "role": "Colaborador Internacional",
+        "institution": "Especialista en Medios Osmolares",
+        "description": "Pieza fundamental en la creación de los medios osmolares para vitrificación. Trabaja en el perfeccionamiento continuo de técnicas de reproducción asistida.",
+        "image": "/medical-team.jpg",
+        "videoUrl": "#"
+    },
+    {
+        "id": "partner-3",
+        "name": "Dr. José Gaytán Melicoff",
+        "role": "Fundador",
+        "institution": "Advanced Fertility Center Cancun",
+        "description": "Más de 30 años de experiencia en reproducción asistida. Uno de los primeros especialistas mexicanos formados en el Instituto Valenciano de Infertilidad.",
+        "image": "/medical-team.jpg",
+        "videoUrl": "#"
+    },
+    {
+        "id": "partner-4",
+        "name": "Dr. Yakovenko Sergei",
+        "role": "Director Médico",
+        "institution": "Altra-Vita, Moscú",
+        "description": "Especialista en reproducción asistida con años de experiencia, Fundador y Director Médico en el centro de atención a la fertilidad más grande de Moscú.",
+        "image": "/medical-team.jpg",
+        "website": "https://altravita-ivf.com/"
+    },
+    {
+        "id": "partner-5",
+        "name": "Dr. Luis Rubalcava",
+        "role": "Director Médico",
+        "institution": "Instituto Mexicano de Infertilidad",
+        "description": "Especialista en reproducción asistida y pionero en la cirugía de trasplante de útero en México.",
+        "image": "/medical-team.jpg"
+    }
+]

@@ -1,21 +1,110 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Heart, Check } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Inseminación Artificial" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Inseminación Artificial', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Una opción accesible y efectiva para parejas con infertilidad leve o sin causa aparente.</h2> \n <p>La Inseminación Intrauterina, conocida comúnmente como inseminación, es un procedimiento de reproducción asistida de baja complejidad que tiene como objetivo facilitar la concepción al colocar directamente los espermatozoides en el útero de la mujer. Este tratamiento es una opción efectiva, mínimamente invasiva y menos costosa en comparación con otras técnicas de fertilidad</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"800\" height=\"462\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01-1024x591.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01-1024x591.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01-300x173.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01-768x443.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01-1536x886.jpg 1536w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01.jpg 1921w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido.jpg\" alt=\"Ultrasonido\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <p>Se observa mediante ultrasonido el desarrollo del folículo dominante en un ciclo femenino (seguimiento folicular) para ello se utilizan algunos medicamentos que ayudarán a que los folículos crezcan y a producir la ovulación en el momento adecuado.</p><p>Por medio de un catéter el semen de la pareja o de un donador se coloca directamente en el útero de la mujer - una vez que ha sido capacitado y preparado - para que los espermatozoides se encuentren más cerca del óvulo en el momento de la ovulación y puedan mejorar las posibilidades de lograr un embarazo.</p><p>Es un tratamiento con dos importantes beneficios, es accesible y se asemeja mucho a la concepción natural, sin embargo sus tasas de éxito son mucho más bajas que las de una fertilización in vitro.</p> \n <img width=\"800\" height=\"474\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1024x607.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1024x607.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-300x178.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-768x456.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1536x911.jpg 1536w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito.jpg 1920w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2>Beneficios de la Inseminación Intrauterina (IIU)\n</h2> \n <ul>\n <li>\n <b>Tratamiento accesible:</b> La inseminación es una de las opciones más económicas dentro de los tratamientos de fertilidad, ideal como primer paso en casos de infertilidad leve.\n </li>\n <li>\n <b>Procedimiento sencillo y ambulatorio:</b> Es un tratamiento no invasivo que se realiza en consultorio, sin necesidad de anestesia ni hospitalización.\n </li>\n <li>\n <b>Mejora las probabilidades de concepción:</b> Al colocar directamente los espermatozoides en el útero en el momento exacto de la ovulación, se incrementan las posibilidades de fertilización.\n </li>\n <li>\n <b>Puede combinarse con estimulación ovárica:</b> Esto permite aumentar la cantidad de óvulos disponibles y maximizar las probabilidades de éxito.\n </li>\n <li>\n <b>Reduce el impacto emocional y físico: </b>Al ser un procedimiento breve y sin recuperación prolongada, genera menos estrés en comparación con tratamientos más complejos.\n </li>\n </ul>\n <h2>¿Para quién se recomienda la Inseminación?</h2> \n <h2>La inseminación es una opción recomendada en los siguientes casos:</h2> \n <ul>\n <li>\n <b>Parejas con infertilidad leve o sin causa aparente.</b> Cuando no se identifica una razón médica clara para la dificultad para concebir.\n </li>\n <li>\n <b>Hombres con alteraciones leves en el semen.</b> Como baja movilidad o concentración espermática moderada.\n </li>\n <li>\n <b>Mujeres con una buena reserva ovárica y trompas uterinas permeables.</b>\n </li>\n <li>\n <b>Parejas del mismo sexo femenino o mujeres solteras.</b> Que desean lograr un embarazo con semen de donante.\n </li>\n <li>\n <b>Pacientes jóvenes que buscan un tratamiento inicial antes de considerar técnicas más complejas.</b>\n </li>\n </ul>\n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Inseminación Artificial"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Inseminación Artificial', href: '#' }
+      ]}
+    >
+      {/* Intro */}
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Una opción accesible y efectiva para parejas con infertilidad leve o sin causa aparente.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        La <strong>Inseminación Intrauterina (IIU)</strong>, conocida comúnmente como inseminación artificial, es un procedimiento de reproducción asistida de baja complejidad. Su objetivo es facilitar la concepción al colocar espermatozoides previamente capacitados directamente en el útero de la mujer, justo en el momento de la ovulación.
+      </p>
+
+      {/* Main Image */}
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl mb-12">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01-1024x591.jpg"
+          alt="Proceso de Inseminación Intrauterina"
+          fill
+          className="object-cover"
+          unoptimized // Using remote image directly
+        />
+      </div>
+
+      {/* Process Steps */}
+      <h2 className="text-3xl font-serif text-brand-violet mb-8">¿Cómo funciona?</h2>
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
+          <div className="h-48 relative rounded-2xl overflow-hidden mb-6">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido.jpg"
+              alt="Seguimiento Folicular"
+              fill
+              className="object-cover"
+              unoptimized
+            />
+          </div>
+          <h3 className="text-xl font-bold text-brand-violet mb-3">1. Seguimiento Folicular</h3>
+          <p className="text-sm text-slate-600">
+            Monitoreamos el desarrollo de los folículos mediante ultrasonido. Utilizamos medicamentos específicos para estimular el crecimiento folicular y programar la ovulación en el momento óptimo.
+          </p>
+        </div>
+        <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
+          <div className="h-48 relative rounded-2xl overflow-hidden mb-6">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1024x607.jpg"
+              alt="Inseminación"
+              fill
+              className="object-cover"
+              unoptimized
+            />
+          </div>
+          <h3 className="text-xl font-bold text-brand-violet mb-3">2. Inseminación</h3>
+          <p className="text-sm text-slate-600">
+            Una vez preparada la muestra de semen (capacitación espermática), se introduce delicadamente en el útero mediante una cánula fina. Es un proceso rápido, indoloro y ambulatorio.
+          </p>
+        </div>
+      </div>
+
+      {/* Benefits */}
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Beneficios Principales</h2>
+      <div className="bg-brand-violet/5 p-8 rounded-3xl mb-12">
+        <ul className="space-y-4">
+          {[
+            "Tratamiento de baja complejidad y menor costo.",
+            "Procedimiento sencillo realizado en consultorio.",
+            "Sin anestesia ni recuperación prolongada.",
+            "Aumenta las probabilidades comparado con el coito programado.",
+            "Menor estrés físico y emocional."
+          ].map((item, i) => (
+            <li key={i} className="flex gap-3 items-start">
+              <Check className="w-5 h-5 text-brand-green mt-1 shrink-0" />
+              <span className="text-slate-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Candidates */}
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Es para mí?</h2>
+      <p className="mb-6 text-slate-600">Recomendamos la Inseminación Artificial en casos como:</p>
+      <div className="grid md:grid-cols-2 gap-4">
+        {[
+          "Infertilidad leve o sin causa aparente.",
+          "Alteraciones leves en el semen.",
+          "Problemas cervicales que dificultan el paso del esperma.",
+          "Mujeres solteras o parejas del mismo sexo (con banco de esperma)."
+        ].map((item, i) => (
+          <div key={i} className="flex items-center gap-4 bg-white shadow-sm p-4 rounded-2xl border border-slate-100">
+            <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0">
+              <Heart className="w-5 h-5 text-brand-violet fill-current" />
+            </div>
+            <span className="text-sm font-medium text-slate-700">{item}</span>
+          </div>
+        ))}
+      </div>
+
+    </InnerPageLayout>
   );
 }

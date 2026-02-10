@@ -1,21 +1,70 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Pill, Zap, TrendingDown, Target, ShieldCheck } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Mini FIV" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Mini FIV', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Una opción más natural, accesible y menos invasiva.</h2> \n <p>El <strong>Mini FIV</strong> es una variante de la Fertilización In Vitro tradicional, diseñada para pacientes que desean una alternativa más suave, con menos medicación y menor carga hormonal. Este protocolo utiliza una dosis reducida de medicamentos para estimular los ovarios, lo que da como resultado una menor cantidad de óvulos, pero sin comprometer la calidad.<br />En <strong>Advanced Fertility Center Cancún</strong>, ofrecemos Mini FIV como parte de nuestros tratamientos personalizados, ideal para ciertos perfiles de pacientes.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos.jpg\" alt=\"Estimulación ovárica FIV\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"800\" height=\"644\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-1024x824.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-1024x824.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-300x241.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-768x618.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos.jpg 1377w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n Se utilizan medicamentos para estimular los folículos en los ovarios de una mujer con la intención de obtener el entre 1 y 3 ovocitos. Los óvulos se capturan mediante aspiración dirigida por ultrasonido en quirófano. \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Quirofano001.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Quirofano001.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Quirofano001-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"800\" height=\"582\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003.jpg 917w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003-300x218.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003-768x559.jpg 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <p>El esperma se capacita para fertilizar.</p>Los ovocitos se fertilizan para crear embriones en el laboratorio: FIV convencional o ICSI (inyección intracitoplásmica de esperma) \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion.jpg\" alt=\"Fertilización In vitro\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <p>Generalmente los embriones se transfieren en fresco, aunque también se pueden vitrificar (congelar) para su almacenamiento y posterior transferencia.</p> \n <h2>Beneficios del Mini FIV</h2> \n <ul>\n <li>\n Menor uso de medicamentos hormonales\n </li>\n <li>\n Menos riesgos de efectos secundarios\n </li>\n <li>\n Costos más accesibles que la FIV tradicional\n </li>\n <li>\n Reducción del riesgo de hiperestimulación ovárica\n </li>\n <li>\n Procedimiento menos invasivo, física y emocionalmente\n </li>\n </ul>\n <h2>¿Para quién está indicado el Mini FIV?</h2> \n <ul>\n <li>\n Mujeres con <b>baja reserva ovárica</b> que no responden bien a una estimulación agresiva\n </li>\n <li>\n Pacientes que prefieren un tratamiento con <b>menos medicación y menos efectos secundarios</b>\n </li>\n <li>\n Mujeres jóvenes que buscan una opción más natural o con menos riesgos\n </li>\n <li>\n Parejas que desean una alternativa más <b>económica</b> dentro de las técnicas de reproducción asistida\n </li>\n <li>\n Pacientes con riesgo de <b>hiperestimulación ovárica</b>\n </li>\n </ul>\n <h2>Expertos en fertilidad y reproducción asistida</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contactar ahora\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Mini FIV"
+      breadcrumb={[
+        { label: 'Inicio', href: '/' },
+        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Mini FIV', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Una opción más natural, accesible y menos invasiva.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        El <strong>Mini FIV</strong> es una variante de la Fertilización In Vitro tradicional diseñada para ser más suave con tu cuerpo. Utilizamos dosis reducidas de medicación para estimular los ovarios de manera controlada, priorizando la calidad de los óvulos sobre la cantidad, reduciendo costos y efectos secundarios.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-1024x824.jpg"
+          alt="Medicamentos Mini FIV"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Beneficios del Mini FIV</h2>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {[
+          { icon: Pill, title: "Menos Medicación", desc: "Dosis hormonales reducidas significativamente." },
+          { icon: TrendingDown, title: "Menor Costo", desc: "Más accesible que la FIV convencional." },
+          { icon: ShieldCheck, title: "Menos Riesgos", desc: "Reduce drásticamente el riesgo de hiperestimulación." },
+          { icon: Zap, title: "Menos Invasivo", desc: "Proceso más amigable física y emocionalmente." },
+          { icon: Target, title: "Calidad vs Cantidad", desc: "Enfocado en obtener óvulos de alta calidad." },
+        ].map((item, i) => (
+          <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <item.icon className="w-8 h-8 text-brand-green mb-4" />
+            <h4 className="font-bold text-brand-violet mb-2">{item.title}</h4>
+            <p className="text-sm text-slate-500">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Para quién está indicado?</h2>
+      <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
+        <ul className="space-y-4">
+          {[
+            "Mujeres con baja reserva ovárica que no responden a altas dosis.",
+            "Pacientes que desean evitar altas cargas hormonales.",
+            "Mujeres jóvenes con buen pronóstico de fertilidad.",
+            "Parejas buscando una alternativa más económica.",
+            "Pacientes con riesgo de Síndrome de Hiperestimulación Ovárica (SHO)."
+          ].map((item, i) => (
+            <li key={i} className="flex gap-3 items-center">
+              <div className="w-2 h-2 bg-brand-violet rounded-full shrink-0" />
+              <span className="text-slate-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </InnerPageLayout>
   );
 }

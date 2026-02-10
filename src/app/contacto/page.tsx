@@ -1,21 +1,169 @@
-
 import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
+import ContactForm from '@/components/forms/ContactForm';
+import { Phone, Mail, MapPin, ExternalLink, Globe, Clock, Instagram, Facebook, Youtube, MessageSquare } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Contacto" 
+    <main className="bg-white min-h-screen pb-24">
+      <PageHeader
+        title="Contacto"
         breadcrumb={[
           { label: 'Inicio', href: '/' },
           { label: 'Contacto', href: '#' }
         ]}
       />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Expertos en Fertilidad.\n</h2> \n <h2>Contáctanos, será un placer ayudarte a cumplir tu sueño.</h2> \n <p>¿Tienes dudas y necesitas orientación? Nuestros expertos en fertilidad podrán ayudarte. </p><p>Considera que nuestro Centro de Fertilidad es uno de los mejores en nuestro país y el más reconocido en el Sureste de México. </p><p>Solo tienes que dar el primer paso y contactarnos. Aquí resolveremos todas tus inquietudes. </p><p>Por favor llámanos a los siguientes números telefónicos o envíanos tus datos por medio del siguiente formulario y nos comunicaremos contigo a la brevedad.</p> \n <img width=\"800\" height=\"534\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/06/Recepcion-clinica-de-fertilidad-1024x684.jpg\" alt=\"Recepción clínica de fertilidad\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/06/Recepcion-clinica-de-fertilidad-1024x684.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/Recepcion-clinica-de-fertilidad-300x200.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/Recepcion-clinica-de-fertilidad-768x513.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/Recepcion-clinica-de-fertilidad.jpg 1160w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2>¡Conoce nuestras instalaciones!\n</h2> \n <h2>Tour virtual en Advanced Fertility Center Cancún\n</h2> \n <a href=\"https://my.matterport.com/show/?m=XtokPdzLfrQ\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512.009 512.009\" style=\"enable-background:new 0 0 512.009 512.009;\" xml:space=\"preserve\"><g>	<g> <path d=\"M508.625,247.801L508.625,247.801L392.262,131.437c-4.18-4.881-11.526-5.45-16.407-1.269 c-4.881,4.18-5.45,11.526-1.269,16.407c0.39,0.455,0.814,0.88,1.269,1.269l96.465,96.582H11.636C5.21,244.426,0,249.636,0,256.063 s5.21,11.636,11.636,11.636H472.32l-96.465,96.465c-4.881,4.18-5.45,11.526-1.269,16.407s11.526,5.45,16.407,1.269 c0.455-0.39,0.88-0.814,1.269-1.269l116.364-116.364C513.137,259.67,513.137,252.34,508.625,247.801z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Ver tour virtual\n </a>\n <ul>\n <li>\n <a href=\"https://maps.app.goo.gl/SNDLypYhvhpNSmkw9\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\"><g>	<g> <path d=\"M256,0C156.748,0,76,80.748,76,180c0,33.534,9.289,66.26,26.869,94.652l142.885,230.257 c2.737,4.411,7.559,7.091,12.745,7.091c0.04,0,0.079,0,0.119,0c5.231-0.041,10.063-2.804,12.75-7.292L410.611,272.22 C427.221,244.428,436,212.539,436,180C436,80.748,355.252,0,256,0z M384.866,256.818L258.272,468.186l-129.905-209.34 C113.734,235.214,105.8,207.95,105.8,180c0-82.71,67.49-150.2,150.2-150.2S406.1,97.29,406.1,180 C406.1,207.121,398.689,233.688,384.866,256.818z\"></path>	</g></g><g>	<g> <path d=\"M256,90c-49.626,0-90,40.374-90,90c0,49.309,39.717,90,90,90c50.903,0,90-41.233,90-90C346,130.374,305.626,90,256,90z M256,240.2c-33.257,0-60.2-27.033-60.2-60.2c0-33.084,27.116-60.2,60.2-60.2s60.1,27.116,60.1,60.2 C316.1,212.683,289.784,240.2,256,240.2z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Cancún Quintana Roo\n </a>\n </li>\n <li>\n <a href=\"mailto:info@fertilitycentercancun.com.mx\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\"><g>	<g> <path d=\"M405.333,213.874V106.667c0-23.531-19.135-42.667-42.667-42.667h-320C19.135,64,0,83.135,0,106.667V320 c0,23.531,19.135,42.667,42.667,42.667h239.215C295.858,411.84,341.073,448,394.667,448c20.625,0,40.906-5.427,58.677-15.708 c5.094-2.948,6.844-9.469,3.885-14.573c-2.948-5.104-9.479-6.865-14.573-3.885c-14.521,8.396-31.115,12.833-47.99,12.833 c-52.938,0-96-43.063-96-96s43.063-96,96-96s96,43.063,96,96v10.667c0,11.76-9.573,21.333-21.333,21.333 c-11.76,0-21.333-9.573-21.333-21.333v-42.667c0-5.896-4.771-10.667-10.667-10.667c-2.869,0-5.447,1.161-7.362,3 c-9.428-8.401-21.714-13.667-35.305-13.667c-29.406,0-53.333,23.927-53.333,53.333S365.26,384,394.667,384 c15.896,0,30.03-7.131,39.81-18.202c7.727,10.977,20.44,18.202,34.857,18.202C492.865,384,512,364.865,512,341.333v-10.667 C512,269.569,465.044,219.288,405.333,213.874z M42.667,85.333h320c0.444,0,0.816,0.227,1.254,0.254L211.438,210.75 c-5.427,3.417-13.292,2.708-16.823,0.542L41.426,85.585C41.859,85.559,42.227,85.333,42.667,85.333z M384,213.874 c-59.711,5.414-106.667,55.695-106.667,116.793c0,3.6,0.221,7.148,0.54,10.667H42.667c-11.76,0-21.333-9.573-21.333-21.333 V106.667c0-3.021,0.667-5.874,1.805-8.48l158.883,130.293c6.208,4.052,13.344,6.188,20.646,6.188 c7.021,0,13.885-1.979,19.927-5.729c0.604-0.323,1.177-0.708,1.719-1.156l157.88-129.598c1.139,2.608,1.807,5.461,1.807,8.483 V213.874z M394.667,362.667c-17.646,0-32-14.354-32-32c0-17.646,14.354-32,32-32s32,14.354,32,32 C426.667,348.313,412.313,362.667,394.667,362.667z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n info@fertilitycentercancun.com.mx\n </a>\n </li>\n <li>\n <a href=\"tel:+13102729488\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 473.806 473.806\" style=\"enable-background:new 0 0 473.806 473.806;\" xml:space=\"preserve\"><g>	<g> <path d=\"M374.456,293.506c-9.7-10.1-21.4-15.5-33.8-15.5c-12.3,0-24.1,5.3-34.2,15.4l-31.6,31.5c-2.6-1.4-5.2-2.7-7.7-4 c-3.6-1.8-7-3.5-9.9-5.3c-29.6-18.8-56.5-43.3-82.3-75c-12.5-15.8-20.9-29.1-27-42.6c8.2-7.5,15.8-15.3,23.2-22.8 c2.8-2.8,5.6-5.7,8.4-8.5c21-21,21-48.2,0-69.2l-27.3-27.3c-3.1-3.1-6.3-6.3-9.3-9.5c-6-6.2-12.3-12.6-18.8-18.6 c-9.7-9.6-21.3-14.7-33.5-14.7s-24,5.1-34,14.7c-0.1,0.1-0.1,0.1-0.2,0.2l-34,34.3c-12.8,12.8-20.1,28.4-21.7,46.5 c-2.4,29.2,6.2,56.4,12.8,74.2c16.2,43.7,40.4,84.2,76.5,127.6c43.8,52.3,96.5,93.6,156.7,122.7c23,10.9,53.7,23.8,88,26 c2.1,0.1,4.3,0.2,6.3,0.2c23.1,0,42.5-8.3,57.7-24.8c0.1-0.2,0.3-0.3,0.4-0.5c5.2-6.3,11.2-12,17.5-18.1c4.3-4.1,8.7-8.4,13-12.9 c9.9-10.3,15.1-22.3,15.1-34.6c0-12.4-5.3-24.3-15.4-34.3L374.456,293.506z M410.256,398.806 C410.156,398.806,410.156,398.906,410.256,398.806c-3.9,4.2-7.9,8-12.2,12.2c-6.5,6.2-13.1,12.7-19.3,20 c-10.1,10.8-22,15.9-37.6,15.9c-1.5,0-3.1,0-4.6-0.1c-29.7-1.9-57.3-13.5-78-23.4c-56.6-27.4-106.3-66.3-147.6-115.6 c-34.1-41.1-56.9-79.1-72-119.9c-9.3-24.9-12.7-44.3-11.2-62.6c1-11.7,5.5-21.4,13.8-29.7l34.1-34.1c4.9-4.6,10.1-7.1,15.2-7.1 c6.3,0,11.4,3.8,14.6,7c0.1,0.1,0.2,0.2,0.3,0.3c6.1,5.7,11.9,11.6,18,17.9c3.1,3.2,6.3,6.4,9.5,9.7l27.3,27.3 c10.6,10.6,10.6,20.4,0,31c-2.9,2.9-5.7,5.8-8.6,8.6c-8.4,8.6-16.4,16.6-25.1,24.4c-0.2,0.2-0.4,0.3-0.5,0.5 c-8.6,8.6-7,17-5.2,22.7c0.1,0.3,0.2,0.6,0.3,0.9c7.1,17.2,17.1,33.4,32.3,52.7l0.1,0.1c27.6,34,56.7,60.5,88.8,80.8 c4.1,2.6,8.3,4.7,12.3,6.7c3.6,1.8,7,3.5,9.9,5.3c0.4,0.2,0.8,0.5,1.2,0.7c3.4,1.7,6.6,2.5,9.9,2.5c8.3,0,13.5-5.2,15.2-6.9 l34.2-34.2c3.4-3.4,8.8-7.5,15.1-7.5c6.2,0,11.3,3.9,14.4,7.3c0.1,0.1,0.1,0.1,0.2,0.2l55.1,55.1 C420.456,377.706,420.456,388.206,410.256,398.806z\"></path> <path d=\"M256.056,112.706c26.2,4.4,50,16.8,69,35.8s31.3,42.8,35.8,69c1.1,6.6,6.8,11.2,13.3,11.2c0.8,0,1.5-0.1,2.3-0.2 c7.4-1.2,12.3-8.2,11.1-15.6c-5.4-31.7-20.4-60.6-43.3-83.5s-51.8-37.9-83.5-43.3c-7.4-1.2-14.3,3.7-15.6,11 S248.656,111.506,256.056,112.706z\"></path> <path d=\"M473.256,209.006c-8.9-52.2-33.5-99.7-71.3-137.5s-85.3-62.4-137.5-71.3c-7.3-1.3-14.2,3.7-15.5,11 c-1.2,7.4,3.7,14.3,11.1,15.6c46.6,7.9,89.1,30,122.9,63.7c33.8,33.8,55.8,76.3,63.7,122.9c1.1,6.6,6.8,11.2,13.3,11.2 c0.8,0,1.5-0.1,2.3-0.2C469.556,223.306,474.556,216.306,473.256,209.006z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n +1 310 272 94 88\n </a>\n </li>\n </ul>\n <iframe loading=\"lazy\"\n src=\"https://maps.google.com/maps?q=Advanced%20Fertility%20Center%20Cancun&#038;t=m&#038;z=14&#038;output=embed&#038;iwloc=near\"\n title=\"Advanced Fertility Center Cancun\"\n aria-label=\"Advanced Fertility Center Cancun\"\n ></iframe>` }} />
+
+      <Container className="py-20">
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
+          {/* Left Side: Info & Details */}
+          <div className="space-y-16">
+            <section>
+              <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-xs">Atención Personalizada</span>
+              <h2 className="text-5xl font-serif text-brand-violet mt-4 mb-8 leading-tight">
+                Estamos aquí para <span className="text-brand-green italic underline decoration-brand-green/30">ayudarte</span>
+              </h2>
+              <p className="text-xl text-slate-600 font-light leading-relaxed max-w-xl">
+                ¿Tienes dudas sobre tu proceso de fertilidad? Nuestro equipo de expertos está listo para acompañarte en cada paso hacia tu sueño de ser mamá.
+              </p>
+            </section>
+
+            <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+              <ContactMethod
+                icon={<Phone className="w-6 h-6 text-brand-violet" />}
+                title="Llámanos"
+                lines={[
+                  { label: 'México:', value: '+52 998 803 5530', href: 'tel:+529988035530' },
+                  { label: 'USA/CAN:', value: '+1 310 272 94 88', href: 'tel:+13102729488' }
+                ]}
+              />
+              <ContactMethod
+                icon={<Mail className="w-6 h-6 text-brand-violet" />}
+                title="Escríbenos"
+                lines={[
+                  { value: 'info@fertilitycentercancun.com.mx', href: 'mailto:info@fertilitycentercancun.com.mx' }
+                ]}
+              />
+              <ContactMethod
+                icon={<MapPin className="w-6 h-6 text-brand-violet" />}
+                title="Visítanos"
+                lines={[
+                  { value: 'Cancún, Quintana Roo, México' }
+                ]}
+              />
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-brand-violet/5 rounded-xl flex items-center justify-center">
+                    <Globe className="w-6 h-6 text-brand-violet" />
+                  </div>
+                  <h4 className="font-serif text-xl text-brand-violet font-bold">Síguenos</h4>
+                </div>
+                <div className="flex gap-4">
+                  {[
+                    { icon: <Instagram className="w-5 h-5" />, href: "https://instagram.com" },
+                    { icon: <Facebook className="w-5 h-5" />, href: "https://facebook.com" },
+                    { icon: <Youtube className="w-5 h-5" />, href: "https://youtube.com" }
+                  ].map((social, i) => (
+                    <Link key={i} href={social.href} className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-brand-violet hover:text-white transition-all">
+                      {social.icon}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Tour Virtual Highlight */}
+            <div className="bg-brand-gray rounded-[3rem] p-10 relative overflow-hidden group border border-slate-100 shadow-sm">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-brand-green/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-green/20 transition-colors duration-700" />
+              <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl font-serif text-brand-violet mb-4">Tour Virtual 360°</h3>
+                  <p className="text-slate-500 font-light text-sm mb-6">Explora nuestra clínica y laboratorios de alta tecnología desde la comodidad de tu hogar.</p>
+                  <a
+                    href="https://my.matterport.com/show/?m=XtokPdzLfrQ"
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-all font-bold text-sm shadow-lg shadow-brand-violet/20"
+                  >
+                    Comenzar Tour
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+                <div className="w-32 h-32 bg-white rounded-3xl p-4 shadow-xl rotate-3 group-hover:rotate-0 transition-transform duration-500 flex items-center justify-center">
+                  <Globe className="w-12 h-12 text-brand-green opacity-20" />
+                </div>
+              </div>
+            </div>
+
+            {/* Google Maps */}
+            <div className="rounded-[3rem] overflow-hidden border-8 border-brand-gray shadow-2xl h-[400px] relative group">
+              <iframe
+                loading="lazy"
+                src="https://maps.google.com/maps?q=Advanced%20Fertility%20Center%20Cancun&t=m&z=14&output=embed&iwloc=near"
+                title="Ubicación AFCC"
+                className="w-full h-full grayscale hover:grayscale-0 transition-all duration-1000"
+              />
+              <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white/20">
+                <div className="w-10 h-10 bg-brand-violet rounded-xl flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-brand-violet uppercase tracking-wider">Nuestra Clínica</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5">Cancún, Quintana Roo, México</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side: Form Card */}
+          <div className="sticky top-32">
+            <div className="bg-slate-50 rounded-[4rem] p-4 border border-slate-100">
+              <div className="bg-white rounded-[3.5rem] p-10 md:p-14 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-violet/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
+
+                <div className="text-center mb-12 relative z-10">
+                  <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <MessageSquare className="w-8 h-8 text-brand-green" />
+                  </div>
+                  <h3 className="text-3xl font-serif text-brand-violet leading-tight">Envíanos un mensaje</h3>
+                  <p className="text-slate-500 mt-4 font-light text-sm">Pronto nos pondremos en contacto contigo para resolver todas tus dudas.</p>
+                </div>
+
+                <ContactForm />
+              </div>
+            </div>
+          </div>
+        </div>
       </Container>
     </main>
+  );
+}
+
+function ContactMethod({ icon, title, lines }: { icon: React.ReactNode, title: string, lines: { label?: string, value: string, href?: string }[] }) {
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 bg-brand-violet/5 rounded-xl flex items-center justify-center">
+          {icon}
+        </div>
+        <h4 className="font-serif text-xl text-brand-violet font-bold">{title}</h4>
+      </div>
+      <div className="space-y-2">
+        {lines.map((line, idx) => (
+          <div key={idx} className="group flex items-baseline gap-3">
+            {line.label && <span className="text-[10px] uppercase font-black text-slate-300 tracking-widest w-14 shrink-0 mt-1">{line.label}</span>}
+            {line.href ? (
+              <a href={line.href} className="text-base text-slate-600 hover:text-brand-violet transition-colors font-medium">
+                {line.value}
+              </a>
+            ) : (
+              <span className="text-base text-slate-600 font-medium">{line.value}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
