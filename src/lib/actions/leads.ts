@@ -40,6 +40,13 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
 
         const supabase = createClient()
 
+        if (!supabase) {
+            return {
+                success: false,
+                message: 'Error de configuración del servidor'
+            }
+        }
+
         // Insertar lead en la base de datos
         const { error } = await supabase
             .from('leads')

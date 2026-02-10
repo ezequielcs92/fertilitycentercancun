@@ -18,6 +18,8 @@ export interface Comment {
 export async function getApprovedComments(postId: string) {
     const supabase = createClient()
 
+    if (!supabase) return []
+
     const { data, error } = await supabase
         .from('comentarios')
         .select('*')
@@ -60,6 +62,13 @@ export async function submitComment(formData: {
         }
 
         const supabase = createClient()
+
+        if (!supabase) {
+            return {
+                success: false,
+                message: 'Error de configuración del servidor'
+            }
+        }
 
         const { error } = await supabase
             .from('comentarios')

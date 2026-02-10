@@ -27,6 +27,8 @@ export interface Post {
 export async function getPublishedPosts(limit = 12, offset = 0) {
     const supabase = createClient()
 
+    if (!supabase) return []
+
     const { data, error } = await supabase
         .from('posts')
         .select(`
