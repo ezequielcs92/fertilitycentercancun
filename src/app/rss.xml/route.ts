@@ -1,5 +1,7 @@
 import { getPublishedPosts } from '@/lib/actions/posts'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
     const posts = await getPublishedPosts(50, 0) // Latest 50 posts
 
