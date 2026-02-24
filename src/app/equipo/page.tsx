@@ -41,9 +41,9 @@ const MedicalTeamPage = () => {
                 <Link
                   key={member.id}
                   href={`/equipo/${member.slug}`}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
+                  className="not-prose group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full no-underline hover:no-underline"
                 >
-                  <div className="not-prose relative aspect-[4/5] overflow-hidden">
+                  <div className="relative aspect-square overflow-hidden">
                     <Image
                       src={imageSrc}
                       alt={member.title}
@@ -54,14 +54,14 @@ const MedicalTeamPage = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-violet transition-colors">
+                  <div className="p-5 flex flex-col flex-grow">
+                    <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-brand-violet transition-colors no-underline">
                       {member.title}
                     </h3>
-                    <p className="text-brand-green font-medium text-base mb-4 line-clamp-2">
+                    <p className="text-brand-violet font-medium text-sm mb-4 line-clamp-2 no-underline">
                       {member.especialidad}
                     </p>
-                    <div className="mt-auto pt-4 border-t border-gray-50 flex items-center text-brand-violet font-semibold text-base">
+                    <div className="mt-auto pt-3 border-t border-gray-50 flex items-center text-brand-violet font-semibold text-sm">
                       Ver perfil completo
                       <svg
                         className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
