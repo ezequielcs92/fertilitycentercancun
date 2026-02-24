@@ -95,7 +95,7 @@ export default function Page() {
                     src={partner.image}
                     alt={partner.name}
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-center scale-[1.15] group-hover:scale-[1.25] transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </div>

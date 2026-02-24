@@ -82,10 +82,10 @@ const MedicalTeamPage = () => {
       {/* CTA Section */}
       <section className="py-20 bg-brand-violet text-white">
         <Container className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">
+          <h2 className="!text-white text-3xl md:text-4xl font-bold mb-8">
             ¿Listo para iniciar tu proceso?
           </h2>
-          <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
+          <p className="!text-white/90 text-xl mb-10 max-w-2xl mx-auto">
             Agenda una cita con nuestros especialistas y da el primer paso hacia tu nueva familia.
           </p>
           <Link
