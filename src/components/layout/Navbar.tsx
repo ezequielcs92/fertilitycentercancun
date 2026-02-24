@@ -109,7 +109,7 @@ export default function Navbar() {
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="relative w-48 h-12 md:w-56 md:h-16 flex items-center group-hover:scale-105 transition-transform duration-500">
                             <Image
-                                src="/images/new-logo.png"
+                                src="/images/logotipo-AFCC.svg"
                                 alt="Advanced Fertility Center Cancun Logo"
                                 fill
                                 className="object-contain object-left"

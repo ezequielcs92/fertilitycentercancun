@@ -95,7 +95,7 @@ export default function Page() {
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/90 via-brand-violet/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                 <div className="absolute bottom-8 left-8 right-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                   <h4 className="text-white text-xl font-serif">{item.title}</h4>
-                  <p className="text-white/70 text-base font-light mt-2 uppercase tracking-widest">{item.alt}</p>
+                  <div className="!text-white/80 text-base font-light mt-2 uppercase tracking-widest leading-snug">{item.alt}</div>
                 </div>
               </div>
             ))}
