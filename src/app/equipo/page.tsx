@@ -43,12 +43,13 @@ const MedicalTeamPage = () => {
                   href={`/equipo/${member.slug}`}
                   className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
                 >
-                  <div className="relative aspect-[4/5] overflow-hidden">
+                  <div className="not-prose relative aspect-[4/5] overflow-hidden">
                     <Image
                       src={imageSrc}
                       alt={member.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      style={{ margin: 0, padding: 0 }}
+                      className="object-cover object-center scale-[1.12] transition-transform duration-500 group-hover:scale-125 !m-0 !p-0 block"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
