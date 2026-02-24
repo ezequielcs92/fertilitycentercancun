@@ -90,10 +90,13 @@ export default function Page() {
           <div className="grid md:grid-cols-3 gap-12">
             {partners.map((partner, i) => (
               <div key={i} className="flex flex-col items-center group">
-                <div
-                  className="w-full aspect-[4/5] rounded-[2rem] shadow-2xl mb-8 group-hover:-translate-y-2 transition-transform duration-500 overflow-hidden bg-cover bg-top relative"
-                  style={{ backgroundImage: `url(${partner.image})` }}
-                >
+                <div className="w-full aspect-[4/5] rounded-[2rem] shadow-2xl mb-8 group-hover:-translate-y-2 transition-transform duration-500 overflow-hidden relative">
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    fill
+                    className="object-cover object-top"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </div>
                 <div className="text-center px-4">
