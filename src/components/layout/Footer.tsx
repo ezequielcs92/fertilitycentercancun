@@ -20,7 +20,7 @@ const footerLinks = [
         title: 'Nosotros',
         links: [
             { name: '¿Por qué AFCC?', href: '/sobre-fertility-center-cancun' },
-            { name: 'Equipo Médico', href: '/equipo-medico2' },
+            { name: 'Equipo Médico', href: '/equipo' },
             { name: 'Instalaciones', href: '/nuestras-instalaciones' },
             { name: 'Turismo Médico', href: '/turismo-medico' },
             { name: 'Preguntas Frecuentes', href: '/faqs' },

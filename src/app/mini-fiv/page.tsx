@@ -1,6 +1,7 @@
 import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Pill, Zap, TrendingDown, Target, ShieldCheck } from 'lucide-react';
 
 export default function Page() {
@@ -13,36 +14,56 @@ export default function Page() {
         { label: 'Mini FIV', href: '#' }
       ]}
     >
-      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
-        Una opción más natural, accesible y menos invasiva.
-      </p>
-      <p className="text-lg text-slate-600 font-light mb-8">
-        El <strong>Mini FIV</strong> es una variante de la Fertilización In Vitro tradicional diseñada para ser más suave con tu cuerpo. Utilizamos dosis reducidas de medicación para estimular los ovarios de manera controlada, priorizando la calidad de los óvulos sobre la cantidad, reduciendo costos y efectos secundarios.
-      </p>
-
-      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
-        <Image
-          src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-1024x824.jpg"
-          alt="Medicamentos Mini FIV"
-          fill
-          className="object-cover"
-          unoptimized
-        />
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-12">
+        <div className="flex-1">
+          <p className="lead text-2xl font-serif text-brand-violet italic mb-6">
+            Una opción más natural, accesible y menos invasiva.
+          </p>
+          <div className="space-y-4 text-lg text-slate-600 font-light mb-8">
+            <p>
+              El <strong>Mini FIV</strong> es una variante optimizada de la Fertilización In Vitro tradicional, diseñada para pacientes que buscan un enfoque más suave y menos demandante para su cuerpo. Este protocolo utiliza dosis reducidas de medicación para estimular los ovarios de manera controlada y fisiológica.
+            </p>
+            <p>
+              Nuestra filosofía se centra en la <strong>calidad sobre la cantidad</strong>. Al evitar la sobre-estimulación, obtenemos óvulos de mejor potencial reproductivo, reducimos significativamente los costos en fármacos y minimizamos los efectos secundarios, ofreciendo una experiencia mucho más cómoda y amigable sin comprometer tus posibilidades de éxito.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/contacto"
+              className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
+            >
+              Agendar Consulta de Valoración
+            </Link>
+          </div>
+        </div>
+        <div className="w-full lg:w-1/3 shrink-0">
+          <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-1024x824.jpg"
+              alt="Medicamentos Mini FIV"
+              fill
+              className="object-cover m-0"
+              unoptimized
+            />
+          </div>
+        </div>
       </div>
 
       <h2 className="text-3xl font-serif text-brand-violet mb-6">Beneficios del Mini FIV</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
         {[
-          { icon: Pill, title: "Menos Medicación", desc: "Dosis hormonales reducidas significativamente." },
-          { icon: TrendingDown, title: "Menor Costo", desc: "Más accesible que la FIV convencional." },
-          { icon: ShieldCheck, title: "Menos Riesgos", desc: "Reduce drásticamente el riesgo de hiperestimulación." },
-          { icon: Zap, title: "Menos Invasivo", desc: "Proceso más amigable física y emocionalmente." },
-          { icon: Target, title: "Calidad vs Cantidad", desc: "Enfocado en obtener óvulos de alta calidad." },
+          { icon: Pill, title: "Menos Medicación", desc: "Dosis hormonales reducidas." },
+          { icon: TrendingDown, title: "Menor Costo", desc: "Más accesible que la FIV." },
+          { icon: ShieldCheck, title: "Menos Riesgos", desc: "Evita hiperestimulación." },
+          { icon: Zap, title: "Menos Invasivo", desc: "Proceso más amigable." },
+          { icon: Target, title: "Calidad vs Cantidad", desc: "Óvulos de alta calidad." },
         ].map((item, i) => (
-          <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-            <item.icon className="w-8 h-8 text-brand-green mb-4" />
-            <h4 className="font-bold text-brand-violet mb-2">{item.title}</h4>
-            <p className="text-base text-slate-500">{item.desc}</p>
+          <div key={i} className="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-md transition-all flex flex-col items-center justify-center text-center aspect-square group hover:border-brand-violet/20">
+            <div className="p-4 bg-brand-violet/5 rounded-2xl text-brand-green mb-4 group-hover:scale-110 transition-transform">
+              <item.icon className="w-10 h-10" />
+            </div>
+            <h4 className="font-bold text-brand-violet text-lg leading-tight mb-2">{item.title}</h4>
+            <p className="text-base text-slate-400 leading-tight">{item.desc}</p>
           </div>
         ))}
       </div>

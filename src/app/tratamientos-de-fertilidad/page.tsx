@@ -138,18 +138,18 @@ export default function Page() {
                 key={index}
                 className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100"
               >
-                <div className="relative aspect-[4/3] w-full bg-slate-50 overflow-hidden">
+                <div className="relative aspect-[4/3] w-full bg-brand-violet/5 overflow-hidden flex items-center justify-center p-8">
                   {/* Fallback pattern if image is missing/broken */}
-                  <div className="absolute inset-0 bg-brand-violet/5 flex items-center justify-center">
-                    <Sparkles className="w-12 h-12 text-brand-violet/20" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Sparkles className="w-10 h-10 text-brand-violet/10" />
                   </div>
                   <img
                     src={treatment.image}
                     alt={treatment.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 mix-blend-multiply opacity-90"
+                    className="relative w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 mix-blend-multiply opacity-95 z-10"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 <div className="p-8 flex flex-col flex-1 relative bg-white">

@@ -33,12 +33,12 @@ const InternationalSupportPage = () => {
                 </p>
               </div>
             </div>
-            <div className="lg:w-1/2 relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl">
+            <div className="not-prose lg:w-1/2 relative aspect-[4/5] w-full max-w-sm mx-auto rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
               <Image
                 src="/medical-team.jpg"
                 alt="Soporte Médico Internacional"
                 fill
-                className="object-cover"
+                className="object-cover m-0"
               />
               <div className="absolute inset-0 bg-brand-violet/10 mix-blend-multiply" />
             </div>

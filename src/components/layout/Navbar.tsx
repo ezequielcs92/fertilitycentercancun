@@ -4,13 +4,14 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Heart, Phone, MapPin, Globe, Instagram, Facebook } from 'lucide-react';
+import { Menu, X, ChevronDown, Heart, Phone, MapPin, Globe, Instagram, Facebook, Microscope, Dna, Zap, UserCheck, Droplets, Baby, Users, Clock, Calendar, ArrowLeftRight, HeartHandshake } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 
 interface SubMenuItem {
     name: string;
     href: string;
     description?: string;
+    icon?: React.ElementType;
 }
 
 interface NavItem {
@@ -38,18 +39,18 @@ const navigation: NavItem[] = [
         href: '/tratamientos-de-fertilidad',
         mega: true,
         submenu: [
-            { name: 'FIV - Fertilización In vitro', href: '/fiv-fertilizacion-in-vitro' },
-            { name: 'FIV con Estudio Genético', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo' },
-            { name: 'Mini FIV', href: '/mini-fiv' },
-            { name: 'Inseminación Artificial', href: '/inseminacion-artificial' },
-            { name: 'Donación de Óvulos', href: '/donacion-de-ovulos' },
-            { name: 'Donación de Esperma', href: '/donacion-de-espermatozoides' },
-            { name: 'Donación y Adopción de Embriones', href: '/donacion-y-adopcion-embriones' },
-            { name: 'Método ROPA', href: '/metodo-ropa' },
-            { name: 'Preservación de la Fertilidad', href: '/preservacion-de-la-fertilidad' },
-            { name: 'Coito Programado', href: '/coito-programado-e-induccion-de-ovulacion' },
-            { name: 'Transferencia de Embriones', href: '/transferencia-de-embriones-y-preparacion-endometrial' },
-            { name: 'Comunidad LGBT+', href: '/comunidad-lgbt-tratamiento' },
+            { name: 'FIV - Fertilización In vitro', href: '/fiv-fertilizacion-in-vitro', icon: Microscope },
+            { name: 'FIV con Estudio Genético', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', icon: Dna },
+            { name: 'Mini FIV', href: '/mini-fiv', icon: Zap },
+            { name: 'Inseminación Artificial', href: '/inseminacion-artificial', icon: UserCheck },
+            { name: 'Donación de Óvulos', href: '/donacion-de-ovulos', icon: Heart },
+            { name: 'Donación de Esperma', href: '/donacion-de-espermatozoides', icon: Droplets },
+            { name: 'Donación y Adopción de Embriones', href: '/donacion-y-adopcion-embriones', icon: Baby },
+            { name: 'Método ROPA', href: '/metodo-ropa', icon: Users },
+            { name: 'Preservación de la Fertilidad', href: '/preservacion-de-la-fertilidad', icon: Clock },
+            { name: 'Coito Programado', href: '/coito-programado-e-induccion-de-ovulacion', icon: Calendar },
+            { name: 'Transferencia de Embriones', href: '/transferencia-de-embriones-y-preparacion-endometrial', icon: ArrowLeftRight },
+            { name: 'Comunidad LGBT+', href: '/comunidad-lgbt-tratamiento', icon: HeartHandshake },
         ]
     },
     {
@@ -213,7 +214,11 @@ export default function Navbar() {
                                                 className="group/item flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
                                             >
                                                 <div className="w-10 h-10 bg-brand-violet/5 rounded-xl flex items-center justify-center group-hover/item:bg-brand-green group-hover/item:scale-110 transition-all">
-                                                    <Heart className="w-5 h-5 text-brand-violet group-hover/item:text-brand-violet" />
+                                                    {sub.icon ? (
+                                                        <sub.icon className="w-5 h-5 text-brand-violet group-hover/item:text-brand-violet" />
+                                                    ) : (
+                                                        <Heart className="w-5 h-5 text-brand-violet group-hover/item:text-brand-violet" />
+                                                    )}
                                                 </div>
                                                 <span className="text-brand-violet font-bold text-[13px] leading-tight group-hover/item:translate-x-1 transition-transform">{sub.name}</span>
                                             </Link>
