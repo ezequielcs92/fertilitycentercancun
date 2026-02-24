@@ -7,32 +7,32 @@ import { Container } from '@/components/ui/Container';
 export default function Page() {
   const gallery = [
     {
-      src: "https://www.bh-desarrollosweb.com/fertilitycentermexico/wp-content/uploads/2024/01/afcc-foto-edificio.jpg",
+      src: "/images/wp/2024_01_afcc-foto-edificio.jpg",
       alt: "Edificio Advanced Fertility Center Cancún",
       title: "Nuestra Fachada"
     },
     {
-      src: "https://www.bh-desarrollosweb.com/fertilitycentermexico/wp-content/uploads/2025/06/Instalaciones-clinica-de-fertilidad.jpg",
+      src: "/images/wp/2025_06_Instalaciones-clinica-de-fertilidad.jpg",
       alt: "Lobby y Recepción",
       title: "Recepción Premium"
     },
     {
-      src: "https://www.bh-desarrollosweb.com/fertilitycentermexico/wp-content/uploads/2024/01/equipo-medico-AFCC-03.jpg",
+      src: "/images/wp/2024_01_equipo-medico-AFCC-03.jpg",
       alt: "Equipo Médico en Laboratorio",
       title: "Laboratorios Propios"
     },
     {
-      src: "https://www.bh-desarrollosweb.com/fertilitycentermexico/wp-content/uploads/2025/06/Especialistas-en-fertilidad.jpg",
+      src: "/images/wp/2025_06_Especialistas-en-fertilidad.jpg",
       alt: "Especialistas trabajando",
       title: "Vanguardia Médica"
     },
     {
-      src: "https://www.bh-desarrollosweb.com/fertilitycentermexico/wp-content/uploads/2025/06/Fertility-clinic.jpg",
+      src: "/images/wp/2025_06_Fertility-clinic.jpg",
       alt: "Áreas de Consulta",
       title: "Consultorios Privados"
     },
     {
-      src: "https://www.bh-desarrollosweb.com/fertilitycentermexico/wp-content/uploads/2025/06/Recepcion-clinica-de-fertilidad.jpg",
+      src: "/images/wp/2025_06_Recepcion-clinica-de-fertilidad.jpg",
       alt: "Sala de Espera",
       title: "Confort y Privacidad"
     }
@@ -70,7 +70,7 @@ export default function Page() {
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
                 <div className="text-brand-green">{item.icon}</div>
-                <span className="text-brand-violet font-bold text-sm uppercase tracking-wide">{item.text}</span>
+                <span className="text-brand-violet font-bold text-base uppercase tracking-wide">{item.text}</span>
               </div>
             ))}
           </div>
@@ -79,7 +79,7 @@ export default function Page() {
         {/* Gallery Grid */}
         <section>
           <div className="mb-12">
-            <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-xs">Recorrido Visual</span>
+            <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base">Recorrido Visual</span>
             <h3 className="text-3xl font-serif text-brand-violet mt-2">Tecnología al servicio de <span className="text-brand-green italic">tu sueño</span></h3>
           </div>
 
@@ -95,7 +95,7 @@ export default function Page() {
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/90 via-brand-violet/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                 <div className="absolute bottom-8 left-8 right-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                   <h4 className="text-white text-xl font-serif">{item.title}</h4>
-                  <p className="text-white/70 text-xs font-light mt-2 uppercase tracking-widest">{item.alt}</p>
+                  <p className="text-white/70 text-base font-light mt-2 uppercase tracking-widest">{item.alt}</p>
                 </div>
               </div>
             ))}
@@ -117,7 +117,7 @@ export default function Page() {
               href="https://my.matterport.com/show/?m=XtokPdzLfrQ"
               target="_blank"
               rel="nofollow noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-brand-violet text-white px-12 py-5 rounded-full hover:bg-brand-violet/90 transition-all font-bold text-sm tracking-widest shadow-2xl shadow-brand-violet/20 group/btn"
+              className="inline-flex items-center gap-3 bg-brand-violet text-white px-12 py-5 rounded-full hover:bg-brand-violet/90 transition-all font-bold text-base tracking-widest shadow-2xl shadow-brand-violet/20 group/btn"
             >
               INICIAR TOUR VIRTUAL
               <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />

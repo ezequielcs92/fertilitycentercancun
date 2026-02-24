@@ -1,21 +1,176 @@
-
 import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight, Sparkles } from 'lucide-react';
+
+const treatments = [
+  {
+    title: 'FIV – Fertilización In vitro',
+    href: '/fiv-fertilizacion-in-vitro',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/FIV-–-Fertilizacion-In-vitro.png',
+    description: 'Tratamiento líder mundial con las más altas tasas de éxito para diversas causas de infertilidad.',
+  },
+  {
+    title: 'FIV con Estudio Genético y Selección de Sexo',
+    href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo.png',
+    description: 'Asegura la salud genética de tu bebé y planifica tu familia con precisión médica.',
+  },
+  {
+    title: 'Mini FIV',
+    href: '/mini-fiv',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Mini-FIV.png',
+    description: 'Estimulación ovárica suave para una opción más natural y menos invasiva.',
+  },
+  {
+    title: 'FIV Ciclo Natural',
+    href: '/fertilizacion-in-vitro-en-fiv-ciclo-natural',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-in-vitro-en-FIV-Ciclo-natural.png',
+    description: 'Aprovecha tu ciclo menstrual natural sin medicación hormonal estimulante.',
+  },
+  {
+    title: 'Transferencia de Embriones Congelados',
+    href: '/transferencia-de-embriones-y-preparacion-endometrial',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Transferencia-de-embriones-congelados.png',
+    description: 'Preparamos tu endometrio de forma óptima para recibir embriones preservados.',
+  },
+  {
+    title: 'Donación de Óvulos',
+    href: '/donacion-de-ovulos',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-de-Ovulos.png',
+    description: 'Ovulos de donantes sanas y rigurosamente seleccionadas para lograr tu embarazo.',
+  },
+  {
+    title: 'Inseminación Artificial',
+    href: '/inseminacion-artificial',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/08/Inseminacion-Artificial.png',
+    description: 'Tratamiento de baja complejidad ideal como primer abordaje terapéutico.',
+  },
+  {
+    title: 'Preservación de la Fertilidad',
+    href: '/preservacion-de-la-fertilidad',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Preservacion-de-la-Fertilidad-1.png',
+    description: 'Congela tus óvulos o espermatozoides y decide cuándo es el mejor momento para ser padre o madre.',
+  },
+  {
+    title: 'Donación y Adopción de Embriones',
+    href: '/donacion-y-adopcion-embriones',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-y-Adopcion-de-embriones.png',
+    description: 'La oportunidad de dar vida a un embrión previamente criopreservado.',
+  },
+  {
+    title: 'Coito Programado',
+    href: '/coito-programado-e-induccion-de-ovulacion',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Coito-programado-e-Induccion-de-Ovulo.png',
+    description: 'Monitoreo ecográfico y hormonal para maximizar las probabilidades naturales.',
+  },
+  {
+    title: 'Donación de Espermatozoides',
+    href: '/donacion-de-espermatozoides',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/05/Donacion-de-espermatozoides.png',
+    description: 'Muestras seminales de donantes avalados por bancos internacionales.',
+  },
+  {
+    title: 'Doble Acumulación',
+    href: '/doble-acumulacion',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/05/Doble-Acumulacion.png',
+    description: 'Estrategia de estimulación dual (DuoStim) para obtener más óvulos en menos tiempo.',
+  },
+  {
+    title: 'Método ROPA',
+    href: '/metodo-ropa',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/05/ROPA.png',
+    description: 'Maternidad compartida para parejas de mujeres donde ambas participan en el proceso.',
+  },
+  {
+    title: 'Add Ons',
+    href: '/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad',
+    image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/05/add-ons.png',
+    description: 'Tecnologías complementarias para potenciar y optimizar tu tratamiento base.',
+  }
+];
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Tratamientos de Fertilidad" 
+    <main className="bg-brand-slate pb-24 min-h-screen">
+      <PageHeader
+        title="Tratamientos de Fertilidad"
         breadcrumb={[
           { label: 'Inicio', href: '/' },
-          { label: 'Tratamientos de Fertilidad', href: '#' }
+          { label: 'Tratamientos', href: '#' }
         ]}
       />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<p>En <strong>Advanced Fertility Center Cancún</strong>, entendemos lo importante que es el camino hacia la paternidad. Por eso, ofrecemos una gama completa de tratamientos de fertilidad diseñados para satisfacer las necesidades individuales de cada paciente y pareja. Nuestro equipo médico, conformado por especialistas en fertilidad y reproducción asistida está altamente capacitado y contamos con instalaciones de vanguardia que están a tu disposición para brindarte los mejores cuidados y las mayores probabilidades de éxito.</p><p><strong>Tratamientos Personalizados</strong></p><p>Cada paciente es único, y nuestros tratamientos de fertilidad están diseñados para adaptarse a tus necesidades específicas. Ya sea que estés buscando una solución para infertilidad, problemas hormonales, dificultades reproductivas u otras razones, trabajamos contigo paso a paso para determinar el tratamiento adecuado.</p><p><strong>En Advanced Fertility Center Cancún, nuestro compromiso es brindarte soluciones efectivas y acompañarte con cuidado y profesionalismo en cada etapa de tu tratamiento de fertilidad.</strong></p> \n <img width=\"800\" height=\"799\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/FIV-–-Fertilizacion-In-vitro.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/FIV-–-Fertilizacion-In-vitro.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/FIV-–-Fertilizacion-In-vitro-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/FIV-–-Fertilizacion-In-vitro-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/FIV-–-Fertilizacion-In-vitro-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/fiv-fertilizacion-in-vitro/\">FIV – Fertilización In vitro</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/fiv-fertilizacion-in-vitro/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"799\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo/\">Fertilización In vitro con estudio genético y selección de sexo\n</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"799\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Mini-FIV.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Mini-FIV.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Mini-FIV-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Mini-FIV-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Mini-FIV-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/mini-fiv/\">Mini FIV</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/mini-fiv/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"799\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-in-vitro-en-FIV-Ciclo-natural.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-in-vitro-en-FIV-Ciclo-natural.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-in-vitro-en-FIV-Ciclo-natural-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-in-vitro-en-FIV-Ciclo-natural-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-in-vitro-en-FIV-Ciclo-natural-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/fertilizacion-in-vitro-en-fiv-ciclo-natural/\">Fertilización in vitro en FIV - Ciclo natural</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/fertilizacion-in-vitro-en-fiv-ciclo-natural/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"799\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Transferencia-de-embriones-congelados.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Transferencia-de-embriones-congelados.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Transferencia-de-embriones-congelados-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Transferencia-de-embriones-congelados-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Transferencia-de-embriones-congelados-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/transferencia-de-embriones-y-preparacion-endometrial/\">Transferencia de embriones congelados </a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/transferencia-de-embriones-y-preparacion-endometrial/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"799\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-de-Ovulos.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-de-Ovulos.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-de-Ovulos-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-de-Ovulos-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-de-Ovulos-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/donacion-de-ovulos/\">Donación de Óvulos</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/donacion-de-ovulos/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Inseminacion-Artificial.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Inseminacion-Artificial.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Inseminacion-Artificial-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Inseminacion-Artificial-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Inseminacion-Artificial-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/inseminacion-artificial/\">Inseminación Artificial</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/inseminacion-artificial/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Preservacion-de-la-Fertilidad-1.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Preservacion-de-la-Fertilidad-1.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Preservacion-de-la-Fertilidad-1-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Preservacion-de-la-Fertilidad-1-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Preservacion-de-la-Fertilidad-1-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/preservacion-de-la-fertilidad/\">Preservación de la Fertilidad</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/preservacion-de-la-fertilidad/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-y-Adopcion-de-embriones.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-y-Adopcion-de-embriones.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-y-Adopcion-de-embriones-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-y-Adopcion-de-embriones-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-y-Adopcion-de-embriones-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/donacion-y-adopcion-embriones/\">Donación y Adopción de embriones</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/donacion-y-adopcion-embriones/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Coito-programado-e-Induccion-de-Ovulo.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/Coito-programado-e-Induccion-de-Ovulo.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Coito-programado-e-Induccion-de-Ovulo-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Coito-programado-e-Induccion-de-Ovulo-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/Coito-programado-e-Induccion-de-Ovulo-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/coito-programado-e-induccion-de-ovulacion/\">Coito programado e Inducción de Ovulo</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/tratamientos-de-fertilidad/coito-programado-e-induccion-de-ovulacion/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/Donacion-de-espermatozoides.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/Donacion-de-espermatozoides.png 1000w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/Donacion-de-espermatozoides-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/Donacion-de-espermatozoides-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/Donacion-de-espermatozoides-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/donacion-de-espermatozoides/\">Donación de Espermatozoides</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/donacion-de-espermatozoides/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/Doble-Acumulacion.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/Doble-Acumulacion.png 1000w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/Doble-Acumulacion-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/Doble-Acumulacion-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/Doble-Acumulacion-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/doble-acumulacion/\">Doble Acumulación</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/doble-acumulacion/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/ROPA.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/ROPA.png 1001w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/ROPA-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/ROPA-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/ROPA-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/metodo-ropa/\">Método ROPA</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/metodo-ropa/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>\n <img width=\"800\" height=\"800\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/add-ons.png\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/add-ons.png 1000w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/add-ons-300x300.png 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/add-ons-150x150.png 150w, https://fertilitycentercancun.com/wp-content/uploads/2025/05/add-ons-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://fertilitycentercancun.com/es/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad/\">Add Ons\n</a></h2> \n <a href=\"https://fertilitycentercancun.com/es/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver servicio\n </a>` }} />
-      </Container>
+
+      {/* Intro Section */}
+      <section className="py-20 bg-white">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-violet mb-8">
+              Tu Familia Comienza Aquí
+            </h2>
+            <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
+              En <strong className="text-brand-violet">Advanced Fertility Center Cancún</strong>, entendemos lo importante que es el camino hacia la paternidad. Ofrecemos una gama completa de tratamientos de fertilidad diseñados para satisfacer las necesidades individuales de cada paciente y pareja.
+            </p>
+            <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
+              Nuestro equipo médico, conformado por especialistas en fertilidad y reproducción asistida está altamente capacitado y contamos con instalaciones de vanguardia que están a tu disposición para brindarte los mejores cuidados y las mayores probabilidades de éxito.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Treatments Grid */}
+      <section className="py-24">
+        <Container>
+          <div className="flex items-center gap-3 mb-16 justify-center">
+            <Sparkles className="w-6 h-6 text-brand-green" />
+            <h3 className="text-2xl md:text-3xl font-serif text-brand-violet text-center">
+              Programas y Tratamientos Personalizados
+            </h3>
+            <Sparkles className="w-6 h-6 text-brand-green" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            {treatments.map((treatment, index) => (
+              <Link
+                href={treatment.href}
+                key={index}
+                className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100"
+              >
+                <div className="relative aspect-[4/3] w-full bg-slate-50 overflow-hidden">
+                  {/* Fallback pattern if image is missing/broken */}
+                  <div className="absolute inset-0 bg-brand-violet/5 flex items-center justify-center">
+                    <Sparkles className="w-12 h-12 text-brand-violet/20" />
+                  </div>
+                  <img
+                    src={treatment.image}
+                    alt={treatment.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 mix-blend-multiply opacity-90"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+
+                <div className="p-8 flex flex-col flex-1 relative bg-white">
+                  <div className="w-12 h-1 bg-brand-green mb-6 rounded-full group-hover:w-full transition-all duration-500" />
+                  <h4 className="text-xl font-serif text-brand-violet mb-4 leading-snug group-hover:text-brand-green transition-colors">
+                    {treatment.title}
+                  </h4>
+                  <p className="text-slate-500 text-base leading-relaxed mb-8 flex-1">
+                    {treatment.description}
+                  </p>
+
+                  <div className="flex items-center gap-2 text-brand-green font-bold text-base uppercase tracking-widest mt-auto">
+                    <span>Conocer más</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
     </main>
   );
 }

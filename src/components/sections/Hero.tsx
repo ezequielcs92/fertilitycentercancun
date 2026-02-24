@@ -39,7 +39,7 @@ export default function Hero() {
                     >
                         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-8">
                             <Star className="w-4 h-4 text-brand-green fill-brand-green" />
-                            <span className="text-white text-xs font-bold uppercase tracking-widest">Líderes en Reproducción Asistida</span>
+                            <span className="text-white text-base font-bold uppercase tracking-widest">Líderes en Reproducción Asistida</span>
                         </div>
 
                         <h1 className="text-5xl md:text-7xl font-serif text-white mb-8 leading-[1.1]">
@@ -107,7 +107,7 @@ export default function Hero() {
                                 </div>
                                 <div>
                                     <div className="text-brand-violet font-serif text-xl leading-tight">Trato Humano</div>
-                                    <div className="text-slate-500 text-sm font-medium">Atención personalizada 24/7</div>
+                                    <div className="text-slate-500 text-base font-medium">Atención personalizada 24/7</div>
                                 </div>
                             </div>
                         </motion.div>

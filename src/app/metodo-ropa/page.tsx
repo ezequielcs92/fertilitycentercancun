@@ -42,14 +42,14 @@ export default function Page() {
               <Star className="w-6 h-6" />
             </div>
             <h3 className="font-bold text-brand-violet text-lg mb-2">Madre Genética</h3>
-            <p className="text-sm text-slate-600">Aporta sus óvulos, los cuales son extraídos y fertilizados en el laboratorio con semen de donante.</p>
+            <p className="text-base text-slate-600">Aporta sus óvulos, los cuales son extraídos y fertilizados en el laboratorio con semen de donante.</p>
           </div>
           <div className="bg-brand-green/20 p-6 rounded-2xl">
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm text-brand-green">
               <Heart className="w-6 h-6" />
             </div>
             <h3 className="font-bold text-brand-violet text-lg mb-2">Madre Gestante</h3>
-            <p className="text-sm text-slate-600">Recibe el embrión en su útero para llevar el embarazo el parto y la lactancia.</p>
+            <p className="text-base text-slate-600">Recibe el embrión en su útero para llevar el embarazo el parto y la lactancia.</p>
           </div>
         </div>
       </div>

@@ -26,11 +26,11 @@ export default function AdminComments() {
                         <div className="flex-1">
                             <div className="flex items-center gap-3 mb-2">
                                 <span className="font-bold text-brand-violet">{comment.author}</span>
-                                <span className="text-xs px-2 py-0.5 bg-brand-violet/10 text-brand-violet rounded-full">Pendiente</span>
-                                <span className="text-xs text-slate-400">{comment.date}</span>
+                                <span className="text-base px-2 py-0.5 bg-brand-violet/10 text-brand-violet rounded-full">Pendiente</span>
+                                <span className="text-base text-slate-400">{comment.date}</span>
                             </div>
                             <p className="text-slate-600 mb-2 italic">"{comment.content}"</p>
-                            <p className="text-xs text-brand-green font-bold uppercase tracking-wider">
+                            <p className="text-base text-brand-green font-bold uppercase tracking-wider">
                                 Post: {comment.post}
                             </p>
                         </div>

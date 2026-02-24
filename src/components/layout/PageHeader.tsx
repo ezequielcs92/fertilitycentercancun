@@ -22,7 +22,7 @@ export default function PageHeader({ title, breadcrumb }: PageHeaderProps) {
             </div>
 
             <Container className="relative z-10">
-                <nav className="flex items-center gap-2 text-white/60 text-sm mb-6 uppercase tracking-widest font-bold">
+                <nav className="flex items-center gap-2 text-white/60 text-base mb-6 uppercase tracking-widest font-bold">
                     {breadcrumb.map((item, index) => (
                         <React.Fragment key={index}>
                             {index > 0 && <ChevronRight className="w-4 h-4" />}

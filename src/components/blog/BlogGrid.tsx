@@ -37,7 +37,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
                         {post.categoria && (
                             <Link
                                 href={`/blog/categoria/${post.categoria.slug}`}
-                                className="inline-block mb-3 px-3 py-1 bg-brand-green/20 text-brand-violet text-xs font-bold uppercase tracking-wider rounded-full hover:bg-brand-green/30 transition-colors"
+                                className="inline-block mb-3 px-3 py-1 bg-brand-green/20 text-brand-violet text-base font-bold uppercase tracking-wider rounded-full hover:bg-brand-green/30 transition-colors"
                             >
                                 {post.categoria.nombre}
                             </Link>
@@ -52,13 +52,13 @@ export default function BlogGrid({ posts }: BlogGridProps) {
 
                         {/* Excerpt */}
                         {post.extracto && (
-                            <p className="text-slate-600 text-sm font-light mb-4 line-clamp-3 leading-relaxed">
+                            <p className="text-slate-600 text-base font-light mb-4 line-clamp-3 leading-relaxed">
                                 {post.extracto}
                             </p>
                         )}
 
                         {/* Meta */}
-                        <div className="flex items-center justify-between text-xs text-slate-400">
+                        <div className="flex items-center justify-between text-base text-slate-400">
                             {post.fecha_publicacion && (
                                 <div className="flex items-center gap-2">
                                     <Calendar className="w-3.5 h-3.5" />

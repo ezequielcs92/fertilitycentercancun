@@ -107,7 +107,7 @@ export default function SuccessRates() {
                                     {stat.label}
                                 </h3>
                                 {stat.sublabel && (
-                                    <p className="text-white/60 text-sm font-bold uppercase tracking-widest">
+                                    <p className="text-white/60 text-base font-bold uppercase tracking-widest">
                                         {stat.sublabel}
                                     </p>
                                 )}

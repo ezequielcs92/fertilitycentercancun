@@ -72,7 +72,7 @@ export default function Page() {
         ].map((item, i) => (
           <div key={i} className="bg-brand-gray p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3">
             <item.icon className="w-8 h-8 text-brand-green" />
-            <span className="font-bold text-brand-violet text-sm">{item.label}</span>
+            <span className="font-bold text-brand-violet text-base">{item.label}</span>
           </div>
         ))}
       </div>

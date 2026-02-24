@@ -82,12 +82,12 @@ export default function Page() {
         </p>
         <div className="flex flex-wrap gap-3 mb-6">
           {["Médicas", "Genéticas", "Psicológicas", "Legales"].map(tag => (
-            <span key={tag} className="px-4 py-2 bg-white rounded-full text-sm font-bold text-brand-violet shadow-sm border border-slate-100">
+            <span key={tag} className="px-4 py-2 bg-white rounded-full text-base font-bold text-brand-violet shadow-sm border border-slate-100">
               {tag}
             </span>
           ))}
         </div>
-        <p className="text-sm text-slate-500 italic">
+        <p className="text-base text-slate-500 italic">
           Garantizamos que solo las mejores candidatas forman parte de nuestro programa.
         </p>
       </div>

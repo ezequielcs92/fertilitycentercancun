@@ -32,7 +32,7 @@ export default function MedicalTeam() {
         <section className="py-24 bg-brand-slate overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-20">
-                    <span className="text-brand-violet/60 font-bold uppercase tracking-[0.2em] text-sm mb-4 block">Manos Expertas</span>
+                    <span className="text-brand-violet/60 font-bold uppercase tracking-[0.2em] text-base mb-4 block">Manos Expertas</span>
                     <h2 className="text-5xl md:text-6xl font-serif text-brand-violet mb-6">
                         Nuestro <span className="text-brand-green italic">Equipo Médico</span>
                     </h2>
@@ -61,7 +61,7 @@ export default function MedicalTeam() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
                             <h3 className="text-2xl font-serif text-brand-violet mb-2">{doctor.name}</h3>
-                            <p className="text-brand-green font-medium text-sm px-4">{doctor.specialty}</p>
+                            <p className="text-brand-green font-medium text-base px-4">{doctor.specialty}</p>
                         </motion.div>
                     ))}
                 </div>

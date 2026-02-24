@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-brand-violet: #7562A2;
@@ -28,4 +29,13 @@ h4,
 h5,
 h6 {
   font-family: var(--font-serif);
+}
+
+/* Fix for WordPress imported SVGs inside prose links */
+.prose a svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }

@@ -74,16 +74,16 @@ const InternationalSupportPage = () => {
 
                 <div className="text-center flex-grow">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{partner.name}</h3>
-                  <p className="text-brand-violet font-semibold text-sm mb-1">{partner.role}</p>
-                  <p className="text-gray-500 text-xs mb-4 uppercase tracking-wider">{partner.institution}</p>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  <p className="text-brand-violet font-semibold text-base mb-1">{partner.role}</p>
+                  <p className="text-gray-500 text-base mb-4 uppercase tracking-wider">{partner.institution}</p>
+                  <p className="text-gray-600 text-base leading-relaxed mb-6">
                     {partner.description}
                   </p>
                 </div>
 
                 <div className="pt-6 border-t border-gray-50 flex gap-4 justify-center mt-auto">
                   {partner.videoUrl && (
-                    <button className="flex items-center text-brand-violet font-bold text-sm hover:text-brand-green transition-colors">
+                    <button className="flex items-center text-brand-violet font-bold text-base hover:text-brand-green transition-colors">
                       <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
@@ -94,7 +94,7 @@ const InternationalSupportPage = () => {
                     <Link
                       href={partner.website}
                       target="_blank"
-                      className="flex items-center text-brand-violet font-bold text-sm hover:text-brand-green transition-colors"
+                      className="flex items-center text-brand-violet font-bold text-base hover:text-brand-green transition-colors"
                     >
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

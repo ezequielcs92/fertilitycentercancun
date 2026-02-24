@@ -50,7 +50,7 @@ export default function TreatmentsGrid() {
         <section id="tratamientos" className="py-24 bg-brand-slate overflow-hidden">
             <Container>
                 <div className="text-center max-w-3xl mx-auto mb-20">
-                    <span className="text-brand-violet/60 font-bold uppercase tracking-[0.2em] text-sm mb-4 block">Soluciones Avanzadas</span>
+                    <span className="text-brand-violet/60 font-bold uppercase tracking-[0.2em] text-base mb-4 block">Soluciones Avanzadas</span>
                     <h2 className="text-5xl font-serif text-brand-violet mb-6">
                         Nuestros <span className="text-brand-green italic">Tratamientos</span>
                     </h2>
@@ -82,7 +82,7 @@ export default function TreatmentsGrid() {
                                 <p className="text-slate-500 font-light leading-relaxed mb-6">
                                     {t.desc}
                                 </p>
-                                <div className="flex items-center gap-2 text-brand-violet font-bold text-sm">
+                                <div className="flex items-center gap-2 text-brand-violet font-bold text-base">
                                     Saber más
                                     <div className="w-5 h-[1px] bg-brand-violet group-hover:w-10 transition-all" />
                                 </div>

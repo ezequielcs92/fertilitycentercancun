@@ -82,7 +82,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     </div>
                     <div className="flex items-center gap-4">
                         <div className="text-right">
-                            <p className="text-sm font-bold text-brand-violet">Nomada Digital Web</p>
+                            <p className="text-base font-bold text-brand-violet">Nomada Digital Web</p>
                             <p className="text-[10px] text-slate-400 uppercase tracking-widest">Super Administrador</p>
                         </div>
                         <div className="w-10 h-10 bg-brand-violet/10 rounded-full border-2 border-brand-green" />

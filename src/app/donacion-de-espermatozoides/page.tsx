@@ -37,7 +37,7 @@ export default function Page() {
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {["Grupo Étnico", "Características Físicas", "Nivel Educativo", "Historial Médico"].map(tag => (
-            <div key={tag} className="bg-white px-4 py-3 rounded-xl shadow-sm text-center text-sm font-bold text-brand-violet">
+            <div key={tag} className="bg-white px-4 py-3 rounded-xl shadow-sm text-center text-base font-bold text-brand-violet">
               {tag}
             </div>
           ))}
@@ -53,14 +53,14 @@ export default function Page() {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
           <Globe className="w-10 h-10 text-brand-green mb-4" />
           <h3 className="text-xl font-bold text-brand-violet mb-2">Logística Internacional</h3>
-          <p className="text-slate-600 text-sm">
+          <p className="text-slate-600 text-base">
             Gestionamos integralmente la importación de muestras cumpliendo todas las regulaciones sanitarias y aduanales de México.
           </p>
         </div>
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
           <ShieldCheck className="w-10 h-10 text-brand-green mb-4" />
           <h3 className="text-xl font-bold text-brand-violet mb-2">Seguridad Garantizada</h3>
-          <p className="text-slate-600 text-sm">
+          <p className="text-slate-600 text-base">
             Todos los donantes pasan por rigurosos filtros médicos, genéticos y psicológicos antes de ser aceptados en el programa.
           </p>
         </div>

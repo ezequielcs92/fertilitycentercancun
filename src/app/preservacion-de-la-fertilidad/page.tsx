@@ -34,7 +34,7 @@ export default function Page() {
       <div className="grid md:grid-cols-2 gap-6 mb-12">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
           <h3 className="text-xl font-bold text-brand-violet mb-3">Vitrificación de Óvulos</h3>
-          <p className="text-sm text-slate-600 mb-4">
+          <p className="text-base text-slate-600 mb-4">
             Ideal para mujeres que desean posponer el embarazo. Se realiza una estimulación ovárica suave para extraer óvulos y congelarlos a -196°C.
           </p>
           <Image
@@ -48,7 +48,7 @@ export default function Page() {
         </div>
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
           <h3 className="text-xl font-bold text-brand-violet mb-3">Criopreservación de Esperma</h3>
-          <p className="text-sm text-slate-600 mb-4">
+          <p className="text-base text-slate-600 mb-4">
             Procedimiento sencillo que no requiere medicación. Recomendado antes de tratamientos médicos o vasectomías.
           </p>
           <Image
@@ -63,19 +63,21 @@ export default function Page() {
       </div>
 
       <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Para quién es este tratamiento?</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+      <div className="flex flex-col mb-12">
         {[
           { icon: Clock, title: "Postergar Maternidad", desc: "Decide ser madre cuando estés lista personal o profesionalmente." },
           { icon: Shield, title: "Tratamientos Médicos", desc: "Antes de quimioterapia o radioterapia." },
           { icon: Baby, title: "Edad Reproductiva", desc: "Mujeres que desean asegurar óvulos de buena calidad antes de los 35." },
           { icon: Snowflake, title: "Transición de Género", desc: "Preservación antes de iniciar terapia hormonal." },
         ].map((item, i) => (
-          <div key={i} className="bg-brand-gray p-6 rounded-2xl text-center">
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-brand-green">
-              <item.icon className="w-6 h-6" />
+          <div key={i} className="py-4 border-b border-slate-100 last:border-0 flex items-center text-left gap-6">
+            <div className="w-14 h-14 shrink-0 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-green border border-slate-50">
+              <item.icon className="w-6 h-6 stroke-[1.5]" />
             </div>
-            <h4 className="font-bold text-brand-violet text-sm mb-2">{item.title}</h4>
-            <p className="text-xs text-slate-500">{item.desc}</p>
+            <div>
+              <h4 className="font-bold text-brand-violet text-lg leading-tight mb-1">{item.title}</h4>
+              <p className="text-base text-slate-500 leading-snug">{item.desc}</p>
+            </div>
           </div>
         ))}
       </div>

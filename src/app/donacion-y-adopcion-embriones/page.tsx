@@ -57,7 +57,7 @@ export default function Page() {
             </div>
             <div>
               <h4 className="font-bold text-brand-violet">{item.title}</h4>
-              <p className="text-sm text-slate-600">{item.desc}</p>
+              <p className="text-base text-slate-600">{item.desc}</p>
             </div>
           </div>
         ))}

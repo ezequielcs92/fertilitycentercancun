@@ -83,7 +83,7 @@ export default function Footer() {
                             <ul className="space-y-4">
                                 {group.links.map((link) => (
                                     <li key={link.name}>
-                                        <Link href={link.href} className="text-white/60 hover:text-brand-green transition-colors text-sm font-medium">
+                                        <Link href={link.href} className="text-white/60 hover:text-brand-green transition-colors text-base font-medium">
                                             {link.name}
                                         </Link>
                                     </li>
@@ -94,7 +94,7 @@ export default function Footer() {
                 </div>
 
                 <div className="border-t border-white/10 pt-12">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-white/40">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-base text-white/40">
                         <div className="flex items-center gap-3">
                             <Phone className="w-4 h-4 text-brand-green" />
                             <span>+52 998 803 5530</span>

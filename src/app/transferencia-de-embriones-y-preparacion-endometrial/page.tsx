@@ -41,7 +41,7 @@ export default function Page() {
               <Activity className="w-6 h-6 text-brand-green" />
               <h3 className="font-bold text-brand-violet text-lg">Ciclo Natural</h3>
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-base text-slate-600">
               Aprovechamos tu ciclo ovulatorio natural. Ideal para mujeres con periodos regulares. Menor medicación y monitoreo del desarrollo natural del endometrio.
             </p>
           </div>
@@ -50,7 +50,7 @@ export default function Page() {
               <Calendar className="w-6 h-6 text-brand-green" />
               <h3 className="font-bold text-brand-violet text-lg">Ciclo Sustituido</h3>
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-base text-slate-600">
               Utilizamos hormonas (estrógenos y progesterona) para preparar el útero de manera controlada. Ideal para mujeres con ciclos irregulares o para mayor flexibilidad en la agenda.
             </p>
           </div>

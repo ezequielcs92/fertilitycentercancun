@@ -21,7 +21,7 @@ export default function Page() {
           {/* Left Side: Info & Details */}
           <div className="space-y-16">
             <section>
-              <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-xs">Atención Personalizada</span>
+              <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base">Atención Personalizada</span>
               <h2 className="text-5xl font-serif text-brand-violet mt-4 mb-8 leading-tight">
                 Estamos aquí para <span className="text-brand-green italic underline decoration-brand-green/30">ayudarte</span>
               </h2>
@@ -80,12 +80,12 @@ export default function Page() {
               <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-1 text-center md:text-left">
                   <h3 className="text-2xl font-serif text-brand-violet mb-4">Tour Virtual 360°</h3>
-                  <p className="text-slate-500 font-light text-sm mb-6">Explora nuestra clínica y laboratorios de alta tecnología desde la comodidad de tu hogar.</p>
+                  <p className="text-slate-500 font-light text-base mb-6">Explora nuestra clínica y laboratorios de alta tecnología desde la comodidad de tu hogar.</p>
                   <a
                     href="https://my.matterport.com/show/?m=XtokPdzLfrQ"
                     target="_blank"
                     rel="nofollow noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-all font-bold text-sm shadow-lg shadow-brand-violet/20"
+                    className="inline-flex items-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-all font-bold text-base shadow-lg shadow-brand-violet/20"
                   >
                     Comenzar Tour
                     <ExternalLink className="w-4 h-4" />
@@ -110,7 +110,7 @@ export default function Page() {
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-brand-violet uppercase tracking-wider">Nuestra Clínica</p>
+                  <p className="text-base font-bold text-brand-violet uppercase tracking-wider">Nuestra Clínica</p>
                   <p className="text-[10px] text-slate-500 mt-0.5">Cancún, Quintana Roo, México</p>
                 </div>
               </div>
@@ -119,8 +119,8 @@ export default function Page() {
 
           {/* Right Side: Form Card */}
           <div className="sticky top-32">
-            <div className="bg-slate-50 rounded-[4rem] p-4 border border-slate-100">
-              <div className="bg-white rounded-[3.5rem] p-10 md:p-14 shadow-2xl relative overflow-hidden">
+            <div className="bg-slate-50/50 rounded-[4rem] p-4">
+              <div className="bg-white rounded-[3.5rem] p-10 md:p-14 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-violet/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
 
                 <div className="text-center mb-12 relative z-10">
@@ -128,7 +128,7 @@ export default function Page() {
                     <MessageSquare className="w-8 h-8 text-brand-green" />
                   </div>
                   <h3 className="text-3xl font-serif text-brand-violet leading-tight">Envíanos un mensaje</h3>
-                  <p className="text-slate-500 mt-4 font-light text-sm">Pronto nos pondremos en contacto contigo para resolver todas tus dudas.</p>
+                  <p className="text-slate-500 mt-4 font-light text-base">Pronto nos pondremos en contacto contigo para resolver todas tus dudas.</p>
                 </div>
 
                 <ContactForm />

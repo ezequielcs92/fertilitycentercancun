@@ -28,7 +28,7 @@ export default function AboutClinic() {
                             className="absolute -bottom-10 -right-10 bg-brand-green p-8 rounded-[2.5rem] shadow-2xl z-20 text-brand-violet"
                         >
                             <span className="block text-4xl font-serif font-bold italic leading-none">20+</span>
-                            <span className="block text-xs font-bold uppercase tracking-widest mt-1">Años de Exp.</span>
+                            <span className="block text-base font-bold uppercase tracking-widest mt-1">Años de Exp.</span>
                         </motion.div>
                     </div>
 
@@ -39,7 +39,7 @@ export default function AboutClinic() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-sm mb-4 block">Tecnología y Humanismo</span>
+                            <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base mb-4 block">Tecnología y Humanismo</span>
                             <h2 className="text-5xl md:text-6xl font-serif text-brand-violet mb-8">
                                 Instalaciones de Primer Nivel y <span className="text-brand-green italic">Tecnología Global</span>
                             </h2>

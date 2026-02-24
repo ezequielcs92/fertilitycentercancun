@@ -37,7 +37,7 @@ export default function Page() {
             <div className="p-2 bg-white rounded-full text-brand-violet"><Heart className="w-5 h-5" /></div>
             <h3 className="font-bold text-brand-violet text-lg">Método ROPA</h3>
           </div>
-          <p className="text-sm text-slate-600">
+          <p className="text-base text-slate-600">
             "Maternidad compartida". Una mujer aporta los óvulos (madre genética) y la otra gesta el embarazo (madre gestante).
           </p>
         </div>
@@ -46,7 +46,7 @@ export default function Page() {
             <div className="p-2 bg-white rounded-full text-brand-violet"><Sparkles className="w-5 h-5" /></div>
             <h3 className="font-bold text-brand-violet text-lg">Inseminación / FIV</h3>
           </div>
-          <p className="text-sm text-slate-600">
+          <p className="text-base text-slate-600">
             Uso de esperma de donante (nacional o internacional) para inseminación artificial o Fertilización In Vitro.
           </p>
         </div>
@@ -63,7 +63,7 @@ export default function Page() {
             <p className="text-slate-600 mb-4">
               Combinamos la esperma de uno o ambos padres con óvulos de una donante seleccionada. El embrión se transfiere al útero de una gestante subrogada quien llevará el embarazo con todos los cuidados legales y médicos.
             </p>
-            <ul className="text-sm text-slate-500 space-y-2">
+            <ul className="text-base text-slate-500 space-y-2">
               <li>• Selección rigurosa de donantes de óvulos.</li>
               <li>• Programa legal seguro y transparente en México.</li>
               <li>• Posibilidad de PGT-A (análisis genético).</li>

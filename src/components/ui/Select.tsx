@@ -13,12 +13,12 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             <div className="w-full relative">
                 <select
                     className={cn(
-                        "flex h-14 w-full rounded-2xl border-2 bg-white px-6 py-4 pr-12 text-base transition-all appearance-none cursor-pointer",
-                        "focus:outline-none focus:ring-4 focus:ring-brand-green/20 focus:border-brand-violet",
+                        "flex h-14 w-full rounded-2xl bg-slate-50 px-6 py-4 pr-12 text-base transition-all appearance-none cursor-pointer",
+                        "focus:outline-none focus:ring-4 focus:ring-brand-green/20 focus:bg-white",
                         "disabled:cursor-not-allowed disabled:opacity-50",
                         error
-                            ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                            : "border-slate-200 hover:border-brand-violet/30",
+                            ? "border-2 border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                            : "",
                         className
                     )}
                     ref={ref}
@@ -28,7 +28,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                 </select>
                 <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-violet pointer-events-none" />
                 {error && (
-                    <p className="mt-2 text-sm text-red-600 font-medium">{error}</p>
+                    <p className="mt-2 text-base text-red-600 font-medium">{error}</p>
                 )}
             </div>
         )

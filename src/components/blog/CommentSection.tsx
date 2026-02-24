@@ -59,7 +59,7 @@ export default function CommentSection({ postId, initialComments }: CommentSecti
                                 </div>
                                 <div>
                                     <p className="font-bold text-brand-violet">{comment.nombre}</p>
-                                    <p className="text-xs text-slate-400">
+                                    <p className="text-base text-slate-400">
                                         {new Date(comment.created_at).toLocaleDateString('es-ES', {
                                             year: 'numeric',
                                             month: 'long',
@@ -92,7 +92,7 @@ export default function CommentSection({ postId, initialComments }: CommentSecti
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label htmlFor="nombre" className="block text-sm font-bold text-brand-violet mb-2">
+                            <label htmlFor="nombre" className="block text-base font-bold text-brand-violet mb-2">
                                 Nombre *
                             </label>
                             <Input
@@ -107,7 +107,7 @@ export default function CommentSection({ postId, initialComments }: CommentSecti
                         </div>
 
                         <div>
-                            <label htmlFor="email" className="block text-sm font-bold text-brand-violet mb-2">
+                            <label htmlFor="email" className="block text-base font-bold text-brand-violet mb-2">
                                 Email *
                             </label>
                             <Input
@@ -123,7 +123,7 @@ export default function CommentSection({ postId, initialComments }: CommentSecti
                     </div>
 
                     <div>
-                        <label htmlFor="contenido" className="block text-sm font-bold text-brand-violet mb-2">
+                        <label htmlFor="contenido" className="block text-base font-bold text-brand-violet mb-2">
                             Comentario *
                         </label>
                         <textarea
@@ -145,7 +145,7 @@ export default function CommentSection({ postId, initialComments }: CommentSecti
                         </Button>
                     </div>
 
-                    <p className="text-xs text-slate-500 italic">
+                    <p className="text-base text-slate-500 italic">
                         * Tu comentario será revisado antes de ser publicado
                     </p>
                 </form>

@@ -42,7 +42,7 @@ export default function Page() {
           <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
             <item.icon className="w-8 h-8 text-brand-green mb-4" />
             <h4 className="font-bold text-brand-violet mb-2">{item.title}</h4>
-            <p className="text-sm text-slate-500">{item.desc}</p>
+            <p className="text-base text-slate-500">{item.desc}</p>
           </div>
         ))}
       </div>

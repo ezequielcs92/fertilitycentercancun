@@ -108,13 +108,12 @@ export default function ContactForm() {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="w-full"
         >
             <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl border border-slate-100">
+                <div className="bg-white rounded-[3rem] p-8 md:p-12">
 
                     {/* Mensaje de Estado */}
                     <AnimatePresence mode="wait">
@@ -146,7 +145,7 @@ export default function ContactForm() {
                     <div className="grid md:grid-cols-2 gap-6">
                         {/* Nombre Completo */}
                         <div className="md:col-span-1">
-                            <label htmlFor="nombre" className="block text-sm font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="nombre" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
                                 Nombre Completo *
                             </label>
                             <Input
@@ -162,7 +161,7 @@ export default function ContactForm() {
 
                         {/* Email */}
                         <div className="md:col-span-1">
-                            <label htmlFor="email" className="block text-sm font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="email" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
                                 Email *
                             </label>
                             <Input
@@ -178,7 +177,7 @@ export default function ContactForm() {
 
                         {/* Teléfono */}
                         <div className="md:col-span-1">
-                            <label htmlFor="telefono" className="block text-sm font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="telefono" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
                                 Teléfono *
                             </label>
                             <Input
@@ -194,7 +193,7 @@ export default function ContactForm() {
 
                         {/* País */}
                         <div className="md:col-span-1">
-                            <label htmlFor="pais" className="block text-sm font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="pais" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
                                 País *
                             </label>
                             <Select
@@ -219,7 +218,7 @@ export default function ContactForm() {
 
                         {/* Tratamiento de Interés */}
                         <div className="md:col-span-2">
-                            <label htmlFor="tratamiento" className="block text-sm font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="tratamiento" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
                                 Tratamiento de Interés *
                             </label>
                             <Select
@@ -244,7 +243,7 @@ export default function ContactForm() {
 
                         {/* Mensaje */}
                         <div className="md:col-span-2">
-                            <label htmlFor="mensaje" className="block text-sm font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="mensaje" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
                                 Mensaje (Opcional)
                             </label>
                             <textarea
@@ -254,7 +253,7 @@ export default function ContactForm() {
                                 value={formData.mensaje}
                                 onChange={(e) => handleChange('mensaje', e.target.value)}
                                 disabled={isLoading}
-                                className="flex w-full rounded-2xl border-2 border-slate-200 bg-white px-6 py-4 text-base transition-all placeholder:text-slate-400 placeholder:font-light focus:outline-none focus:ring-4 focus:ring-brand-green/20 focus:border-brand-violet hover:border-brand-violet/30 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                                className="flex w-full rounded-2xl bg-slate-50 px-6 py-4 text-base transition-all placeholder:text-slate-400 placeholder:font-light focus:outline-none focus:ring-4 focus:ring-brand-green/20 focus:bg-white disabled:cursor-not-allowed disabled:opacity-50 resize-none"
                             />
                         </div>
                     </div>
@@ -273,7 +272,7 @@ export default function ContactForm() {
                     </div>
 
                     {/* Nota de Privacidad */}
-                    <p className="mt-6 text-center text-xs text-slate-400 font-light">
+                    <p className="mt-6 text-center text-base text-slate-400 font-light">
                         Al enviar este formulario, acepta nuestra política de privacidad. Su información está protegida con encriptación de grado médico.
                     </p>
                 </div>

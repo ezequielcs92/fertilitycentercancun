@@ -78,7 +78,7 @@ function BenefitCard({ icon, title, description }: { icon: React.ReactNode, titl
         {icon}
       </div>
       <h3 className="text-xl font-bold text-brand-violet mb-3">{title}</h3>
-      <p className="text-sm text-slate-600 leading-relaxed">
+      <p className="text-base text-slate-600 leading-relaxed">
         {description}
       </p>
     </div>

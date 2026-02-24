@@ -57,10 +57,10 @@ const MedicalTeamPage = () => {
                     <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-violet transition-colors">
                       {member.title}
                     </h3>
-                    <p className="text-brand-green font-medium text-sm mb-4 line-clamp-2">
+                    <p className="text-brand-green font-medium text-base mb-4 line-clamp-2">
                       {member.especialidad}
                     </p>
-                    <div className="mt-auto pt-4 border-t border-gray-50 flex items-center text-brand-violet font-semibold text-sm">
+                    <div className="mt-auto pt-4 border-t border-gray-50 flex items-center text-brand-violet font-semibold text-base">
                       Ver perfil completo
                       <svg
                         className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"

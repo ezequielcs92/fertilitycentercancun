@@ -28,7 +28,7 @@ export default function AdminDashboardPage() {
 function StatCard({ label, value, trend, status = 'success' }: { label: string, value: string, trend: string, status?: 'success' | 'warning' }) {
     return (
         <div className="bg-white p-8 rounded-[2rem] shadow-lg border border-brand-violet/5">
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{label}</p>
+            <p className="text-base font-bold text-slate-400 uppercase tracking-widest mb-1">{label}</p>
             <h4 className="text-4xl font-serif text-brand-violet mb-4">{value}</h4>
             <span className={`text-[10px] font-bold px-2 py-1 rounded-lg ${status === 'success' ? 'bg-brand-green/10 text-brand-green' : 'bg-red-50 text-red-500'}`}>
                 {trend}

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Heart, Phone, MapPin, Globe, Instagram, Facebook } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
@@ -106,16 +107,13 @@ export default function Navbar() {
                 <Container className="flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-2xl flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
-                            <Heart className="text-brand-violet w-6 h-6 md:w-7 md:h-7 fill-brand-violet/20" />
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-lg md:text-2xl font-serif font-bold text-white leading-none tracking-tight">
-                                Advanced Fertility
-                            </span>
-                            <span className="text-[8px] md:text-[10px] uppercase font-bold text-brand-green tracking-[0.2em] mt-1">
-                                Center Cancun
-                            </span>
+                        <div className="relative w-48 h-12 md:w-56 md:h-16 flex items-center group-hover:scale-105 transition-transform duration-500">
+                            <Image
+                                src="/images/new-logo.png"
+                                alt="Advanced Fertility Center Cancun Logo"
+                                fill
+                                className="object-contain object-left"
+                            />
                         </div>
                     </Link>
 
@@ -149,7 +147,7 @@ export default function Navbar() {
                                                         href={sub.href}
                                                         className="group/sub flex flex-col p-3 rounded-xl hover:bg-brand-violet/5 transition-colors"
                                                     >
-                                                        <span className="text-brand-violet font-bold text-sm flex items-center justify-between">
+                                                        <span className="text-brand-violet font-bold text-base flex items-center justify-between">
                                                             {sub.name}
                                                             <ChevronDown className="w-3.5 h-3.5 -rotate-90 opacity-0 group-hover/sub:opacity-100 transition-all -translate-x-2 group-hover/sub:translate-x-0" />
                                                         </span>
@@ -168,7 +166,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-4 md:gap-6">
                         <Link
                             href="/contacto"
-                            className="hidden sm:flex items-center gap-2 bg-brand-green text-brand-violet px-6 py-2.5 rounded-full text-xs font-bold hover:bg-white transition-all shadow-lg hover:-translate-y-0.5"
+                            className="hidden sm:flex items-center gap-2 bg-brand-green text-brand-violet px-6 py-2.5 rounded-full text-base font-bold hover:bg-white transition-all shadow-lg hover:-translate-y-0.5"
                         >
                             AGENDAR CITA
                         </Link>
@@ -200,8 +198,8 @@ export default function Navbar() {
                                         <div className="bg-brand-violet rounded-[2.5rem] p-8 text-white h-full relative overflow-hidden group/card shadow-2xl">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                                             <h4 className="text-3xl font-serif mb-4 relative z-10">Terapia <br /><span className="text-brand-green italic">Personalizada</span></h4>
-                                            <p className="text-white/60 text-sm leading-relaxed mb-8 relative z-10">Más de 20 años cumpliendo sueños con la tecnología más avanzada del Caribe.</p>
-                                            <Link href="/tratamientos-de-fertilidad" className="inline-flex items-center gap-2 text-brand-green text-xs font-bold uppercase tracking-widest hover:text-white transition-colors relative z-10">
+                                            <p className="text-white/60 text-base leading-relaxed mb-8 relative z-10">Más de 20 años cumpliendo sueños con la tecnología más avanzada del Caribe.</p>
+                                            <Link href="/tratamientos-de-fertilidad" className="inline-flex items-center gap-2 text-brand-green text-base font-bold uppercase tracking-widest hover:text-white transition-colors relative z-10">
                                                 Ver Todos
                                                 <ChevronDown className="w-4 h-4 -rotate-90" />
                                             </Link>
@@ -269,7 +267,7 @@ export default function Navbar() {
                                                         key={sub.name}
                                                         href={sub.href}
                                                         onClick={() => setMobileOpen(false)}
-                                                        className="text-white/50 hover:text-brand-green text-sm flex items-center gap-2"
+                                                        className="text-white/50 hover:text-brand-green text-base flex items-center gap-2"
                                                     >
                                                         <span className="w-1 h-1 bg-brand-green rounded-full" />
                                                         {sub.name}
@@ -287,7 +285,7 @@ export default function Navbar() {
                                 <Link href="tel:+529988035530" className="text-brand-green font-bold text-lg flex items-center gap-2">
                                     <Phone className="w-5 h-5" /> +52 998 803 5530
                                 </Link>
-                                <p className="text-white/40 text-xs flex items-center gap-2 uppercase tracking-widest font-bold">
+                                <p className="text-white/40 text-base flex items-center gap-2 uppercase tracking-widest font-bold">
                                     <MapPin className="w-4 h-4 text-brand-green" /> Cancún, México
                                 </p>
                             </div>

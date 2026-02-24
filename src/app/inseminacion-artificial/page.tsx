@@ -46,7 +46,7 @@ export default function Page() {
             />
           </div>
           <h3 className="text-xl font-bold text-brand-violet mb-3">1. Seguimiento Folicular</h3>
-          <p className="text-sm text-slate-600">
+          <p className="text-base text-slate-600">
             Monitoreamos el desarrollo de los folículos mediante ultrasonido. Utilizamos medicamentos específicos para estimular el crecimiento folicular y programar la ovulación en el momento óptimo.
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function Page() {
             />
           </div>
           <h3 className="text-xl font-bold text-brand-violet mb-3">2. Inseminación</h3>
-          <p className="text-sm text-slate-600">
+          <p className="text-base text-slate-600">
             Una vez preparada la muestra de semen (capacitación espermática), se introduce delicadamente en el útero mediante una cánula fina. Es un proceso rápido, indoloro y ambulatorio.
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function Page() {
             <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0">
               <Heart className="w-5 h-5 text-brand-violet fill-current" />
             </div>
-            <span className="text-sm font-medium text-slate-700">{item}</span>
+            <span className="text-base font-medium text-slate-700">{item}</span>
           </div>
         ))}
       </div>

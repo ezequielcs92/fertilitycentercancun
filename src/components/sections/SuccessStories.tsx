@@ -33,7 +33,7 @@ export default function SuccessStories() {
             <Container>
                 <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
                     <div className="max-w-2xl">
-                        <span className="text-brand-violet/60 font-bold uppercase tracking-[0.2em] text-sm mb-4 block underline decoration-brand-green decoration-2 underline-offset-8">Testimonios</span>
+                        <span className="text-brand-violet/60 font-bold uppercase tracking-[0.2em] text-base mb-4 block underline decoration-brand-green decoration-2 underline-offset-8">Testimonios</span>
                         <h2 className="text-5xl font-serif text-brand-violet">
                             Historias que nos <span className="text-brand-green italic">llenan de orgullo</span>
                         </h2>
@@ -59,11 +59,11 @@ export default function SuccessStories() {
                                     <Quote className="text-white w-6 h-6" />
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
-                                    <p className="text-sm italic font-light">"{t.story}"</p>
+                                    <p className="text-base italic font-light">"{t.story}"</p>
                                 </div>
                             </div>
                             <h3 className="text-2xl font-serif text-brand-violet">{t.name}</h3>
-                            <p className="text-brand-green font-medium text-sm tracking-widest uppercase">{t.location}</p>
+                            <p className="text-brand-green font-medium text-base tracking-widest uppercase">{t.location}</p>
                         </motion.div>
                     ))}
                 </div>

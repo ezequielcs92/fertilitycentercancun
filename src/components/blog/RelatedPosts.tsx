@@ -40,7 +40,7 @@ export default function RelatedPosts({ posts }: RelatedPostsProps) {
                                 {post.titulo}
                             </h3>
                             {post.extracto && (
-                                <p className="text-sm text-slate-600 line-clamp-2 font-light">
+                                <p className="text-base text-slate-600 line-clamp-2 font-light">
                                     {post.extracto}
                                 </p>
                             )}
