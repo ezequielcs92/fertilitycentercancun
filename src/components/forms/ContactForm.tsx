@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Turnstile } from '@marsidev/react-turnstile'
+import { useTranslations } from 'next-intl'
 import { submitLead, type LeadFormData } from '@/lib/actions/leads'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
@@ -10,6 +11,7 @@ import { Button } from '@/components/ui/Button'
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export default function ContactForm() {
+    const t = useTranslations('ContactForm')
     const [isMounted, setIsMounted] = useState(false)
     const [formData, setFormData] = useState<LeadFormData>({
         nombre: '',
@@ -35,25 +37,25 @@ export default function ContactForm() {
         const newErrors: Partial<Record<keyof LeadFormData, string>> = {}
 
         if (!formData.nombre.trim()) {
-            newErrors.nombre = 'El nombre es requerido'
+            newErrors.nombre = t('errors.name_required')
         }
 
         if (!formData.email.trim()) {
-            newErrors.email = 'El email es requerido'
+            newErrors.email = t('errors.email_required')
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = 'Por favor ingrese un email válido'
+            newErrors.email = t('errors.email_invalid')
         }
 
         if (!formData.telefono.trim()) {
-            newErrors.telefono = 'El teléfono es requerido'
+            newErrors.telefono = t('errors.phone_required')
         }
 
         if (!formData.pais) {
-            newErrors.pais = 'Por favor seleccione su país'
+            newErrors.pais = t('errors.country_required')
         }
 
         if (!formData.tratamiento) {
-            newErrors.tratamiento = 'Por favor seleccione un tratamiento'
+            newErrors.tratamiento = t('errors.treatment_required')
         }
 
         setErrors(newErrors)
@@ -73,7 +75,7 @@ export default function ContactForm() {
 
         if (!captchaToken) {
             setSubmitStatus('error')
-            setSubmitMessage('Por favor, complete la verificación de seguridad.')
+            setSubmitMessage(t('errors.captcha_required'))
             return
         }
 
@@ -84,7 +86,7 @@ export default function ContactForm() {
 
             if (result.success) {
                 setSubmitStatus('success')
-                setSubmitMessage(result.message)
+                setSubmitMessage(result.message) // This might need translate if backend returns Spanish only
                 // Limpiar formulario
                 setFormData({
                     nombre: '',
@@ -102,7 +104,7 @@ export default function ContactForm() {
             }
         } catch (error) {
             setSubmitStatus('error')
-            setSubmitMessage('Error de conexión. Por favor intente nuevamente.')
+            setSubmitMessage(t('errors.connection_error'))
         } finally {
             setIsLoading(false)
         }
@@ -127,7 +129,7 @@ export default function ContactForm() {
             className="w-full"
         >
             <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="bg-white rounded-[3rem] p-8 md:p-12">
+                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-sm border border-slate-50">
 
                     {/* Mensaje de Estado */}
                     <AnimatePresence mode="wait">
@@ -160,12 +162,12 @@ export default function ContactForm() {
                         {/* Nombre Completo */}
                         <div className="md:col-span-1">
                             <label htmlFor="nombre" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
-                                Nombre Completo *
+                                {t('name_label')} *
                             </label>
                             <Input
                                 id="nombre"
                                 type="text"
-                                placeholder="Ej. María González"
+                                placeholder={t('name_placeholder')}
                                 value={formData.nombre}
                                 onChange={(e) => handleChange('nombre', e.target.value)}
                                 error={errors.nombre}
@@ -176,12 +178,12 @@ export default function ContactForm() {
                         {/* Email */}
                         <div className="md:col-span-1">
                             <label htmlFor="email" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
-                                Email *
+                                {t('email_label')} *
                             </label>
                             <Input
                                 id="email"
                                 type="email"
-                                placeholder="correo@ejemplo.com"
+                                placeholder={t('email_placeholder')}
                                 value={formData.email}
                                 onChange={(e) => handleChange('email', e.target.value)}
                                 error={errors.email}
@@ -192,12 +194,12 @@ export default function ContactForm() {
                         {/* Teléfono */}
                         <div className="md:col-span-1">
                             <label htmlFor="telefono" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
-                                Teléfono *
+                                {t('phone_label')} *
                             </label>
                             <Input
                                 id="telefono"
                                 type="tel"
-                                placeholder="+1 (555) 123-4567"
+                                placeholder={t('phone_placeholder')}
                                 value={formData.telefono}
                                 onChange={(e) => handleChange('telefono', e.target.value)}
                                 error={errors.telefono}
@@ -208,7 +210,7 @@ export default function ContactForm() {
                         {/* País */}
                         <div className="md:col-span-1">
                             <label htmlFor="pais" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
-                                País *
+                                {t('country_label')} *
                             </label>
                             <Select
                                 id="pais"
@@ -217,23 +219,19 @@ export default function ContactForm() {
                                 error={errors.pais}
                                 disabled={isLoading}
                             >
-                                <option value="">Seleccione su país</option>
-                                <option value="Estados Unidos">Estados Unidos</option>
-                                <option value="Canadá">Canadá</option>
-                                <option value="México">México</option>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Brasil">Brasil</option>
-                                <option value="Chile">Chile</option>
-                                <option value="Colombia">Colombia</option>
-                                <option value="España">España</option>
-                                <option value="Otro">Otro</option>
+                                <option value="">{t('country_placeholder')}</option>
+                                <option value="Estados Unidos">{t('countries.usa')}</option>
+                                <option value="Canadá">{t('countries.canada')}</option>
+                                <option value="México">{t('countries.mexico')}</option>
+                                <option value="Argentina">{t('countries.argentina')}</option>
+                                <option value="Otro">{t('countries.other')}</option>
                             </Select>
                         </div>
 
                         {/* Tratamiento de Interés */}
                         <div className="md:col-span-2">
                             <label htmlFor="tratamiento" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
-                                Tratamiento de Interés *
+                                {t('treatment_label')} *
                             </label>
                             <Select
                                 id="tratamiento"
@@ -242,28 +240,28 @@ export default function ContactForm() {
                                 error={errors.tratamiento}
                                 disabled={isLoading}
                             >
-                                <option value="">Seleccione un tratamiento</option>
-                                <option value="FIV - Fertilización In Vitro">FIV - Fertilización In Vitro</option>
-                                <option value="Ovodonación">Ovodonación</option>
-                                <option value="Inseminación Artificial">Inseminación Artificial</option>
-                                <option value="Método ROPA">Método ROPA</option>
-                                <option value="PGT-A - Diagnóstico Genético">PGT-A - Diagnóstico Genético</option>
-                                <option value="Preservación de Fertilidad">Preservación de Fertilidad</option>
-                                <option value="Donación de Embriones">Donación de Embriones</option>
-                                <option value="Apoyo LGBT+">Apoyo LGBT+</option>
-                                <option value="Consulta Especializada">Consulta Especializada</option>
+                                <option value="">{t('treatment_placeholder')}</option>
+                                <option value="FIV - Fertilización In Vitro">{t('treatments.fiv')}</option>
+                                <option value="Ovodonación">{t('treatments.egg_donation')}</option>
+                                <option value="Inseminación Artificial">{t('treatments.artificial_insemination')}</option>
+                                <option value="Método ROPA">{t('treatments.ropa')}</option>
+                                <option value="PGT-A - Diagnóstico Genético">{t('treatments.genetic')}</option>
+                                <option value="Preservación de Fertilidad">{t('treatments.preservation')}</option>
+                                <option value="Donación de Embriones">{t('treatments.embryo_donation')}</option>
+                                <option value="Apoyo LGBT+">{t('treatments.lgbt')}</option>
+                                <option value="Consulta Especializada">{t('treatments.consultation')}</option>
                             </Select>
                         </div>
 
                         {/* Mensaje */}
                         <div className="md:col-span-2">
                             <label htmlFor="mensaje" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
-                                Mensaje (Opcional)
+                                {t('message_label')}
                             </label>
                             <textarea
                                 id="mensaje"
                                 rows={4}
-                                placeholder="Cuéntenos brevemente sobre su caso o consulta..."
+                                placeholder={t('message_placeholder')}
                                 value={formData.mensaje}
                                 onChange={(e) => handleChange('mensaje', e.target.value)}
                                 disabled={isLoading}
@@ -299,13 +297,13 @@ export default function ContactForm() {
                             className="w-full md:w-auto min-w-[280px]"
                         >
                             {!isLoading && <Send className="w-5 h-5" />}
-                            Solicitar Consulta
+                            {t('submit_button')}
                         </Button>
                     </div>
 
                     {/* Nota de Privacidad */}
                     <p className="mt-6 text-center text-base text-slate-400 font-light">
-                        Al enviar este formulario, acepta nuestra política de privacidad. Su información está protegida con encriptación de grado médico.
+                        {t('privacy_note')}
                     </p>
                 </div>
             </form>

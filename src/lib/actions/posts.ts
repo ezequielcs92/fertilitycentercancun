@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { autoTranslateHtml, autoTranslateText } from '@/lib/i18n/auto-translate'
 
 export interface Post {
     id: string
@@ -25,7 +26,7 @@ export interface Post {
 /**
  * Obtiene todos los posts publicados (para blog público)
  */
-export async function getPublishedPosts(limit = 12, offset = 0) {
+export async function getPublishedPosts(limit = 12, offset = 0, locale = 'es') {
     const supabase = await createClient()
 
     if (!supabase) return []
@@ -54,13 +55,31 @@ export async function getPublishedPosts(limit = 12, offset = 0) {
         return []
     }
 
-    return data as Post[]
+    const posts = (data || []) as Post[]
+
+    if (locale !== 'en') {
+        return posts
+    }
+
+    return await Promise.all(
+        posts.map(async (post) => ({
+            ...post,
+            titulo: await autoTranslateText(post.titulo, locale),
+            extracto: await autoTranslateText(post.extracto, locale),
+            categoria: post.categoria
+                ? {
+                    ...post.categoria,
+                    nombre: await autoTranslateText(post.categoria.nombre, locale)
+                }
+                : post.categoria
+        }))
+    )
 }
 
 /**
  * Obtiene un post por su slug
  */
-export async function getPostBySlug(slug: string) {
+export async function getPostBySlug(slug: string, locale = 'es') {
     const supabase = await createClient()
 
     if (!supabase) return null
@@ -86,13 +105,30 @@ export async function getPostBySlug(slug: string) {
         .update({ views: (data.views || 0) + 1 })
         .eq('id', data.id)
 
-    return data as Post
+    const post = data as Post
+
+    if (locale !== 'en') {
+        return post
+    }
+
+    return {
+        ...post,
+        titulo: await autoTranslateText(post.titulo, locale),
+        extracto: await autoTranslateText(post.extracto, locale),
+        contenido_html: await autoTranslateHtml(post.contenido_html, locale),
+        categoria: post.categoria
+            ? {
+                ...post.categoria,
+                nombre: await autoTranslateText(post.categoria.nombre, locale)
+            }
+            : post.categoria
+    } as Post
 }
 
 /**
  * Obtiene posts por categoría
  */
-export async function getPostsByCategory(categorySlug: string, limit = 12) {
+export async function getPostsByCategory(categorySlug: string, limit = 12, locale = 'es') {
     const supabase = await createClient()
 
     if (!supabase) return []
@@ -113,7 +149,25 @@ export async function getPostsByCategory(categorySlug: string, limit = 12) {
         return []
     }
 
-    return data as Post[]
+    const posts = (data || []) as Post[]
+
+    if (locale !== 'en') {
+        return posts
+    }
+
+    return await Promise.all(
+        posts.map(async (post) => ({
+            ...post,
+            titulo: await autoTranslateText(post.titulo, locale),
+            extracto: await autoTranslateText(post.extracto, locale),
+            categoria: post.categoria
+                ? {
+                    ...post.categoria,
+                    nombre: await autoTranslateText(post.categoria.nombre, locale)
+                }
+                : post.categoria
+        }))
+    )
 }
 
 /**
@@ -135,6 +189,22 @@ export async function getCategories() {
     }
 
     return data
+}
+
+export async function getCategoriesTranslated(locale = 'es') {
+    const categories = await getCategories()
+
+    if (locale !== 'en') {
+        return categories
+    }
+
+    return await Promise.all(
+        (categories || []).map(async (category: any) => ({
+            ...category,
+            nombre: await autoTranslateText(category.nombre, locale),
+            descripcion: await autoTranslateText(category.descripcion, locale)
+        }))
+    )
 }
 
 /**

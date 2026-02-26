@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export default function QuoteSection() {
+    const t = useTranslations('QuoteSection');
+
     return (
         <section className="py-20 bg-brand-cream relative overflow-hidden">
             <div className="container mx-auto px-6 text-center">
@@ -14,10 +17,12 @@ export default function QuoteSection() {
                     transition={{ duration: 0.8 }}
                 >
                     <p className="text-3xl md:text-4xl font-serif text-slate-500 italic mb-6">
-                        "Porque toda familia comienza con un sueño... y manos expertas."
+                        {t('quote')}
                     </p>
                     <h2 className="text-4xl md:text-5xl font-serif text-brand-violet font-bold">
-                        ¡Conoce nuestros <span className="text-brand-green italic">tratamientos de fertilidad!</span>
+                        {t.rich('title', {
+                            italic: (chunks) => <span className="text-brand-green italic">{chunks}</span>
+                        })}
                     </h2>
                 </motion.div>
             </div>

@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { autoTranslateText } from '@/lib/i18n/auto-translate'
 
 export interface TestimonialSubmission {
     nombre: string
@@ -84,7 +85,7 @@ export async function deleteTestimonial(id: string) {
     return { success: true }
 }
 
-export async function getTestimonials(status?: string) {
+export async function getTestimonials(status?: string, locale = 'es') {
     const supabase = await createClient()
     if (!supabase) return []
 
@@ -104,5 +105,14 @@ export async function getTestimonials(status?: string) {
         return []
     }
 
-    return data
+    if (locale !== 'en') {
+        return data
+    }
+
+    return await Promise.all(
+        (data || []).map(async (testimonial: any) => ({
+            ...testimonial,
+            mensaje: await autoTranslateText(testimonial.mensaje, locale)
+        }))
+    )
 }

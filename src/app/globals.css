@@ -7,8 +7,8 @@
   --color-brand-slate: #f8fafc;
   --color-brand-cream: #faf9f6;
 
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-inter);
+  --font-serif: var(--font-montserrat);
+  --font-sans: var(--font-montserrat);
 }
 
 :root {

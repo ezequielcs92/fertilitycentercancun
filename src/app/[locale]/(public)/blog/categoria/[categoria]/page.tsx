@@ -1,14 +1,15 @@
-import { getPostsByCategory, getCategories } from '@/lib/actions/posts'
+import { getPostsByCategory, getCategoriesTranslated } from '@/lib/actions/posts'
 import BlogGrid from '@/components/blog/BlogGrid'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-export async function generateMetadata({ params }: { params: { categoria: string } }): Promise<Metadata> {
-    const categories = await getCategories()
-    const category = categories.find((cat: any) => cat.slug === params.categoria)
+export async function generateMetadata({ params }: { params: Promise<{ categoria: string, locale: string }> }): Promise<Metadata> {
+    const { categoria, locale } = await params;
+    const categories = await getCategoriesTranslated(locale)
+    const category = categories.find((cat: any) => cat.slug === categoria)
 
     if (!category) {
-        return { title: 'Categoría no encontrada' }
+        return { title: locale === 'en' ? 'Category not found' : 'Categoría no encontrada' }
     }
 
     return {
@@ -19,13 +20,16 @@ export async function generateMetadata({ params }: { params: { categoria: string
 
 export const revalidate = 60
 
-export default async function CategoryPage({ params }: { params: { categoria: string } }) {
+export default async function CategoryPage({ params }: { params: Promise<{ categoria: string, locale: string }> }) {
+    const { categoria, locale } = await params;
+    const isEs = locale === 'es'
+
     const [posts, categories] = await Promise.all([
-        getPostsByCategory(params.categoria, 50),
-        getCategories()
+        getPostsByCategory(categoria, 50, locale),
+        getCategoriesTranslated(locale)
     ])
 
-    const category = categories.find((cat: any) => cat.slug === params.categoria)
+    const category = categories.find((cat: any) => cat.slug === categoria)
 
     if (!category) {
         notFound()
@@ -38,7 +42,7 @@ export default async function CategoryPage({ params }: { params: { categoria: st
                 <div className="container mx-auto px-6">
                     <div className="max-w-3xl">
                         <a href="/blog" className="text-brand-violet hover:underline mb-4 inline-block">
-                            ← Volver al blog
+                            {isEs ? '← Volver al blog' : '← Back to blog'}
                         </a>
                         <h1 className="text-5xl md:text-7xl font-serif text-brand-violet mb-6">
                             {category.nombre}
@@ -58,11 +62,11 @@ export default async function CategoryPage({ params }: { params: { categoria: st
                     {posts.length === 0 ? (
                         <div className="text-center py-20">
                             <p className="text-slate-500 text-lg">
-                                No hay artículos en esta categoría aún.
+                                {isEs ? 'No hay artículos en esta categoría aún.' : 'There are no articles in this category yet.'}
                             </p>
                         </div>
                     ) : (
-                        <BlogGrid posts={posts} />
+                        <BlogGrid posts={posts} locale={locale} />
                     )}
                 </div>
             </section>

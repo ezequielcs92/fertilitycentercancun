@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import GlassCard from '@/components/ui/GlassCard';
 import { Linkedin } from 'lucide-react';
+import { useLocale } from 'next-intl';
 
 const doctors = [
     {
@@ -28,16 +29,21 @@ const doctors = [
 ];
 
 export default function MedicalTeam() {
+    const locale = useLocale();
+    const isEs = locale === 'es';
+
     return (
         <section className="py-24 bg-brand-slate overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-20">
-                    <span className="text-brand-violet/60 font-bold uppercase tracking-[0.2em] text-base mb-4 block">Manos Expertas</span>
+                    <span className="text-brand-violet/60 font-bold uppercase tracking-[0.2em] text-base mb-4 block">{isEs ? 'Manos Expertas' : 'Expert Hands'}</span>
                     <h2 className="text-5xl md:text-6xl font-serif text-brand-violet mb-6">
-                        Nuestro <span className="text-brand-green italic">Equipo Médico</span>
+                        {isEs ? 'Nuestro ' : 'Our '}<span className="text-brand-green italic">{isEs ? 'Equipo Médico' : 'Medical Team'}</span>
                     </h2>
                     <p className="text-xl text-slate-600 font-light">
-                        Cuidamos de ti con experiencia y vocación, integrando un equipo multidisciplinario bilingüe de líderes nacionales.
+                        {isEs
+                            ? 'Cuidamos de ti con experiencia y vocación, integrando un equipo multidisciplinario bilingüe de líderes nacionales.'
+                            : 'We care for you with experience and purpose, through a bilingual multidisciplinary team of national leaders.'}
                     </p>
                 </div>
 
@@ -61,7 +67,9 @@ export default function MedicalTeam() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
                             <h3 className="text-2xl font-serif text-brand-violet mb-2">{doctor.name}</h3>
-                            <p className="text-brand-green font-medium text-base px-4">{doctor.specialty}</p>
+                            <p className="text-brand-green font-medium text-base px-4">
+                                {isEs ? doctor.specialty : 'Gynecology and Obstetrics / Reproductive Biology'}
+                            </p>
                         </motion.div>
                     ))}
                 </div>

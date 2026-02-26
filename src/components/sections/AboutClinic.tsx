@@ -3,9 +3,12 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Award, Microscope, ShieldCheck, CheckCircle } from 'lucide-react';
+import { Microscope, ShieldCheck, CheckCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function AboutClinic() {
+    const t = useTranslations('AboutClinic');
+
     return (
         <section className="py-24 bg-white overflow-hidden">
             <div className="container mx-auto px-6">
@@ -14,7 +17,7 @@ export default function AboutClinic() {
                         <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white h-[600px] lg:h-[700px]">
                             <Image
                                 src="/clinic-labs.jpg"
-                                alt="Laboratorio Fertility Center Cancun"
+                                alt={t('image_alt')}
                                 width={800}
                                 height={1400}
                                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-1000"
@@ -27,8 +30,8 @@ export default function AboutClinic() {
                             viewport={{ once: true }}
                             className="absolute -bottom-10 -right-10 bg-brand-green p-8 rounded-[2.5rem] shadow-2xl z-20 text-brand-violet"
                         >
-                            <span className="block text-4xl font-serif font-bold italic leading-none">20+</span>
-                            <span className="block text-base font-bold uppercase tracking-widest mt-1">Años de Exp.</span>
+                            <span className="block text-4xl font-serif font-bold italic leading-none">{t('stats.years')}</span>
+                            <span className="block text-base font-bold uppercase tracking-widest mt-1">{t('stats.label')}</span>
                         </motion.div>
                     </div>
 
@@ -39,12 +42,14 @@ export default function AboutClinic() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base mb-4 block">Tecnología y Humanismo</span>
+                            <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base mb-4 block">{t('tagline')}</span>
                             <h2 className="text-5xl md:text-6xl font-serif text-brand-violet mb-8">
-                                Instalaciones de Primer Nivel y <span className="text-brand-green italic">Tecnología Global</span>
+                                {t.rich('title', {
+                                    italic: (chunks) => <span className="text-brand-green italic">{chunks}</span>
+                                })}
                             </h2>
                             <p className="text-xl text-slate-600 font-light mb-8 leading-relaxed">
-                                Nuestra clínica cuenta con equipo médico de última generación en laboratorios de análisis clínicos, andrología, quirófanos y unidad materno-fetal.
+                                {t('description')}
                             </p>
 
                             <div className="space-y-6 mb-10">
@@ -53,8 +58,8 @@ export default function AboutClinic() {
                                         <Microscope className="w-6 h-6 text-brand-violet" />
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-serif text-brand-violet mb-1">Respaldo Médico de Leyenda</h4>
-                                        <p className="text-slate-600 font-light">Contamos con el respaldo de Masashige Kuwayama, el "Padre de la Vitrificación".</p>
+                                        <h4 className="text-xl font-serif text-brand-violet mb-1">{t('features.kuwayama.title')}</h4>
+                                        <p className="text-slate-600 font-light">{t('features.kuwayama.description')}</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
@@ -62,18 +67,18 @@ export default function AboutClinic() {
                                         <ShieldCheck className="w-6 h-6 text-brand-green" />
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-serif text-brand-violet mb-1">Seguridad y Comodidad</h4>
-                                        <p className="text-slate-600 font-light">Espacios de recuperación diseñados para que te sientas segura y acompañada en todo momento.</p>
+                                        <h4 className="text-xl font-serif text-brand-violet mb-1">{t('features.safety.title')}</h4>
+                                        <p className="text-slate-600 font-light">{t('features.safety.description')}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 {[
-                                    "Laboratorio ISO-7",
-                                    "Unidad Materno-Fetal",
-                                    "Área de Andrología",
-                                    "Quirófanos Propios"
+                                    t('list.lab'),
+                                    t('list.maternal'),
+                                    t('list.andrology'),
+                                    t('list.or')
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-center gap-2">
                                         <CheckCircle className="w-5 h-5 text-brand-green" />

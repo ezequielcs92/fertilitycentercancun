@@ -4,38 +4,41 @@ import React from 'react';
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { Heart, Mail, Phone, MapPin, Instagram, Facebook, Youtube } from 'lucide-react';
-
-const footerLinks = [
-    {
-        title: 'Tratamientos',
-        links: [
-            { name: 'FIV - In Vitro', href: '/fiv-fertilizacion-in-vitro' },
-            { name: 'Inseminación Artificial', href: '/inseminacion-artificial' },
-            { name: 'Donación de Óvulos', href: '/donacion-de-ovulos' },
-            { name: 'Método ROPA', href: '/metodo-ropa' },
-            { name: 'Preservación Fertilidad', href: '/preservacion-de-la-fertilidad' },
-        ]
-    },
-    {
-        title: 'Nosotros',
-        links: [
-            { name: '¿Por qué AFCC?', href: '/sobre-fertility-center-cancun' },
-            { name: 'Equipo Médico', href: '/equipo' },
-            { name: 'Instalaciones', href: '/nuestras-instalaciones' },
-            { name: 'Turismo Médico', href: '/turismo-medico' },
-            { name: 'Preguntas Frecuentes', href: '/faqs' },
-        ]
-    },
-    {
-        title: 'Legal',
-        links: [
-            { name: 'Aviso de Privacidad', href: '/aviso-de-privacidad' },
-            { name: 'Términos y Condiciones', href: '#' },
-        ]
-    }
-];
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
+    const t = useTranslations('Footer');
+
+    const footerLinks = [
+        {
+            title: t('sections.treatments.title'),
+            links: [
+                { name: t('sections.treatments.links.fiv'), href: '/fiv-fertilizacion-in-vitro' },
+                { name: t('sections.treatments.links.artificial_insemination'), href: '/inseminacion-artificial' },
+                { name: t('sections.treatments.links.egg_donation'), href: '/donacion-de-ovulos' },
+                { name: t('sections.treatments.links.ropa'), href: '/metodo-ropa' },
+                { name: t('sections.treatments.links.preservation'), href: '/preservacion-de-la-fertilidad' },
+            ]
+        },
+        {
+            title: t('sections.about.title'),
+            links: [
+                { name: t('sections.about.links.why_afcc'), href: '/sobre-fertility-center-cancun' },
+                { name: t('sections.about.links.team'), href: '/equipo' },
+                { name: t('sections.about.links.facilities'), href: '/nuestras-instalaciones' },
+                { name: t('sections.about.links.tourism'), href: '/turismo-medico' },
+                { name: t('sections.about.links.faqs'), href: '/faqs' },
+            ]
+        },
+        {
+            title: t('sections.legal.title'),
+            links: [
+                { name: t('sections.legal.links.privacy'), href: '/aviso-de-privacidad' },
+                { name: t('sections.legal.links.terms'), href: '#' },
+            ]
+        }
+    ];
+
     return (
         <footer className="bg-brand-violet text-white pt-24 pb-12 overflow-hidden relative">
             {/* Background Decor */}
@@ -61,7 +64,7 @@ export default function Footer() {
                             </div>
                         </Link>
                         <p className="text-white/60 font-light leading-relaxed mb-8 max-w-sm">
-                            Líderes en reproducción asistida en el Caribe Mexicano. Combinamos tecnología de vanguardia con un trato humano y cálido para hacer realidad tu sueño.
+                            {t('description')}
                         </p>
                         <div className="flex gap-4">
                             <Link href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-green hover:text-brand-violet transition-all border border-white/10">
@@ -109,7 +112,7 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className="mt-12 text-center text-[10px] uppercase font-bold tracking-[0.2em] text-white/20">
-                        © {new Date().getFullYear()} Advanced Fertility Center Cancun. Desarrollado por Nomada Digital Web.
+                        © {new Date().getFullYear()} Advanced Fertility Center Cancun. {t('developed_by')}
                     </div>
                 </div>
             </Container>

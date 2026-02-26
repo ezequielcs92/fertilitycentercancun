@@ -1,0 +1,259 @@
+{
+    "Hero": {
+        "tagline": "Leaders in Assisted Reproduction",
+        "title": "Your dream of being a <italic>mom, made reality.</italic>",
+        "description": "At Advanced Fertility Center Cancun, we combine cutting-edge technology with a warm and inclusive approach to provide you with the highest probability of success in your treatment.",
+        "cta": "Start my journey",
+        "stats_button": "Success Rates",
+        "care_title": "Human Care",
+        "care_subtitle": "Personalized attention 24/7",
+        "stats": {
+            "babies": "1,000+ Babies",
+            "experience": "20+ Years",
+            "success": "90% Success"
+        }
+    },
+    "ContactForm": {
+        "tagline": "We're here to help",
+        "title": "Start your journey today",
+        "description": "Leave us your details and one of our coordinators will contact you to answer all your questions.",
+        "name_label": "Full name",
+        "email_label": "Email address",
+        "phone_label": "Phone / WhatsApp",
+        "country_label": "Country of residence",
+        "treatment_label": "Treatment of interest",
+        "message_label": "Message (Optional)",
+        "submit_button": "Send request",
+        "privacy_note": "Your data is protected by our",
+        "name_placeholder": "E.g. Jane Doe",
+        "email_placeholder": "you@email.com",
+        "phone_placeholder": "+1 ...",
+        "country_placeholder": "Select your country",
+        "treatment_placeholder": "How can we help you?",
+        "message_placeholder": "Tell us about your case...",
+        "countries": {
+            "usa": "United States",
+            "canada": "Canada",
+            "mexico": "Mexico",
+            "argentina": "Argentina",
+            "other": "Other"
+        },
+        "treatments": {
+            "fiv": "IVF - In Vitro Fertilization",
+            "egg_donation": "Egg Donation",
+            "artificial_insemination": "Artificial Insemination",
+            "ropa": "ROPA Method",
+            "genetic": "PGT-A - Genetic Testing",
+            "preservation": "Fertility Preservation",
+            "embryo_donation": "Embryo Donation",
+            "lgbt": "LGBT+ Support",
+            "consultation": "Specialized Consultation"
+        },
+        "labels": {
+            "name": "Full name",
+            "email": "Email address",
+            "phone": "Phone / WhatsApp",
+            "country": "Country of residence",
+            "treatment": "Treatment of interest",
+            "message": "Message (Optional)",
+            "submit": "Send request",
+            "sending": "Sending...",
+            "privacy_note": "Your data is protected by our"
+        },
+        "placeholders": {
+            "name": "E.g. Jane Doe",
+            "email": "you@email.com",
+            "phone": "+1 ...",
+            "country": "Select your country",
+            "treatment": "How can we help you?",
+            "message": "Tell us about your case..."
+        },
+        "errors": {
+            "name_required": "Name is required",
+            "email_required": "Email is required",
+            "email_invalid": "Please enter a valid email",
+            "phone_required": "Phone number is required",
+            "country_required": "Please select your country",
+            "treatment_required": "Please select a treatment",
+            "captcha_required": "Please complete the security verification.",
+            "connection_error": "Connection error. Please try again."
+        }
+    },
+    "AboutClinic": {
+        "tagline": "Technology and Humanism",
+        "title": "World-Class Facilities and <italic>Global Technology</italic>",
+        "description": "Our clinic features state-of-the-art medical equipment in clinical analysis laboratories, andrology, operating rooms, and maternal-fetal units.",
+        "image_alt": "Fertility Center Cancun Laboratory",
+        "stats": {
+            "years": "20+",
+            "label": "Years of Exp."
+        },
+        "features": {
+            "kuwayama": {
+                "title": "Legendary Medical Support",
+                "description": "We have the support of Masashige Kuwayama, the \"Father of Vitrification\"."
+            },
+            "safety": {
+                "title": "Safety and Comfort",
+                "description": "Recovery spaces designed so you feel safe and supported at all times."
+            }
+        },
+        "list": {
+            "lab": "ISO-7 Laboratory",
+            "maternal": "Maternal-Fetal Unit",
+            "andrology": "Andrology Area",
+            "or": "Private Operating Rooms"
+        }
+    },
+    "Treatments": {
+        "tagline": "Advanced Solutions",
+        "title": "Our <italic>Treatments</italic>",
+        "description": "We offer the most comprehensive catalog of assisted reproduction services, tailored to your specific needs.",
+        "learn_more": "Learn more",
+        "items": {
+            "fiv": {
+                "title": "IVF (In Vitro Fertilization)",
+                "description": "The most effective technique with certified labs and world-class success rates."
+            },
+            "artificial_insemination": {
+                "title": "Artificial Insemination",
+                "description": "A simple and less invasive process for low-complexity cases."
+            },
+            "egg_donation": {
+                "title": "Egg Donation",
+                "description": "Ethical and safe programs with rigorously selected donors."
+            },
+            "ropa": {
+                "title": "ROPA Method",
+                "description": "Specially designed for female couples who wish to share motherhood."
+            },
+            "genetic": {
+                "title": "Genetic Testing",
+                "description": "Detection of chromosomal abnormalities to ensure a healthy baby."
+            },
+            "preservation": {
+                "title": "Fertility Preservation",
+                "description": "Freeze your eggs to become a mother when you decide."
+            }
+        }
+    },
+    "SuccessRates": {
+        "title": "Our success <italic>rates</italic>",
+        "stats": {
+            "cycles": {
+                "label": "Cycles performed",
+                "date": "2012 - 2025"
+            },
+            "betas": {
+                "label": "Positive betas"
+            },
+            "babies": {
+                "label": "Babies"
+            }
+        }
+    },
+    "Footer": {
+        "description": "Leaders in assisted reproduction in the Mexican Caribbean. We combine cutting-edge technology with a human and warm touch to make your dream come true.",
+        "developed_by": "Developed by Nomada Digital Web.",
+        "sections": {
+            "treatments": {
+                "title": "Treatments",
+                "links": {
+                    "fiv": "IVF - In Vitro",
+                    "artificial_insemination": "Artificial Insemination",
+                    "egg_donation": "Egg Donation",
+                    "ropa": "ROPA Method",
+                    "preservation": "Fertility Preservation"
+                }
+            },
+            "about": {
+                "title": "About Us",
+                "links": {
+                    "why_afcc": "Why AFCC?",
+                    "team": "Medical Team",
+                    "facilities": "Facilities",
+                    "tourism": "Medical Tourism",
+                    "faqs": "FAQs"
+                }
+            },
+            "legal": {
+                "title": "Legal",
+                "links": {
+                    "privacy": "Privacy Policy",
+                    "terms": "Terms and Conditions"
+                }
+            }
+        }
+    },
+    "SuccessStories": {
+        "tagline": "Testimonials",
+        "title": "Stories that <italic>fill us with pride</italic>",
+        "view_more": "View more testimonials"
+    },
+    "Navbar": {
+        "cta": "BOOK APPOINTMENT",
+        "items": {
+            "about": {
+                "name": "About Us",
+                "links": {
+                    "philosophy": {
+                        "name": "Why AFCC?",
+                        "description": "Our philosophy and commitment."
+                    },
+                    "tourism": {
+                        "name": "Fertility Vacations",
+                        "description": "Logistics for international patients."
+                    },
+                    "facilities": {
+                        "name": "Facilities",
+                        "description": "State-of-the-art technology."
+                    },
+                    "team": {
+                        "name": "Medical Team",
+                        "description": "Certified specialists."
+                    },
+                    "support": {
+                        "name": "International Support",
+                        "description": "We accompany you every step."
+                    },
+                    "certifications": {
+                        "name": "Certifications",
+                        "description": "Guaranteed safety and quality."
+                    }
+                }
+            },
+            "treatments": {
+                "name": "Treatments",
+                "card": {
+                    "title": "Personalized <italic>Therapy</italic>",
+                    "description": "Over 20 years fulfilling dreams with the most advanced technology in the Caribbean.",
+                    "view_all": "View All"
+                },
+                "links": {
+                    "fiv": "IVF - In Vitro Fertilization",
+                    "genetic": "IVF with Genetic Study",
+                    "mini_fiv": "Mini IVF",
+                    "artificial_insemination": "Artificial Insemination",
+                    "egg_donation": "Egg Donation",
+                    "sperm_donation": "Sperm Donation",
+                    "embryo": "Embryo Donation and Adoption",
+                    "ropa": "ROPA Method",
+                    "preservation": "Fertility Preservation",
+                    "timed_intercourse": "Timed Intercourse",
+                    "transfer": "Embryo Transfer",
+                    "lgbt": "LGBT+ Community"
+                }
+            },
+            "experience": {
+                "name": "Experience",
+                "links": {
+                    "testimonials": "Testimonials",
+                    "blog": "Fertility Blog",
+                    "faqs": "FAQs",
+                    "first_visit": "First Visit"
+                }
+            },
+            "contact": "Contact"
+        }
+    }
+}

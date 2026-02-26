@@ -3,6 +3,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
+import { autoTranslateHtml, autoTranslateText } from '@/lib/i18n/auto-translate';
 
 // Nota: En una app real esto vendría de una DB o API. 
 // Para el prototipo, usamos el JSON procesado.
@@ -71,24 +72,29 @@ async function getData(slug: string, type: string) {
   }
 }
 
-export default async function DynamicPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function DynamicPage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
+  const { slug, locale } = await params;
+  const isEs = locale === 'es';
+
   const item = await getData(slug, 'blog');
 
   if (!item) return notFound();
 
+  const translatedTitle = await autoTranslateText(item.title, locale);
+  const translatedContent = await autoTranslateHtml(item.content, locale);
+
   return (
     <main className="bg-white pb-24">
       <PageHeader
-        title={item.title}
+        title={translatedTitle}
         breadcrumb={[
-          { label: 'Inicio', href: '/' },
+          { label: isEs ? 'Inicio' : 'Home', href: '/' },
           { label: 'Blog', href: '/blog' },
-          { label: item.title, href: '#' }
+          { label: translatedTitle, href: '#' }
         ]}
       />
       <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: item.content }} />
+        <div dangerouslySetInnerHTML={{ __html: translatedContent }} />
       </Container>
     </main>
   );

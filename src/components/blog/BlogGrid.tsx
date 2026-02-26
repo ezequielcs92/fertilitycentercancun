@@ -5,9 +5,12 @@ import type { Post } from '@/lib/actions/posts'
 
 interface BlogGridProps {
     posts: Post[]
+    locale?: string
 }
 
-export default function BlogGrid({ posts }: BlogGridProps) {
+export default function BlogGrid({ posts, locale = 'es' }: BlogGridProps) {
+    const isEs = locale === 'es'
+
     return (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
@@ -45,11 +48,11 @@ export default function BlogGrid({ posts }: BlogGridProps) {
                         <div className="flex items-center gap-2 mb-4 text-slate-400 text-xs font-medium uppercase tracking-[0.1em]">
                             <Calendar className="w-3.5 h-3.5" />
                             <time dateTime={post.fecha_publicacion || ''}>
-                                {post.fecha_publicacion ? new Date(post.fecha_publicacion).toLocaleDateString('es-ES', {
+                                {post.fecha_publicacion ? new Date(post.fecha_publicacion).toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
                                     month: 'long',
                                     day: 'numeric',
                                     year: 'numeric'
-                                }) : 'Próximamente'}
+                                }) : isEs ? 'Próximamente' : 'Coming soon'}
                             </time>
                         </div>
 
@@ -68,12 +71,12 @@ export default function BlogGrid({ posts }: BlogGridProps) {
                                 href={`/blog/${post.slug}`}
                                 className="flex items-center gap-2 text-brand-violet font-bold text-sm tracking-wider uppercase group/link"
                             >
-                                <span>Leer artículo</span>
+                                <span>{isEs ? 'Leer artículo' : 'Read article'}</span>
                                 <div className="w-6 h-[1px] bg-brand-violet group-hover/link:w-10 transition-all origin-left" />
                             </Link>
 
                             <div className="text-[10px] font-bold text-slate-300 uppercase tracking-tighter">
-                                {post.views > 0 ? `${post.views} VISTAS` : 'NUEVO'}
+                                {post.views > 0 ? `${post.views} ${isEs ? 'VISTAS' : 'VIEWS'}` : isEs ? 'NUEVO' : 'NEW'}
                             </div>
                         </div>
                     </div>

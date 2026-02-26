@@ -6,7 +6,8 @@ import { TestimonialModal } from '@/components/testimonials/TestimonialModal';
 import { getTestimonials } from '@/lib/actions/testimonials';
 import { getStorageFiles } from '@/lib/actions/storage';
 
-export default function Page() {
+export default function Page({ locale = 'es' }: { locale?: string }) {
+  const isEs = locale === 'es';
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [testimonials, setTestimonials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +16,7 @@ export default function Page() {
 
   useEffect(() => {
     const fetchTestimonials = async () => {
-      const data = await getTestimonials('approved');
+      const data = await getTestimonials('approved', locale);
       setTestimonials(data);
       setLoading(false);
     };
@@ -30,23 +31,25 @@ export default function Page() {
   return (
     <main className="bg-slate-50 pb-24">
       <PageHeader
-        title="Testimonios"
+        title={isEs ? 'Testimonios' : 'Testimonials'}
         breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Testimonios', href: '#' }
+          { label: isEs ? 'Inicio' : 'Home', href: '/' },
+          { label: isEs ? 'Testimonios' : 'Testimonials', href: '#' }
         ]}
       />
       <div className="pt-16 max-w-[1800px] w-full mx-auto px-6 md:px-12">
         {/* Intro */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-serif text-brand-violet mb-6 relative inline-block">
-            <span className="relative z-10">"Aquí comienza tu camino hacia</span><br />
-            <span className="relative z-10">la maternidad o paternidad,</span><br />
-            <span className="relative z-10">con ciencia, cuidado y corazón."</span>
+            <span className="relative z-10">{isEs ? '"Aquí comienza tu camino hacia' : '"Here begins your journey to'}</span><br />
+            <span className="relative z-10">{isEs ? 'la maternidad o paternidad,' : 'parenthood,'}</span><br />
+            <span className="relative z-10">{isEs ? 'con ciencia, cuidado y corazón."' : 'with science, care, and heart."'}</span>
             <div className="absolute -bottom-4 left-0 right-0 h-4 bg-brand-green/20 -rotate-1 rounded-full pointer-events-none" />
           </h2>
           <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mt-8 font-light">
-            Descubre las experiencias de nuestros pacientes y cómo juntos logramos cumplir su sueño de formar una familia. Estos testimonios reflejan el apoyo y cuidado que brindamos en cada paso del proceso, ofreciéndote una visión auténtica de lo que puedes esperar en tu propio camino hacia la paternidad.
+            {isEs
+              ? 'Descubre las experiencias de nuestros pacientes y cómo juntos logramos cumplir su sueño de formar una familia. Estos testimonios reflejan el apoyo y cuidado que brindamos en cada paso del proceso, ofreciéndote una visión auténtica de lo que puedes esperar en tu propio camino hacia la paternidad.'
+              : 'Discover our patients’ experiences and how together we helped make their dream of building a family come true. These testimonials reflect the support and care we provide at every step, giving you an authentic view of what to expect on your own path to parenthood.'}
           </p>
         </div>
 
@@ -79,7 +82,7 @@ export default function Page() {
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="currentColor">
               <path d="m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z"></path>
             </svg>
-            Ver todos los testimonios en YouTube
+            {isEs ? 'Ver todos los testimonios en YouTube' : 'View all testimonials on YouTube'}
           </a>
         </div>
 
@@ -91,7 +94,7 @@ export default function Page() {
           </div>
         ) : testimonials.length === 0 ? (
           <div className="py-24 text-center">
-            <p className="text-slate-400 italic font-light text-lg">Aún no hay historias para mostrar. ¡Sé el primero en compartir la tuya!</p>
+            <p className="text-slate-400 italic font-light text-lg">{isEs ? 'Aún no hay historias para mostrar. ¡Sé el primero en compartir la tuya!' : 'No stories to show yet. Be the first to share yours!'}</p>
           </div>
         ) : (
           <div className="mb-24">
@@ -127,7 +130,7 @@ export default function Page() {
                   onClick={() => setVisibleCount(prev => prev + 8)}
                   className="bg-white border-2 border-brand-violet/10 text-brand-violet px-8 py-3 rounded-full font-bold hover:bg-brand-violet hover:text-white transition-all shadow-sm"
                 >
-                  Cargar más testimonios
+                  {isEs ? 'Cargar más testimonios' : 'Load more testimonials'}
                 </button>
               </div>
             )}
@@ -153,15 +156,17 @@ export default function Page() {
 
         {/* CTA */}
         <div className="bg-brand-violet/5 rounded-[3rem] p-12 text-center max-w-4xl mx-auto border border-brand-violet/10">
-          <h2 className="text-3xl font-serif text-brand-violet mb-6">¡Comparte tu experiencia con nosotros!</h2>
+          <h2 className="text-3xl font-serif text-brand-violet mb-6">{isEs ? '¡Comparte tu experiencia con nosotros!' : 'Share your experience with us!'}</h2>
           <p className="text-slate-600 font-light text-lg mb-8 leading-relaxed">
-            Si has sido paciente en nuestra clínica, cuéntanos cómo fue tu viaje y lo que más valoraste del trato y apoyo de nuestro equipo. Sabemos que el camino para formar una familia no ha sido fácil, pero estamos convencidos de que al compartir tu historia de éxito, podrás inspirar a otras parejas.
+            {isEs
+              ? 'Si has sido paciente en nuestra clínica, cuéntanos cómo fue tu viaje y lo que más valoraste del trato y apoyo de nuestro equipo. Sabemos que el camino para formar una familia no ha sido fácil, pero estamos convencidos de que al compartir tu historia de éxito, podrás inspirar a otras parejas.'
+              : 'If you have been a patient at our clinic, tell us about your journey and what you valued most about our team’s care and support. We know the path to building a family is not easy, and sharing your success story can inspire other couples.'}
           </p>
           <button
             onClick={() => setIsModalOpen(true)}
             className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold hover:bg-white hover:text-brand-violet transition-colors shadow-lg shadow-brand-green/20"
           >
-            Compartir mi historia
+            {isEs ? 'Compartir mi historia' : 'Share my story'}
           </button>
         </div>
 

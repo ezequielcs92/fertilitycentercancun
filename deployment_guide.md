@@ -2,6 +2,15 @@
 
 Sigue estos pasos para poner tu sitio en producción de forma segura.
 
+## 0. Credenciales de Administrador
+
+Para acceder al panel en `/admin`, utiliza estas credenciales:
+- **Usuario:** `admin@fertilitycentercancun.com`
+- **Contraseña:** `Admin_Fertility_2026`
+
+> [!NOTE]
+> Estas credenciales se utilizan en la página de login (`/login`) para acceder a la gestión de leads, blog y equipo médico.
+
 ## 1. Configurar Variables de Entorno
 
 Debes agregar estas variables en el Dashboard de Vercel (**Settings > Environment Variables**):

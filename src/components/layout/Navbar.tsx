@@ -4,78 +4,81 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Heart, Phone, MapPin, Globe, Instagram, Facebook, Microscope, Dna, Zap, UserCheck, Droplets, Baby, Users, Clock, Calendar, ArrowLeftRight, HeartHandshake } from 'lucide-react';
+import { Menu, X, ChevronDown, Heart, Phone, Microscope, Dna, Zap, UserCheck, Droplets, Baby, Users, Clock, Calendar, ArrowLeftRight, HeartHandshake, MapPin, Instagram, Facebook } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
-
-interface SubMenuItem {
-    name: string;
-    href: string;
-    description?: string;
-    icon?: React.ElementType;
-}
-
-interface NavItem {
-    name: string;
-    href: string;
-    submenu?: SubMenuItem[];
-    mega?: boolean;
-}
-
-const navigation: NavItem[] = [
-    {
-        name: 'Nosotros',
-        href: '#',
-        submenu: [
-            { name: '¿Por qué AFCC?', href: '/sobre-fertility-center-cancun', description: 'Nuestra filosofía y compromiso.' },
-            { name: 'Vacaciones de Fertilidad', href: '/turismo-medico', description: 'Logística para pacientes internacionales.' },
-            { name: 'Instalaciones', href: '/nuestras-instalaciones', description: 'Tecnología de vanguardia.' },
-            { name: 'Equipo Médico', href: '/equipo', description: 'Especialistas certificados.' },
-            { name: 'Soporte Internacional', href: '/soporte-internacional', description: 'Te acompañamos en cada paso.' },
-            { name: 'Certificaciones', href: '/certificaciones-acreditaciones-y-alianzas', description: 'Seguridad y calidad avalada.' },
-        ]
-    },
-    {
-        name: 'Tratamientos',
-        href: '/tratamientos-de-fertilidad',
-        mega: true,
-        submenu: [
-            { name: 'FIV - Fertilización In vitro', href: '/fiv-fertilizacion-in-vitro', icon: Microscope },
-            { name: 'FIV con Estudio Genético', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', icon: Dna },
-            { name: 'Mini FIV', href: '/mini-fiv', icon: Zap },
-            { name: 'Inseminación Artificial', href: '/inseminacion-artificial', icon: UserCheck },
-            { name: 'Donación de Óvulos', href: '/donacion-de-ovulos', icon: Heart },
-            { name: 'Donación de Esperma', href: '/donacion-de-espermatozoides', icon: Droplets },
-            { name: 'Donación y Adopción de Embriones', href: '/donacion-y-adopcion-embriones', icon: Baby },
-            { name: 'Método ROPA', href: '/metodo-ropa', icon: Users },
-            { name: 'Preservación de la Fertilidad', href: '/preservacion-de-la-fertilidad', icon: Clock },
-            { name: 'Coito Programado', href: '/coito-programado-e-induccion-de-ovulacion', icon: Calendar },
-            { name: 'Transferencia de Embriones', href: '/transferencia-de-embriones-y-preparacion-endometrial', icon: ArrowLeftRight },
-            { name: 'Comunidad LGBT+', href: '/comunidad-lgbt-tratamiento', icon: HeartHandshake },
-        ]
-    },
-    {
-        name: 'Experiencia',
-        href: '#',
-        submenu: [
-            { name: 'Testimonios', href: '/testimonios' },
-            { name: 'Blog de Fertilidad', href: '/blog' },
-            { name: 'Preguntas Frecuentes', href: '/faqs' },
-            { name: 'Primera Visita', href: '/primera-visita-a-nuestra-clinica-de-fertilidad' },
-        ]
-    },
-    { name: 'Contacto', href: '/contacto' },
-];
+import { useTranslations } from 'next-intl';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeMega, setActiveMega] = useState<string | null>(null);
+    const t = useTranslations('Navbar');
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 40);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    interface SubMenuItem {
+        name: string;
+        href: string;
+        description?: string;
+        icon?: React.ElementType;
+    }
+
+    interface NavItem {
+        name: string;
+        href: string;
+        submenu?: SubMenuItem[];
+        mega?: boolean;
+    }
+
+    const navigation: NavItem[] = [
+        {
+            name: t('items.about.name'),
+            href: '#',
+            submenu: [
+                { name: t('items.about.links.philosophy.name'), href: '/sobre-fertility-center-cancun', description: t('items.about.links.philosophy.description') },
+                { name: t('items.about.links.tourism.name'), href: '/turismo-medico', description: t('items.about.links.tourism.description') },
+                { name: t('items.about.links.facilities.name'), href: '/nuestras-instalaciones', description: t('items.about.links.facilities.description') },
+                { name: t('items.about.links.team.name'), href: '/equipo', description: t('items.about.links.team.description') },
+                { name: t('items.about.links.support.name'), href: '/soporte-internacional', description: t('items.about.links.support.description') },
+                { name: t('items.about.links.certifications.name'), href: '/certificaciones-acreditaciones-y-alianzas', description: t('items.about.links.certifications.description') },
+            ]
+        },
+        {
+            name: t('items.treatments.name'),
+            href: '/tratamientos-de-fertilidad',
+            mega: true,
+            submenu: [
+                { name: t('items.treatments.links.fiv'), href: '/fiv-fertilizacion-in-vitro', icon: Microscope },
+                { name: t('items.treatments.links.genetic'), href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', icon: Dna },
+                { name: t('items.treatments.links.mini_fiv'), href: '/mini-fiv', icon: Zap },
+                { name: t('items.treatments.links.artificial_insemination'), href: '/inseminacion-artificial', icon: UserCheck },
+                { name: t('items.treatments.links.egg_donation'), href: '/donacion-de-ovulos', icon: Heart },
+                { name: t('items.treatments.links.sperm_donation'), href: '/donacion-de-espermatozoides', icon: Droplets },
+                { name: t('items.treatments.links.embryo'), href: '/donacion-y-adopcion-embriones', icon: Baby },
+                { name: t('items.treatments.links.ropa'), href: '/metodo-ropa', icon: Users },
+                { name: t('items.treatments.links.preservation'), href: '/preservacion-de-la-fertilidad', icon: Clock },
+                { name: t('items.treatments.links.timed_intercourse'), href: '/coito-programado-e-induccion-de-ovulacion', icon: Calendar },
+                { name: t('items.treatments.links.transfer'), href: '/transferencia-de-embriones-y-preparacion-endometrial', icon: ArrowLeftRight },
+                { name: t('items.treatments.links.lgbt'), href: '/comunidad-lgbt-tratamiento', icon: HeartHandshake },
+            ]
+        },
+        {
+            name: t('items.experience.name'),
+            href: '#',
+            submenu: [
+                { name: t('items.experience.links.testimonials'), href: '/testimonios' },
+                { name: t('items.experience.links.blog'), href: '/blog' },
+                { name: t('items.experience.links.faqs'), href: '/faqs' },
+                { name: t('items.experience.links.first_visit'), href: '/primera-visita-a-nuestra-clinica-de-fertilidad' },
+            ]
+        },
+        { name: t('items.contact'), href: '/contacto' },
+    ];
 
     return (
         <>
@@ -92,9 +95,7 @@ export default function Navbar() {
                         <Link href="tel:+529988035530" className="hover:text-brand-green transition-colors flex items-center gap-1.5 font-sans">
                             <Phone className="w-3 h-3 text-brand-green" /> +52 998 803 5530
                         </Link>
-                        <div className="flex items-center gap-1.5 opacity-40">
-                            <Globe className="w-3 h-3" /> ESPAÑOL
-                        </div>
+                        <LanguageSwitcher />
                     </div>
                 </Container>
             </div>
@@ -169,7 +170,7 @@ export default function Navbar() {
                             href="/contacto"
                             className="hidden sm:flex items-center gap-2 bg-brand-green text-brand-violet px-6 py-2.5 rounded-full text-base font-bold hover:bg-white transition-all shadow-lg hover:-translate-y-0.5"
                         >
-                            AGENDAR CITA
+                            {t('cta')}
                         </Link>
 
                         <button
@@ -184,13 +185,13 @@ export default function Navbar() {
 
                 {/* Mega Menu Overlay - Treatments */}
                 <AnimatePresence>
-                    {activeMega === 'Tratamientos' && (
+                    {activeMega === navigation[1].name && (
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
                             className="absolute top-full left-0 w-full bg-white shadow-2xl border-t border-slate-100 hidden lg:block overflow-hidden"
-                            onMouseEnter={() => setActiveMega('Tratamientos')}
+                            onMouseEnter={() => setActiveMega(navigation[1].name)}
                             onMouseLeave={() => setActiveMega(null)}
                         >
                             <Container className="py-12">
@@ -198,10 +199,14 @@ export default function Navbar() {
                                     <div className="col-span-1">
                                         <div className="bg-brand-violet rounded-[2.5rem] p-8 text-white h-full relative overflow-hidden group/card shadow-2xl">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-                                            <h4 className="text-3xl font-serif mb-4 relative z-10">Terapia <br /><span className="text-brand-green italic">Personalizada</span></h4>
-                                            <p className="text-white/60 text-base leading-relaxed mb-8 relative z-10">Más de 20 años cumpliendo sueños con la tecnología más avanzada del Caribe.</p>
+                                            <h4 className="text-3xl font-serif mb-4 relative z-10">
+                                                {t.rich('items.treatments.card.title', {
+                                                    italic: (chunks) => <span className="text-brand-green italic">{chunks}</span>
+                                                })}
+                                            </h4>
+                                            <p className="text-white/60 text-base leading-relaxed mb-8 relative z-10">{t('items.treatments.card.description')}</p>
                                             <Link href="/tratamientos-de-fertilidad" className="inline-flex items-center gap-2 text-brand-green text-base font-bold uppercase tracking-widest hover:text-white transition-colors relative z-10">
-                                                Ver Todos
+                                                {t('items.treatments.card.view_all')}
                                                 <ChevronDown className="w-4 h-4 -rotate-90" />
                                             </Link>
                                         </div>

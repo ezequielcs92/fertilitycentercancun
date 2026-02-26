@@ -4,30 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useInView, animate } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import Image from 'next/image';
-
-const stats = [
-    {
-        number: 7654,
-        label: "Ciclos realizados",
-        sublabel: "2012 - 2025",
-        delay: 0.1,
-        suffix: ""
-    },
-    {
-        number: 100,
-        label: "Betas positivas",
-        sublabel: "",
-        delay: 0.2,
-        suffix: ""
-    },
-    {
-        number: 1000,
-        label: "Bebés",
-        sublabel: "",
-        delay: 0.3,
-        suffix: "+"
-    }
-];
+import { useTranslations } from 'next-intl';
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
     const ref = React.useRef(null);
@@ -56,6 +33,32 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export default function SuccessRates() {
+    const t = useTranslations('SuccessRates');
+
+    const stats = [
+        {
+            number: 7654,
+            label: t('stats.cycles.label'),
+            sublabel: t('stats.cycles.date'),
+            delay: 0.1,
+            suffix: ""
+        },
+        {
+            number: 100,
+            label: t('stats.betas.label'),
+            sublabel: "",
+            delay: 0.2,
+            suffix: ""
+        },
+        {
+            number: 1000,
+            label: t('stats.babies.label'),
+            sublabel: "",
+            delay: 0.3,
+            suffix: "+"
+        }
+    ];
+
     return (
         <section className="relative py-32 overflow-hidden">
             {/* Background Image Collage Style */}
@@ -83,7 +86,9 @@ export default function SuccessRates() {
                         viewport={{ once: true }}
                         className="text-4xl md:text-6xl font-serif text-white mb-4"
                     >
-                        Nuestras tasas de <span className="text-brand-green italic">éxitos</span>
+                        {t.rich('title', {
+                            italic: (chunks) => <span className="text-brand-green italic">{chunks}</span>
+                        })}
                     </motion.h2>
                 </div>
 

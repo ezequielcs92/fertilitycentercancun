@@ -3,7 +3,7 @@ import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import BlogGrid from '@/components/blog/BlogGrid';
-import { getPublishedPosts, getCategories, type Post } from '@/lib/actions/posts';
+import { getPublishedPosts, getCategoriesTranslated, type Post } from '@/lib/actions/posts';
 import GlassCard from '@/components/ui/GlassCard';
 import { Search, Sparkles } from 'lucide-react';
 import Link from 'next/link';
@@ -12,10 +12,17 @@ export const revalidate = 3600;
 
 
 
-export default async function Page() {
+export default async function Page({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const isEs = locale === 'es';
+
   const [realPosts, categories] = await Promise.all([
-    getPublishedPosts(12),
-    getCategories()
+    getPublishedPosts(12, 0, locale),
+    getCategoriesTranslated(locale)
   ]);
   const posts = realPosts || [];
 
@@ -24,7 +31,7 @@ export default async function Page() {
       <PageHeader
         title="Blog"
         breadcrumb={[
-          { label: 'Inicio', href: '/' },
+          { label: isEs ? 'Inicio' : 'Home', href: '/' },
           { label: 'Blog', href: '#' }
         ]}
       />
@@ -37,7 +44,7 @@ export default async function Page() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
             <input
               type="text"
-              placeholder="Buscar artículos..."
+              placeholder={isEs ? 'Buscar artículos...' : 'Search articles...'}
               className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-violet/20 bg-white shadow-sm"
             />
           </div>
@@ -47,7 +54,7 @@ export default async function Page() {
               href="/blog"
               className="px-6 py-3 rounded-xl bg-brand-violet text-white font-bold whitespace-nowrap shadow-md shadow-brand-violet/20 hover:scale-105 transition-transform"
             >
-              Todos
+              {isEs ? 'Todos' : 'All'}
             </Link>
             {categories?.length > 0 ? categories.map((cat: any) => (
               <Link
@@ -58,7 +65,7 @@ export default async function Page() {
                 {cat.nombre}
               </Link>
             )) : (
-              ['Salud', 'Ciencia', 'Estilo de Vida'].map(cat => (
+              [isEs ? 'Salud' : 'Health', isEs ? 'Ciencia' : 'Science', isEs ? 'Estilo de Vida' : 'Lifestyle'].map(cat => (
                 <button key={cat} className="px-6 py-3 rounded-xl bg-white text-slate-400 font-medium whitespace-nowrap border border-slate-100 cursor-not-allowed cursor-not-allowed shadow-none">
                   {cat}
                 </button>
@@ -68,12 +75,12 @@ export default async function Page() {
         </div>
 
         <div className="space-y-16">
-          <BlogGrid posts={posts} />
+          <BlogGrid posts={posts} locale={locale} />
 
           {posts.length >= 12 && (
             <div className="text-center pt-12">
               <button className="px-12 py-4 bg-white border border-brand-violet/20 text-brand-violet font-bold rounded-2xl hover:bg-brand-violet hover:text-white transition-all shadow-lg">
-                Cargar más artículos
+                {isEs ? 'Cargar más artículos' : 'Load more articles'}
               </button>
             </div>
           )}
