@@ -1,33 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import Image from 'next/image';
 import { Quote } from 'lucide-react';
-
-const testimonials = [
-    {
-        name: "Mariana & Carlos",
-        story: "Después de 3 años de búsqueda, logramos nuestro sueño en el primer ciclo de FIV. El trato fue excepcional.",
-        image: "/lab.png",
-        location: "USA"
-    },
-    {
-        name: "Elena S.",
-        story: "Gracias al programa de Donación de Óvulos, hoy tengo a mi pequeño en brazos. La transparencia fue lo que más me gustó.",
-        image: "/maternity.png",
-        location: "México"
-    },
-    {
-        name: "Clara & Sofia",
-        story: "El Método ROPA nos permitió ser ambas parte del milagro. Estamos eternamente agradecidas con todo el equipo.",
-        image: "/lab.png",
-        location: "España"
-    }
-];
+import { getTestimonials } from '@/lib/actions/testimonials';
+import Link from 'next/link';
 
 export default function SuccessStories() {
+    const [testimonials, setTestimonials] = useState<any[]>([]);
+
+    useEffect(() => {
+        const fetchTestimonials = async () => {
+            const data = await getTestimonials('approved');
+            setTestimonials(data.slice(0, 3));
+        };
+        fetchTestimonials();
+    }, []);
+
+    const fallbackImages = ['/lab.png', '/maternity.png', '/lab.png'];
+
     return (
         <section className="py-24 bg-white overflow-hidden">
             <Container>
@@ -38,15 +31,15 @@ export default function SuccessStories() {
                             Historias que nos <span className="text-brand-green italic">llenan de orgullo</span>
                         </h2>
                     </div>
-                    <button className="text-brand-violet font-bold border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors">
+                    <Link href="/testimonios" className="text-brand-violet font-bold border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors">
                         Ver más testimoniales
-                    </button>
+                    </Link>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {testimonials.map((t, i) => (
                         <motion.div
-                            key={i}
+                            key={t.id || i}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -54,16 +47,22 @@ export default function SuccessStories() {
                             className="group"
                         >
                             <div className="relative aspect-square rounded-[3rem] overflow-hidden mb-6 shadow-xl group-hover:scale-105 transition-transform duration-500">
-                                <Image src={t.image} alt={t.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                                <Image src={fallbackImages[i % fallbackImages.length]} alt={t.nombre} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                                 <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-md p-3 rounded-2xl">
                                     <Quote className="text-white w-6 h-6" />
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
-                                    <p className="text-base italic font-light">"{t.story}"</p>
+                                    <p className="text-base italic font-light line-clamp-4">"{t.mensaje}"</p>
                                 </div>
                             </div>
-                            <h3 className="text-2xl font-serif text-brand-violet">{t.name}</h3>
-                            <p className="text-brand-green font-medium text-base tracking-widest uppercase">{t.location}</p>
+                            <h3 className="text-2xl font-serif text-brand-violet line-clamp-1">{t.nombre}</h3>
+                            <div className="flex gap-0.5 mt-2">
+                                {[...Array(5)].map((_, i) => (
+                                    <svg key={i} className={`w-4 h-4 ${i < (t.calificacion || 5) ? 'fill-brand-green text-brand-green' : 'text-slate-200'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                    </svg>
+                                ))}
+                            </div>
                         </motion.div>
                     ))}
                 </div>

@@ -1,21 +1,256 @@
+'use client';
 
 import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
+import { motion } from 'framer-motion';
+import {
+  ShieldCheck,
+  Award,
+  Handshake,
+  Globe,
+  Microscope,
+  CheckCircle2,
+  Heart
+} from 'lucide-react';
+
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 }
+};
+
+const certifications = [
+  {
+    title: "PACAL – Excelencia Analítica",
+    desc: "Certificación de excelencia en calidad analítica otorgada por el Programa de Aseguramiento de la Calidad para Laboratorios clínicos en México.",
+    image: "/images/wp/2025_10_hand-shake.png",
+    areas: ["Química clínica", "Inmunología-Endocrinología", "Citometría Hemática"]
+  },
+  {
+    title: "Cumplimiento FDA",
+    desc: "Alineados con las estrictas regulaciones de la U.S. Food and Drug Administration (FDA) para el transporte y manejo de tejidos reproductivos humanos.",
+    icon: <ShieldCheck className="w-12 h-12" />,
+    badges: ["USA Standard", "Transfronterizo"]
+  },
+  {
+    title: "Canadian Health Council",
+    desc: "Acreditados por el Canadian Health Council en un segundo ciclo de evaluación, garantizando estándares equivalentes a clínicas en Norteamérica.",
+    image: "/images/wp/2025_09_CEHC01.jpg",
+    status: "2do Ciclo de Acreditación"
+  },
+  {
+    title: "Membresía ESHRE",
+    desc: "Miembros de la European Society of Human Reproduction and Embryology, asegurando protocolos basados en la excelencia científica europea.",
+    image: "/images/wp/2025_09_eshre01.jpg"
+  },
+  {
+    title: "Sello REDLARA Dorado",
+    desc: "Acreditación de la Red Latinoamericana de Reproducción Asistida con el Sello Dorado, la máxima distinción en calidad y ética regional.",
+    image: "/images/wp/2025_09_redlara02.jpg"
+  },
+  {
+    title: "Distintivo de Salud SECTUR",
+    desc: "Reconocimiento de la Secretaría de Turismo por cumplir estrictos protocolos de higiene y seguridad en el sector de turismo médico.",
+    icon: <Award className="w-12 h-12" />
+  }
+];
+
+const alliances = [
+  {
+    title: "Igenomix",
+    subtitle: "Genética Reproductiva Avanzada",
+    desc: "Colaboración líder para diagnósticos genéticos preimplantacionales (PGT-A), maximizando la tasa de éxito por transferencia.",
+    image: "/images/wp/2025_10_igenomix001.png"
+  },
+  {
+    title: "Cryotec",
+    subtitle: "Tecnología de Vitrificación",
+    desc: "Tecnología japonesa de vitrificación ultrarrápida, garantizando la mayor tasa de supervivencia de óvulos y embriones.",
+    image: "/images/wp/2025_09_cryotec-01.jpg"
+  },
+  {
+    title: "Fairfax Cryobank & Xytex",
+    subtitle: "Bancos Internacionales",
+    desc: "Alianzas con los bancos de gametos más grandes del mundo, asegurando diversidad, ética y cumplimiento normativo internacional.",
+    image: "/images/wp/2025_05_logo-fairfax.png"
+  },
+  {
+    title: "Ferticare",
+    subtitle: "Apoyo Emocional",
+    desc: "Acompañamiento psicológico especializado para cuidar el bienestar mental durante todo el proceso reproductivo.",
+    image: "/images/wp/2025_09_ferticare01.jpg"
+  }
+];
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Certificaciones, Acreditaciones y Alianzas" 
+    <main className="bg-white pb-24 overflow-x-hidden">
+      <PageHeader
+        title="Excelencia y Alianzas"
         breadcrumb={[
           { label: 'Inicio', href: '/' },
-          { label: 'Certificaciones, Acreditaciones y Alianzas', href: '#' }
+          { label: 'Certificaciones y Alianzas', href: '#' }
         ]}
       />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<p>En <strong>Advanced Fertility Center Cancún</strong> trabajamos con un compromiso firme hacia la excelencia médica, la seguridad del paciente y la calidad en cada uno de nuestros procesos.<strong> Contamos con certificaciones y acreditaciones</strong> de organismos reconocidos, además de alianzas estratégicas con líderes en medicina reproductiva y tratamientos de fertilidad a <strong>nivel mundial</strong>.</p> \n <h2>Certificaciones y Membresías</h2> \n <img width=\"512\" height=\"512\" src=\"/images/wp/2025_10_hand-shake.png\" alt=\"\" srcset=\"/images/wp/2025_10_hand-shake.png 512w, /images/wp/2025_10_hand-shake-300x300.png 300w, /images/wp/2025_10_hand-shake-150x150.png 150w\" sizes=\"(max-width: 512px) 100vw, 512px\" /> \n <h2>Certificación PACAL – Excelencia en Calidad de Laboratorio</h2> \n <p>En A<strong>dvanced Fertility Center Cancún</strong> participamos activamente en el <strong>Programa de Aseguramiento de la Calidad para Laboratorios (PACAL)</strong>, una de las evaluaciones externas más reconocidas en México para garantizar la calidad y confiabilidad de los resultados emitidos por los laboratorios clínicos.</p><p>Este programa nacional realiza<strong> controles de calidad externos y auditorías periódicas</strong>, permitiendo evaluar el desempeño técnico y analítico de cada área del laboratorio mediante ejercicios comparativos con cientos de instituciones en el país.</p><p>Gracias a nuestros resultados consistentes, nuestra clínica de fertilidad y reproducción asistida, <strong>Advanced Fertility Center Cancún ha sido reconocido por PACAL con un diploma que acredita la excelencia en calidad analítica</strong> en las siguientes áreas especializadas: <strong>Química clínica, Inmunología-Endocrinología y Citometría Hemática.</strong></p><p>Contar con la certificación PACAL asegura a nuestros pacientes que los estudios que realizamos en sitio cumplen con estándares nacionales de excelencia, alineados con las mejores prácticas de calidad clínica en México.<br />Esto nos permite ofrecer a nuestros pacientes <strong>resultados confiables, diagnósticos precisos y atención médica respaldada por calidad certificada.</strong></p> \n <img width=\"512\" height=\"512\" src=\"/images/wp/2025_10_hand-shake.png\" alt=\"\" srcset=\"/images/wp/2025_10_hand-shake.png 512w, /images/wp/2025_10_hand-shake-300x300.png 300w, /images/wp/2025_10_hand-shake-150x150.png 150w\" sizes=\"(max-width: 512px) 100vw, 512px\" /> \n <h2>Cumplimiento con la FDA – Seguridad y Normativas Internacionales\n</h2> \n <p>En <strong>Advanced Fertility Center Cancún</strong> cumplimos con las regulaciones establecidas por la <strong>U.S. Food and Drug Administration (FDA)</strong>, autoridad sanitaria de Estados Unidos encargada de proteger la salud pública mediante el control de medicamentos, productos biológicos y tejidos humanos utilizados en tratamientos médicos.</p><p>Este cumplimiento es especialmente relevante para nuestros pacientes internacionales que desean <strong>transportar óvulos, esperma o embriones hacia o desde los Estados Unidos</strong>, ya que garantiza que todos los procesos relacionados con la manipulación de tejidos reproductivos se realicen bajo estándares reconocidos a nivel mundial.</p><p>Gracias a estos protocolos,<strong> nuestros pacientes provenientes de Estados Unidos y Canadá pueden confiar en que nuestros procedimientos cumplen con las normativas de su país</strong>, facilitando una atención continua y segura, incluso cuando el tratamiento de fertilidad se inicia en México y concluye en otro destino.</p><p><strong>Confianza internacional respaldada por regulaciones estrictas. En Advanced Fertility Center Cancún, trabajamos bajo estándares FDA para brindarte seguridad en cada paso de tu tratamiento de fertilidad o reproducción asistida.</strong></p> \n <img width=\"529\" height=\"386\" src=\"/images/wp/2025_09_CEHC01.jpg\" alt=\"\" srcset=\"/images/wp/2025_09_CEHC01.jpg 529w, /images/wp/2025_09_CEHC01-300x219.jpg 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> \n <h2>Acreditación del Canadian Health Council – Segundo Ciclo de Evaluación</h2> \n <p>En <strong>Advanced Fertility Center Cancún</strong>, nos enorgullece contar con la <strong>acreditación del Canadian Health Council</strong>, una de las entidades internacionales más rigurosas en la evaluación de calidad en servicios de salud. Actualmente, nos encontramos en el <strong>segundo ciclo de acreditación</strong>, lo que refleja nuestro compromiso continuo con la mejora, la excelencia médica y la atención centrada en el paciente.</p><p>Al alcanzar el <strong>segundo ciclo de acreditación</strong>, Advanced Fertility Center Cancún demuestra que no solo ha cumplido con los criterios iniciales, sino que ha sostenido e incrementado sus estándares a lo largo del tiempo, en una auditoría de seguimiento aún más estricta.</p><p>Estar acreditados por el <strong>Canadian Health Council</strong> brinda a nuestros pacientes internacionales —especialmente a quienes viajan desde Canadá y Estados Unidos— la tranquilidad de recibir tratamientos de fertilidad en una clínica que:</p><ul><li>Cumple con estándares equivalentes a los de su país de origen.</li><li>Implementa protocolos de seguridad y calidad con enfoque internacional.</li><li>Tiene procesos claros y confiables para el manejo de gametos y embriones en viajes transfronterizos.</li></ul><p> </p><p><em><strong>Confianza, transparencia y excelencia médica avalada por estándares internacionales.</strong></em></p> \n <img width=\"529\" height=\"386\" src=\"/images/wp/2025_09_eshre01.jpg\" alt=\"\" srcset=\"/images/wp/2025_09_eshre01.jpg 529w, /images/wp/2025_09_eshre01-300x219.jpg 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> \n <h2>Membresía ESHRE – Excelencia Europea en Medicina Reproductiva</h2> \n <p>En <strong>Advanced Fertility Center Cancún</strong> somos miembros activos de la<strong> European Society of Human Reproduction and Embryology (ESHRE)</strong>, una de las organizaciones científicas más reconocidas a nivel mundial en el campo de la medicina reproductiva.</p><p>Fundada en Europa, <strong>ESHRE</strong> agrupa a clínicas,especialistas, embriólogos e investigadores comprometidos con la excelencia científica, la innovación y las mejores prácticas clínicas en tratamientos de fertilidad.</p><p><strong>Conocimiento global, atención local. En Advanced Fertility Center Cancún, tu tratamiento se respalda con los más altos estándares internacionales.</strong></p> \n <img width=\"529\" height=\"386\" src=\"/images/wp/2025_09_redlara02.jpg\" alt=\"\" srcset=\"/images/wp/2025_09_redlara02.jpg 529w, /images/wp/2025_09_redlara02-300x219.jpg 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> \n <h2>Certificación REDLARA (Red Latinoamericana de Reproducción Asistida) – Sello Dorado de Excelencia</h2> \n <p>En <strong>Advanced Fertility Center Cancún</strong> contamos con la certificación oficial de la Red Latinoamericana de Reproducción Asistida (REDLARA), la organización más importante de reproducción asistida en América Latina. Esta acreditación no solo valida nuestros procesos clínicos y de laboratorio, sino que nos distingue con el <strong>Sello Dorado de Excelencia</strong>, otorgado exclusivamente a clínicas que cumplen con los más altos estándares de calidad, ética y efectividad en tratamientos de fertilidad.</p><p>Esta certificación es renovada periódicamente mediante auditorías presenciales realizadas por expertos internacionales en medicina reproductiva, lo que garantiza que mantenemos prácticas clínicas seguras, éticas y efectivas.</p><p>La acreditación por REDLARA es sinónimo de confianza, profesionalismo y compromiso con los pacientes. Solo un número selecto de clínicas en Latinoamérica ha obtenido el Sello Dorado, lo que posiciona a Advanced Fertility Center Cancún como un centro de excelencia en tratamientos de fertilidad y reproducción asistida a nivel regional e internacional.</p> \n <img width=\"512\" height=\"512\" src=\"/images/wp/2025_10_hand-shake.png\" alt=\"\" srcset=\"/images/wp/2025_10_hand-shake.png 512w, /images/wp/2025_10_hand-shake-300x300.png 300w, /images/wp/2025_10_hand-shake-150x150.png 150w\" sizes=\"(max-width: 512px) 100vw, 512px\" /> \n <h2>AMMR – Compromiso con la Medicina Reproductiva Mexicana</h2> \n <p>En<strong> Advanced Fertility Center Cancún</strong>, nuestros especialistas forman parte activa de la <strong>Asociación Mexicana de Medicina de la Reproducción (AMMR)</strong>, la principal organización nacional dedicada al desarrollo ético, científico y profesional de la medicina reproductiva en México.</p><p>Esta afiliación confirma que nuestro equipo médico se mantiene actualizado, comprometido con la mejora continua y en cumplimiento con los más altos estándares de atención clínica en fertilidad.</p><p><strong>La excelencia médica comienza con la formación. En Advanced Fertility Center Cancún, tu atención está en manos de especialistas certificados y comprometidos con los más altos estándares de la medicina reproductiva en México.</strong></p> \n <img width=\"512\" height=\"512\" src=\"/images/wp/2025_10_hand-shake.png\" alt=\"\" srcset=\"/images/wp/2025_10_hand-shake.png 512w, /images/wp/2025_10_hand-shake-300x300.png 300w, /images/wp/2025_10_hand-shake-150x150.png 150w\" sizes=\"(max-width: 512px) 100vw, 512px\" /> \n <h2>COMERGO – Comité Mexicano de Reproducción en Ginecología y Obstetricia</h2> \n <p>En <strong>Advanced Fertility Center Cancún</strong>, estamos orgullosos de contar con especialistas que forman parte del<strong> Comité Mexicano de Reproducción en Ginecología y Obstetricia (COMERGO)</strong>, una organización nacional que agrupa a los expertos más reconocidos en medicina reproductiva en México.</p><p>COMERGO promueve la <strong>actualización científica, la ética profesional y la excelencia médica</strong> en el campo de la reproducción humana asistida, respaldando prácticas clínicas basadas en evidencia y con enfoque centrado en el paciente.</p><p><strong>Formación, ética y excelencia médica respaldan cada historia de fertilidad. En Advanced Fertility Center Cancún, trabajamos con compromiso y conocimiento especializado gracias a nuestra participación en COMERGO.</strong></p> \n <img width=\"512\" height=\"512\" src=\"/images/wp/2025_10_hand-shake.png\" alt=\"\" srcset=\"/images/wp/2025_10_hand-shake.png 512w, /images/wp/2025_10_hand-shake-300x300.png 300w, /images/wp/2025_10_hand-shake-150x150.png 150w\" sizes=\"(max-width: 512px) 100vw, 512px\" /> \n <h2>SECTUR – Distintivo de Salud</h2> \n <p>En Advanced Fertility Center Cancún, nos enorgullece contar con el Distintivo de Salud otorgado por SECTUR, la Secretaría de Turismo de México. Esta certificación reconoce nuestro compromiso con los más altos estándares de higiene, seguridad y calidad en la prestación de servicios de salud dentro del sector turístico.<br />El Distintivo de Salud de SECTUR se concede únicamente a las instituciones que cumplen de manera estricta con protocolos sanitarios diseñados para proteger tanto a pacientes como a visitantes, lo cual es especialmente relevante en el ámbito del turismo médico. Esta distinción refleja nuestra dedicación a ofrecer un entorno seguro, confiable y profesional para todos nuestros pacientes, en particular aquellos que viajan desde el extranjero para recibir tratamiento de fertilidad.<br />Contar con esta certificación es una garantía para nuestros pacientes de que en Advanced Fertility Center Cancún priorizamos su bienestar, cumpliendo con las normas nacionales y adoptando las mejores prácticas en seguridad sanitaria.</p> \n <p>Confianza, seguridad y excelencia: la base de tu tratamiento con nosotros.</p> \n <h2>Alianzas Estratégicas</h2> \n <img width=\"400\" height=\"86\" src=\"/images/wp/2025_10_igenomix001.png\" alt=\"\" srcset=\"/images/wp/2025_10_igenomix001.png 400w, /images/wp/2025_10_igenomix001-300x65.png 300w\" sizes=\"(max-width: 400px) 100vw, 400px\" /> \n <h2>Igenomix – Genética Reproductiva Avanzada</h2> \n <p>En Advanced Fertility Center Cancún colaboramos con <strong>Igenomix</strong>, uno de los laboratorios líderes a nivel mundial en genética reproductiva. Gracias a esta alianza, ofrecemos a nuestros pacientes pruebas especializadas como el <strong>diagnóstico genético preimplantacional (PGT-A)</strong>, que permite identificar embriones con mayor potencial de implantación y reducir el riesgo de enfermedades genéticas.</p> \n <p>Mayor precisión, mejores resultados y decisiones basadas en ciencia genética de vanguardia.</p> \n <img width=\"512\" height=\"512\" src=\"/images/wp/2025_10_hand-shake.png\" alt=\"\" srcset=\"/images/wp/2025_10_hand-shake.png 512w, /images/wp/2025_10_hand-shake-300x300.png 300w, /images/wp/2025_10_hand-shake-150x150.png 150w\" sizes=\"(max-width: 512px) 100vw, 512px\" /> \n <h2>Unilab – Tamizaje y Análisis de Donantes con Estándares Internacionales</h2> \n <p>Contamos con el respaldo de <strong>Unilab</strong>, un laboratorio especializado en pruebas de tamizaje y análisis de donantes que cumple con las regulaciones de la <strong>FDA</strong>. Esta colaboración garantiza que todo el proceso de evaluación de donantes se realiza bajo estrictos protocolos de seguridad y calidad, esenciales para tratamientos con gametos donados.</p> \n <p>Confianza y seguridad en cada muestra, con cumplimiento normativo internacional.</p> \n <img width=\"529\" height=\"386\" src=\"/images/wp/2025_09_cryotec-01.jpg\" alt=\"\" srcset=\"/images/wp/2025_09_cryotec-01.jpg 529w, /images/wp/2025_09_cryotec-01-300x219.jpg 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> \n <h2>Cryotec – Tecnología de Vitrificación de Última Generación\n</h2> \n <p>Utilizamos la tecnología de <strong>Cryotec</strong>, líder mundial en <strong>vitrificación de óvulos y embriones</strong>, reconocida por sus altas tasas de supervivencia celular. Esta alianza nos permite ofrecer a nuestros pacientes una técnica de congelamiento ultrarrápida que protege al máximo la calidad y viabilidad de los gametos y embriones.</p> \n <p>Tecnología japonesa de precisión para preservar tu fertilidad con los mejores resultados.</p> \n <img width=\"529\" height=\"386\" src=\"/images/wp/2025_09_AAAC01.jpg\" alt=\"\" srcset=\"/images/wp/2025_09_AAAC01.jpg 529w, /images/wp/2025_09_AAAC01-300x219.jpg 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> \n <h2>Red de Clínicas Asociadas en EE.UU. y Canadá</h2> \n <p>Formamos parte de una <strong>red internacional de clínicas asociadas</strong> en Estados Unidos y Canadá, lo que permite a nuestros pacientes continuar su tratamiento de fertilidad de forma fluida y segura entre países. Esta colaboración facilita el <strong>transporte de gametos y embriones</strong>, así como la coordinación de ciclos compartidos, consultas y seguimientos a distancia.</p> \n <p>Atención internacional continua, sin fronteras ni interrupciones.</p> \n <img width=\"529\" height=\"386\" src=\"/images/wp/2025_09_ferticare01.jpg\" alt=\"\" srcset=\"/images/wp/2025_09_ferticare01.jpg 529w, /images/wp/2025_09_ferticare01-300x219.jpg 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> \n <h2>Ferticare – Apoyo Psicológico Especializado</h2> \n <p>En Advanced Fertility Center Cancún contamos con una alianza con <strong>Ferticare</strong>, especialistas en psicología de la fertilidad, para brindar acompañamiento emocional durante todo el proceso reproductivo.<br />A través de esta colaboración, nuestros pacientes reciben apoyo profesional para manejar el estrés, la ansiedad y los desafíos emocionales propios de los tratamientos de fertilidad.</p> \n <p>Cuidamos tu bienestar físico y emocional en cada etapa del camino.\n</p> \n <img width=\"529\" height=\"386\" src=\"/images/wp/2025_05_logo-fairfax.png\" alt=\"\" srcset=\"/images/wp/2025_05_logo-fairfax.png 529w, /images/wp/2025_05_logo-fairfax-300x219.png 300w\" sizes=\"(max-width: 529px) 100vw, 529px\" /> \n <h2>Bancos Internacionales de Esperma y Óvulos – Opciones Globales para Nuestros Pacientes</h2> \n <p>En nuestra clñinica de fertilidad, Advanced Fertility Center Cancún contamos con alianzas estratégicas con reconocidos<strong> bancos internacionales de esperma y ovocitos</strong>, lo que nos permite ofrecer a nuestros pacientes una amplia variedad de opciones seguras, éticas y confiables para tratamientos con gametos donados.</p><p>Entre nuestros colaboradores se encuentran:</p><ul><li><strong>Xytex, Fairfax Cryobank, European Sperm Bank, Cryos International</strong> entre otros..</li></ul><p>Estas alianzas permiten el acceso a <strong>catálogos internacionales</strong>, cumplimiento de normativas como <strong>FDA, Health Canada y estándares europeos</strong>, y facilitan la <strong>importación legal y segura</strong> de muestras hacia México.</p> \n <p>Variedad, calidad y confianza para construir tu familia sin fronteras.\n</p> \n <h2>Compromiso con la calidad y la confianza</h2> \n <p>Cada certificación y alianza representa nuestro esfuerzo por ofrecer tratamientos de fertilidad que cumplen con los más altos estándares de calidad. En Advanced Fertility Center Cancún, tu bienestar y el éxito de tu tratamiento están en manos de un equipo respaldado por instituciones líderes a nivel mundial.</p>` }} />
-      </Container>
+
+      {/* Intro Section */}
+      <section className="pt-20 pb-16 bg-gradient-to-b from-slate-50 to-white">
+        <Container>
+          <motion.div {...fadeIn} className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-serif text-brand-violet mb-8 leading-tight">
+              Comprometidos con la <span className="text-brand-green italic">Excelencia Médica</span> Global
+            </h1>
+            <p className="text-xl text-slate-600 font-light leading-relaxed">
+              En Advanced Fertility Center Cancún, no solo buscamos cumplir sueños; lo hacemos bajo los estándares más rigurosos de seguridad, ética y calidad internacional. Cada certificación y alianza estratégica es un testimonio de nuestra dedicación a tu bienestar.
+            </p>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* Certifications Grid */}
+      <section className="py-24">
+        <Container>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 px-4">
+            <div className="max-w-2xl">
+              <span className="text-brand-green font-bold tracking-widest text-sm uppercase mb-4 block">CALIDAD CERTIFICADA</span>
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-violet">Acreditaciones y Membresías</h2>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certifications.map((item, idx) => (
+              <motion.div
+                key={idx}
+                {...fadeIn}
+                transition={{ delay: idx * 0.1 }}
+                className="group bg-white rounded-[2.5rem] border border-slate-100 p-8 shadow-sm hover:shadow-2xl hover:border-brand-violet/10 transition-all duration-500 overflow-hidden flex flex-col"
+              >
+                <div className="h-48 mb-6 relative rounded-2xl overflow-hidden bg-slate-50 flex items-center justify-center">
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="text-brand-violet opacity-60">
+                      {item.icon}
+                    </div>
+                  )}
+                  {item.status && (
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-brand-green text-brand-violet text-[10px] font-bold rounded-full">
+                      {item.status}
+                    </div>
+                  )}
+                </div>
+
+                <h3 className="text-2xl font-serif text-brand-violet mb-4">{item.title}</h3>
+                <p className="text-slate-500 font-light flex-grow leading-relaxed mb-6">
+                  {item.desc}
+                </p>
+
+                {item.areas && (
+                  <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-50">
+                    {item.areas.map((area, i) => (
+                      <span key={i} className="text-[10px] px-2 py-1 bg-brand-violet/5 text-brand-violet rounded-md font-medium">
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {item.badges && (
+                  <div className="flex flex-wrap gap-2 pt-6 border-t border-slate-50">
+                    {item.badges.map((badge, i) => (
+                      <span key={i} className="flex items-center gap-1 text-[10px] px-2 py-1 bg-brand-green/10 text-brand-violet rounded-md font-bold uppercase tracking-tighter">
+                        <CheckCircle2 className="w-3 h-3 text-brand-green" /> {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Strategic Alliances */}
+      <section className="py-24 bg-slate-50">
+        <Container>
+          <div className="max-w-3xl mb-20 text-center mx-auto">
+            <Handshake className="w-12 h-12 text-brand-green mb-6 mx-auto" />
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-violet mb-6 italic">Alianzas que potencian resultados</h2>
+            <p className="text-lg text-slate-600 font-light">
+              Nuestra red de socios estratégicos nos permite integrar tecnología de vanguardia y soporte internacional en cada tratamiento.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {alliances.map((item, idx) => (
+              <motion.div
+                key={idx}
+                {...fadeIn}
+                className="bg-white rounded-[3rem] p-10 flex flex-col md:flex-row gap-8 items-center border border-transparent hover:border-brand-violet/10 hover:shadow-xl transition-all"
+              >
+                <div className="w-full md:w-2/5 shrink-0 rounded-2xl overflow-hidden aspect-square bg-slate-50 flex items-center justify-center p-6">
+                  <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <span className="text-brand-green font-bold text-xs tracking-widest uppercase mb-2 block">{item.subtitle}</span>
+                  <h3 className="text-2xl font-serif text-brand-violet mb-4">{item.title}</h3>
+                  <p className="text-slate-500 font-light leading-relaxed italic">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Final Section */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-brand-violet/5 -z-10" />
+        <Container>
+          <div className="max-w-5xl mx-auto bg-brand-violet rounded-[4rem] p-12 lg:p-24 text-white text-center relative shadow-2xl overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/20 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" />
+
+            <Globe className="w-16 h-16 text-brand-green mb-8 mx-auto animate-pulse" />
+            <h2 className="text-3xl md:text-5xl font-serif mb-8 leading-tight">Calidad sin fronteras</h2>
+            <p className="text-xl text-indigo-100 font-light max-w-3xl mx-auto mb-12">
+              Ya sea que te encuentres en México, Estados Unidos o Canadá, nuestra estructura certificada garantiza que tu camino hacia la maternidad o paternidad sea fluido, seguro y de clase mundial.
+            </p>
+
+            <div className="grid sm:grid-cols-3 gap-8">
+              <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+                <h4 className="font-serif text-brand-green text-3xl mb-2 italic">100%</h4>
+                <p className="text-sm text-indigo-200">Cumplimiento Etico</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+                <h4 className="font-serif text-brand-green text-3xl mb-2 italic">Global</h4>
+                <p className="text-sm text-indigo-200">Protocolos Seguridad</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+                <h4 className="font-serif text-brand-green text-3xl mb-2 italic">Lideres</h4>
+                <p className="text-sm text-indigo-200">Reproduccion Asistida</p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Last snippet */}
+      <section className="py-20">
+        <Container className="text-center">
+          <Heart className="w-12 h-12 text-brand-green mb-6 mx-auto" />
+          <h3 className="text-2xl font-serif text-brand-violet italic mb-4">Tu bienestar es nuestro mayor aval.</h3>
+          <p className="text-slate-500 font-light italic leading-relaxed max-w-2xl mx-auto">
+            Seguimos renovando nuestras acreditaciones año tras año para asegurarte siempre lo mejor de la ciencia y el corazón.
+          </p>
+        </Container>
+      </section>
     </main>
   );
 }

@@ -17,8 +17,7 @@ export const metadata: Metadata = {
   description: "Propuesta técnica estratégica desarrollada por Nomada Digital Web para Fertility Center Cancun.",
 };
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import ClientLayout from "@/components/layout/ClientLayout";
 
 export default function RootLayout({
   children,
@@ -30,9 +29,9 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${inter.variable} antialiased font-sans`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

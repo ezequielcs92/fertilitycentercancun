@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Turnstile } from '@marsidev/react-turnstile'
 import { submitLead, type LeadFormData } from '@/lib/actions/leads'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
@@ -9,6 +10,7 @@ import { Button } from '@/components/ui/Button'
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export default function ContactForm() {
+    const [isMounted, setIsMounted] = useState(false)
     const [formData, setFormData] = useState<LeadFormData>({
         nombre: '',
         email: '',
@@ -18,10 +20,15 @@ export default function ContactForm() {
         mensaje: ''
     })
 
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null)
     const [errors, setErrors] = useState<Partial<Record<keyof LeadFormData, string>>>({})
     const [isLoading, setIsLoading] = useState(false)
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
     const [submitMessage, setSubmitMessage] = useState('')
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
 
     // Validación del lado del cliente
     const validateForm = (): boolean => {
@@ -64,10 +71,16 @@ export default function ContactForm() {
             return
         }
 
+        if (!captchaToken) {
+            setSubmitStatus('error')
+            setSubmitMessage('Por favor, complete la verificación de seguridad.')
+            return
+        }
+
         setIsLoading(true)
 
         try {
-            const result = await submitLead(formData)
+            const result = await submitLead({ ...formData, captchaToken })
 
             if (result.success) {
                 setSubmitStatus('success')
@@ -82,6 +95,7 @@ export default function ContactForm() {
                     mensaje: ''
                 })
                 setErrors({})
+                setCaptchaToken(null)
             } else {
                 setSubmitStatus('error')
                 setSubmitMessage(result.message)
@@ -258,8 +272,26 @@ export default function ContactForm() {
                         </div>
                     </div>
 
+                    {/* CAPTCHA */}
+                    <div className="mt-8 flex justify-center min-h-[65px]">
+                        {isMounted && (
+                            <Turnstile
+                                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
+                                options={{
+                                    appearance: 'always',
+                                    theme: 'light',
+                                }}
+                                onSuccess={(token) => {
+                                    setCaptchaToken(token);
+                                }}
+                                onExpire={() => setCaptchaToken(null)}
+                                onError={() => setCaptchaToken(null)}
+                            />
+                        )}
+                    </div>
+
                     {/* Submit Button */}
-                    <div className="mt-8 flex justify-center">
+                    <div className="mt-6 flex justify-center">
                         <Button
                             type="submit"
                             variant="primary"

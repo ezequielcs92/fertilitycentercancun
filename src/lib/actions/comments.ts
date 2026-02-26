@@ -1,6 +1,6 @@
 'use server'
 
-import { createClient } from '@/lib/supabase/client'
+import { createClient } from '@/lib/supabase/server'
 
 export interface Comment {
     id: string
@@ -16,7 +16,7 @@ export interface Comment {
  * Obtiene comentarios aprobados de un post
  */
 export async function getApprovedComments(postId: string) {
-    const supabase = createClient()
+    const supabase = await createClient()
 
     if (!supabase) return []
 
@@ -61,7 +61,7 @@ export async function submitComment(formData: {
             }
         }
 
-        const supabase = createClient()
+        const supabase = await createClient()
 
         if (!supabase) {
             return {

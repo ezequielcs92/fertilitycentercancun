@@ -4,9 +4,11 @@ import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import { Container } from '@/components/ui/Container';
 import Image from 'next/image';
 import Link from 'next/link';
-import teamData from '@/data/team.json';
+import { getTeamMembers } from '@/lib/actions/team';
 
-const MedicalTeamPage = () => {
+const MedicalTeamPage = async () => {
+  const teamMembers = await getTeamMembers();
+
   return (
     <InnerPageLayout
       title="Nuestro equipo médico"
@@ -28,25 +30,20 @@ const MedicalTeamPage = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {teamData.map((member: any) => {
+            {teamMembers.map((member: any) => {
               // Image resolution logic
-              let imageSrc = '/medical-team.jpg'; // Generic fallback
-
-              // Map specific slugs to available images in public/
-              if (member.slug === 'dr-eduardo-emanuel-espadas-reyes') imageSrc = '/dr-eduardo-espadas.jpg';
-              if (member.slug === 'dr-everardo-trevino-ortiz') imageSrc = '/dr-everardo-trevino.jpg';
-              if (member.slug === 'dra-esther-iyune-cojab') imageSrc = '/dra-esther-iyune.jpg';
+              const imageSrc = member.foto_url || '/medical-team.jpg';
 
               return (
                 <Link
                   key={member.id}
-                  href={`/equipo/${member.slug}`}
+                  href={`/equipo/${member.slug || member.id}`}
                   className="not-prose group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full no-underline hover:no-underline"
                 >
                   <div className="relative aspect-square overflow-hidden">
                     <Image
                       src={imageSrc}
-                      alt={member.title}
+                      alt={member.nombre}
                       fill
                       style={{ margin: 0, padding: 0 }}
                       className="object-cover object-center scale-[1.12] transition-transform duration-500 group-hover:scale-125 !m-0 !p-0 block"
@@ -56,7 +53,7 @@ const MedicalTeamPage = () => {
 
                   <div className="p-5 flex flex-col flex-grow">
                     <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-brand-violet transition-colors no-underline">
-                      {member.title}
+                      {member.nombre}
                     </h3>
                     <p className="text-brand-violet font-medium text-sm mb-4 line-clamp-2 no-underline">
                       {member.especialidad}

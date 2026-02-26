@@ -124,7 +124,7 @@ export default function Page() {
           <div className="absolute top-0 left-0 w-96 h-96 bg-brand-green/20 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-green/10 rounded-full blur-[100px] translate-y-1/2 translate-x-1/2 pointer-events-none" />
           <div className="relative z-10 max-w-3xl mx-auto">
-            <h3 className="!text-white text-3xl md:text-5xl font-serif mb-6 leading-tight">¿Estás lista para dar el <span className="text-brand-green italic underline underline-offset-8 decoration-white/20">primer paso</span>?</h3>
+            <h3 className="!text-white text-3xl md:text-5xl font-serif mb-6 leading-tight">¿Listo/a para dar el <span className="text-brand-green italic underline underline-offset-8 decoration-white/20">primer paso</span>?</h3>
             <p className="!text-white/90 text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto">Solicita una videollamada con nuestro equipo. Estaremos encantados de orientarte y resolver todas tus dudas.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="/contacto" className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold text-base shadow-xl hover:bg-white transition-all hover:-translate-y-1 whitespace-nowrap w-full sm:w-auto">

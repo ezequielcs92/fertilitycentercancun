@@ -19,11 +19,11 @@ export default function FAQAccordion({ id, pregunta, respuesta }: FAQAccordionPr
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={`w-full text-left p-6 md:p-8 rounded-[2rem] transition-all duration-300 flex items-center justify-between gap-4 border ${isOpen
-                        ? 'bg-white shadow-[0_15px_40px_rgba(117,98,162,0.08)] border-brand-violet/10'
-                        : 'bg-white/50 border-white hover:bg-white hover:border-brand-violet/5'
+                    ? 'bg-white shadow-[0_15px_40px_rgba(117,98,162,0.08)] border-brand-violet/10'
+                    : 'bg-white/50 border-white hover:bg-white hover:border-brand-violet/5'
                     }`}
             >
-                <span className={`text-lg md:text-xl font-serif leading-tight transition-colors ${isOpen ? 'text-brand-violet' : 'text-brand-slate'
+                <span className={`text-lg md:text-xl font-serif leading-tight transition-colors ${isOpen ? 'text-brand-violet' : 'text-slate-600'
                     }`}>
                     {pregunta}
                 </span>

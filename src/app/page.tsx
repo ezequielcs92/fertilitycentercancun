@@ -60,7 +60,7 @@ export default function HomePage() {
         <Container className="relative z-10 text-center md:text-left">
           <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-[4rem] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="max-w-xl">
-              <h2 className="text-5xl md:text-6xl font-serif text-white mb-6">¿Lista para dar el <span className="text-brand-green italic underline decoration-brand-green/30">primer paso?</span></h2>
+              <h2 className="text-5xl md:text-6xl font-serif text-white mb-6">¿Listo/a para dar el <span className="text-brand-green italic underline decoration-brand-green/30">primer paso?</span></h2>
               <p className="text-xl text-white/80 font-light">Habla con nuestro equipo bilingüe y recibe tu diagnóstico personalizado hoy mismo.</p>
             </div>
             <button className="bg-brand-green text-brand-violet px-12 py-6 rounded-3xl font-bold text-xl hover:bg-white transition-all duration-500 shadow-2xl flex items-center gap-3 whitespace-nowrap group">

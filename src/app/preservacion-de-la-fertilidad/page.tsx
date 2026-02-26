@@ -50,7 +50,7 @@ export default function Page() {
         </div>
       </div>
 
-      <h2 className="text-3xl font-serif text-brand-violet mb-6">Técnicas Disponibles</h2>
+      <h2 className="text-3xl font-serif text-brand-violet mb-6 text-center">Técnicas Disponibles</h2>
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 mb-16 not-prose">
         <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-500">
           <div className="relative aspect-[5/4] overflow-hidden bg-slate-50 m-0">

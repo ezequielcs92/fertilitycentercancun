@@ -1,21 +1,172 @@
+'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import { TestimonialModal } from '@/components/testimonials/TestimonialModal';
+import { getTestimonials } from '@/lib/actions/testimonials';
+import { getStorageFiles } from '@/lib/actions/storage';
 
 export default function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(8);
+  const [babyImages, setBabyImages] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      const data = await getTestimonials('approved');
+      setTestimonials(data);
+      setLoading(false);
+    };
+    const fetchGallery = async () => {
+      const images = await getStorageFiles('galeria-familias');
+      setBabyImages(images);
+    };
+    fetchTestimonials();
+    fetchGallery();
+  }, []);
+
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Testimonios" 
+    <main className="bg-slate-50 pb-24">
+      <PageHeader
+        title="Testimonios"
         breadcrumb={[
           { label: 'Inicio', href: '/' },
           { label: 'Testimonios', href: '#' }
         ]}
       />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>\"Aquí comienza tu camino hacia la maternidad o paternidad, con ciencia, cuidado y corazón.\"</h2> \n <p>Descubre las experiencias de nuestros pacientes y cómo juntos logramos cumplir su sueño de formar una familia. Estos testimonios reflejan el apoyo y cuidado que brindamos en cada paso del proceso, ofreciéndote una visión auténtica de lo que puedes esperar en tu propio camino hacia la paternidad.</p>https://youtu.be/5aZmAS43R28?si=NfeWZ5GH-gjt5htihttps://youtu.be/A7kc8Bp14pY?si=S6iN-ULf5oviQcm1 \n <a href=\"https://youtube.com/playlist?list=PLGPNuKqY4XrjawL-2hakrVjI-4PgMWQ3V&#038;si=O8Wjeq4Vc1G8qB2u\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n Ver todos los testimonios\n </a>\n <figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-015-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 015\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-014-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 014\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-013-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 013\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-012-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 012\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-011-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 011\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-010-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 010\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-009-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 009\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-008-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 008\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-007-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 007\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-006-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 006\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-005-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 005\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-004-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 004\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-003-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 003\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-002-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 002\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-001-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 001\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-016-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 016\" /></figure> \n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512.009 512.009\" style=\"enable-background:new 0 0 512.009 512.009;\" xml:space=\"preserve\"><g>	<g> <path d=\"M500.373,244.083H39.689l96.465-96.465c4.563-4.531,4.589-11.903,0.058-16.465c-4.531-4.563-11.903-4.589-16.465-0.058 L3.384,247.458c-4.512,4.539-4.512,11.869,0,16.407l116.364,116.364c4.18,4.881,11.526,5.45,16.407,1.269 c4.881-4.18,5.45-11.526,1.269-16.407c-0.39-0.455-0.814-0.88-1.269-1.269l-96.465-96.465h460.684 c6.427,0,11.636-5.21,11.636-11.636S506.799,244.083,500.373,244.083z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512.009 512.009\" style=\"enable-background:new 0 0 512.009 512.009;\" xml:space=\"preserve\"><g>	<g> <path d=\"M508.625,247.801L508.625,247.801L392.262,131.437c-4.18-4.881-11.526-5.45-16.407-1.269 c-4.881,4.18-5.45,11.526-1.269,16.407c0.39,0.455,0.814,0.88,1.269,1.269l96.465,96.582H11.636C5.21,244.426,0,249.636,0,256.063 s5.21,11.636,11.636,11.636H472.32l-96.465,96.465c-4.881,4.18-5.45,11.526-1.269,16.407s11.526,5.45,16.407,1.269 c0.455-0.39,0.88-0.814,1.269-1.269l116.364-116.364C513.137,259.67,513.137,252.34,508.625,247.801z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Estoy muy contenta y agradecida con esta clínica desde que pedí informes, la Srita. Elizabeth Neyra fue tan amable, me resolvía todas las dudas sin antes ir a una consulta, se llegó la hora de ir a primer consulta , me atendió el Dr Raymundo Guerrero, super amable y respetuoso. Tengo 39 años y ya no me daban esperanza de embarazarme de manera natural tras varios intentos, y el Dr me dió un tratamiento para fortalecer el útero y antes de empezar mi tratamiento, llega la sorpresa estoy embarazada. Tan solo un medicamento bastó. Es una clínica que recomiendo ampliamente por su profesionalismo y su servicio. Eternamente agradecida. \n <cite>Vanessa Vázquez</cite> \n ¡Tuvimos una experiencia increíble en AFCC y los recomendamos encarecidamente a cualquiera que busque ayuda para la fertilidad! Todo el personal fue maravilloso y fuimos bendecidos con un hermoso bebé de nuestra primera ronda de FIV y después de varios tratamientos de fertilidad fallidos en casa. \n No tendríamos a nuestros dos maravillosos hijos si no fuera por Advanced Fertility Center Cancún. He descubierto que AFCC es muy profesional y compite con cualquier clínica en los Estados Unidos. No ha sido fácil para mí quedar embarazada, pero el personal y los médicos me han brindado un gran apoyo y comprensión. Lo más importante es que no se dieron por vencidos y tenemos la suerte de ser padres. Tenemos pensado volver el año que viene para intentarlo una vez más. El tratamiento de fertilidad en los EE. UU. es básicamente inasequible, y aunque no es barato en AFC en Cancún, es más asequible y también te da la oportunidad de tener unas buenas vacaciones. ¡Gracias a todos! \n Hicimos una búsqueda en Google de Fertilidad In Vitro (FIV) en México y encontramos el Centro de Fertilidad Avanzado en Cancún (AFCC). Investigamos varias clínicas y AFCC fue una opción clara para nosotros. Tienen una lista de donantes de óvulos internamente, lo cual fue muy conveniente para nosotros. Organizamos todo el porceso por Internet y nunca tuve la necesidad de hablar con alguien por teléfono. Convertimos toda la experiencia en vacaciones y creo que estar en un estado relajado fue la clave para quedar embarazada. \n <cite>Robbin Wood Arambula</cite> \n Trabajar con Fertility Center Cancún fue una experiencia maravillosa. Mi esposo y yo hemos logrado nuestro sueño de formar nuestra familia gracias a su atención y profesionalismo. Aunque el proceso de la fertilización in-vitro puede ser estresante, Advanced Fertility Center Cancun brinda el apoyo necesario y gracias a ellos hoy tenemos un bebé sano y feliz y estamos en espera de uno más. ¡Todo en un periodo de dos años! <b> Gracias por todo, los recomendamos 100%</b> \n <cite>Sergio</cite> \n Tuvimos la mejor experiencia posible en Fertility Center Cancún. En dos años dimos la bienvenida a dos bebés sanos y hermosos a través de la fertilización in vitro (FIV). La clínica nos ayudó a hacer realidad nuestro sueño de tener una familia después de 8 años de infertilidad.\nEstamos muy agradecidos\n<br>\n<b>Recomendamos encarecidamente esta maravillosa clínica, su personal profesional y servicial.</b> \n <cite>C. Family</cite> \n Ante todo, quisiera agradecer la esmerada atención de todo el personal de la clínica, especialmente a la Doctora Azul Torres, quien siempre estuvo pendiente de cada mensaje o llamada que le hice durante todo el proceso.\nTengo 45 años y ahora mismo estoy esperando un bebé que ya tiene 9 semanas de vida, o sea, que estoy en las 11 semanas de embarazo casi a punto de completar el primer trimestre. Mi esposo y yo estamos muy felices, hemos tenido una experiencia muy linda, cierto que el camino a veces se hizo difícil porque teníamos dudas y angustias, pero es hermoso saber que lo estamos logrando.<br>\n<b>Una vez mas gracias a Advanced Fertility Center por hacer realidad nuestro sueño de tener un bebé.</b> \n <cite>Dayle Frias</cite> \n Nuestro hermoso hijo se hizo realidad para nosotros gracias al increíble equipo del Centro de Fertilidad de Cancún. <b>¡El centro y su equipo son de primera categoría!</b> Todo su personal es muy eficiente y servicial. Ni siquiera pensamos que concebiríamos en nuestro primer intento. Nos ayudaron a tomar buenas y acertadas decisiones para garantizar que nuestro primer intento fuera un éxito. Hicimos el embrión del donante y las pruebas pregenéticas. Se comunicaron oportunamente y nos informaron sobre cómo estaban progresando nuestros óvulos y, en última instancia, nuestros embriones. Los recomendamos encarecidamente a futuros padres que anhelan concebir un bebé. Haga su tarea y considere los consejos del equipo para guiarlo a tener una experiencia exitosa de FIV. \n <cite>Anna Cecile</cite> \n Las estadísticas y tasas de éxito que tienen aquí son increíbles. <b> En México encontré mejores resultados que en Canadá y Estados Unidos.</b> Así que decidimos que teníamos que venir e intentarlo. \n <cite>Jennifer & James Hawes</cite> \n Desde que entras a la clínica te reciben con los brazos abiertos. Siempre me sentí en confianza, sin ninguna duda, siempre me aclararon todo. <b>Recomiendo a Advanced Fertility Center Cancun al 100%</b> \n <cite>Melanie Pubanz</cite> \n Gracias a Fertility Center por ser no solo un equipo de profesionales en el campo de la fertilidad, sino también un equipo de profesionales que atiende a sus pacientes de manera personalizada durante este proceso emocional. <b>No tenemos nada más que decir, GRACIAS</b> al Dr. Gaytan y al equipo del Centro de Fertilidad por el regalo más hermoso: ¡nuestro maravilloso hijo! \n Gracias a Fertility Center por ser no solo un equipo de profesionales en el campo de la fertilidad, sino también un equipo de profesionales que atiende a sus pacientes de manera personalizada durante este proceso emocional. <b>No tenemos nada más que decir, GRACIAS</b> al Dr. Gaytan y al equipo del Centro de Fertilidad por el regalo más hermoso: ¡nuestro maravilloso hijo! \n <h2>¡Comparte tu experiencia con nosotros!</h2> \n <p>Si has sido paciente en nuestra clínica, cuéntanos cómo fue tu viaje y lo que más valoraste del trato y apoyo de nuestro equipo. Sabemos que el camino para formar una familia no ha sido fácil, pero estamos convencidos de que al compartir tu historia de éxito y felicidad, podrás inspirar a otras parejas a seguir adelante y alcanzar su sueño de convertirse en padres. Gracias por ayudarnos a brindar esperanza a quienes comienzan su propio camino hacia la paternidad.</p>` }} />
-      </Container>
+      <div className="pt-16 max-w-[1800px] w-full mx-auto px-6 md:px-12">
+        {/* Intro */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-serif text-brand-violet mb-6 relative inline-block">
+            <span className="relative z-10">"Aquí comienza tu camino hacia</span><br />
+            <span className="relative z-10">la maternidad o paternidad,</span><br />
+            <span className="relative z-10">con ciencia, cuidado y corazón."</span>
+            <div className="absolute -bottom-4 left-0 right-0 h-4 bg-brand-green/20 -rotate-1 rounded-full pointer-events-none" />
+          </h2>
+          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mt-8 font-light">
+            Descubre las experiencias de nuestros pacientes y cómo juntos logramos cumplir su sueño de formar una familia. Estos testimonios reflejan el apoyo y cuidado que brindamos en cada paso del proceso, ofreciéndote una visión auténtica de lo que puedes esperar en tu propio camino hacia la paternidad.
+          </p>
+        </div>
+
+        {/* Video Testimonials */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="rounded-[2rem] overflow-hidden shadow-xl aspect-video bg-slate-200">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/5aZmAS43R28?si=NfeWZ5GH-gjt5hti"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className="rounded-[2rem] overflow-hidden shadow-xl aspect-video bg-slate-200">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/A7kc8Bp14pY?si=S6iN-ULf5oviQcm1"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+
+        <div className="text-center mb-24">
+          <a href="https://youtube.com/playlist?list=PLGPNuKqY4XrjawL-2hakrVjI-4PgMWQ3V&#038;si=O8Wjeq4Vc1G8qB2u" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-red-600 text-white px-8 py-4 rounded-full font-bold hover:bg-red-700 transition-colors shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="currentColor">
+              <path d="m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z"></path>
+            </svg>
+            Ver todos los testimonios en YouTube
+          </a>
+        </div>
+
+        {/* Written Testimonials Grid */}
+        {loading ? (
+          <div className="py-24 text-center">
+            <div className="w-12 h-12 border-4 border-brand-violet border-t-brand-green rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-slate-400 italic font-light">Cargando historias...</p>
+          </div>
+        ) : testimonials.length === 0 ? (
+          <div className="py-24 text-center">
+            <p className="text-slate-400 italic font-light text-lg">Aún no hay historias para mostrar. ¡Sé el primero en compartir la tuya!</p>
+          </div>
+        ) : (
+          <div className="mb-24">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
+              {testimonials.slice(0, visibleCount).map((testimonial) => (
+                <div key={testimonial.id} className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 relative group hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                  <div className="text-6xl text-brand-green/20 font-serif leading-none absolute top-4 left-6 group-hover:text-brand-green/40 transition-colors">"</div>
+                  <p className="text-slate-600 font-light italic mb-6 relative z-10 pt-4 leading-relaxed flex-grow line-clamp-6 hover:line-clamp-none transition-all">
+                    {testimonial.mensaje}
+                  </p>
+                  <div className="flex items-center gap-4 border-t border-slate-100 pt-6 mt-auto">
+                    <div className="w-10 h-10 rounded-full bg-brand-violet text-white flex items-center justify-center font-bold text-lg shrink-0 uppercase">
+                      {testimonial.nombre.charAt(0)}
+                    </div>
+                    <div>
+                      <cite className="not-italic font-medium text-brand-violet block line-clamp-1">{testimonial.nombre}</cite>
+                      <div className="flex gap-0.5 mt-1">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className={`w-3 h-3 ${i < (testimonial.calificacion || 5) ? 'fill-brand-green text-brand-green' : 'text-slate-200'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {visibleCount < testimonials.length && (
+              <div className="text-center">
+                <button
+                  onClick={() => setVisibleCount(prev => prev + 8)}
+                  className="bg-white border-2 border-brand-violet/10 text-brand-violet px-8 py-3 rounded-full font-bold hover:bg-brand-violet hover:text-white transition-all shadow-sm"
+                >
+                  Cargar más testimonios
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Baby Gallery */}
+        <div className="mb-24">
+          <h3 className="text-3xl font-serif text-center text-brand-violet mb-12">Familias creadas con <span className="text-brand-green">amor</span></h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+            {babyImages.map((image) => (
+              <div key={image.id} className="aspect-square rounded-3xl overflow-hidden relative group">
+                <img
+                  src={image.publicUrl}
+                  alt={image.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-brand-violet/0 group-hover:bg-brand-violet/20 transition-colors duration-500 mix-blend-overlay" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="bg-brand-violet/5 rounded-[3rem] p-12 text-center max-w-4xl mx-auto border border-brand-violet/10">
+          <h2 className="text-3xl font-serif text-brand-violet mb-6">¡Comparte tu experiencia con nosotros!</h2>
+          <p className="text-slate-600 font-light text-lg mb-8 leading-relaxed">
+            Si has sido paciente en nuestra clínica, cuéntanos cómo fue tu viaje y lo que más valoraste del trato y apoyo de nuestro equipo. Sabemos que el camino para formar una familia no ha sido fácil, pero estamos convencidos de que al compartir tu historia de éxito, podrás inspirar a otras parejas.
+          </p>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold hover:bg-white hover:text-brand-violet transition-colors shadow-lg shadow-brand-green/20"
+          >
+            Compartir mi historia
+          </button>
+        </div>
+
+      </div>
+      <TestimonialModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </main>
   );
 }
