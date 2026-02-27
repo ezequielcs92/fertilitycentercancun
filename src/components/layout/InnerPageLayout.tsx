@@ -23,7 +23,7 @@ export default function InnerPageLayout({ title, breadcrumb, children, sidebarCo
                 <div className="flex flex-col">
                     {/* Main Content */}
                     <article className="w-full">
-                        <div className="prose prose-lg prose-violet prose-headings:font-serif prose-headings:font-normal prose-p:font-light prose-p:text-slate-600 prose-img:rounded-[2rem] prose-img:shadow-2xl max-w-none">
+                        <div className="inner-page-prose prose prose-lg prose-violet prose-headings:font-serif prose-headings:font-normal prose-p:font-light prose-p:text-slate-600 prose-img:rounded-[2rem] prose-img:shadow-2xl prose-img:mt-0 prose-img:mb-0 prose-figure:mt-0 prose-figure:mb-0 max-w-none">
                             {children}
                         </div>
                     </article>

@@ -95,3 +95,90 @@ export const FAQ_DATA: FAQItem[] = [
         respuesta: 'No tenemos lista de espera. El tiempo para una primera consulta suele ser de 2 a 3 días, y el tratamiento puede iniciarse tan pronto como se complete la evaluación inicial.'
     }
 ];
+
+export const FAQ_DATA_EN: FAQItem[] = [
+    {
+        id: 'faq-1',
+        categoria: 'clinica',
+        pregunta: 'Why choose Advanced Fertility Center Cancun?',
+        respuesta: 'Choosing us means receiving top-tier care, high success rates, leading reproductive medicine specialists, cutting-edge technology, and comprehensive emotional support in a paradise location with international certifications.'
+    },
+    {
+        id: 'faq-2',
+        categoria: 'clinica',
+        pregunta: 'Where are you located?',
+        respuesta: 'We are located in Cancun, Quintana Roo, Mexico: Tulum Center Building – Avenida Tulum, Super Manzana 9, Manzana 1, Lote 3. ZIP Code 77500.'
+    },
+    {
+        id: 'faq-3',
+        categoria: 'clinica',
+        pregunta: 'What are your office hours?',
+        respuesta: 'Monday to Friday from 8:00 a.m. to 5:00 p.m. (last first-time consultation at 4:00 p.m.) and Saturdays from 9:00 a.m. to 2:00 p.m. (last first-time consultation at 1:00 p.m.).'
+    },
+    {
+        id: 'faq-4',
+        categoria: 'tratamientos',
+        pregunta: 'When should I see a fertility specialist?',
+        respuesta: 'If you have been trying to conceive for one year without success (or 6 months if you are over 35), or if you have a previously diagnosed condition such as fibroids or ovulatory disorders, you should seek a professional evaluation as soon as possible.'
+    },
+    {
+        id: 'faq-5',
+        categoria: 'tratamientos',
+        pregunta: 'What fertility treatments do you offer?',
+        respuesta: 'We offer timed intercourse, intrauterine insemination (IUI), in vitro fertilization (IVF), egg donation, cryopreservation, embryo adoption, the ROPA method, and preimplantation genetic testing with sex selection, among others.'
+    },
+    {
+        id: 'faq-6',
+        categoria: 'tratamientos',
+        pregunta: 'What is the consultation price?',
+        respuesta: 'The consultation fee is $1,100 MXN and includes a transvaginal ultrasound to evaluate the uterus and ovaries, plus your full medical history creation for a comprehensive assessment.'
+    },
+    {
+        id: 'faq-7',
+        categoria: 'tratamientos',
+        pregunta: 'I have fibroids and want to get pregnant. What are my options?',
+        respuesta: 'There are conservative medical and surgical options (such as laparoscopic myomectomy) to preserve the uterus. Each case should be individually evaluated to determine the impact of fibroids on fertility.'
+    },
+    {
+        id: 'faq-8',
+        categoria: 'tratamientos',
+        pregunta: 'How does PCOS affect my fertility?',
+        respuesta: 'Polycystic Ovary Syndrome affects ovulation due to hormonal imbalance. However, with proper ovulation-induction medication and lifestyle changes, 70–90% of patients ovulate and many achieve pregnancy within a few months.'
+    },
+    {
+        id: 'faq-9',
+        categoria: 'tratamientos',
+        pregunta: 'I had my tubes tied. Can I get pregnant again?',
+        respuesta: 'Yes. It is possible through tubal recanalization techniques (depending on your case) or, more commonly, through advanced treatments such as IVF/ICSI, which bypass the fallopian tubes.'
+    },
+    {
+        id: 'faq-10',
+        categoria: 'pacientes',
+        pregunta: 'What happens during my first consultation?',
+        respuesta: 'A specialist will review your history, perform a transvaginal ultrasound, and discuss your goals and possible causes of infertility. The visit takes approximately one hour.'
+    },
+    {
+        id: 'faq-11',
+        categoria: 'pacientes',
+        pregunta: 'Do you offer virtual consultations?',
+        respuesta: 'Yes. We offer virtual consultations at no additional cost for patients who cannot attend in person. We only need your name, date of birth, email, and phone number to schedule.'
+    },
+    {
+        id: 'faq-12',
+        categoria: 'pacientes',
+        pregunta: 'Do you offer emotional support during treatment?',
+        respuesta: 'We understand this is an emotionally challenging journey, so we offer psychological support and emotional guidance services for all our patients.'
+    },
+    {
+        id: 'faq-13',
+        categoria: 'pacientes',
+        pregunta: 'Do you have options for same-sex couples or single patients?',
+        respuesta: 'Absolutely. We offer donor options (sperm and egg banks), the ROPA method for female couples, and agreements for surrogacy pathways, allowing everyone to pursue their dream of becoming parents.'
+    },
+    {
+        id: 'faq-14',
+        categoria: 'pacientes',
+        pregunta: 'Is there a waitlist for treatments?',
+        respuesta: 'No, we do not have a waitlist. First consultations are usually available within 2 to 3 days, and treatment can begin as soon as the initial evaluation is completed.'
+    }
+];

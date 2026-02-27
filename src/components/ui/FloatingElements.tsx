@@ -22,6 +22,14 @@ const elements = Array.from({ length: 20 }, (_, i) => {
     };
 });
 
+function px(value: number) {
+    return `${value.toFixed(3)}px`;
+}
+
+function percent(value: number) {
+    return `${value.toFixed(4)}%`;
+}
+
 export default function FloatingElements() {
     return (
         <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10" aria-hidden="true">
@@ -30,10 +38,10 @@ export default function FloatingElements() {
                     key={el.id}
                     className="absolute rounded-full bg-brand-violet/[0.03] border border-brand-violet/[0.05] backdrop-blur-[2px]"
                     style={{
-                        width: el.size,
-                        height: el.size,
-                        left: `${el.x}%`,
-                        top: `${el.y}%`,
+                        width: px(el.size),
+                        height: px(el.size),
+                        left: percent(el.x),
+                        top: percent(el.y),
                     }}
                     animate={{
                         y: [0, -100, 0],

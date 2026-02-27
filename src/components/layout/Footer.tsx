@@ -4,36 +4,39 @@ import React from 'react';
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { Heart, Mail, Phone, MapPin, Instagram, Facebook, Youtube } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Footer() {
     const t = useTranslations('Footer');
+    const locale = useLocale();
+    const isEs = locale === 'es';
+    const route = (es: string, en: string) => (isEs ? es : en);
 
     const footerLinks = [
         {
             title: t('sections.treatments.title'),
             links: [
-                { name: t('sections.treatments.links.fiv'), href: '/fiv-fertilizacion-in-vitro' },
-                { name: t('sections.treatments.links.artificial_insemination'), href: '/inseminacion-artificial' },
-                { name: t('sections.treatments.links.egg_donation'), href: '/donacion-de-ovulos' },
-                { name: t('sections.treatments.links.ropa'), href: '/metodo-ropa' },
-                { name: t('sections.treatments.links.preservation'), href: '/preservacion-de-la-fertilidad' },
+                { name: t('sections.treatments.links.fiv'), href: route('/fiv-fertilizacion-in-vitro', '/ivf-in-vitro-fertilization') },
+                { name: t('sections.treatments.links.artificial_insemination'), href: route('/inseminacion-artificial', '/artificial-insemination') },
+                { name: t('sections.treatments.links.egg_donation'), href: route('/donacion-de-ovulos', '/egg-donation') },
+                { name: t('sections.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method') },
+                { name: t('sections.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation') },
             ]
         },
         {
             title: t('sections.about.title'),
             links: [
-                { name: t('sections.about.links.why_afcc'), href: '/sobre-fertility-center-cancun' },
-                { name: t('sections.about.links.team'), href: '/equipo' },
-                { name: t('sections.about.links.facilities'), href: '/nuestras-instalaciones' },
-                { name: t('sections.about.links.tourism'), href: '/turismo-medico' },
+                { name: t('sections.about.links.why_afcc'), href: route('/sobre-fertility-center-cancun', '/about-fertility-center') },
+                { name: t('sections.about.links.team'), href: route('/equipo', '/ivf-team') },
+                { name: t('sections.about.links.facilities'), href: route('/laboratorios-y-servicios', '/laboratories-and-services') },
+                { name: t('sections.about.links.tourism'), href: route('/turismo-medico', '/international-patients') },
                 { name: t('sections.about.links.faqs'), href: '/faqs' },
             ]
         },
         {
             title: t('sections.legal.title'),
             links: [
-                { name: t('sections.legal.links.privacy'), href: '/aviso-de-privacidad' },
+                { name: t('sections.legal.links.privacy'), href: route('/aviso-de-privacidad', '/privacy-notice') },
                 { name: t('sections.legal.links.terms'), href: '#' },
             ]
         }
@@ -108,7 +111,7 @@ export default function Footer() {
                         </div>
                         <div className="flex items-center gap-3">
                             <MapPin className="w-4 h-4 text-brand-green" />
-                            <span>Cancun, Quintana Roo, México</span>
+                            <span>{isEs ? 'Cancun, Quintana Roo, México' : 'Cancun, Quintana Roo, Mexico'}</span>
                         </div>
                     </div>
                     <div className="mt-12 text-center text-[10px] uppercase font-bold tracking-[0.2em] text-white/20">

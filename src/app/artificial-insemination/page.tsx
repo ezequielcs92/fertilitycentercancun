@@ -1,21 +1,104 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { Check, Heart } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Intrauterine Insemination (IUI)" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Intrauterine Insemination (IUI)', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>An accessible and effective option for couples with mild or unexplained infertility.</h2> \n <p>Commonly known as insemination, is a low-complexity assisted reproduction procedure designed to facilitate conception. It involves placing carefully selected sperm directly into the woman’s uterus during her fertile window.</p><p>This treatment is <strong>minimally invasive, cost-effective</strong>, and serves as an excellent option for those seeking an effective fertility solution without resorting to more complex techniques like In Vitro Fertilization (IVF).</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contact now\n </a>\n <img width=\"800\" height=\"462\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/06/Etapas-del-IUI-inseminacion-intrauterina-ENG-1024x591.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/06/Etapas-del-IUI-inseminacion-intrauterina-ENG-1024x591.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/Etapas-del-IUI-inseminacion-intrauterina-ENG-300x173.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/Etapas-del-IUI-inseminacion-intrauterina-ENG-768x443.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/Etapas-del-IUI-inseminacion-intrauterina-ENG-1536x886.jpg 1536w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/Etapas-del-IUI-inseminacion-intrauterina-ENG.jpg 1920w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido.jpg\" alt=\"Ultrasonido\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n The development of the dominant follicle in a female cycle is observed using ultrasound (follicular monitoring). Medications are used to help the follicles grow and induce ovulation at the right time.<p>Through a catheter, the partner's or donor's semen is placed directly into the woman's uterus—once it has been capacitated and prepared—so that the sperm are closer to the egg at the time of ovulation, improving the chances of achieving pregnancy.</p><p>This treatment has two important benefits: it is affordable and closely resembles natural conception; however, its success rates are much lower than those of in vitro fertilization.</p> \n <img width=\"800\" height=\"474\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1024x607.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1024x607.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-300x178.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-768x456.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1536x911.jpg 1536w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito.jpg 1920w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2>Benefits of Intrauterine Insemination (IUI)</h2> \n <ul>\n <li>\n <b>Affordable treatment:</b> IUI is one of the most cost-effective fertility options, making it an ideal first step for cases of mild infertility.\n </li>\n <li>\n <b>Simple, outpatient procedure:</b> It is a non-invasive treatment performed in the clinic, with no need for anesthesia or hospitalization.\n </li>\n <li>\n <b>Improves chances of conception: </b> By placing the sperm directly into the uterus during ovulation, the chances of fertilization are increased.\n </li>\n <li>\n <b>Can be combined with ovarian stimulation:</b> This boosts the number of available eggs and maximizes the chances of success.\n </li>\n <li>\n <b>Less emotional and physical stress:</b> Being a quick and low-risk procedure, IUI generally causes less stress compared to more complex treatments.\n </li>\n </ul>\n <h2>Who Is IUI Recommended For?</h2> \n <h2>IUI may be a good option for:</h2> \n <ul>\n <li>\n <b>Couples with mild infertility or unexplained infertility.</b> When no clear medical reason is found for difficulty conceiving.\n </li>\n <li>\n <b>Men with mild sperm abnormalities.</b> Such as low motility or moderate sperm count issues.\n </li>\n <li>\n <b>Women with a good ovarian reserve and open fallopian tubes.</b>\n </li>\n <li>\n <b>Same-sex female couples or single women</b> Who want to conceive using donor sperm.\n </li>\n <li>\n <b>Young patients seeking a simpler treatment before considering more advanced techniques.</b>\n </li>\n </ul>\n <h2>EXPERTS IN FERTILITY AND ASSISTED REPRODUCTION</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contact now\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Artificial Insemination"
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Treatments', href: '/fertility-treatments' },
+        { label: 'Artificial Insemination', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        An accessible and effective option for patients with mild or unexplained infertility.
+      </p>
+      <p className="text-lg text-slate-600 font-light mb-8">
+        <strong>Intrauterine Insemination (IUI)</strong>, commonly known as artificial insemination, is a low-complexity assisted reproduction procedure. Its goal is to facilitate conception by placing previously prepared sperm directly into the uterus at the optimal ovulation window.
+      </p>
+
+      <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl mb-12">
+        <Image
+          src="https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01-1024x591.jpg"
+          alt="Intrauterine insemination process"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-8">How does it work?</h2>
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
+          <div className="h-48 relative rounded-2xl overflow-hidden mb-6">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido.jpg"
+              alt="Follicular monitoring"
+              fill
+              className="object-cover"
+              unoptimized
+            />
+          </div>
+          <h3 className="text-xl font-bold text-brand-violet mb-3">1. Follicular Monitoring</h3>
+          <p className="text-base text-slate-600">
+            We monitor follicle development by ultrasound. Medication may be used to support follicular growth and trigger ovulation at the optimal time.
+          </p>
+        </div>
+        <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
+          <div className="h-48 relative rounded-2xl overflow-hidden mb-6">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1024x607.jpg"
+              alt="Insemination procedure"
+              fill
+              className="object-cover"
+              unoptimized
+            />
+          </div>
+          <h3 className="text-xl font-bold text-brand-violet mb-3">2. Insemination</h3>
+          <p className="text-base text-slate-600">
+            Once the semen sample is prepared (sperm capacitation), it is gently introduced into the uterus using a thin catheter. The procedure is quick, outpatient, and usually painless.
+          </p>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Key Benefits</h2>
+      <div className="bg-brand-violet/5 p-8 rounded-3xl mb-12">
+        <ul className="space-y-4">
+          {[
+            'Low-complexity and lower-cost treatment.',
+            'Simple outpatient procedure performed in clinic.',
+            'No anesthesia or prolonged recovery required.',
+            'Improves chances compared to timed intercourse alone.',
+            'Lower physical and emotional stress.'
+          ].map((item, i) => (
+            <li key={i} className="flex gap-3 items-start">
+              <Check className="w-5 h-5 text-brand-green mt-1 shrink-0" />
+              <span className="text-slate-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Is it right for me?</h2>
+      <p className="mb-6 text-slate-600">Artificial insemination may be recommended for:</p>
+      <div className="grid md:grid-cols-2 gap-4">
+        {[
+          'Mild infertility or unexplained infertility.',
+          'Mild male-factor fertility issues.',
+          'Cervical factors that hinder sperm passage.',
+          'Single women or female couples using donor sperm.'
+        ].map((item, i) => (
+          <div key={i} className="flex items-center gap-4 bg-white shadow-sm p-4 rounded-2xl border border-slate-100">
+            <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0">
+              <Heart className="w-5 h-5 text-brand-violet fill-current" />
+            </div>
+            <span className="text-base font-medium text-slate-700">{item}</span>
+          </div>
+        ))}
+      </div>
+    </InnerPageLayout>
   );
 }

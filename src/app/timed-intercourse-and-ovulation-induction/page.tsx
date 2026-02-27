@@ -1,21 +1,120 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Calendar, Clock, DollarSign, Heart } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Timed intercourse and ovulation induction" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Timed intercourse and ovulation induction', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>A simple and natural method to support pregnancy during monitored cycles.</h2> \n <p>This is a low-complexity assisted reproduction treatment that requires monitoring the development of the dominant follicle using ultrasound during a natural female cycle (follicular monitoring). Certain medications can be used to stimulate the follicle and ensure ovulation at the right time.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contact now\n </a>\n <img width=\"1920\" height=\"1000\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/06/coito-programado-ENG.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/06/coito-programado-ENG.jpg 1920w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/coito-programado-ENG-300x156.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/coito-programado-ENG-1024x533.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/coito-programado-ENG-768x400.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2025/06/coito-programado-ENG-1536x800.jpg 1536w\" sizes=\"(max-width: 1920px) 100vw, 1920px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n Your doctor will tell you the ideal time to have sexual intercourse (coitus) at home to increase your chances of pregnancy. \n <h2>Advantages of Timed Intercourse</h2> \n <ul>\n <li>\n It is a simple, non-invasive, and natural procedure.\n </li>\n <li>\n Low cost compared to other fertility treatments.\n </li>\n <li>\n Does not require hospitalization or surgical procedures.\n </li>\n <li>\n Allows the couple to maintain intimacy and control throughout the process.\n </li>\n <li>\n Can be combined with other ovarian stimulation techniques to improve results.\n </li>\n </ul>\n <h2>Who is Timed Intercourse recommended for?</h2> \n <ul>\n <li>\n Couples with mild infertility or unexplained infertility (idiopathic infertility).\n </li>\n <li>\n Women with regular menstrual cycles but difficult-to-predict ovulation.\n </li>\n <li>\n Couples who want to try a natural method before resorting to more complex treatments.\n </li>\n </ul>\n <h2>FERTILITY AND ASSISTED REPRODUCTION EXPERTS</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contact now\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Timed Intercourse"
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Treatments', href: '/fertility-treatments' },
+        { label: 'Timed Intercourse', href: '#' }
+      ]}
+    >
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-12">
+        <div className="flex-1">
+          <p className="lead text-2xl font-serif text-brand-violet italic mb-6">
+            Simplicity and naturalness to maximize your fertility.
+          </p>
+          <div className="space-y-4 text-lg text-slate-600 font-light mb-8">
+            <p>
+              <strong>Timed Intercourse</strong> is a low-complexity technique that respects the woman&apos;s natural rhythm, optimizing conditions for conception. Through precise cycle monitoring (follicular tracking), we identify the days of maximum fertility to guide you with exact timing.
+            </p>
+            <p>
+              It is the ideal treatment for young couples or those with mild causes of infertility, as it allows you to maintain the intimacy of home while having the expert guidance of our specialists. Maximizing the chances of pregnancy has never been so simple, natural, and accessible.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/contact-ivf-doctors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
+            >
+              Schedule a Consultation
+            </Link>
+          </div>
+        </div>
+        <div className="w-full lg:w-1/3 shrink-0">
+          <div className="not-prose relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01.jpg"
+              alt="Happy couple"
+              fill
+              className="object-cover m-0"
+              unoptimized
+            />
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">How Does It Work?</h2>
+      <div className="grid md:grid-cols-2 gap-8 mb-12 items-center">
+        <div>
+          <p className="text-slate-600 mb-4">
+            The process is simple and minimally invasive:
+          </p>
+          <ul className="space-y-6">
+            <li className="flex gap-4 items-center">
+              <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">1</div>
+              <p className="text-slate-700 text-lg"><strong>Follicular Tracking:</strong> We perform periodic ultrasounds to observe the growth of the dominant follicle.</p>
+            </li>
+            <li className="flex gap-4 items-center">
+              <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">2</div>
+              <p className="text-slate-700 text-lg"><strong>Induction (Optional):</strong> If necessary, we prescribe mild medications to ensure ovulation.</p>
+            </li>
+            <li className="flex gap-4 items-center">
+              <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">3</div>
+              <p className="text-slate-700 text-lg"><strong>Scheduling:</strong> The doctor indicates the exact days to have sexual intercourse.</p>
+            </li>
+          </ul>
+        </div>
+        <div className="not-prose relative h-64 md:h-full rounded-2xl overflow-hidden shadow-lg">
+          <Image
+            src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1.jpg"
+            alt="Medical consultation"
+            fill
+            className="object-cover m-0"
+            unoptimized
+          />
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Key Advantages</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {[
+          { icon: Heart, label: "Natural Method" },
+          { icon: DollarSign, label: "Low Cost" },
+          { icon: Calendar, label: "No Surgery" },
+          { icon: Clock, label: "Quick Process" },
+        ].map((item, i) => (
+          <div key={i} className="bg-brand-gray p-10 rounded-[2.5rem] flex flex-col items-center justify-center text-center gap-5 border border-transparent hover:border-brand-violet/10 transition-all hover:shadow-md group">
+            <div className="p-4 bg-white rounded-2xl text-brand-green shadow-sm group-hover:scale-110 transition-transform">
+              <item.icon className="w-10 h-10" />
+            </div>
+            <span className="font-bold text-brand-violet text-xl">{item.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Who Is It For?</h2>
+      <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+        <ul className="space-y-4">
+          {[
+            "Young couples with mild or recent infertility.",
+            "Women with irregular cycles (anovulation).",
+            "Unexplained infertility (idiopathic).",
+            "Couples who wish to start with low-complexity methods."
+          ].map((item, i) => (
+            <li key={i} className="flex gap-3 items-center">
+              <div className="w-2 h-2 bg-brand-green rounded-full shrink-0" />
+              <span className="text-slate-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </InnerPageLayout>
   );
 }

@@ -1,4 +1,4 @@
-import { type NextRequest, NextResponse } from 'next/server'
+import { type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
@@ -6,26 +6,17 @@ import { routing } from './i18n/routing';
 const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(request: NextRequest) {
-    const { pathname } = request.nextUrl
-    const legacyLocaleMatch = pathname.match(/^\/(es|en)(\/|$)/)
+    const pathname = request.nextUrl.pathname;
+    const isAdminOrAuthRoute =
+        pathname.startsWith('/admin') ||
+        pathname.startsWith('/login') ||
+        pathname.startsWith('/auth');
 
-    if (legacyLocaleMatch) {
-        const legacyLocale = legacyLocaleMatch[1]
-        const strippedPath = pathname.replace(/^\/(es|en)/, '') || '/'
-        const redirectUrl = request.nextUrl.clone()
-        redirectUrl.pathname = strippedPath
-
-        const redirectResponse = NextResponse.redirect(redirectUrl)
-        redirectResponse.cookies.set('NEXT_LOCALE', legacyLocale)
-
-        return await updateSession(request, redirectResponse)
+    if (isAdminOrAuthRoute) {
+        return await updateSession(request);
     }
 
-    // 1. First handle next-intl
     const intlResponse = intlMiddleware(request);
-
-    // 2. Then update Supabase session
-    // This allows the session cookie to be preserved/refreshed
     return await updateSession(request, intlResponse)
 }
 

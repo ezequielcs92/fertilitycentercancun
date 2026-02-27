@@ -50,27 +50,39 @@ export default function GeneticStudyPage() {
       />
 
       <Container className="pt-16">
-        <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="text-4xl font-serif text-brand-violet mb-6">Mayor precisión, mejores resultados</h2>
-          <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">
-            La combinación de la Fertilización In Vitro (FIV) con la <strong>Prueba Genética Preimplantacional para Aneuploidías (PGT-A)</strong> es una herramienta avanzada que permite identificar embriones cromosómicamente normales antes de la transferencia.
-          </p>
-
-          <div className="bg-brand-gray p-8 rounded-[2.5rem] border border-brand-violet/5 mb-12">
-            <p className="text-lg text-slate-700 leading-relaxed font-light">
-              Este estudio permite <strong>conocer el sexo del embrión</strong> y detectar alteraciones cromosómicas responsables de síndromes como <strong>Down, Patau, Edwards y Klinefelter</strong>. En Advanced Fertility Center Cancún, ofrecemos medicina reproductiva de vanguardia.
+        <div className="grid lg:grid-cols-2 gap-10 items-start mb-16 max-w-6xl mx-auto">
+          <div>
+            <h2 className="text-4xl font-serif text-brand-violet mb-6">Mayor precisión, mejores resultados</h2>
+            <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">
+              La combinación de la Fertilización In Vitro (FIV) con la <strong>Prueba Genética Preimplantacional para Aneuploidías (PGT-A)</strong> es una herramienta avanzada que permite identificar embriones cromosómicamente normales antes de la transferencia.
             </p>
+
+            <div className="bg-brand-gray p-8 rounded-[2.5rem] border border-brand-violet/5 mb-8">
+              <p className="text-lg text-slate-700 leading-relaxed font-light">
+                Este estudio permite <strong>conocer el sexo del embrión</strong> y detectar alteraciones cromosómicas responsables de síndromes como <strong>Down, Patau, Edwards y Klinefelter</strong>. En Advanced Fertility Center Cancún, ofrecemos medicina reproductiva de vanguardia.
+              </p>
+            </div>
+
+            <a
+              href="https://api.whatsapp.com/send?phone=5219983050373&text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita."
+              target="_blank"
+              rel="noopener nofollow"
+              className="inline-flex items-center gap-3 bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all hover:-translate-y-1"
+            >
+              <MessageCircle className="w-6 h-6" />
+              Agenda tu videollamada gratuita
+            </a>
           </div>
 
-          <a
-            href="https://api.whatsapp.com/send?phone=5219983050373&text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita."
-            target="_blank"
-            rel="noopener nofollow"
-            className="inline-flex items-center gap-3 bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all hover:-translate-y-1 mb-12"
-          >
-            <MessageCircle className="w-6 h-6" />
-            Agenda tu videollamada gratuita
-          </a>
+          <div className="not-prose relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2025/10/biopsia-001.jpg"
+              alt="Biopsia embrionaria para estudio genético"
+              fill
+              className="object-cover"
+              unoptimized
+            />
+          </div>
         </div>
 
         <div className="not-prose relative aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl mb-24 bg-slate-100">

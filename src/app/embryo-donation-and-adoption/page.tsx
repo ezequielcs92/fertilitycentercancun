@@ -1,21 +1,87 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Gift, HeartHandshake } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Embryo Donation and Adoption" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Embryo Donation and Adoption', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>A path filled with generosity and love to help make the dream of parenthood come true.</h2> \n <p>Embryo donation and adoption is much more than a medical procedure; it is a hopeful opportunity for those dreaming of starting a family and facing difficulties conceiving with their own eggs or sperm.</p><p>This treatment offers the chance to give life to a new beginning through embryos donated by other couples who, with generosity and love, have chosen to share the most precious gift: the opportunity to become parents.<br />It is a journey that transforms lives and opens the door to hope, joy, and the miracle of motherhood or fatherhood when it once seemed out of reach.</p><p>Patients can choose to adopt an embryo and transfer it into the woman's body after<br />undergoing an <a href=\"https://fertilitycentercancun.com/fertilitycentermexico/en/fertility-treatments/embryo-transfer-and-endometrial-preparation/\">endometrial preparation</a> process </p><p>At Advanced Fertility Center Cancún, we passionately promote embryo donation as a beautiful way to help those who wish to fulfill their dream of becoming parents. We have a carefully organized catalog that allows future parents to make an informed and personalized selection of the embryo that best suits their needs and desires.</p><p>Our commitment is to accompany you with respect, ethics, and care at every stage of the process, providing you with security and confidence so that this journey toward motherhood or fatherhood is as special as possible.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contact us now\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <h2>Advantages of embryo donation and adoption</h2> \n <ul>\n <li>\n It allows people with complex reproductive challenges to achieve a successful pregnancy.\n </li>\n <li>\n Use of already developed embryos, which can increase implantation and pregnancy rates.\n </li>\n <li>\n It is an ethical and responsible option, giving a second chance to embryos that would otherwise be discarded.\n </li>\n <li>\n Confidential process with professional support throughout the entire treatment.\n </li>\n </ul>\n <h2>Experts in fertility and assisted reproduction</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contact us now\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Embryo Donation and Adoption"
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Treatments', href: '/fertility-treatments' },
+        { label: 'Embryo Adoption', href: '#' }
+      ]}
+    >
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-12">
+        <div className="flex-1">
+          <p className="lead text-2xl font-serif text-brand-violet italic mb-6">
+            A gift of life that transforms families forever.
+          </p>
+          <div className="space-y-4 text-lg text-slate-600 font-light mb-8">
+            <p>
+              <strong>Embryo adoption</strong> is a hopeful and generous opportunity for those facing difficulties conceiving with their own gametes. It involves receiving embryos donated by other couples who, after successfully completing their family, decide to share them altruistically.
+            </p>
+            <p>
+              This path is one of the noblest acts in reproductive medicine. It allows future parents to experience the full journey of pregnancy and birth, using embryos of proven quality. It is a simplified procedure that offers excellent success rates and a deep emotional connection with the life that begins.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/contact-ivf-doctors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
+            >
+              Schedule a Consultation
+            </Link>
+          </div>
+        </div>
+        <div className="w-full lg:w-1/3 shrink-0">
+          <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-100 p-4">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial.jpg"
+              alt="Endometrial preparation process"
+              fill
+              className="object-contain m-0"
+              unoptimized
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="bg-brand-gray p-8 rounded-3xl col-span-2">
+          <h2 className="text-2xl font-serif text-brand-violet mb-4">How Does the Process Work?</h2>
+          <p className="text-slate-600 leading-relaxed font-light">
+            It is a simpler procedure than a full IVF cycle. Patients select an embryo from our donation program. The future mother undergoes <strong>endometrial preparation</strong> (mild hormonal treatment) to condition her uterus, and then the embryo transfer is performed, similar to a Pap smear procedure.
+          </p>
+        </div>
+        <div className="not-prose bg-brand-violet text-white p-8 rounded-3xl flex flex-col justify-center items-center text-center shadow-lg border border-brand-violet">
+          <HeartHandshake className="w-16 h-16 mb-4 text-brand-green" />
+          <p className="font-serif text-xl leading-relaxed text-white">&ldquo;A gift of life that transforms two families forever&rdquo;</p>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Benefits of Adoption</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {[
+          { title: "High Probability", desc: "Proven-quality embryos are used, which increases success rates." },
+          { title: "Less Complexity", desc: "Does not require ovarian stimulation or follicular puncture for the recipient mother." },
+          { title: "Second Chance", desc: "Allows cryopreserved embryos to fulfill their purpose of giving life." },
+          { title: "Accessibility", desc: "It is usually more affordable than a full IVF cycle with egg donation." }
+        ].map((item, i) => (
+          <div key={i} className="flex flex-col gap-4 p-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow group">
+            <div className="w-16 h-16 rounded-2xl bg-brand-green/10 flex items-center justify-center shrink-0 text-brand-violet group-hover:scale-110 transition-transform">
+              <Gift className="w-10 h-10" />
+            </div>
+            <div>
+              <h4 className="font-bold text-brand-violet text-lg mb-2">{item.title}</h4>
+              <p className="text-base text-slate-600 leading-relaxed font-light">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </InnerPageLayout>
   );
 }

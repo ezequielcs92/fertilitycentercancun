@@ -2,17 +2,24 @@ import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import ContactForm from '@/components/forms/ContactForm';
-import { Phone, Mail, MapPin, ExternalLink, Globe, Clock, Instagram, Facebook, Youtube, MessageSquare } from 'lucide-react';
+import { Phone, Mail, MapPin, ExternalLink, Globe, Instagram, Facebook, Youtube, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 
-export default function Page() {
+export default async function Page({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params;
+  const isEs = locale === 'es';
+
   return (
     <main className="bg-white min-h-screen pb-24">
       <PageHeader
-        title="Contacto"
+        title={isEs ? 'Contacto' : 'Contact'}
         breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Contacto', href: '#' }
+          { label: isEs ? 'Inicio' : 'Home', href: '/' },
+          { label: isEs ? 'Contacto' : 'Contact', href: '#' }
         ]}
       />
 
@@ -21,36 +28,39 @@ export default function Page() {
           {/* Left Side: Info & Details */}
           <div className="space-y-16">
             <section>
-              <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base">Atención Personalizada</span>
+              <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base">{isEs ? 'Atención Personalizada' : 'Personalized Care'}</span>
               <h2 className="text-5xl font-serif text-brand-violet mt-4 mb-8 leading-tight">
-                Estamos aquí para <span className="text-brand-green italic underline decoration-brand-green/30">ayudarte</span>
+                {isEs ? 'Estamos aquí para ' : 'We are here to '}
+                <span className="text-brand-green italic underline decoration-brand-green/30">{isEs ? 'ayudarte' : 'help you'}</span>
               </h2>
               <p className="text-xl text-slate-600 font-light leading-relaxed max-w-xl">
-                ¿Tienes dudas sobre tu proceso de fertilidad? Nuestro equipo de expertos está listo para acompañarte en cada paso hacia tu sueño de ser mamá.
+                {isEs
+                  ? '¿Tienes dudas sobre tu proceso de fertilidad? Nuestro equipo de expertos está listo para acompañarte en cada paso hacia tu sueño de ser mamá.'
+                  : 'Do you have questions about your fertility process? Our expert team is ready to support you at every step toward your dream of becoming a mother.'}
               </p>
             </section>
 
             <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
               <ContactMethod
                 icon={<Phone className="w-6 h-6 text-brand-violet" />}
-                title="Llámanos"
+                title={isEs ? 'Llámanos' : 'Call us'}
                 lines={[
-                  { label: 'México:', value: '+52 998 803 5530', href: 'tel:+529988035530' },
+                  { label: isEs ? 'México:' : 'Mexico:', value: '+52 998 803 5530', href: 'tel:+529988035530' },
                   { label: 'USA/CAN:', value: '+1 310 272 94 88', href: 'tel:+13102729488' }
                 ]}
               />
               <ContactMethod
                 icon={<Mail className="w-6 h-6 text-brand-violet" />}
-                title="Escríbenos"
+                title={isEs ? 'Escríbenos' : 'Write to us'}
                 lines={[
                   { value: 'info@fertilitycentercancun.com.mx', href: 'mailto:info@fertilitycentercancun.com.mx' }
                 ]}
               />
               <ContactMethod
                 icon={<MapPin className="w-6 h-6 text-brand-violet" />}
-                title="Visítanos"
+                title={isEs ? 'Visítanos' : 'Visit us'}
                 lines={[
-                  { value: 'Cancún, Quintana Roo, México' }
+                  { value: isEs ? 'Cancún, Quintana Roo, México' : 'Cancun, Quintana Roo, Mexico' }
                 ]}
               />
               <div className="space-y-4">
@@ -58,7 +68,7 @@ export default function Page() {
                   <div className="w-10 h-10 bg-brand-violet/5 rounded-xl flex items-center justify-center">
                     <Globe className="w-6 h-6 text-brand-violet" />
                   </div>
-                  <h4 className="font-serif text-xl text-brand-violet font-bold">Síguenos</h4>
+                  <h4 className="font-serif text-xl text-brand-violet font-bold">{isEs ? 'Síguenos' : 'Follow us'}</h4>
                 </div>
                 <div className="flex gap-4">
                   {[
@@ -79,15 +89,15 @@ export default function Page() {
               <div className="absolute top-0 right-0 w-48 h-48 bg-brand-green/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-green/20 transition-colors duration-700" />
               <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl font-serif text-brand-violet mb-4">Tour Virtual 360°</h3>
-                  <p className="text-slate-500 font-light text-base mb-6">Explora nuestra clínica y laboratorios de alta tecnología desde la comodidad de tu hogar.</p>
+                  <h3 className="text-2xl font-serif text-brand-violet mb-4">{isEs ? 'Tour Virtual 360°' : '360° Virtual Tour'}</h3>
+                  <p className="text-slate-500 font-light text-base mb-6">{isEs ? 'Explora nuestra clínica y laboratorios de alta tecnología desde la comodidad de tu hogar.' : 'Explore our clinic and high-tech laboratories from the comfort of your home.'}</p>
                   <a
                     href="https://my.matterport.com/show/?m=XtokPdzLfrQ"
                     target="_blank"
                     rel="nofollow noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-all font-bold text-base shadow-lg shadow-brand-violet/20"
                   >
-                    Comenzar Tour
+                    {isEs ? 'Comenzar Tour' : 'Start Tour'}
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
@@ -102,7 +112,7 @@ export default function Page() {
               <iframe
                 loading="lazy"
                 src="https://maps.google.com/maps?q=Advanced%20Fertility%20Center%20Cancun&t=m&z=14&output=embed&iwloc=near"
-                title="Ubicación AFCC"
+                title={isEs ? 'Ubicación AFCC' : 'AFCC Location'}
                 className="w-full h-full grayscale hover:grayscale-0 transition-all duration-1000"
               />
               <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white/20">
@@ -110,8 +120,8 @@ export default function Page() {
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-base font-bold text-brand-violet uppercase tracking-wider">Nuestra Clínica</p>
-                  <p className="text-[10px] text-slate-500 mt-0.5">Cancún, Quintana Roo, México</p>
+                  <p className="text-base font-bold text-brand-violet uppercase tracking-wider">{isEs ? 'Nuestra Clínica' : 'Our Clinic'}</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5">{isEs ? 'Cancún, Quintana Roo, México' : 'Cancun, Quintana Roo, Mexico'}</p>
                 </div>
               </div>
             </div>
@@ -127,8 +137,8 @@ export default function Page() {
                   <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <MessageSquare className="w-8 h-8 text-brand-green" />
                   </div>
-                  <h3 className="text-3xl font-serif text-brand-violet leading-tight">Envíanos un mensaje</h3>
-                  <p className="text-slate-500 mt-4 font-light text-base">Pronto nos pondremos en contacto contigo para resolver todas tus dudas.</p>
+                  <h3 className="text-3xl font-serif text-brand-violet leading-tight">{isEs ? 'Envíanos un mensaje' : 'Send us a message'}</h3>
+                  <p className="text-slate-500 mt-4 font-light text-base">{isEs ? 'Pronto nos pondremos en contacto contigo para resolver todas tus dudas.' : 'We will get in touch with you shortly to answer all your questions.'}</p>
                 </div>
 
                 <ContactForm />

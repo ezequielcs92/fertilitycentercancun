@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache'
 
 export interface TeamMember {
     id?: string
+    slug?: string
     nombre: string
     especialidad: string
     bio: string
@@ -32,6 +33,33 @@ export async function getTeamMembers() {
     }
 
     return data
+}
+
+export async function getTeamMemberByIdentifier(identifier: string) {
+    const supabase = await createClient()
+    if (!supabase) return null
+
+    const byId = await supabase
+        .from('equipo_medico')
+        .select('*')
+        .eq('id', identifier)
+        .maybeSingle()
+
+    if (byId.data) {
+        return byId.data
+    }
+
+    const bySlug = await supabase
+        .from('equipo_medico')
+        .select('*')
+        .eq('slug', identifier)
+        .maybeSingle()
+
+    if (bySlug.error) {
+        return null
+    }
+
+    return bySlug.data
 }
 
 export async function saveTeamMember(member: TeamMember) {

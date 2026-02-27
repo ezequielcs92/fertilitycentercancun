@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Heart, Phone, Microscope, Dna, Zap, UserCheck, Droplets, Baby, Users, Clock, Calendar, ArrowLeftRight, HeartHandshake, MapPin, Instagram, Facebook } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 export default function Navbar() {
@@ -14,6 +14,9 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [activeMega, setActiveMega] = useState<string | null>(null);
     const t = useTranslations('Navbar');
+    const locale = useLocale();
+    const isEs = locale === 'es';
+    const route = (es: string, en: string) => (isEs ? es : en);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -40,44 +43,44 @@ export default function Navbar() {
             name: t('items.about.name'),
             href: '#',
             submenu: [
-                { name: t('items.about.links.philosophy.name'), href: '/sobre-fertility-center-cancun', description: t('items.about.links.philosophy.description') },
-                { name: t('items.about.links.tourism.name'), href: '/turismo-medico', description: t('items.about.links.tourism.description') },
-                { name: t('items.about.links.facilities.name'), href: '/nuestras-instalaciones', description: t('items.about.links.facilities.description') },
-                { name: t('items.about.links.team.name'), href: '/equipo', description: t('items.about.links.team.description') },
-                { name: t('items.about.links.support.name'), href: '/soporte-internacional', description: t('items.about.links.support.description') },
-                { name: t('items.about.links.certifications.name'), href: '/certificaciones-acreditaciones-y-alianzas', description: t('items.about.links.certifications.description') },
+                { name: t('items.about.links.philosophy.name'), href: route('/sobre-fertility-center-cancun', '/about-fertility-center'), description: t('items.about.links.philosophy.description') },
+                { name: t('items.about.links.tourism.name'), href: route('/turismo-medico', '/international-patients'), description: t('items.about.links.tourism.description') },
+                { name: t('items.about.links.facilities.name'), href: route('/laboratorios-y-servicios', '/laboratories-and-services'), description: t('items.about.links.facilities.description') },
+                { name: t('items.about.links.team.name'), href: route('/equipo', '/ivf-team'), description: t('items.about.links.team.description') },
+                { name: t('items.about.links.support.name'), href: route('/soporte-internacional', '/international-support'), description: t('items.about.links.support.description') },
+                { name: t('items.about.links.certifications.name'), href: route('/certificaciones-acreditaciones-y-alianzas', '/certifications-accreditations-and-partnerships'), description: t('items.about.links.certifications.description') },
             ]
         },
         {
             name: t('items.treatments.name'),
-            href: '/tratamientos-de-fertilidad',
+            href: route('/tratamientos', '/fertility-treatments'),
             mega: true,
             submenu: [
-                { name: t('items.treatments.links.fiv'), href: '/fiv-fertilizacion-in-vitro', icon: Microscope },
-                { name: t('items.treatments.links.genetic'), href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', icon: Dna },
-                { name: t('items.treatments.links.mini_fiv'), href: '/mini-fiv', icon: Zap },
-                { name: t('items.treatments.links.artificial_insemination'), href: '/inseminacion-artificial', icon: UserCheck },
-                { name: t('items.treatments.links.egg_donation'), href: '/donacion-de-ovulos', icon: Heart },
-                { name: t('items.treatments.links.sperm_donation'), href: '/donacion-de-espermatozoides', icon: Droplets },
-                { name: t('items.treatments.links.embryo'), href: '/donacion-y-adopcion-embriones', icon: Baby },
-                { name: t('items.treatments.links.ropa'), href: '/metodo-ropa', icon: Users },
-                { name: t('items.treatments.links.preservation'), href: '/preservacion-de-la-fertilidad', icon: Clock },
-                { name: t('items.treatments.links.timed_intercourse'), href: '/coito-programado-e-induccion-de-ovulacion', icon: Calendar },
-                { name: t('items.treatments.links.transfer'), href: '/transferencia-de-embriones-y-preparacion-endometrial', icon: ArrowLeftRight },
-                { name: t('items.treatments.links.lgbt'), href: '/comunidad-lgbt-tratamiento', icon: HeartHandshake },
+                { name: t('items.treatments.links.fiv'), href: route('/fiv-fertilizacion-in-vitro', '/ivf-in-vitro-fertilization'), icon: Microscope },
+                { name: t('items.treatments.links.genetic'), href: route('/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', '/in-vitro-fertilization-with-genetic-testing-and-sex-selection'), icon: Dna },
+                { name: t('items.treatments.links.mini_fiv'), href: route('/mini-fiv', '/mini-ivf'), icon: Zap },
+                { name: t('items.treatments.links.artificial_insemination'), href: route('/inseminacion-artificial', '/artificial-insemination'), icon: UserCheck },
+                { name: t('items.treatments.links.egg_donation'), href: route('/donacion-de-ovulos', '/egg-donation'), icon: Heart },
+                { name: t('items.treatments.links.sperm_donation'), href: route('/donacion-de-espermatozoides', '/sperm-donation'), icon: Droplets },
+                { name: t('items.treatments.links.embryo'), href: route('/donacion-y-adopcion-embriones', '/embryo-donation-and-adoption'), icon: Baby },
+                { name: t('items.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method'), icon: Users },
+                { name: t('items.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation'), icon: Clock },
+                { name: t('items.treatments.links.timed_intercourse'), href: route('/coito-programado-e-induccion-de-ovulacion', '/timed-intercourse-and-ovulation-induction'), icon: Calendar },
+                { name: t('items.treatments.links.transfer'), href: route('/transferencia-de-embriones-y-preparacion-endometrial', '/embryo-transfer-and-endometrial-preparation'), icon: ArrowLeftRight },
+                { name: t('items.treatments.links.lgbt'), href: route('/comunidad-lgbt-tratamiento', '/lgbt-community-treatments'), icon: HeartHandshake },
             ]
         },
         {
             name: t('items.experience.name'),
             href: '#',
             submenu: [
-                { name: t('items.experience.links.testimonials'), href: '/testimonios' },
+                { name: t('items.experience.links.testimonials'), href: route('/testimonios', '/testimonials') },
                 { name: t('items.experience.links.blog'), href: '/blog' },
                 { name: t('items.experience.links.faqs'), href: '/faqs' },
-                { name: t('items.experience.links.first_visit'), href: '/primera-visita-a-nuestra-clinica-de-fertilidad' },
+                { name: t('items.experience.links.first_visit'), href: route('/primera-visita-a-nuestra-clinica-de-fertilidad', '/first-visit') },
             ]
         },
-        { name: t('items.contact'), href: '/contacto' },
+        { name: t('items.contact'), href: route('/contacto', '/contact-ivf-doctors') },
     ];
 
     return (
@@ -167,7 +170,7 @@ export default function Navbar() {
                     {/* CTA & Mobile Trigger */}
                     <div className="flex items-center gap-4 md:gap-6">
                         <Link
-                            href="/contacto"
+                            href={route('/contacto', '/contact-ivf-doctors')}
                             className="hidden sm:flex items-center gap-2 bg-brand-green text-brand-violet px-6 py-2.5 rounded-full text-base font-bold hover:bg-white transition-all shadow-lg hover:-translate-y-0.5"
                         >
                             {t('cta')}
@@ -205,7 +208,7 @@ export default function Navbar() {
                                                 })}
                                             </h4>
                                             <p className="text-white/60 text-base leading-relaxed mb-8 relative z-10">{t('items.treatments.card.description')}</p>
-                                            <Link href="/tratamientos-de-fertilidad" className="inline-flex items-center gap-2 text-brand-green text-base font-bold uppercase tracking-widest hover:text-white transition-colors relative z-10">
+                                            <Link href={route('/tratamientos', '/fertility-treatments')} className="inline-flex items-center gap-2 text-brand-green text-base font-bold uppercase tracking-widest hover:text-white transition-colors relative z-10">
                                                 {t('items.treatments.card.view_all')}
                                                 <ChevronDown className="w-4 h-4 -rotate-90" />
                                             </Link>
@@ -296,7 +299,7 @@ export default function Navbar() {
                                     <Phone className="w-5 h-5" /> +52 998 803 5530
                                 </Link>
                                 <p className="text-white/40 text-base flex items-center gap-2 uppercase tracking-widest font-bold">
-                                    <MapPin className="w-4 h-4 text-brand-green" /> Cancún, México
+                                    <MapPin className="w-4 h-4 text-brand-green" /> {isEs ? 'Cancún, México' : 'Cancun, Mexico'}
                                 </p>
                             </div>
                         </div>

@@ -1,21 +1,128 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import Link from 'next/link';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+
+const treatments = [
+  {
+    title: 'IVF - In Vitro Fertilization',
+    description: 'Advanced assisted reproduction with personalized protocols and high success rates.',
+    href: '/ivf-in-vitro-fertilization',
+    image: '/images/wp/2024_07_FIV-%E2%80%93-Fertilizacion-In-vitro.png'
+  },
+  {
+    title: 'IVF with Genetic Testing and Sex Selection',
+    description: 'Comprehensive IVF with optional preimplantation genetic testing for embryo selection.',
+    href: '/in-vitro-fertilization-with-genetic-testing-and-sex-selection',
+    image: '/images/wp/2024_07_Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo.png'
+  },
+  {
+    title: 'Mini IVF',
+    description: 'Low-medication IVF alternative focused on quality and patient comfort.',
+    href: '/mini-ivf',
+    image: '/images/wp/2024_07_Mini-FIV.png'
+  },
+  {
+    title: 'Natural Cycle IVF',
+    description: 'A less stimulated IVF approach aligned with your natural cycle.',
+    href: '/in-vitro-fertilization-in-ivf-natural-cycle',
+    image: '/images/wp/2024_07_Fertilizacion-in-vitro-en-FIV-Ciclo-natural.png'
+  },
+  {
+    title: 'Egg Donation',
+    description: 'Specialized donor-egg programs for patients requiring advanced options.',
+    href: '/egg-donation',
+    image: '/images/wp/2024_07_Donacion-de-Ovulos.png'
+  },
+  {
+    title: 'Artificial Insemination',
+    description: 'IUI treatment with careful monitoring and individualized timing.',
+    href: '/artificial-insemination',
+    image: '/images/wp/2024_08_Inseminacion-Artificial.png'
+  },
+  {
+    title: 'Fertility Preservation',
+    description: 'Egg, sperm, and embryo preservation plans based on your goals and timeline.',
+    href: '/fertility-preservation',
+    image: '/images/wp/2024_07_Preservacion-de-la-Fertilidad-1.png'
+  },
+  {
+    title: 'Embryo Donation and Adoption',
+    description: 'Comprehensive support for embryo donation and adoption pathways.',
+    href: '/embryo-donation-and-adoption',
+    image: '/images/wp/2024_07_Donacion-y-Adopcion-de-embriones.png'
+  },
+  {
+    title: 'Timed Intercourse and Ovulation Induction',
+    description: 'Cycle-guided treatment to improve natural conception opportunities.',
+    href: '/timed-intercourse-and-ovulation-induction',
+    image: '/images/wp/2024_07_Coito-programado-e-Induccion-de-Ovulo.png'
+  }
+];
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Fertility Treatments" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Fertility Treatments', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<p>At <strong>Advanced Fertility Center Cancún</strong>, we understand how important the journey to parenthood is. That's why we offer a comprehensive range of fertility treatments designed to meet the individual needs of each patient and couple. Our highly trained medical team and state-of-the-art facilities are at your service to provide you with the best care and the highest chances of success.</p><p><strong>Personalized Treatments</strong><br />Every patient is unique, and our treatments are designed to cater to your specific needs. Whether you're seeking a solution for infertility, hormonal issues, reproductive difficulties, or other reasons, we work with you to determine the right treatment.</p><p><strong>At Advanced Fertility Center Cancún, our commitment is to provide you with effective solutions and support you with care and professionalism at every stage of your fertility treatment.</strong></p> \n <img width=\"800\" height=\"799\" src=\"/images/wp/2024_07_FIV-%E2%80%93-Fertilizacion-In-vitro.png\" alt=\"\" srcset=\"/images/wp/2024_07_FIV-%E2%80%93-Fertilizacion-In-vitro.png 1001w, /images/wp/2024_07_FIV-%E2%80%93-Fertilizacion-In-vitro-300x300.png 300w, /images/wp/2024_07_FIV-%E2%80%93-Fertilizacion-In-vitro-150x150.png 150w, /images/wp/2024_07_FIV-%E2%80%93-Fertilizacion-In-vitro-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/ivf-in-vitro-fertilization/\">IVF - In Vitro Fertilization</a></h2> \n <a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/ivf-in-vitro-fertilization/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"799\" src=\"/images/wp/2024_07_Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo.png\" alt=\"\" srcset=\"/images/wp/2024_07_Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo.png 1001w, /images/wp/2024_07_Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo-300x300.png 300w, /images/wp/2024_07_Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo-150x150.png 150w, /images/wp/2024_07_Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/in-vitro-fertilization-with-genetic-testing-and-sex-selection/\">In vitro fertilization with genetic testing and sex selection.</a></h2> \n <a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/in-vitro-fertilization-with-genetic-testing-and-sex-selection/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"799\" src=\"/images/wp/2024_07_Mini-FIV.png\" alt=\"\" srcset=\"/images/wp/2024_07_Mini-FIV.png 1001w, /images/wp/2024_07_Mini-FIV-300x300.png 300w, /images/wp/2024_07_Mini-FIV-150x150.png 150w, /images/wp/2024_07_Mini-FIV-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/mini-ivf/\">Mini IVF</a></h2> \n <a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/mini-ivf/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"799\" src=\"/images/wp/2024_07_Fertilizacion-in-vitro-en-FIV-Ciclo-natural.png\" alt=\"\" srcset=\"/images/wp/2024_07_Fertilizacion-in-vitro-en-FIV-Ciclo-natural.png 1001w, /images/wp/2024_07_Fertilizacion-in-vitro-en-FIV-Ciclo-natural-300x300.png 300w, /images/wp/2024_07_Fertilizacion-in-vitro-en-FIV-Ciclo-natural-150x150.png 150w, /images/wp/2024_07_Fertilizacion-in-vitro-en-FIV-Ciclo-natural-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/in-vitro-fertilization-in-ivf-natural-cycle/\">In vitro fertilization in IVF – Natural cycle\n</a></h2> \n <a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/in-vitro-fertilization-in-ivf-natural-cycle/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"799\" src=\"/images/wp/2024_07_Transferencia-de-embriones-congelados.png\" alt=\"\" srcset=\"/images/wp/2024_07_Transferencia-de-embriones-congelados.png 1001w, /images/wp/2024_07_Transferencia-de-embriones-congelados-300x300.png 300w, /images/wp/2024_07_Transferencia-de-embriones-congelados-150x150.png 150w, /images/wp/2024_07_Transferencia-de-embriones-congelados-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"#\">Frozen embryo transfer</a></h2> \n <a href=\"#\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"799\" src=\"/images/wp/2024_07_Donacion-de-Ovulos.png\" alt=\"\" srcset=\"/images/wp/2024_07_Donacion-de-Ovulos.png 1001w, /images/wp/2024_07_Donacion-de-Ovulos-300x300.png 300w, /images/wp/2024_07_Donacion-de-Ovulos-150x150.png 150w, /images/wp/2024_07_Donacion-de-Ovulos-768x767.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/egg-donation/\">Egg donation</a></h2> \n <a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-treatments/egg-donation/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"800\" src=\"/images/wp/2024_08_Inseminacion-Artificial.png\" alt=\"\" srcset=\"/images/wp/2024_08_Inseminacion-Artificial.png 1001w, /images/wp/2024_08_Inseminacion-Artificial-300x300.png 300w, /images/wp/2024_08_Inseminacion-Artificial-150x150.png 150w, /images/wp/2024_08_Inseminacion-Artificial-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/artificial-insemination/\">Artificial Insemination</a></h2> \n <a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/artificial-insemination/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"800\" src=\"/images/wp/2024_07_Preservacion-de-la-Fertilidad-1.png\" alt=\"\" srcset=\"/images/wp/2024_07_Preservacion-de-la-Fertilidad-1.png 1001w, /images/wp/2024_07_Preservacion-de-la-Fertilidad-1-300x300.png 300w, /images/wp/2024_07_Preservacion-de-la-Fertilidad-1-150x150.png 150w, /images/wp/2024_07_Preservacion-de-la-Fertilidad-1-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-preservation/\">Fertility Preservation</a></h2> \n <a href=\"https://www.bh-desarrollosweb.com/fertilitycentermexico/en/fertility-preservation/\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"800\" src=\"/images/wp/2024_07_Donacion-y-Adopcion-de-embriones.png\" alt=\"\" srcset=\"/images/wp/2024_07_Donacion-y-Adopcion-de-embriones.png 1001w, /images/wp/2024_07_Donacion-y-Adopcion-de-embriones-300x300.png 300w, /images/wp/2024_07_Donacion-y-Adopcion-de-embriones-150x150.png 150w, /images/wp/2024_07_Donacion-y-Adopcion-de-embriones-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"#\">Embryo Donation and Adoption</a></h2> \n <a href=\"#\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"800\" src=\"/images/wp/2024_07_Coito-programado-e-Induccion-de-Ovulo.png\" alt=\"\" srcset=\"/images/wp/2024_07_Coito-programado-e-Induccion-de-Ovulo.png 1001w, /images/wp/2024_07_Coito-programado-e-Induccion-de-Ovulo-300x300.png 300w, /images/wp/2024_07_Coito-programado-e-Induccion-de-Ovulo-150x150.png 150w, /images/wp/2024_07_Coito-programado-e-Induccion-de-Ovulo-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"#\">Timed Intercourse and Egg Induction</a></h2> \n <a href=\"#\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"800\" src=\"/images/wp/2025_05_Donacion-de-espermatozoides.png\" alt=\"\" srcset=\"/images/wp/2025_05_Donacion-de-espermatozoides.png 1000w, /images/wp/2025_05_Donacion-de-espermatozoides-300x300.png 300w, /images/wp/2025_05_Donacion-de-espermatozoides-150x150.png 150w, /images/wp/2025_05_Donacion-de-espermatozoides-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"#\">Sperm Donation</a></h2> \n <a href=\"#\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"800\" src=\"/images/wp/2025_05_Doble-Acumulacion.png\" alt=\"\" srcset=\"/images/wp/2025_05_Doble-Acumulacion.png 1000w, /images/wp/2025_05_Doble-Acumulacion-300x300.png 300w, /images/wp/2025_05_Doble-Acumulacion-150x150.png 150w, /images/wp/2025_05_Doble-Acumulacion-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"#\">Double Accumulation</a></h2> \n <a href=\"#\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"800\" src=\"/images/wp/2025_05_ROPA.png\" alt=\"\" srcset=\"/images/wp/2025_05_ROPA.png 1001w, /images/wp/2025_05_ROPA-300x300.png 300w, /images/wp/2025_05_ROPA-150x150.png 150w, /images/wp/2025_05_ROPA-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"#\">ROPA Method</a></h2> \n <a href=\"#\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>\n <img width=\"800\" height=\"800\" src=\"/images/wp/2025_05_add-ons.png\" alt=\"\" srcset=\"/images/wp/2025_05_add-ons.png 1000w, /images/wp/2025_05_add-ons-300x300.png 300w, /images/wp/2025_05_add-ons-150x150.png 150w, /images/wp/2025_05_add-ons-768x768.png 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n <h2><a href=\"#\">Add Ons</a></h2> \n <a href=\"#\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n see service\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Fertility Treatments"
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Treatments', href: '#' }
+      ]}
+    >
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-8">
+        Personalized fertility care with advanced technology, expert specialists, and compassionate guidance.
+      </p>
+
+      <div className="bg-brand-gray rounded-[2rem] p-8 mb-12 border border-brand-violet/10">
+        <p className="text-lg text-slate-600 leading-relaxed mb-4">
+          At <strong>Advanced Fertility Center Cancun</strong>, every treatment plan is tailored to your medical history, goals, and timeline.
+          We combine evidence-based medicine with warm, patient-centered care.
+        </p>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0 mb-0">
+          {[
+            'Specialists in reproductive medicine',
+            'State-of-the-art laboratory and technology',
+            'Bilingual medical and coordination team',
+            'End-to-end guidance during treatment'
+          ].map((item) => (
+            <li key={item} className="flex items-center gap-3 text-brand-violet">
+              <CheckCircle2 className="w-5 h-5 text-brand-green" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {treatments.map((treatment) => (
+          <article
+            key={treatment.href}
+            className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+          >
+            <div className="relative aspect-[4/3] bg-slate-100">
+              <Image
+                src={treatment.image}
+                alt={treatment.title}
+                fill
+                className="object-cover"
+                unoptimized
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-2xl font-serif text-brand-violet mb-3">{treatment.title}</h3>
+              <p className="text-slate-600 mb-5">{treatment.description}</p>
+              <Link
+                href={treatment.href}
+                className="inline-flex items-center gap-2 text-brand-violet font-semibold hover:text-brand-green transition-colors"
+              >
+                View treatment
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </article>
+        ))}
+      </div>
+    </InnerPageLayout>
   );
 }

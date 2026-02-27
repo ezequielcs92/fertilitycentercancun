@@ -5,22 +5,37 @@ import React, { useState } from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import FAQAccordion from '@/components/layout/FAQAccordion';
-import { FAQ_DATA, type FAQItem } from '@/data/faqs';
-import { Search, Filter, Stethoscope, Heart, Users, MessageCircle } from 'lucide-react';
+import { FAQ_DATA, FAQ_DATA_EN, type FAQItem } from '@/data/faqs';
+import { Search, Stethoscope, Heart, Users, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
-const CATEGORIES = [
-  { id: 'todos', label: 'Todas las preguntas', icon: MessageCircle },
-  { id: 'clinica', label: 'Nuestra Clínica', icon: Stethoscope },
-  { id: 'tratamientos', label: 'Tratamientos', icon: Heart },
-  { id: 'pacientes', label: 'Pacientes y Procesos', icon: Users },
-];
+type CategoryId = 'todos' | 'clinica' | 'tratamientos' | 'pacientes';
 
 export default function Page() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState('todos');
+  const pathname = usePathname();
+  const isEnglish = pathname?.startsWith('/en');
 
-  const filteredFaqs = FAQ_DATA.filter(faq => {
+  const CATEGORIES: { id: CategoryId; label: string; icon: React.ComponentType<{ className?: string }> }[] = isEnglish
+    ? [
+      { id: 'todos', label: 'All Questions', icon: MessageCircle },
+      { id: 'clinica', label: 'Our Clinic', icon: Stethoscope },
+      { id: 'tratamientos', label: 'Treatments', icon: Heart },
+      { id: 'pacientes', label: 'Patients and Process', icon: Users },
+    ]
+    : [
+      { id: 'todos', label: 'Todas las preguntas', icon: MessageCircle },
+      { id: 'clinica', label: 'Nuestra Clínica', icon: Stethoscope },
+      { id: 'tratamientos', label: 'Tratamientos', icon: Heart },
+      { id: 'pacientes', label: 'Pacientes y Procesos', icon: Users },
+    ];
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState<CategoryId>('todos');
+
+  const faqSource: FAQItem[] = isEnglish ? FAQ_DATA_EN : FAQ_DATA;
+
+  const filteredFaqs = faqSource.filter(faq => {
     const matchesSearch = faq.pregunta.toLowerCase().includes(searchQuery.toLowerCase()) ||
       faq.respuesta.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = activeCategory === 'todos' || faq.categoria === activeCategory;
@@ -30,9 +45,9 @@ export default function Page() {
   return (
     <main className="bg-brand-slate min-h-screen pb-24">
       <PageHeader
-        title="Preguntas Frecuentes"
+        title={isEnglish ? 'Frequently Asked Questions' : 'Preguntas Frecuentes'}
         breadcrumb={[
-          { label: 'Inicio', href: '/' },
+          { label: isEnglish ? 'Home' : 'Inicio', href: '/' },
           { label: 'FAQs', href: '#' }
         ]}
       />
@@ -59,13 +74,17 @@ export default function Page() {
             </div>
 
             <div className="p-8 bg-brand-violet/5 rounded-[2rem] border border-brand-violet/10">
-              <h4 className="text-brand-violet font-serif text-xl mb-3">¿Aún tienes dudas?</h4>
-              <p className="text-slate-500 text-sm font-light mb-6">Estamos aquí para ayudarte en cada paso de tu camino.</p>
+              <h4 className="text-brand-violet font-serif text-xl mb-3">
+                {isEnglish ? 'Still have questions?' : '¿Aún tienes dudas?'}
+              </h4>
+              <p className="text-slate-500 text-sm font-light mb-6">
+                {isEnglish ? 'We are here to support you at every step of your journey.' : 'Estamos aquí para ayudarte en cada paso de tu camino.'}
+              </p>
               <a
-                href="/contacto"
+                href={isEnglish ? '/contact-ivf-doctors' : '/contacto'}
                 className="block text-center py-4 bg-brand-green text-brand-violet font-bold rounded-xl hover:bg-brand-violet hover:text-white transition-all shadow-md"
               >
-                Contactar ahora
+                {isEnglish ? 'Contact us now' : 'Contactar ahora'}
               </a>
             </div>
           </div>
@@ -78,7 +97,7 @@ export default function Page() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Busca tu duda (ej: FIV, costos, ubicación...)"
+                placeholder={isEnglish ? 'Search your question (e.g. IVF, costs, location...)' : 'Busca tu duda (ej: FIV, costos, ubicación...)'}
                 className="w-full pl-16 pr-8 py-6 rounded-[2rem] border border-slate-100 focus:outline-none focus:ring-4 focus:ring-brand-violet/5 bg-white shadow-sm text-lg"
               />
             </div>
@@ -102,8 +121,12 @@ export default function Page() {
               ) : (
                 <div className="text-center py-20 bg-white/50 rounded-[3rem] border border-white">
                   <Search className="w-16 h-16 text-slate-200 mx-auto mb-4" />
-                  <h3 className="text-2xl font-serif text-brand-violet mb-2">No encontramos lo que buscas</h3>
-                  <p className="text-slate-400 font-light">Intenta con otros términos o elige una categoría diferente.</p>
+                  <h3 className="text-2xl font-serif text-brand-violet mb-2">
+                    {isEnglish ? "We couldn't find what you're looking for" : 'No encontramos lo que buscas'}
+                  </h3>
+                  <p className="text-slate-400 font-light">
+                    {isEnglish ? 'Try different terms or choose another category.' : 'Intenta con otros términos o elige una categoría diferente.'}
+                  </p>
                 </div>
               )}
             </div>

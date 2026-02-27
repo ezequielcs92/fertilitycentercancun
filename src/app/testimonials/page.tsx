@@ -1,21 +1,172 @@
+'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import { TestimonialModal } from '@/components/testimonials/TestimonialModal';
+import { getTestimonials } from '@/lib/actions/testimonials';
+import { getStorageFiles } from '@/lib/actions/storage';
 
 export default function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(8);
+  const [babyImages, setBabyImages] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      const data = await getTestimonials('approved', 'en');
+      setTestimonials(data);
+      setLoading(false);
+    };
+    const fetchGallery = async () => {
+      const images = await getStorageFiles('galeria-familias');
+      setBabyImages(images);
+    };
+    fetchTestimonials();
+    fetchGallery();
+  }, []);
+
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Testimonials" 
+    <main className="bg-slate-50 pb-24">
+      <PageHeader
+        title="Testimonials"
         breadcrumb={[
-          { label: 'Inicio', href: '/' },
+          { label: 'Home', href: '/' },
           { label: 'Testimonials', href: '#' }
         ]}
       />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>\"Here begins your journey to parenthood, with science, care, and heart.\"</h2> \n <p>Discover the experiences of our patients and how we together helped make their dream of starting a family come true. These testimonials reflect the support and care we provide at every step of the process, giving you an authentic insight into what you can expect on your own path to parenthood.</p>https://youtu.be/z6Eks-CddSQ?si=_oPClMd1WTbeydTfhttps://www.youtube.com/watch?v=sEnAw8w2G30%20 \n <a href=\"https://youtube.com/playlist?list=PLGPNuKqY4XrjawL-2hakrVjI-4PgMWQ3V&#038;si=O8Wjeq4Vc1G8qB2u\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 64 64\" width=\"512\"><g id=\"Layer_25\" data-name=\"Layer 25\"><path d=\"m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z\"></path></g></svg> \n See all testimonials\n </a>\n I started the process of freezing my eggs in the US and when I found out that it wasn’t covered by my insurance I started to think about what other options I have. I was also not impressed with the client service I was receiving from the clinic I was at, and I had heard that abroad they tend to treat the patients much better and the conditions are nicer. I was not disappointed! The minute I contacted the Fertility Center Cancun I was put in touch with Cynthia, who gave me all the information I needed and was always accessible and responsive via WhatsApp. Once I arrived at the clinic, I felt the same kind of care and attention from the entire staff, including Dr. Ray. He responded to all my many questions and was very responsive on WhatsApp, even after office hours, if I had a pressing concern. I did two cycles of egg freezing and I am very happy with the results! I am even considering another round, just in case. \n <img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/placeholder-copia.png\" alt=\"Ioana Luca \">\n <cite>Ioana Luca USA</cite> \n Dr Suástegui I can not say it enough, Thank you for taking the best care of me. This was Exquisite Care as if i was Royal. You treated me like family not just a patient. I needed 2nd opinions and labs before my laparoscopy and you made sure I was treated fair by other nurses and doctors. I had a mishap at the pharmacy and my Dr showed up & even translated for me. I have never in all my life had a Doctor that went above and beyond to make sure I was ok and treated fair before during and after surgery. My husband could not make the trip but Dr Suástegui kept him informed every step of the way. \n <img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/placeholder-copia.png\" alt=\"Shon Wu\">\n <cite>Shon WuUSA</cite> \n I can't say enough good things about Dr. Cojab and her team at AFCC. My wife and I live in the U.S. and have gone through 2 failed surgeries on my end and a failed IVF FET cycle from The Reproductive Care Center in Salt Lake City. The clinic in SLC was the worst medical/ professional experience I've ever had, and we are still in dispute with them over several different problems. AFCC is the complete opposite. AFCC was terrific at communication, always there for questions, the Doctor maintained regular follow up months after we left and had a few scares, they were extremely patient and accommodating with the million questions we had, and most of all- they succeeded! We are now 12 weeks pregnant and entering the second trimester. We spent 3 years and \$40k dealing with 3 doctors that were always too \"busy\", non-caring, and/ or incompetent (you can see a previous review on this clinic on my page); then we went to Mexico and got it done in a few months at half the cost of a normal cycle. They were honest and realistic with us, where the American doctors were always just watching out for medical malpractice and limiting the information, they would give us to protect themselves. We also have 2 more embryos that AFCC was able to freeze, so we will likely be back in a year. The vacation in Cancun was a little bonus as well haha. I 100% recommend this clinic. \n <img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/placeholder-copia.png\" alt=\"Austin \">\n <cite>Austin UTAH - USA</cite> \n BEST PLACE EVER! They make your dreams come true! I’m a travel patient Im from Idaho and I recommend Dr Alfonso ❤️ I had best experience and great communication with Elizabeth.\nJust remember IVF is a process is a journey forsure. Keep positive and everything you dream of will come true.\n<br><br>\nI highly recommend and will be having all my IVF babies here at AFCC forsure!\n <img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/placeholder-copia.png\" alt=\"Amy Gutierrez \">\n <cite>Amy Gutierrez GARDEN CITY</cite> \n We had our two children with the help of the Fertility Center, Cancun and we cannot praise them enough. They are incredibly professional, the doctors are just unbelievable and their staff goes out of their way to make you feel comfortable and help you through your stay in Cancun. We hear from other people trying for years with other providers, we were successful within months and had our babies nine months afterwards without any problems thanks to their incredible professionalism and facilities. \n <img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/placeholder-copia.png\" alt=\"Alex \">\n <cite>Alex USA</cite> \n We had our two children with the help of the Fertility Center, Cancun and we cannot praise them enough. They are incredibly professional, the doctors are just unbelievable and their staff goes out of their way to make you feel comfortable and help you through your stay in Cancun. We hear from other people trying for years with other providers, we were successful within months and had our babies nine months afterwards without any problems thanks to their incredible professionalism and facilities. \n <img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/placeholder-copia.png\" alt=\"Leon Avelino \">\n <cite>Leon Avelino USA</cite> \n AFCC is so amazing! The staff is so friendly, the clinic very clean. Communication was great! Any questions or concerns I had were addressed, they really listened to me. Dr Romero is so caring and knowledgeable, and Eli has to be the sweetest and most helpful person on the planet! Because of AFCC I have my 2 most beautiful & perfect babies. I would tell anyone looking for a fertility clinic to choose them. I was able to bring my daughter back to meet everyone, and I can’t wait to bring my son back and do the same! I’m forever grateful. \n <img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/placeholder-copia.png\" alt=\"Brenda \">\n <cite>Brenda Breitkreutz</cite> \n The Fertility Center allowed for something I didn't think would be possible, we had our baby. Everyone at this facility made the process so smooth for us. They treated us like family! Elizabeth made sure we had everything logistically taken care of, and Dr. Romero has always made sure we were physically and emotionally prepared for the entire process. We would recommend the Center to anyone who has been trying to have their baby. You will be in the hands of the best of the best! \n <img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/05/placeholder-copia.png\" alt=\"D W \">\n <cite>D W Florida</cite> \n <figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-015-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 015\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-014-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 014\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-013-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 013\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-012-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 012\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-011-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 011\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-010-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 010\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-009-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 009\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-008-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 008\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-007-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 007\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-006-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 006\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-005-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 005\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-004-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 004\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-003-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 003\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-002-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 002\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-001-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 001\" /></figure><figure><img src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/Fotos-bebes-de-fertility-center-mexico-cancun-016-768x576.jpg\" alt=\"Fotos bebes de fertility center mexico cancun 016\" /></figure> \n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512.009 512.009\" style=\"enable-background:new 0 0 512.009 512.009;\" xml:space=\"preserve\"><g>	<g> <path d=\"M500.373,244.083H39.689l96.465-96.465c4.563-4.531,4.589-11.903,0.058-16.465c-4.531-4.563-11.903-4.589-16.465-0.058 L3.384,247.458c-4.512,4.539-4.512,11.869,0,16.407l116.364,116.364c4.18,4.881,11.526,5.45,16.407,1.269 c4.881-4.18,5.45-11.526,1.269-16.407c-0.39-0.455-0.814-0.88-1.269-1.269l-96.465-96.465h460.684 c6.427,0,11.636-5.21,11.636-11.636S506.799,244.083,500.373,244.083z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512.009 512.009\" style=\"enable-background:new 0 0 512.009 512.009;\" xml:space=\"preserve\"><g>	<g> <path d=\"M508.625,247.801L508.625,247.801L392.262,131.437c-4.18-4.881-11.526-5.45-16.407-1.269 c-4.881,4.18-5.45,11.526-1.269,16.407c0.39,0.455,0.814,0.88,1.269,1.269l96.465,96.582H11.636C5.21,244.426,0,249.636,0,256.063 s5.21,11.636,11.636,11.636H472.32l-96.465,96.465c-4.881,4.18-5.45,11.526-1.269,16.407s11.526,5.45,16.407,1.269 c0.455-0.39,0.88-0.814,1.269-1.269l116.364-116.364C513.137,259.67,513.137,252.34,508.625,247.801z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n I started the process of freezing my eggs in the US and when I found out that it wasn’t covered by my insurance I started to think about what other options I have. I was also not impressed with the client service I was receiving from the clinic I was at, and I had heard that abroad they tend to treat the patients much better and the conditions are nicer. I was not disappointed! The minute I contacted the Fertility Center Cancun I was put in touch with Cynthia, who gave me all the information I needed and was always accessible and responsive via WhatsApp. Once I arrived at the clinic, I felt the same kind of care and attention from the entire staff, including Dr. Ray. He responded to all my many questions and was very responsive on WhatsApp, even after office hours, if I had a pressing concern. I did two cycles of egg freezing and I am very happy with the results! I am even considering another round, just in case. \n <cite>Ioana Luca USA</cite> \n Dr Suástegui I can not say it enough, Thank you for taking the best care of me. This was Exquisite Care as if i was Royal. You treated me like family not just a patient. I needed 2nd opinions and labs before my laparoscopy and you made sure I was treated fair by other nurses and doctors. I had a mishap at the pharmacy and my Dr showed up & even translated for me. I have never in all my life had a Doctor that went above and beyond to make sure I was ok and treated fair before during and after surgery. My husband could not make the trip but Dr Suástegui kept him informed every step of the way. \n <cite>Shon WuUSA</cite> \n I can't say enough good things about Dr. Cojab and her team at AFCC. My wife and I live in the U.S. and have gone through 2 failed surgeries on my end and a failed IVF FET cycle from The Reproductive Care Center in Salt Lake City. The clinic in SLC was the worst medical/ professional experience I've ever had, and we are still in dispute with them over several different problems. AFCC is the complete opposite. AFCC was terrific at communication, always there for questions, the Doctor maintained regular follow up months after we left and had a few scares, they were extremely patient and accommodating with the million questions we had, and most of all- they succeeded! We are now 12 weeks pregnant and entering the second trimester. We spent 3 years and \$40k dealing with 3 doctors that were always too \"busy\", non-caring, and/ or incompetent (you can see a previous review on this clinic on my page); then we went to Mexico and got it done in a few months at half the cost of a normal cycle. They were honest and realistic with us, where the American doctors were always just watching out for medical malpractice and limiting the information, they would give us to protect themselves. We also have 2 more embryos that AFCC was able to freeze, so we will likely be back in a year. The vacation in Cancun was a little bonus as well haha. I 100% recommend this clinic. \n <cite>Austin UTAH - USA</cite> \n BEST PLACE EVER! They make your dreams come true! I’m a travel patient Im from Idaho and I recommend Dr Alfonso ❤️ I had best experience and great communication with Elizabeth.\nJust remember IVF is a process is a journey forsure. Keep positive and everything you dream of will come true.\n<br><br>\nI highly recommend and will be having all my IVF babies here at AFCC forsure!\n <cite>Amy Gutierrez GARDEN CITY</cite> \n We had our two children with the help of the Fertility Center, Cancun and we cannot praise them enough. They are incredibly professional, the doctors are just unbelievable and their staff goes out of their way to make you feel comfortable and help you through your stay in Cancun. We hear from other people trying for years with other providers, we were successful within months and had our babies nine months afterwards without any problems thanks to their incredible professionalism and facilities. \n <cite>Alex USA</cite> \n We had our two children with the help of the Fertility Center, Cancun and we cannot praise them enough. They are incredibly professional, the doctors are just unbelievable and their staff goes out of their way to make you feel comfortable and help you through your stay in Cancun. We hear from other people trying for years with other providers, we were successful within months and had our babies nine months afterwards without any problems thanks to their incredible professionalism and facilities. \n <cite>Leon Avelino USA</cite> \n AFCC is so amazing! The staff is so friendly, the clinic very clean. Communication was great! Any questions or concerns I had were addressed, they really listened to me. Dr Romero is so caring and knowledgeable, and Eli has to be the sweetest and most helpful person on the planet! Because of AFCC I have my 2 most beautiful & perfect babies. I would tell anyone looking for a fertility clinic to choose them. I was able to bring my daughter back to meet everyone, and I can’t wait to bring my son back and do the same! I’m forever grateful. \n <cite>Brenda Breitkreutz</cite> \n The Fertility Center allowed for something I didn't think would be possible, we had our baby. Everyone at this facility made the process so smooth for us. They treated us like family! Elizabeth made sure we had everything logistically taken care of, and Dr. Romero has always made sure we were physically and emotionally prepared for the entire process. We would recommend the Center to anyone who has been trying to have their baby. You will be in the hands of the best of the best! \n <cite>D W Florida</cite> \n <h2>Share your experience with us!</h2> \n <p>If you've been a patient at our clinic, tell us about your journey and what you valued most about the care and support from our team. We know that the path to starting a family hasn’t been easy, but we’re convinced that by sharing your story of success and happiness, you can inspire other couples to keep going and achieve their dream of becoming parents. Thank you for helping us offer hope to those starting their own journey to parenthood.</p>` }} />
-      </Container>
+      <div className="pt-16 max-w-[1800px] w-full mx-auto px-6 md:px-12">
+        {/* Intro */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-serif text-brand-violet mb-6 relative inline-block">
+            <span className="relative z-10">&ldquo;Here begins your journey to</span><br />
+            <span className="relative z-10">parenthood,</span><br />
+            <span className="relative z-10">with science, care, and heart.&rdquo;</span>
+            <div className="absolute -bottom-4 left-0 right-0 h-4 bg-brand-green/20 -rotate-1 rounded-full pointer-events-none" />
+          </h2>
+          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mt-8 font-light">
+            Discover our patients&apos; experiences and how together we helped make their dream of building a family come true. These testimonials reflect the support and care we provide at every step, giving you an authentic view of what to expect on your own path to parenthood.
+          </p>
+        </div>
+
+        {/* Video Testimonials */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="rounded-[2rem] overflow-hidden shadow-xl aspect-video bg-slate-200">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/5aZmAS43R28?si=NfeWZ5GH-gjt5hti"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className="rounded-[2rem] overflow-hidden shadow-xl aspect-video bg-slate-200">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/A7kc8Bp14pY?si=S6iN-ULf5oviQcm1"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+
+        <div className="text-center mb-24">
+          <a href="https://youtube.com/playlist?list=PLGPNuKqY4XrjawL-2hakrVjI-4PgMWQ3V&#038;si=O8Wjeq4Vc1G8qB2u" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-red-600 text-white px-8 py-4 rounded-full font-bold hover:bg-red-700 transition-colors shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 64 64" fill="currentColor">
+              <path d="m61.66 33.11a2 2 0 0 0 -.25-2.53l-12-12a2 2 0 0 0 -2.82 2.82l8.58 8.6h-51.17a2 2 0 0 0 0 4h51.17l-8.58 8.59a2 2 0 1 0 2.82 2.82l12-12a1.79 1.79 0 0 0 .25-.3z"></path>
+            </svg>
+            View all testimonials on YouTube
+          </a>
+        </div>
+
+        {/* Written Testimonials Grid */}
+        {loading ? (
+          <div className="py-24 text-center">
+            <div className="w-12 h-12 border-4 border-brand-violet border-t-brand-green rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-slate-400 italic font-light">Loading stories...</p>
+          </div>
+        ) : testimonials.length === 0 ? (
+          <div className="py-24 text-center">
+            <p className="text-slate-400 italic font-light text-lg">No stories to show yet. Be the first to share yours!</p>
+          </div>
+        ) : (
+          <div className="mb-24">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
+              {testimonials.slice(0, visibleCount).map((testimonial) => (
+                <div key={testimonial.id} className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 relative group hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                  <div className="text-6xl text-brand-green/20 font-serif leading-none absolute top-4 left-6 group-hover:text-brand-green/40 transition-colors">&ldquo;</div>
+                  <p className="text-slate-600 font-light italic mb-6 relative z-10 pt-4 leading-relaxed flex-grow line-clamp-6 hover:line-clamp-none transition-all">
+                    {testimonial.mensaje}
+                  </p>
+                  <div className="flex items-center gap-4 border-t border-slate-100 pt-6 mt-auto">
+                    <div className="w-10 h-10 rounded-full bg-brand-violet text-white flex items-center justify-center font-bold text-lg shrink-0 uppercase">
+                      {testimonial.nombre.charAt(0)}
+                    </div>
+                    <div>
+                      <cite className="not-italic font-medium text-brand-violet block line-clamp-1">{testimonial.nombre}</cite>
+                      <div className="flex gap-0.5 mt-1">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className={`w-3 h-3 ${i < (testimonial.calificacion || 5) ? 'fill-brand-green text-brand-green' : 'text-slate-200'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {visibleCount < testimonials.length && (
+              <div className="text-center">
+                <button
+                  onClick={() => setVisibleCount(prev => prev + 8)}
+                  className="bg-white border-2 border-brand-violet/10 text-brand-violet px-8 py-3 rounded-full font-bold hover:bg-brand-violet hover:text-white transition-all shadow-sm"
+                >
+                  Load more testimonials
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Baby Gallery */}
+        <div className="mb-24">
+          <h3 className="text-3xl font-serif text-center text-brand-violet mb-12">Families created with <span className="text-brand-green">love</span></h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+            {babyImages.map((image) => (
+              <div key={image.id} className="aspect-square rounded-3xl overflow-hidden relative group">
+                <img
+                  src={image.publicUrl}
+                  alt={image.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-brand-violet/0 group-hover:bg-brand-violet/20 transition-colors duration-500 mix-blend-overlay" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="bg-brand-violet/5 rounded-[3rem] p-12 text-center max-w-4xl mx-auto border border-brand-violet/10">
+          <h2 className="text-3xl font-serif text-brand-violet mb-6">Share your experience with us!</h2>
+          <p className="text-slate-600 font-light text-lg mb-8 leading-relaxed">
+            If you have been a patient at our clinic, tell us about your journey and what you valued most about our team&apos;s care and support. We know the path to building a family is not easy, and sharing your success story can inspire other couples.
+          </p>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold hover:bg-white hover:text-brand-violet transition-colors shadow-lg shadow-brand-green/20"
+          >
+            Share my story
+          </button>
+        </div>
+
+      </div>
+      <TestimonialModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </main>
   );
 }

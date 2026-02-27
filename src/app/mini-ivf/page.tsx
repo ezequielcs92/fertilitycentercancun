@@ -1,21 +1,91 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Pill, Zap, TrendingDown, Target, ShieldCheck } from 'lucide-react';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Mini IVF" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Mini IVF', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>A More Natural, Accessible, and Less Invasive Option.</h2> \n <p><strong>Mini IVF</strong> is a variation of traditional In Vitro Fertilization designed for patients seeking a gentler alternative with less medication and a lower hormonal load. This protocol uses a reduced dose of medications to stimulate the ovaries, resulting in fewer eggs retrieved but without compromising quality.</p><p>At <strong>Advanced Fertility Center Cancún</strong>, we offer Mini IVF as part of our personalized treatments, ideal for certain patient profiles.</p> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contact now\n </a>\n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos.jpg\" alt=\"Estimulación ovárica FIV\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"800\" height=\"644\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-1024x824.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-1024x824.jpg 1024w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-300x241.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-768x618.jpg 768w, https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos.jpg 1377w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n Medications are used to stimulate the follicles in a woman's ovaries with the aim of obtaining between 1 and 3 oocytes.<p>The eggs are collected using ultrasound-guided aspiration in the operating room.</p> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Quirofano001.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Quirofano001.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Quirofano001-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"800\" height=\"582\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003.jpg 917w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003-300x218.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003-768x559.jpg 768w\" sizes=\"(max-width: 800px) 100vw, 800px\" /> \n The sperm are trained to fertilize.The oocytes are fertilized to create embryos in the laboratory: conventional IVF or ICSI (intracytoplasmic sperm injection). \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion.jpg\" alt=\"Capacitación FIV\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <img width=\"550\" height=\"400\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar.jpg 550w, https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-3.-Congelar-300x218.jpg 300w\" sizes=\"(max-width: 550px) 100vw, 550px\" /> \n <p>Embryos are generally transferred fresh, although they can also be vitrified (frozen) for storage and later transfer.</p> \n <h2>Benefits of Mini IVF</h2> \n <ul>\n <li>\n Reduced use of hormonal medications.\n </li>\n <li>\n Lower risk of side effects.\n </li>\n <li>\n More affordable costs compared to traditional IVF.\n </li>\n <li>\n Reduced risk of ovarian hyperstimulation syndrome (OHSS).\n </li>\n <li>\n Less invasive procedure, both physically and emotionally.\n </li>\n </ul>\n <h2>Who Is Mini IVF For?</h2> \n <ul>\n <li>\n Women with low ovarian reserve who do not respond well to aggressive stimulation.\n </li>\n <li>\n Patients who prefer a treatment with less medication and fewer side effects.\n </li>\n <li>\n Young women seeking a more natural option with fewer risks.\n </li>\n <li>\n Couples looking for a more economical alternative within assisted reproduction techniques.\n </li>\n <li>\n Patients at risk of ovarian hyperstimulation.\n </li>\n </ul>\n <h2>FERTILITY AND ASSISTED REPRODUCTION EXPERTS\n</h2> \n <a href=\"https://api.whatsapp.com/send?phone=5219983050373&#038;text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call.\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Layer_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 476.213 476.213\" style=\"enable-background:new 0 0 476.213 476.213;\" xml:space=\"preserve\"><polygon points=\"405.606,167.5 384.394,188.713 418.787,223.106 0,223.106 0,253.106 418.787,253.106 384.394,287.5 405.606,308.713 476.213,238.106 \"></polygon><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Contact now\n </a>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Mini IVF"
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'Treatments', href: '/fertility-treatments' },
+        { label: 'Mini IVF', href: '#' }
+      ]}
+    >
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-12">
+        <div className="flex-1">
+          <p className="lead text-2xl font-serif text-brand-violet italic mb-6">
+            A more natural, accessible, and less invasive option.
+          </p>
+          <div className="space-y-4 text-lg text-slate-600 font-light mb-8">
+            <p>
+              <strong>Mini IVF</strong> is an optimized variant of traditional In Vitro Fertilization, designed for patients seeking a gentler, less demanding approach for their body. This protocol uses reduced medication doses to stimulate the ovaries in a controlled and physiological manner.
+            </p>
+            <p>
+              Our philosophy centers on <strong>quality over quantity</strong>. By avoiding overstimulation, we obtain eggs with better reproductive potential, significantly reduce pharmaceutical costs, and minimize side effects, offering a much more comfortable and friendly experience without compromising your chances of success.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/contact-ivf-doctors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
+            >
+              Schedule a Consultation
+            </Link>
+          </div>
+        </div>
+        <div className="w-full lg:w-1/3 shrink-0">
+          <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
+            <Image
+              src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/medicamentos-1024x824.jpg"
+              alt="Mini IVF Medications"
+              fill
+              className="object-cover m-0"
+              unoptimized
+            />
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Benefits of Mini IVF</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+        {[
+          { icon: Pill, title: "Less Medication", desc: "Reduced hormonal doses." },
+          { icon: TrendingDown, title: "Lower Cost", desc: "More affordable than IVF." },
+          { icon: ShieldCheck, title: "Fewer Risks", desc: "Avoids hyperstimulation." },
+          { icon: Zap, title: "Less Invasive", desc: "A friendlier process." },
+          { icon: Target, title: "Quality vs Quantity", desc: "High-quality eggs." },
+        ].map((item, i) => (
+          <div key={i} className="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-100 hover:shadow-md transition-all flex flex-col items-center justify-center text-center aspect-square group hover:border-brand-violet/20">
+            <div className="p-4 bg-brand-violet/5 rounded-2xl text-brand-green mb-4 group-hover:scale-110 transition-transform">
+              <item.icon className="w-10 h-10" />
+            </div>
+            <h4 className="font-bold text-brand-violet text-lg leading-tight mb-2">{item.title}</h4>
+            <p className="text-base text-slate-400 leading-tight">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Who Is It For?</h2>
+      <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
+        <ul className="space-y-4">
+          {[
+            "Women with low ovarian reserve who don't respond to high doses.",
+            "Patients who wish to avoid high hormonal loads.",
+            "Young women with a good fertility prognosis.",
+            "Couples looking for a more affordable alternative.",
+            "Patients at risk of Ovarian Hyperstimulation Syndrome (OHSS)."
+          ].map((item, i) => (
+            <li key={i} className="flex gap-3 items-center">
+              <div className="w-2 h-2 bg-brand-violet rounded-full shrink-0" />
+              <span className="text-slate-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </InnerPageLayout>
   );
 }

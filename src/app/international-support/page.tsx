@@ -1,21 +1,137 @@
 
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import { Container } from '@/components/ui/Container';
+import Image from 'next/image';
+import Link from 'next/link';
+import partnersData from '@/data/partners.json';
 
-export default function Page() {
+const InternationalSupportPage = () => {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="International Support" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'International Support', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<p>We are very proud to have the medical support of leading international physicians who share their research and discoveries on the most advanced techniques in fertility and assisted reproduction.</p>\n<p>Our team receives ongoing training from highly qualified physicians, such as Dr. Masashige Kuwayama, recognized as the \"Father of Vitrification,\" from the ReproSupport Medical Research Center in Japan.</p>\n <img width=\"500\" height=\"500\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Masashigue-Kuwayama-1.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Masashigue-Kuwayama-1.jpg 500w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Masashigue-Kuwayama-1-300x300.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Masashigue-Kuwayama-1-150x150.jpg 150w\" sizes=\"(max-width: 500px) 100vw, 500px\" /> \n <h2>Dr. Masashigue Kuwayama </h2> \n <p>“Father of vitrification” Inventor of vitrification, which is the method and means that are the basis of all techniques currently used in clinics worldwide, and he is the one who provides continuous training to our embryologists.</p>\n <a role=\"button\">\n Watch video\n </a>\n <img width=\"500\" height=\"500\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Gabriel-Dalvit1-.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Gabriel-Dalvit1-.jpg 500w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Gabriel-Dalvit1--300x300.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Gabriel-Dalvit1--150x150.jpg 150w\" sizes=\"(max-width: 500px) 100vw, 500px\" /> \n <h2>Dr. Gabriel Dalvit </h2> \n <p>A collaborator of Dr. Kuwayama and a fundamental piece in the process of creating osmolar media for vitrification with his initial studies in cattle, together they continue the work of improvement, making improvements day by day.</p>\n <a role=\"button\">\n Watch video\n </a>\n <img width=\"160\" height=\"160\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/03/gaytan-1.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/03/gaytan-1.jpg 160w, https://fertilitycentercancun.com/wp-content/uploads/2024/03/gaytan-1-150x150.jpg 150w\" sizes=\"(max-width: 160px) 100vw, 160px\" /> \n <h2>Dr. José Gaytán Melicoff </h2> \n <p>Founder of Advanced Fertility Center Cancun for over 11 years with more than 30 years of experience in assisted reproduction and international recognition, being one of the first Mexican specialists trained at the Valencian Institute of Infertility.</p>\n <a role=\"button\">\n Watch video\n </a>\n <img width=\"500\" height=\"500\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Yakovenko-Sergei-1.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Yakovenko-Sergei-1.jpg 500w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Yakovenko-Sergei-1-300x300.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Yakovenko-Sergei-1-150x150.jpg 150w\" sizes=\"(max-width: 500px) 100vw, 500px\" /> \n <h2>Dr. Yakovenko Sergei </h2> \n <p>Specialist in assisted reproduction with years of experience, Founder and Medical Director at the largest fertility center in Moscow; Altra-Vita</p>\n <a href=\"https://altravita-ivf.com/\" target=\"_blank\" rel=\"nofollow\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512.009 512.009\" style=\"enable-background:new 0 0 512.009 512.009;\" xml:space=\"preserve\"><g>	<g> <path d=\"M508.625,247.801L508.625,247.801L392.262,131.437c-4.18-4.881-11.526-5.45-16.407-1.269 c-4.881,4.18-5.45,11.526-1.269,16.407c0.39,0.455,0.814,0.88,1.269,1.269l96.465,96.582H11.636C5.21,244.426,0,249.636,0,256.063 s5.21,11.636,11.636,11.636H472.32l-96.465,96.465c-4.881,4.18-5.45,11.526-1.269,16.407s11.526,5.45,16.407,1.269 c0.455-0.39,0.88-0.814,1.269-1.269l116.364-116.364C513.137,259.67,513.137,252.34,508.625,247.801z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Go to website\n </a>\n <img width=\"500\" height=\"500\" src=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Luis-Rubalcava-1.jpg\" alt=\"\" srcset=\"https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Luis-Rubalcava-1.jpg 500w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Luis-Rubalcava-1-300x300.jpg 300w, https://fertilitycentercancun.com/wp-content/uploads/2024/08/Dr.-Luis-Rubalcava-1-150x150.jpg 150w\" sizes=\"(max-width: 500px) 100vw, 500px\" /> \n <h2>Dr. Luis Rubalcava</h2> \n <p>Specialist in assisted reproduction with years of experience, Medical Director at the Mexican Institute of Infertility and pioneer in uterus transplant surgery in Mexico.</p>\n <h2>Need information?<br>Request a video call!</h2> \n <h2>We provide treatments to solve fertility problems.</h2>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="International Support"
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'International Support', href: '#' },
+      ]}
+    >
+      {/* Intro Section */}
+      <section className="py-16 bg-white">
+        <Container>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-violet mb-6 leading-tight">
+                Global Partnerships for <br />
+                <span className="text-brand-green">Exceptional Results</span>
+              </h2>
+              <div className="prose prose-lg text-gray-600">
+                <p>
+                  At Advanced Fertility Center Cancun, we are very proud to have the medical support of great international specialists who share their research and discoveries about the most advanced fertility techniques.
+                </p>
+                <p>
+                  Our team is constantly trained by world-renowned physicians, ensuring that every patient receives international-level care in the heart of Cancún.
+                </p>
+              </div>
+            </div>
+            <div className="not-prose lg:w-1/2 relative aspect-[4/5] w-full max-w-sm mx-auto rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
+              <Image
+                src="/medical-team.jpg"
+                alt="International Medical Support"
+                fill
+                className="object-cover m-0"
+              />
+              <div className="absolute inset-0 bg-brand-violet/10 mix-blend-multiply" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Advisory Board Grid */}
+      <section className="py-20 bg-gray-50">
+        <Container>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-brand-violet mb-4">Medical Advisory Board</h2>
+            <div className="w-20 h-1 bg-brand-green mx-auto mb-6" />
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We have the collaboration and technical support of key opinion leaders in reproductive medicine from Japan, Russia, and Mexico.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {partnersData.map((partner: any) => (
+              <div
+                key={partner.id}
+                className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full group"
+              >
+                <div className="relative w-32 h-32 mx-auto mb-6 rounded-2xl overflow-hidden">
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+
+                <div className="text-center flex-grow">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{partner.name}</h3>
+                  <p className="text-brand-violet font-semibold text-base mb-1">{partner.role}</p>
+                  <p className="text-gray-500 text-base mb-4 uppercase tracking-wider">{partner.institution}</p>
+                  <p className="text-gray-600 text-base leading-relaxed mb-6">
+                    {partner.description}
+                  </p>
+                </div>
+
+                <div className="pt-6 border-t border-gray-50 flex gap-4 justify-center mt-auto">
+                  {partner.videoUrl && (
+                    <button className="flex items-center text-brand-violet font-bold text-base hover:text-brand-green transition-colors">
+                      <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      Watch Video
+                    </button>
+                  )}
+                  {partner.website && (
+                    <Link
+                      href={partner.website}
+                      target="_blank"
+                      className="flex items-center text-brand-violet font-bold text-base hover:text-brand-green transition-colors"
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Website
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* International Patients CTA */}
+      <section className="py-24 bg-brand-violet relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl opacity-50" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-green/20 rounded-full -ml-32 -mb-32 blur-3xl opacity-50" />
+
+        <Container className="relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Do You Live Outside Mexico?</h2>
+          <p className="text-xl text-white mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+            We offer initial video consultations to coordinate your treatment before traveling,
+            ensuring a smooth and hassle-free experience.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link
+              href="/contact-ivf-doctors"
+              className="bg-brand-green text-brand-violet px-10 py-4 rounded-full font-bold text-lg hover:bg-white transition-all shadow-xl hover:-translate-y-1 inline-block"
+            >
+              Schedule a Video Call
+            </Link>
+          </div>
+        </Container>
+      </section>
+    </InnerPageLayout>
   );
-}
+};
+
+export default InternationalSupportPage;

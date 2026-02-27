@@ -1,21 +1,86 @@
-
 import React from 'react';
-import PageHeader from '@/components/layout/PageHeader';
-import { Container } from '@/components/ui/Container';
+import InnerPageLayout from '@/components/layout/InnerPageLayout';
+import { Plane, MapPin, Sun, Hotel, HeartHandshake, Languages, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Page() {
   return (
-    <main className="bg-white pb-24">
-      <PageHeader 
-        title="Fertility Vacations" 
-        breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Fertility Vacations', href: '#' }
-        ]}
-      />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `<h2>Why Cancun?: The paradise where your family journey begins</h2> \n <p>Located in the heart of the Mexican Caribbean, <strong>Cancun</strong> is more than just a beautiful destination—it's the perfect place to begin your fertility treatment. Surrounded by the most stunning turquoise waters in the world, you’ll find peace, comfort, and easy access to world-class medical care.</p> \n <ul>\n <li>\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\"><g>	<g> <path d=\"M497.36,69.995c-7.532-7.545-19.753-7.558-27.285-0.032L238.582,300.845l-83.522-90.713 c-7.217-7.834-19.419-8.342-27.266-1.126c-7.841,7.217-8.343,19.425-1.126,27.266l97.126,105.481 c3.557,3.866,8.535,6.111,13.784,6.22c0.141,0.006,0.277,0.006,0.412,0.006c5.101,0,10.008-2.026,13.623-5.628L497.322,97.286 C504.873,89.761,504.886,77.54,497.36,69.995z\"></path>	</g></g><g>	<g> <path d=\"M492.703,236.703c-10.658,0-19.296,8.638-19.296,19.297c0,119.883-97.524,217.407-217.407,217.407 c-119.876,0-217.407-97.524-217.407-217.407c0-119.876,97.531-217.407,217.407-217.407c10.658,0,19.297-8.638,19.297-19.296 C275.297,8.638,266.658,0,256,0C114.84,0,0,114.84,0,256c0,141.154,114.84,256,256,256c141.154,0,256-114.846,256-256 C512,245.342,503.362,236.703,492.703,236.703z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n <b>Easy access from around the world</b><br> Cancun International Airport is one of the busiest and most connected in Latin America.\n </li>\n <li>\n <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"512\" viewBox=\"0 0 60 60\" width=\"512\"><g id=\"Icons\"><path d=\"m1.014 40.586 9.018 4.514a24.254 24.254 0 0 0 -1.465 3.2 2.448 2.448 0 0 0 2.29 3.292 2.543 2.543 0 0 0 .857-.151 24.189 24.189 0 0 0 3.191-1.463l4.512 9.023a1.843 1.843 0 0 0 1.349.987 1.967 1.967 0 0 0 .286.022 1.848 1.848 0 0 0 1.3-.542l1.249-1.248a1.861 1.861 0 0 0 .529-1.5l-1.364-12.248c1.752-1.466 3.661-3.2 5.737-5.281l7.008-7.008 12.76 22.685a2.1 2.1 0 0 0 1.551 1.055 2.24 2.24 0 0 0 .293.019 2.089 2.089 0 0 0 1.486-.618l1.674-1.675a2.1 2.1 0 0 0 .569-1.944l-1.73-7.88 3.16-3.16a3.225 3.225 0 0 0 0-4.554l-.785-.783a3.211 3.211 0 0 0 -4.288-.216l-.629-2.868 2.564-2.564a3.225 3.225 0 0 0 0-4.554l-.785-.783a3.214 3.214 0 0 0 -3.65-.622l-.671-3.057 5.864-5.864c5.044-5.044 8.829-11.473 6.3-14s-8.954 1.26-14 6.3l-5.858 5.87-3.057-.67a3.216 3.216 0 0 0 -.621-3.65l-.785-.785a3.222 3.222 0 0 0 -4.553 0l-2.563 2.564-2.869-.629a3.212 3.212 0 0 0 -.216-4.288l-.785-.785a3.225 3.225 0 0 0 -4.553 0l-3.16 3.16-7.88-1.73a2.093 2.093 0 0 0 -1.943.569l-1.675 1.674a2.111 2.111 0 0 0 .457 3.331l22.683 12.758-7.008 7.011c-2.076 2.076-3.814 3.985-5.28 5.736l-12.255-1.372a1.844 1.844 0 0 0 -1.483.536l-1.248 1.243a1.835 1.835 0 0 0 .472 2.943zm21.124 16.264-1.038 1.037-4.463-8.924a48.816 48.816 0 0 0 4.283-3zm29.213-20.108a1.221 1.221 0 0 1 1.724 0l.785.783a1.222 1.222 0 0 1 0 1.725l-2.255 2.255-.9-4.115zm-3.139-10.985a1.22 1.22 0 0 1 1.725 0l.785.783a1.224 1.224 0 0 1 0 1.725l-1.659 1.659-.9-4.116zm3.679 26.378a.109.109 0 0 1 -.03.1l-1.674 1.675-.173-.023-13.034-23.173 8.371-8.371zm-20.157-42.857a1.223 1.223 0 0 1 1.724 0l.785.785a1.22 1.22 0 0 1 0 1.725l-.052.053-4.115-.9zm-10.986-3.138a1.222 1.222 0 0 1 1.725 0l.785.785a1.221 1.221 0 0 1 0 1.724l-.649.649-4.116-.9zm-14.634 3.846-.024-.173 1.675-1.674a.1.1 0 0 1 .1-.03l29.791 6.54-8.371 8.371zm16.108 22.925 24.391-24.39c4.408-4.408 8.6-6.539 10.408-6.539a1.055 1.055 0 0 1 .762.235c.969.969-1.052 5.918-6.3 11.17l-24.39 24.39c-8.112 8.114-13.543 10.86-16.054 11.773a.449.449 0 0 1 -.587-.581c.912-2.515 3.659-7.947 11.77-16.058zm-19.071 4.951 10.888 1.218a48.635 48.635 0 0 0 -3 4.282l-8.926-4.462z\"></path></g></svg> \n Direct flights to over <b>40 cities in the United States and 20 cities in Europe.</b>\n </li>\n <li>\n <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\" width=\"512\" height=\"512\"><g id=\"Layer_2\" data-name=\"Layer 2\"><path d=\"M56.48,28.9l-3.443-.573a2.99,2.99,0,0,1-2.111-1.471l-4.755-8.32A9.019,9.019,0,0,0,38.357,14H21.643a9.019,9.019,0,0,0-7.814,4.535l-4.85,8.487A3.016,3.016,0,0,1,7.1,28.444l-3.314.828A4.985,4.985,0,0,0,.245,32.6c-.011.026-.012.057-.021.084A4.98,4.98,0,0,0,0,34.123V41a5.006,5.006,0,0,0,5,5H8.685a6.985,6.985,0,0,0,12.63,0h21.37a6.985,6.985,0,0,0,12.63,0H59a5.006,5.006,0,0,0,5-5V37.777A8.973,8.973,0,0,0,56.48,28.9ZM60.894,34a6.976,6.976,0,0,1,.877,2H61a3.01,3.01,0,0,1-2.118-.872A3.057,3.057,0,0,1,58.172,34ZM2.01,34H3.719l-.5,2H2V34.123C2,34.081,2.009,34.041,2.01,34ZM15,48a5,5,0,1,1,5-5A5.006,5.006,0,0,1,15,48Zm34,0a5,5,0,1,1,5-5A5.006,5.006,0,0,1,49,48Zm10-4H55.92a7,7,0,1,0-13.84,0H21.92A7,7,0,1,0,8.08,44H5a3,3,0,0,1-3-3V38H4a1,1,0,0,0,.97-.757l1-4A1,1,0,0,0,5,32H2.889a2.983,2.983,0,0,1,1.383-.787l3.315-.829a5.026,5.026,0,0,0,3.128-2.37l4.85-8.487A7.016,7.016,0,0,1,21.643,16H38.357a7.016,7.016,0,0,1,6.078,3.527l4.754,8.32A4.98,4.98,0,0,0,52.708,30.3l3.443.574A7.013,7.013,0,0,1,58.959,32H57a1,1,0,0,0-1,1,4.995,4.995,0,0,0,5,5h1v3A3,3,0,0,1,59,44Z\"></path><path d=\"M45.458,23.485a1,1,0,0,0-1.715,1.03L45.234,27H33V19h5.735a3.015,3.015,0,0,1,2.573,1.457l.634,1.058a1,1,0,0,0,1.715-1.03l-.635-1.058A5.023,5.023,0,0,0,38.735,17H32a1,1,0,0,0-1,1V28a1,1,0,0,0,1,1H47a1,1,0,0,0,.857-1.515Z\"></path><path d=\"M28,17H21.265a5.023,5.023,0,0,0-4.287,2.427l-4.835,8.058A1,1,0,0,0,13,29H28a1,1,0,0,0,1-1V18A1,1,0,0,0,28,17ZM27,27H14.766l3.926-6.543A3.015,3.015,0,0,1,21.265,19H27Z\"></path><path d=\"M34,30H32a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z\"></path><path d=\"M15,30H13a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z\"></path><path d=\"M49,40a3,3,0,1,0,3,3A3,3,0,0,0,49,40Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,49,44Z\"></path><path d=\"M15,40a3,3,0,1,0,3,3A3,3,0,0,0,15,40Zm0,4a1,1,0,1,1,1-1A1,1,0,0,1,15,44Z\"></path></g></svg> \n Our clinic is just <b>15 minutes from the airport</b>, ensuring a smooth and convenient arrival.\n </li>\n <li>\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\"><g>	<g> <path d=\"M497.36,69.995c-7.532-7.545-19.753-7.558-27.285-0.032L238.582,300.845l-83.522-90.713 c-7.217-7.834-19.419-8.342-27.266-1.126c-7.841,7.217-8.343,19.425-1.126,27.266l97.126,105.481 c3.557,3.866,8.535,6.111,13.784,6.22c0.141,0.006,0.277,0.006,0.412,0.006c5.101,0,10.008-2.026,13.623-5.628L497.322,97.286 C504.873,89.761,504.886,77.54,497.36,69.995z\"></path>	</g></g><g>	<g> <path d=\"M492.703,236.703c-10.658,0-19.296,8.638-19.296,19.297c0,119.883-97.524,217.407-217.407,217.407 c-119.876,0-217.407-97.524-217.407-217.407c0-119.876,97.531-217.407,217.407-217.407c10.658,0,19.297-8.638,19.297-19.296 C275.297,8.638,266.658,0,256,0C114.84,0,0,114.84,0,256c0,141.154,114.84,256,256,256c141.154,0,256-114.846,256-256 C512,245.342,503.362,236.703,492.703,236.703z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n <b>A leading destination for medical tourism</b><br> In 2022 alone, Cancun welcomed more than <b>20.4 million visitors</b>, many seeking high-quality healthcare. You could be next to experience exceptional fertility care in a globally trusted location.\n </li>\n <li>\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\"><g>	<g> <path d=\"M497.36,69.995c-7.532-7.545-19.753-7.558-27.285-0.032L238.582,300.845l-83.522-90.713 c-7.217-7.834-19.419-8.342-27.266-1.126c-7.841,7.217-8.343,19.425-1.126,27.266l97.126,105.481 c3.557,3.866,8.535,6.111,13.784,6.22c0.141,0.006,0.277,0.006,0.412,0.006c5.101,0,10.008-2.026,13.623-5.628L497.322,97.286 C504.873,89.761,504.886,77.54,497.36,69.995z\"></path>	</g></g><g>	<g> <path d=\"M492.703,236.703c-10.658,0-19.296,8.638-19.296,19.297c0,119.883-97.524,217.407-217.407,217.407 c-119.876,0-217.407-97.524-217.407-217.407c0-119.876,97.531-217.407,217.407-217.407c10.658,0,19.297-8.638,19.297-19.296 C275.297,8.638,266.658,0,256,0C114.84,0,0,114.84,0,256c0,141.154,114.84,256,256,256c141.154,0,256-114.846,256-256 C512,245.342,503.362,236.703,492.703,236.703z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n <b>A relaxing environment for your well-being</b><br> The warm weather, Caribbean breeze, and peaceful atmosphere make Cancun the perfect place to rest and recharge—essential for anyone going through a fertility journey.\n </li>\n <li>\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\"><g>	<g> <path d=\"M497.36,69.995c-7.532-7.545-19.753-7.558-27.285-0.032L238.582,300.845l-83.522-90.713 c-7.217-7.834-19.419-8.342-27.266-1.126c-7.841,7.217-8.343,19.425-1.126,27.266l97.126,105.481 c3.557,3.866,8.535,6.111,13.784,6.22c0.141,0.006,0.277,0.006,0.412,0.006c5.101,0,10.008-2.026,13.623-5.628L497.322,97.286 C504.873,89.761,504.886,77.54,497.36,69.995z\"></path>	</g></g><g>	<g> <path d=\"M492.703,236.703c-10.658,0-19.296,8.638-19.296,19.297c0,119.883-97.524,217.407-217.407,217.407 c-119.876,0-217.407-97.524-217.407-217.407c0-119.876,97.531-217.407,217.407-217.407c10.658,0,19.297-8.638,19.297-19.296 C275.297,8.638,266.658,0,256,0C114.84,0,0,114.84,0,256c0,141.154,114.84,256,256,256c141.154,0,256-114.846,256-256 C512,245.342,503.362,236.703,492.703,236.703z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n <b>Special rates with nearby hotels and restaurants </b><br> We’ve partnered with local hotels, restaurants, and services close to our clinic to ensure your stay is both comfortable and enjoyable.\n </li>\n <li>\n <a href=\"https://fertilitycentercancun.com/fertilitycentermexico/wp-content/uploads/2024/07/Mapa-AFCC-2024-ESP.pdf\">\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\"><g>	<g> <path d=\"M341.476,338.285c54.483-85.493,47.634-74.827,49.204-77.056C410.516,233.251,421,200.322,421,166 C421,74.98,347.139,0,256,0C165.158,0,91,74.832,91,166c0,34.3,10.704,68.091,31.19,96.446l48.332,75.84 C118.847,346.227,31,369.892,31,422c0,18.995,12.398,46.065,71.462,67.159C143.704,503.888,198.231,512,256,512 c108.025,0,225-30.472,225-90C481,369.883,393.256,346.243,341.476,338.285z M147.249,245.945 c-0.165-0.258-0.337-0.51-0.517-0.758C129.685,221.735,121,193.941,121,166c0-75.018,60.406-136,135-136 c74.439,0,135,61.009,135,136c0,27.986-8.521,54.837-24.646,77.671c-1.445,1.906,6.094-9.806-110.354,172.918L147.249,245.945z M256,482c-117.994,0-195-34.683-195-60c0-17.016,39.568-44.995,127.248-55.901l55.102,86.463 c2.754,4.322,7.524,6.938,12.649,6.938s9.896-2.617,12.649-6.938l55.101-86.463C411.431,377.005,451,404.984,451,422 C451,447.102,374.687,482,256,482z\"></path>	</g></g><g>	<g> <path d=\"M256,91c-41.355,0-75,33.645-75,75s33.645,75,75,75c41.355,0,75-33.645,75-75S297.355,91,256,91z M256,211 c-24.813,0-45-20.187-45-45s20.187-45,45-45s45,20.187,45,45S280.813,211,256,211z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n Download our map with clinic location, nearby attractions, and partner benefits.\n </a>\n </li>\n <li>\n <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"Capa_1\" x=\"0px\" y=\"0px\" viewBox=\"0 0 512 512\" style=\"enable-background:new 0 0 512 512;\" xml:space=\"preserve\"><g>	<g> <path d=\"M497.36,69.995c-7.532-7.545-19.753-7.558-27.285-0.032L238.582,300.845l-83.522-90.713 c-7.217-7.834-19.419-8.342-27.266-1.126c-7.841,7.217-8.343,19.425-1.126,27.266l97.126,105.481 c3.557,3.866,8.535,6.111,13.784,6.22c0.141,0.006,0.277,0.006,0.412,0.006c5.101,0,10.008-2.026,13.623-5.628L497.322,97.286 C504.873,89.761,504.886,77.54,497.36,69.995z\"></path>	</g></g><g>	<g> <path d=\"M492.703,236.703c-10.658,0-19.296,8.638-19.296,19.297c0,119.883-97.524,217.407-217.407,217.407 c-119.876,0-217.407-97.524-217.407-217.407c0-119.876,97.531-217.407,217.407-217.407c10.658,0,19.297-8.638,19.297-19.296 C275.297,8.638,266.658,0,256,0C114.84,0,0,114.84,0,256c0,141.154,114.84,256,256,256c141.154,0,256-114.846,256-256 C512,245.342,503.362,236.703,492.703,236.703z\"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg> \n <b>Warm, bilingual support every step of the way</b><br> Our bilingual team (English/Spanish) will welcome you with professionalism, empathy, and clear communication, making you feel cared for and supported from the moment you arrive.\n </li>\n </ul>\n https://youtu.be/gYUSs_MYLLg?si=VhtyQfSOAJ1g7gp5 \n <h2>Need more information?</h2> \n <p>Schedule a complimentary <strong>video consultation</strong> and receive <strong>personalized guidance</strong>.<br />At Advanced Fertility Center Cancun, we’re here to help you fulfill your dream of <strong>building a family</strong>.</p>` }} />
-      </Container>
-    </main>
+    <InnerPageLayout
+      title="Medical Tourism in Cancún"
+      breadcrumb={[
+        { label: 'Home', href: '/' },
+        { label: 'International Patients', href: '#' },
+        { label: 'Medical Tourism', href: '#' }
+      ]}
+    >
+      <div className="mb-12">
+        <p className="lead text-2xl font-serif text-brand-violet italic mb-6">
+          Why Cancún? The paradise where your dream begins.
+        </p>
+        <p className="text-lg text-slate-600 font-light">
+          Located in the heart of the Mexican Caribbean, <strong>Cancún</strong> is much more than a tourist destination: it is the perfect place to start your fertility treatment. Surrounded by the most beautiful turquoise waters in the world, here you will find an environment of peace, well-being, and accessibility that will allow you to focus on what matters most: your health and your future.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <BenefitCard
+          icon={<Plane className="w-8 h-8 text-white" />}
+          title="Global Connectivity"
+          description="Cancún International Airport offers direct flights to more than 40 cities in the United States and 20 in Europe."
+        />
+        <BenefitCard
+          icon={<MapPin className="w-8 h-8 text-white" />}
+          title="Strategic Location"
+          description="Our clinic is located just 15 minutes from the airport, facilitating your transfer and travel logistics."
+        />
+        <BenefitCard
+          icon={<Sun className="w-8 h-8 text-white" />}
+          title="Relaxing Environment"
+          description="The warm climate and ocean breeze create a calm atmosphere, key to reducing stress during your treatment."
+        />
+        <BenefitCard
+          icon={<Hotel className="w-8 h-8 text-white" />}
+          title="Tourism Infrastructure"
+          description="Partnerships with top-tier hotels and resorts near the clinic for a comfortable and pleasant stay."
+        />
+        <BenefitCard
+          icon={<Languages className="w-8 h-8 text-white" />}
+          title="Bilingual Care"
+          description="All our staff speaks English and Spanish, eliminating communication barriers so you feel at home."
+        />
+        <BenefitCard
+          icon={<HeartHandshake className="w-8 h-8 text-white" />}
+          title="Human Warmth"
+          description="An empathetic and personalized treatment that distinguishes Mexican hospitality and our medical team."
+        />
+      </div>
+
+      <div className="bg-brand-gray rounded-3xl p-8 md:p-12 text-center">
+        <h2 className="text-3xl font-serif text-brand-violet mb-6">Need Help With Your Trip?</h2>
+        <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
+          We have international patient coordinators who can help you plan your visit, suggest accommodation, and coordinate your medical appointments to optimize your time in Cancún.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/contact-ivf-doctors" className="inline-flex items-center justify-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-colors font-medium">
+            Contact Coordinator
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+    </InnerPageLayout>
+  );
+}
+
+function BenefitCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
+  return (
+    <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100">
+      <div className="w-14 h-14 bg-brand-green rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-brand-green/20">
+        {icon}
+      </div>
+      <h3 className="text-xl font-bold text-brand-violet mb-3">{title}</h3>
+      <p className="text-base text-slate-600 leading-relaxed">
+        {description}
+      </p>
+    </div>
   );
 }
