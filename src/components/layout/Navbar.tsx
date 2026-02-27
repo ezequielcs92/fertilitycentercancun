@@ -47,6 +47,7 @@ export default function Navbar() {
                 { name: t('items.about.links.tourism.name'), href: route('/turismo-medico', '/international-patients'), description: t('items.about.links.tourism.description') },
                 { name: t('items.about.links.facilities.name'), href: route('/laboratorios-y-servicios', '/laboratories-and-services'), description: t('items.about.links.facilities.description') },
                 { name: t('items.about.links.team.name'), href: route('/equipo', '/ivf-team'), description: t('items.about.links.team.description') },
+                { name: t('items.about.links.podcast.name'), href: route('/podcast', '/podcast'), description: t('items.about.links.podcast.description') },
                 { name: t('items.about.links.support.name'), href: route('/soporte-internacional', '/international-support'), description: t('items.about.links.support.description') },
                 { name: t('items.about.links.certifications.name'), href: route('/certificaciones-acreditaciones-y-alianzas', '/certifications-accreditations-and-partnerships'), description: t('items.about.links.certifications.description') },
             ]

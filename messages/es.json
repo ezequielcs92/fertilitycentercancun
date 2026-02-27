@@ -212,6 +212,10 @@
                         "name": "Equipo Médico",
                         "description": "Especialistas certificados."
                     },
+                    "podcast": {
+                        "name": "Podcast",
+                        "description": "Escucha nuestros episodios."
+                    },
                     "support": {
                         "name": "Soporte Internacional",
                         "description": "Te acompañamos en cada paso."

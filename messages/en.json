@@ -212,6 +212,10 @@
                         "name": "Medical Team",
                         "description": "Certified specialists."
                     },
+                    "podcast": {
+                        "name": "Podcast",
+                        "description": "Listen to our episodes."
+                    },
                     "support": {
                         "name": "International Support",
                         "description": "We accompany you every step."
