@@ -12,6 +12,10 @@ import { Send, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export default function ContactForm() {
     const t = useTranslations('ContactForm')
+    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
+    const isTurnstileTestKey = turnstileSiteKey === '1x00000000000000000000AA'
+    const isProduction = process.env.NODE_ENV === 'production'
+    const isCaptchaEnabled = Boolean(turnstileSiteKey && !isTurnstileTestKey)
     const [isMounted, setIsMounted] = useState(false)
     const [formData, setFormData] = useState<LeadFormData>({
         nombre: '',
@@ -73,7 +77,13 @@ export default function ContactForm() {
             return
         }
 
-        if (!captchaToken) {
+        if (isProduction && !isCaptchaEnabled) {
+            setSubmitStatus('error')
+            setSubmitMessage('El sistema anti-spam no está configurado. Intente más tarde.')
+            return
+        }
+
+        if (isCaptchaEnabled && !captchaToken) {
             setSubmitStatus('error')
             setSubmitMessage(t('errors.captcha_required'))
             return
@@ -161,7 +171,7 @@ export default function ContactForm() {
                     <div className="grid md:grid-cols-2 gap-6">
                         {/* Nombre Completo */}
                         <div className="md:col-span-1">
-                            <label htmlFor="nombre" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="nombre" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
                                 {t('name_label')} *
                             </label>
                             <Input
@@ -177,7 +187,7 @@ export default function ContactForm() {
 
                         {/* Email */}
                         <div className="md:col-span-1">
-                            <label htmlFor="email" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="email" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
                                 {t('email_label')} *
                             </label>
                             <Input
@@ -193,7 +203,7 @@ export default function ContactForm() {
 
                         {/* Teléfono */}
                         <div className="md:col-span-1">
-                            <label htmlFor="telefono" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="telefono" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
                                 {t('phone_label')} *
                             </label>
                             <Input
@@ -209,7 +219,7 @@ export default function ContactForm() {
 
                         {/* País */}
                         <div className="md:col-span-1">
-                            <label htmlFor="pais" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="pais" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
                                 {t('country_label')} *
                             </label>
                             <Select
@@ -230,7 +240,7 @@ export default function ContactForm() {
 
                         {/* Tratamiento de Interés */}
                         <div className="md:col-span-2">
-                            <label htmlFor="tratamiento" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="tratamiento" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
                                 {t('treatment_label')} *
                             </label>
                             <Select
@@ -255,7 +265,7 @@ export default function ContactForm() {
 
                         {/* Mensaje */}
                         <div className="md:col-span-2">
-                            <label htmlFor="mensaje" className="block text-base font-bold text-brand-violet mb-3 uppercase tracking-wider">
+                            <label htmlFor="mensaje" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
                                 {t('message_label')}
                             </label>
                             <textarea
@@ -272,9 +282,9 @@ export default function ContactForm() {
 
                     {/* CAPTCHA */}
                     <div className="mt-8 flex justify-center min-h-[65px]">
-                        {isMounted && (
+                        {isMounted && isCaptchaEnabled && (
                             <Turnstile
-                                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
+                                siteKey={turnstileSiteKey!}
                                 options={{
                                     appearance: 'always',
                                     theme: 'light',

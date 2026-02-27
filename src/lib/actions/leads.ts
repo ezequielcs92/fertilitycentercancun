@@ -25,31 +25,44 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
     try {
         // 1. Verificar CAPTCHA primero
         const secretKey = process.env.TURNSTILE_SECRET_KEY;
+        const isTurnstileTestSecret = secretKey === '1x0000000000000000000000000000000AA';
+        const isProduction = process.env.NODE_ENV === 'production';
+        const isCaptchaEnabled = Boolean(secretKey && !isTurnstileTestSecret);
 
-        if (!formData.captchaToken) {
+        if (isProduction && !isCaptchaEnabled) {
             return {
                 success: false,
-                message: 'Verificación de seguridad requerida',
-                error: 'CAPTCHA_REQUIRED'
+                message: 'Sistema anti-spam no configurado. Contacte al administrador del sitio.',
+                error: 'CAPTCHA_UNCONFIGURED'
             }
         }
 
-        // Validar contra la API de Cloudflare
-        const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-            method: 'POST',
-            body: new URLSearchParams({
-                secret: secretKey || '',
-                response: formData.captchaToken,
-            }),
-        });
+        if (isCaptchaEnabled) {
+            if (!formData.captchaToken) {
+                return {
+                    success: false,
+                    message: 'Verificación de seguridad requerida',
+                    error: 'CAPTCHA_REQUIRED'
+                }
+            }
 
-        const verifyData = await verifyResponse.json();
+            // Validar contra la API de Cloudflare
+            const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+                method: 'POST',
+                body: new URLSearchParams({
+                    secret: secretKey || '',
+                    response: formData.captchaToken,
+                }),
+            });
 
-        if (!verifyData.success) {
-            return {
-                success: false,
-                message: 'La verificación de seguridad ha fallado. Por favor intente de nuevo.',
-                error: 'CAPTCHA_FAILED'
+            const verifyData = await verifyResponse.json();
+
+            if (!verifyData.success) {
+                return {
+                    success: false,
+                    message: 'La verificación de seguridad ha fallado. Por favor intente de nuevo.',
+                    error: 'CAPTCHA_FAILED'
+                }
             }
         }
 

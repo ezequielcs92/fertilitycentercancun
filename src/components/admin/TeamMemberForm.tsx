@@ -5,8 +5,9 @@ import { useRouter } from 'next/navigation';
 import { saveTeamMember, type TeamMember } from '@/lib/actions/team';
 import { Button } from '@/components/ui/Button';
 import ExperienceForm from './ExperienceForm';
-import { ArrowLeft, Save, Upload, User } from 'lucide-react';
+import { ArrowLeft, Save, Upload, User, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { createClient } from '@/lib/supabase/client';
 
 interface TeamMemberFormProps {
     initialData?: TeamMember;
@@ -15,6 +16,7 @@ interface TeamMemberFormProps {
 export default function TeamMemberForm({ initialData }: TeamMemberFormProps) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [uploadingImage, setUploadingImage] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [formData, setFormData] = useState<TeamMember>(initialData || {
         nombre: '',
@@ -59,6 +61,39 @@ export default function TeamMemberForm({ initialData }: TeamMemberFormProps) {
         }
     };
 
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploadingImage(true);
+        setError(null);
+
+        try {
+            const supabase = createClient();
+            const fileExt = file.name.split('.').pop();
+            const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
+
+            const { error: uploadError } = await supabase.storage
+                .from('team-photos')
+                .upload(fileName, file);
+
+            if (uploadError) {
+                throw uploadError;
+            }
+
+            const { data: { publicUrl } } = supabase.storage
+                .from('team-photos')
+                .getPublicUrl(fileName);
+
+            setFormData(prev => ({ ...prev, foto_url: publicUrl }));
+        } catch (uploadError: any) {
+            setError('Error al subir la imagen: ' + uploadError.message);
+        } finally {
+            setUploadingImage(false);
+            e.target.value = '';
+        }
+    };
+
     return (
         <form onSubmit={handleSubmit} className="space-y-12 pb-24">
             <div className="flex items-center justify-between sticky top-20 bg-brand-slate/80 backdrop-blur-md z-10 py-4 -mx-4 px-4 border-b border-slate-100">
@@ -86,7 +121,9 @@ export default function TeamMemberForm({ initialData }: TeamMemberFormProps) {
                     <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-brand-violet/5 text-center">
                         <div className="relative w-48 h-48 mx-auto mb-6 group">
                             <div className="w-full h-full rounded-full overflow-hidden bg-slate-100 border-4 border-brand-green/20 flex items-center justify-center">
-                                {formData.foto_url ? (
+                                {uploadingImage ? (
+                                    <Loader2 className="w-10 h-10 text-brand-violet animate-spin" />
+                                ) : formData.foto_url ? (
                                     <img src={formData.foto_url} alt="Previsualización" className="w-full h-full object-cover" />
                                 ) : (
                                     <User className="w-20 h-20 text-slate-300" />
@@ -95,10 +132,20 @@ export default function TeamMemberForm({ initialData }: TeamMemberFormProps) {
                             <button
                                 type="button"
                                 title="Subir foto"
+                                disabled={uploadingImage}
                                 className="absolute bottom-2 right-2 p-3 bg-brand-violet text-white rounded-full shadow-lg hover:bg-brand-green hover:text-brand-violet transition-all"
+                                onClick={() => document.getElementById('team-photo-upload')?.click()}
                             >
                                 <Upload className="w-5 h-5" />
                             </button>
+                            <input
+                                id="team-photo-upload"
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageUpload}
+                                disabled={uploadingImage}
+                                className="hidden"
+                            />
                         </div>
                         <div className="space-y-4 text-left">
                             <div className="flex flex-col gap-2">
