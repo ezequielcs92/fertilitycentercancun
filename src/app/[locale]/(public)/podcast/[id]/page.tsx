@@ -116,9 +116,16 @@ export default async function PodcastDetailPage({
               </a>
 
               <div className="prose prose-slate max-w-none mt-10">
-                <p className="text-slate-600 leading-relaxed text-base md:text-lg whitespace-pre-line">
-                  {podcast.descripcion || (isEs ? 'Sin descripción.' : 'No description.')}
-                </p>
+                {podcast.descripcion ? (
+                  <div
+                    className="text-slate-600 leading-relaxed text-base md:text-lg"
+                    dangerouslySetInnerHTML={{ __html: podcast.descripcion }}
+                  />
+                ) : (
+                  <p className="text-slate-600 leading-relaxed text-base md:text-lg">
+                    {isEs ? 'Sin descripción.' : 'No description.'}
+                  </p>
+                )}
               </div>
             </div>
           </article>

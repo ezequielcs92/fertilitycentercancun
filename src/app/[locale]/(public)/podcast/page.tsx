@@ -5,6 +5,11 @@ import { getPodcasts } from '@/lib/actions/podcasts';
 import { Headphones, Clock, PlayCircle } from 'lucide-react';
 import Link from 'next/link';
 
+function stripHtml(html: string | null | undefined) {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 function formatDuration(seconds: number | null, isEs: boolean) {
   if (!seconds || seconds <= 0) return isEs ? 'Duración no especificada' : 'Duration not specified';
   const mins = Math.floor(seconds / 60);
@@ -71,7 +76,7 @@ export default async function PodcastPage({
                 <div className="p-6 flex-1 flex flex-col">
                   <h3 className="text-xl font-serif text-brand-violet mb-3 line-clamp-2">{podcast.titulo}</h3>
                   <p className="text-slate-600 text-sm font-light leading-relaxed line-clamp-3 mb-4">
-                    {podcast.descripcion || (isEs ? 'Sin descripción' : 'No description')}
+                    {stripHtml(podcast.descripcion) || (isEs ? 'Sin descripción' : 'No description')}
                   </p>
 
                   <div className="flex items-center gap-2 text-xs text-slate-400 mb-5 uppercase tracking-wider">

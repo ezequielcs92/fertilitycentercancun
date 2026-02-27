@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { ArrowLeft, Save, Upload, Loader2, Image as ImageIcon } from 'lucide-react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
+import RichTextEditor from './RichTextEditor';
 
 interface PodcastFormProps {
   initialData?: Partial<Podcast>;
@@ -26,12 +27,16 @@ export default function PodcastForm({ initialData }: PodcastFormProps) {
     fecha: new Date().toISOString(),
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: name === 'duracion_segundos' ? (value ? Number(value) : null) : value,
     }));
+  };
+
+  const handleEditorChange = (content: string) => {
+    setFormData((prev) => ({ ...prev, descripcion: content }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -196,13 +201,9 @@ export default function PodcastForm({ initialData }: PodcastFormProps) {
 
         <div className="flex flex-col gap-2">
           <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Descripción</label>
-          <textarea
-            name="descripcion"
-            rows={5}
+          <RichTextEditor
             value={formData.descripcion || ''}
-            onChange={handleChange}
-            placeholder="Resumen del episodio..."
-            className="px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-green outline-none transition-all resize-none"
+            onChange={handleEditorChange}
           />
         </div>
       </div>
