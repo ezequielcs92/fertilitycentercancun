@@ -33,12 +33,12 @@ export default function Page() {
       <h2 className="text-3xl font-serif text-brand-violet mb-8">How does it work?</h2>
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
-          <div className="h-48 relative rounded-2xl overflow-hidden mb-6">
+          <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
               src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido.jpg"
               alt="Follicular monitoring"
               fill
-              className="object-cover"
+              className="object-cover object-[45%_35%]"
               unoptimized
             />
           </div>
@@ -48,12 +48,12 @@ export default function Page() {
           </p>
         </div>
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
-          <div className="h-48 relative rounded-2xl overflow-hidden mb-6">
+          <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
               src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1024x607.jpg"
               alt="Insemination procedure"
               fill
-              className="object-cover"
+              className="object-contain p-2 bg-white"
               unoptimized
             />
           </div>

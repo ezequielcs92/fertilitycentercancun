@@ -1,20 +1,60 @@
-
 import React from 'react';
+import Image from 'next/image';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
+
+const services = [
+  { title: 'Fertility Diagnosis', image: '/images/wp/2025_07_Diagnostico-430x290-1.jpg' },
+  { title: 'Gynecology and Obstetrics', image: '/images/wp/2025_07_Ginecologia-430x290-1.jpg' },
+  { title: 'Andrology Laboratory', image: '/images/wp/2025_07_Laboratorio-de-andrologia-430x290-1.jpg' },
+  { title: 'Clinical Analysis', image: '/images/wp/2025_07_Laboratorio-clinico-430x290-1.jpg' },
+  { title: 'Maternal-Fetal Medicine', image: '/images/wp/2025_07_Materno-fetal-430x290-1.jpg' },
+  { title: 'Emotional and Psychological Support', image: '/images/wp/2025_07_Acompanamiento-emocional-430x290-1.jpg' },
+  { title: 'Acupuncture', image: '/images/wp/2025_07_Acupuntura-430x290-1.jpg' },
+  { title: 'Intralipids', image: '/images/wp/2025_10_intralipidos-001.jpg' },
+];
 
 export default function Page() {
   return (
     <main className="bg-white pb-24">
-      <PageHeader 
-        title="Laboratories and Services" 
+      <PageHeader
+        title="Laboratories and Services"
         breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Laboratories and Services', href: '#' }
+          { label: 'Home', href: '/' },
+          { label: 'Laboratories and Services', href: '#' },
         ]}
       />
-      <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: `At <strong>Advanced Fertility Center Cancún</strong>, we offer a full range of specialized medical services to support you every step of the way on your journey to parenthood. We have state-of-the-art facilities and a highly trained team of professionals to provide you with the most advanced and personalized care.\r\n\r\n<img src=\"/images/wp/2025_07_Diagnostico-430x290-1.jpg\" sizes=\"(max-width: 430px) 100vw, 430px\" srcset=\"/images/wp/2025_07_Diagnostico-430x290-1.jpg 430w, /images/wp/2025_07_Diagnostico-430x290-1-300x202.jpg 300w\" alt=\"\" width=\"430\" height=\"290\" />\r\n<a role=\"button\">\r\n\r\nFertility Diagnosis\r\n</a>\r\n<img src=\"/images/wp/2025_07_Ginecologia-430x290-1.jpg\" sizes=\"(max-width: 430px) 100vw, 430px\" srcset=\"/images/wp/2025_07_Ginecologia-430x290-1.jpg 430w, /images/wp/2025_07_Ginecologia-430x290-1-300x202.jpg 300w\" alt=\"\" width=\"430\" height=\"290\" />\r\n<a role=\"button\">\r\n\r\nGynecology and Obstetrics\r\n</a>\r\n<img src=\"/images/wp/2025_07_Laboratorio-de-andrologia-430x290-1.jpg\" sizes=\"(max-width: 430px) 100vw, 430px\" srcset=\"/images/wp/2025_07_Laboratorio-de-andrologia-430x290-1.jpg 430w, /images/wp/2025_07_Laboratorio-de-andrologia-430x290-1-300x202.jpg 300w\" alt=\"\" width=\"430\" height=\"290\" />\r\n<a role=\"button\">\r\n\r\nAndrology Laboratory\r\n</a>\r\n<img src=\"/images/wp/2025_07_Laboratorio-clinico-430x290-1.jpg\" sizes=\"(max-width: 430px) 100vw, 430px\" srcset=\"/images/wp/2025_07_Laboratorio-clinico-430x290-1.jpg 430w, /images/wp/2025_07_Laboratorio-clinico-430x290-1-300x202.jpg 300w\" alt=\"\" width=\"430\" height=\"290\" />\r\n<a role=\"button\">\r\n\r\nClinical Analysis\r\n</a>\r\n<img src=\"/images/wp/2025_07_Materno-fetal-430x290-1.jpg\" sizes=\"(max-width: 430px) 100vw, 430px\" srcset=\"/images/wp/2025_07_Materno-fetal-430x290-1.jpg 430w, /images/wp/2025_07_Materno-fetal-430x290-1-300x202.jpg 300w\" alt=\"Embarazo en ciclo natural - Materno fetal\" width=\"430\" height=\"290\" />\r\n<a role=\"button\">\r\n\r\nMaternal-Fetal Medicine\r\n</a>\r\n<img src=\"/images/wp/2025_07_Acompanamiento-emocional-430x290-1.jpg\" sizes=\"(max-width: 430px) 100vw, 430px\" srcset=\"/images/wp/2025_07_Acompanamiento-emocional-430x290-1.jpg 430w, /images/wp/2025_07_Acompanamiento-emocional-430x290-1-300x202.jpg 300w\" alt=\"\" width=\"430\" height=\"290\" />\r\n<a role=\"button\">\r\n\r\nEmotional and Psychological Support\r\n</a>\r\n<img src=\"/images/wp/2025_07_Acupuntura-430x290-1.jpg\" sizes=\"(max-width: 430px) 100vw, 430px\" srcset=\"/images/wp/2025_07_Acupuntura-430x290-1.jpg 430w, /images/wp/2025_07_Acupuntura-430x290-1-300x202.jpg 300w\" alt=\"\" width=\"430\" height=\"290\" />\r\n<a role=\"button\">\r\n\r\nAcupuncture\r\n</a>\r\n<img src=\"/images/wp/2025_10_intralipidos-001.jpg\" sizes=\"(max-width: 430px) 100vw, 430px\" srcset=\"/images/wp/2025_10_intralipidos-001.jpg 430w, /images/wp/2025_10_intralipidos-001-300x202.jpg 300w\" alt=\"\" width=\"430\" height=\"290\" />\r\n<a role=\"button\">\r\n\r\nIntralipids\r\n</a>` }} />
+
+      <Container className="pt-16">
+        <section className="max-w-4xl mx-auto mb-14">
+          <p className="text-xl md:text-2xl text-brand-violet font-serif italic leading-relaxed">
+            At <strong>Advanced Fertility Center Cancún</strong>, we provide a complete range of specialized medical services to support you through every stage of your fertility journey.
+          </p>
+          <p className="mt-5 text-slate-600 leading-relaxed text-base md:text-lg">
+            Our state-of-the-art facilities and highly trained team deliver advanced, compassionate, and personalized care.
+          </p>
+        </section>
+
+        <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => (
+            <article
+              key={service.title}
+              className="group bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+            >
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-brand-violet leading-snug">{service.title}</h3>
+              </div>
+            </article>
+          ))}
+        </section>
       </Container>
     </main>
   );
