@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
     }
 
     const intlResponse = intlMiddleware(request);
-    return await updateSession(request, intlResponse)
+    return intlResponse
 }
 
 export const config = {

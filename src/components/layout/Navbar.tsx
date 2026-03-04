@@ -153,9 +153,8 @@ export default function Navbar() {
                                                         href={sub.href}
                                                         className="group/sub flex flex-col p-3 rounded-xl hover:bg-brand-violet/5 transition-colors"
                                                     >
-                                                        <span className="text-brand-violet font-bold text-base flex items-center justify-between">
+                                                        <span className="text-brand-violet font-bold text-base">
                                                             {sub.name}
-                                                            <ChevronDown className="w-3.5 h-3.5 -rotate-90 opacity-0 group-hover/sub:opacity-100 transition-all -translate-x-2 group-hover/sub:translate-x-0" />
                                                         </span>
                                                         {sub.description && <span className="text-[11px] text-slate-500 font-light mt-0.5">{sub.description}</span>}
                                                     </Link>

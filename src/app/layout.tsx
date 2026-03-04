@@ -1,6 +1,7 @@
 import React from 'react';
 import { Montserrat } from 'next/font/google';
 import '@/app/globals.css';
+import FloatingContactButtons from '@/components/layout/FloatingContactButtons';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="es" className={montserrat.variable}>
       <body className="relative antialiased selection:bg-brand-green/30 selection:text-brand-violet">
         {children}
+        <FloatingContactButtons />
       </body>
     </html>
   );

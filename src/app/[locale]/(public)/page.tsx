@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import Hero from '@/components/sections/Hero';
 import QuoteSection from '@/components/sections/QuoteSection';
 import TreatmentsGrid from '@/components/sections/TreatmentsGrid';
@@ -89,10 +90,10 @@ export default function HomePage() {
                     : 'Talk to our bilingual team and receive your personalized diagnosis today.'}
                 </p>
               </div>
-              <button className="bg-brand-green text-brand-violet px-12 py-6 rounded-3xl font-bold text-xl hover:bg-white transition-all duration-500 shadow-2xl flex items-center gap-3 whitespace-nowrap group">
+              <Link href="#contacto" className="bg-brand-green text-brand-violet px-12 py-6 rounded-3xl font-bold text-xl hover:bg-white transition-all duration-500 shadow-2xl flex items-center gap-3 whitespace-nowrap group">
                 {isEs ? 'Iniciar Evaluación' : 'Start Evaluation'}
                 <ArrowRight className="w-6 h-6 group-hover:translate-x- motion-safe:group-hover:translate-x-2" />
-              </button>
+              </Link>
             </div>
           </Container>
         </section>
