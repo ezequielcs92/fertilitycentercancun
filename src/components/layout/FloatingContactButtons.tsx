@@ -25,7 +25,7 @@ declare global {
 }
 
 const LIVECHAT_LICENSE = 10113817;
-const WHATSAPP_URL = 'https://wa.me/529988035530';
+const WHATSAPP_URL = 'https://wa.me/5219983050373';
 
 function loadOriginalLiveChat() {
   if (document.querySelector('script[src="https://cdn.livechatinc.com/tracking.js"]')) return;
