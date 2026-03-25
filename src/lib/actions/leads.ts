@@ -21,6 +21,83 @@ export interface ActionResult {
     error?: string
 }
 
+function resolveCrmWebhookUrl(): string | null {
+    const candidates = [
+        process.env.CRM_WEBHOOK_URL,
+        process.env.LEADS_WEBHOOK_URL,
+        process.env.CRM_LEAD_WEBHOOK_URL,
+    ]
+
+    const valid = candidates.find((value) => typeof value === 'string' && value.trim().length > 0)
+    return valid?.trim() || null
+}
+
+async function sendLeadToCrm(formData: LeadFormData): Promise<{ delivered: boolean; error?: string }> {
+    const webhookUrl = resolveCrmWebhookUrl()
+    if (!webhookUrl) {
+        return { delivered: false, error: 'CRM_WEBHOOK_NOT_CONFIGURED' }
+    }
+
+    const payload = {
+        nombre: formData.nombre.trim(),
+        email: formData.email.trim().toLowerCase(),
+        telefono: formData.telefono?.trim() || null,
+        pais: formData.pais || null,
+        tratamiento: formData.tratamiento || null,
+        mensaje: formData.mensaje?.trim() || null,
+        source: 'fertilitycentercancun_web_form',
+        submittedAt: new Date().toISOString(),
+    }
+
+    const maxAttempts = 2
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        let timeoutId: ReturnType<typeof setTimeout> | undefined
+        try {
+            const controller = new AbortController()
+            timeoutId = setTimeout(() => controller.abort(), 8000)
+
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(process.env.CRM_WEBHOOK_TOKEN
+                        ? { Authorization: `Bearer ${process.env.CRM_WEBHOOK_TOKEN}` }
+                        : {}),
+                },
+                body: JSON.stringify(payload),
+                signal: controller.signal,
+                cache: 'no-store',
+            })
+
+            if (response.ok) {
+                return { delivered: true }
+            }
+
+            const errorBody = await response.text().catch(() => '')
+            if (attempt === maxAttempts) {
+                return {
+                    delivered: false,
+                    error: `CRM_HTTP_${response.status}${errorBody ? `: ${errorBody.slice(0, 300)}` : ''}`,
+                }
+            }
+        } catch (error) {
+            if (attempt === maxAttempts) {
+                return {
+                    delivered: false,
+                    error: error instanceof Error ? error.message : 'CRM_REQUEST_FAILED',
+                }
+            }
+        } finally {
+            if (timeoutId) {
+                clearTimeout(timeoutId)
+            }
+        }
+    }
+
+    return { delivered: false, error: 'CRM_UNKNOWN_ERROR' }
+}
+
 export async function submitLead(formData: LeadFormData): Promise<ActionResult> {
     try {
         // 1. Verificar CAPTCHA primero
@@ -114,6 +191,21 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
                 success: false,
                 message: 'Hubo un error al enviar su consulta. Por favor intente nuevamente.',
                 error: error.message
+            }
+        }
+
+        // Entregar lead al CRM (si está configurado).
+        const crmResult = await sendLeadToCrm(formData)
+        const requireCrmDelivery = process.env.REQUIRE_CRM_DELIVERY === 'true'
+
+        if (!crmResult.delivered) {
+            console.error('No se pudo entregar lead al CRM:', crmResult.error)
+            if (requireCrmDelivery) {
+                return {
+                    success: false,
+                    message: 'Recibimos tus datos, pero no pudimos procesar el registro en CRM. Intenta nuevamente en unos minutos.',
+                    error: crmResult.error || 'CRM_DELIVERY_FAILED'
+                }
             }
         }
 

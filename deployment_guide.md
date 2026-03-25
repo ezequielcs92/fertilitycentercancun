@@ -23,6 +23,9 @@ Debes agregar estas variables en el Dashboard de Vercel (**Settings > Environmen
 | `RESEND_API_KEY` | `re_T4eTu8z5_4TmWEknV2KHXpSvnJXSq8k78` | Clave para envío de correos |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Tu **Site Key** de Cloudflare | Ver paso 2 abajo |
 | `TURNSTILE_SECRET_KEY` | Tu **Secret Key** de Cloudflare | Ver paso 2 abajo |
+| `CRM_WEBHOOK_URL` | URL del webhook de tu CRM | Recibe los leads del formulario en JSON |
+| `CRM_WEBHOOK_TOKEN` | Token Bearer del webhook (opcional) | Si tu CRM requiere autenticación |
+| `REQUIRE_CRM_DELIVERY` | `true`/`false` (opcional) | Si es `true`, el formulario falla cuando CRM no responde |
 
 ## 2. Configurar Cloudflare Turnstile (CAPTCHA)
 
