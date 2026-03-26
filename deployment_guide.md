@@ -26,6 +26,8 @@ Debes agregar estas variables en el Dashboard de Vercel (**Settings > Environmen
 | `CRM_WEBHOOK_URL` | URL del webhook de tu CRM | Recibe los leads del formulario en JSON |
 | `CRM_WEBHOOK_TOKEN` | Token Bearer del webhook (opcional) | Si tu CRM requiere autenticación |
 | `REQUIRE_CRM_DELIVERY` | `true`/`false` (opcional) | Si es `true`, el formulario falla cuando CRM no responde |
+| `UPNIFY_INTEGRATION_URL` | URL completa de integración Upnify | Formato: `https://api.upnify.com/v4/integraciones/<token>` |
+| `UPNIFY_INTEGRATION_TOKEN` | Token de integración Upnify (alternativa) | Si lo defines, el sistema construye la URL automáticamente |
 
 ## 2. Configurar Cloudflare Turnstile (CAPTCHA)
 

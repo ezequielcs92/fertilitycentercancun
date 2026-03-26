@@ -21,6 +21,121 @@ export interface ActionResult {
     error?: string
 }
 
+function resolveUpnifyIntegrationUrl(): string | null {
+    const directUrl = process.env.UPNIFY_INTEGRATION_URL?.trim()
+    if (directUrl) {
+        return directUrl
+    }
+
+    const integrationToken = process.env.UPNIFY_INTEGRATION_TOKEN?.trim()
+    if (integrationToken) {
+        return `https://api.upnify.com/v4/integraciones/${integrationToken}`
+    }
+
+    return null
+}
+
+function splitName(fullName: string): { nombre: string; apellidos?: string } {
+    const normalized = fullName.trim().replace(/\s+/g, ' ')
+    const [nombre, ...rest] = normalized.split(' ')
+
+    return {
+        nombre: nombre || normalized,
+        apellidos: rest.length > 0 ? rest.join(' ') : undefined,
+    }
+}
+
+function parseUpnifyCode(responseBody: unknown): number | null {
+    const body = Array.isArray(responseBody) ? responseBody[0] : responseBody
+    if (!body || typeof body !== 'object') {
+        return null
+    }
+
+    const maybeCode = (body as { code?: unknown }).code
+    return typeof maybeCode === 'number' ? maybeCode : null
+}
+
+async function sendLeadToUpnify(formData: LeadFormData): Promise<{ delivered: boolean; error?: string }> {
+    const upnifyUrl = resolveUpnifyIntegrationUrl()
+    if (!upnifyUrl) {
+        return { delivered: false, error: 'UPNIFY_NOT_CONFIGURED' }
+    }
+
+    const { nombre, apellidos } = splitName(formData.nombre)
+    const upnifyPayload = {
+        nombre,
+        apellidos,
+        correo: formData.email.trim().toLowerCase(),
+        telefono: formData.telefono?.trim() || undefined,
+        movil: formData.telefono?.trim() || undefined,
+        comentarios: [
+            formData.tratamiento ? `Tratamiento: ${formData.tratamiento}` : null,
+            formData.pais ? `Pais: ${formData.pais}` : null,
+            formData.mensaje?.trim() ? `Mensaje: ${formData.mensaje.trim()}` : null,
+            'Origen: formulario web fertilitycentercancun.com',
+        ].filter(Boolean).join('\n'),
+        origen: 'Sitio Web',
+    }
+
+    const maxAttempts = 2
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        let timeoutId: ReturnType<typeof setTimeout> | undefined
+        try {
+            const controller = new AbortController()
+            timeoutId = setTimeout(() => controller.abort(), 8000)
+
+            const response = await fetch(upnifyUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(upnifyPayload),
+                signal: controller.signal,
+                cache: 'no-store',
+            })
+
+            const responseText = await response.text().catch(() => '')
+            const responseBody = responseText ? JSON.parse(responseText) : null
+
+            if (!response.ok) {
+                if (attempt === maxAttempts) {
+                    return {
+                        delivered: false,
+                        error: `UPNIFY_HTTP_${response.status}${responseText ? `: ${responseText.slice(0, 300)}` : ''}`,
+                    }
+                }
+                continue
+            }
+
+            const code = parseUpnifyCode(responseBody)
+            if (code === null || code === 0) {
+                return { delivered: true }
+            }
+
+            if (attempt === maxAttempts) {
+                return {
+                    delivered: false,
+                    error: `UPNIFY_CODE_${code}`,
+                }
+            }
+        } catch (error) {
+            if (attempt === maxAttempts) {
+                return {
+                    delivered: false,
+                    error: error instanceof Error ? error.message : 'UPNIFY_REQUEST_FAILED',
+                }
+            }
+        } finally {
+            if (timeoutId) {
+                clearTimeout(timeoutId)
+            }
+        }
+    }
+
+    return { delivered: false, error: 'UPNIFY_UNKNOWN_ERROR' }
+}
+
 function resolveCrmWebhookUrl(): string | null {
     const candidates = [
         process.env.CRM_WEBHOOK_URL,
@@ -194,8 +309,11 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
             }
         }
 
-        // Entregar lead al CRM (si está configurado).
-        const crmResult = await sendLeadToCrm(formData)
+        // Entregar lead al CRM: primero Upnify (si está configurado), luego webhook genérico.
+        const upnifyResult = await sendLeadToUpnify(formData)
+        const crmResult = upnifyResult.delivered
+            ? upnifyResult
+            : await sendLeadToCrm(formData)
         const requireCrmDelivery = process.env.REQUIRE_CRM_DELIVERY === 'true'
 
         if (!crmResult.delivered) {
