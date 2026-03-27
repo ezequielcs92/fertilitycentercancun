@@ -114,7 +114,7 @@ export default function Page() {
               Realiza un recorrido virtual por nuestras salas de recuperación, laboratorios y quirófanos de alta tecnología.
             </p>
             <a
-              href="https://my.matterport.com/show/?m=XtokPdzLfrQ"
+              href="https://tinyurl.com/advancedfertilitycentercancun"
               target="_blank"
               rel="nofollow noopener noreferrer"
               className="inline-flex items-center gap-3 bg-brand-violet text-white px-12 py-5 rounded-full hover:bg-brand-violet/90 transition-all font-bold text-base tracking-widest shadow-2xl shadow-brand-violet/20 group/btn"
