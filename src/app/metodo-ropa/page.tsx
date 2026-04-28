@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import { Heart, Users, Star, Smile, ShieldCheck, Zap } from 'lucide-react';
@@ -39,7 +39,7 @@ export default function Page() {
         <div className="w-full lg:w-1/3 shrink-0">
           <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-%C2%BFEn-que-consiste-.jpg"
+              src="/images/treatments/IVF.jpg"
               alt="Pareja método ROPA"
               fill
               className="object-cover m-0"
@@ -107,3 +107,4 @@ export default function Page() {
     </InnerPageLayout>
   );
 }
+

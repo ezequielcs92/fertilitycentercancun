@@ -28,7 +28,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         { name: 'Blog', icon: MessageSquare, href: '/admin/blog' },
         { name: 'Podcasts', icon: Mic, href: '/admin/podcasts' },
         { name: 'Categorías', icon: Sparkles, href: '/admin/categorias' },
-        { name: 'Equipo Médico', icon: Users, href: '/admin/equipo' },
         { name: 'Testimonios', icon: MessageSquare, href: '/admin/testimonios' },
         { name: 'Galería', icon: Sparkles, href: '/admin/galeria' },
         { name: 'Bandeja', icon: Mail, href: '/admin/contacto' },

@@ -1,38 +1,86 @@
-import React from 'react';
+﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import { Globe, ShieldCheck, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Page() {
+  const reasons = [
+    'Ayudas a personas y parejas a cumplir su sueño de formar una familia.',
+    'Accedes a evaluaciones médicas completas sin costo.',
+    'Estás respaldada por especialistas en fertilidad en todo momento.',
+    'Participas en un proceso ético, confidencial y seguro.'
+  ];
+
+  const requirements = [
+    'Edad entre 18 y 29 años.',
+    'Buen estado de salud física y emocional.',
+    'Estilo de vida saludable.',
+    'Sin antecedentes genéticos relevantes.'
+  ];
+
+  const steps = [
+    {
+      title: 'Registro inicial',
+      desc: 'Completa tu solicitud en línea de forma rápida.'
+    },
+    {
+      title: 'Evaluación médica',
+      desc: 'Realizamos estudios clínicos, hormonales y genéticos.'
+    },
+    {
+      title: 'Acompañamiento personalizado',
+      desc: 'Nuestro equipo te explica cada paso con total claridad.'
+    },
+    {
+      title: 'Estimulación ovárica',
+      desc: 'Tratamiento supervisado por especialistas en fertilidad.'
+    },
+    {
+      title: 'Recuperación de óvulos',
+      desc: 'Procedimiento ambulatorio, seguro y de corta duración.'
+    }
+  ];
+
+  const formFields = [
+    'Nombre completo',
+    'Edad',
+    'Fecha de nacimiento',
+    'Peso',
+    'Talla',
+    'Nacionalidad',
+    'Tel. WhatsApp',
+    'Email'
+  ];
+
   return (
     <InnerPageLayout
-      title="Donación de esperma"
+      title="Programa Donación LifeStart"
       breadcrumb={[
         { label: 'Inicio', href: '/' },
         { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
-        { label: 'Donación de esperma', href: '#' }
+        { label: 'Programa Donación LifeStart', href: '#' }
       ]}
     >
       <div className="flex flex-col lg:flex-row gap-12 items-center mb-16 px-4 md:px-0 not-prose">
         <div className="flex-1 order-2 lg:order-1">
           <p className="lead text-2xl font-serif text-brand-violet italic mb-6">
-            Una alternativa segura, accesible y confiable para formar una familia.
+            Dona vida. Transforma historias.
           </p>
           <div className="space-y-4 text-lg text-slate-600 font-light mb-8">
             <p>
-              La <strong>donación de esperma</strong> es una técnica de reproducción asistida de vanguardia que utiliza muestras de donantes cuidadosamente seleccionados y anónimos. Esta opción es fundamental para permitir que el sueño de formar una familia sea posible para mujeres solteras, parejas del mismo sexo y parejas heterosexuales con factor masculino severo.
+              En <strong>Advanced Fertility Center Cancun</strong>, hemos creado <strong>LifeStart Donors</strong>, nuestro programa de donación de óvulos en Cancún, pensado para mujeres jóvenes que desean generar un impacto real en la vida de otras personas, con el respaldo de un equipo médico especializado y un entorno seguro y profesional.
             </p>
             <p>
-              En nuestro centro, trabajamos exclusivamente con bancos de esperma internacionales de la más alta reputación, garantizando muestras con óptima calidad genética y rigurosos controles de salud. Te acompañamos en cada paso del proceso, desde la selección del donante hasta la realización del tratamiento, bajo los más estrictos estándares de ética y confidencialidad.
+              Ser donante no es solo un proceso médico: <strong>es convertirte en el comienzo de una historia que alguien ha esperado toda su vida</strong>.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contacto"
+              href="mailto:donantes@afcc.com.mx?subject=Aplicaci%C3%B3n%20LifeStart%20Donors"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
             >
-              Agendar Consulta de Valoración
+              Aplica ahora
             </Link>
           </div>
         </div>
@@ -40,8 +88,8 @@ export default function Page() {
         <div className="w-full lg:w-1/3 order-1 lg:order-2 not-prose">
           <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-slate-50 bg-slate-50 m-0">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Traslados-internacionales-002.jpg"
-              alt="Donación de esperma y logística internacional"
+              src="/images/treatments/DONANTES.png"
+              alt="Programa Donación LifeStart"
               fill
               className="object-cover m-0 p-0"
               unoptimized
@@ -50,63 +98,115 @@ export default function Page() {
         </div>
       </div>
 
-      <h2 className="text-3xl font-serif text-brand-violet mb-6">Banco de Esperma Internacional</h2>
-      <div className="bg-slate-50 p-10 rounded-[3rem] border border-slate-100 mb-16">
-        <p className="text-slate-700 mb-10 font-light text-lg text-center max-w-3xl mx-auto">
-          Contamos con alianzas con los laboratorios de criopreservación más prestigiosos del mundo. Esto nos permite ofrecerte un catálogo diverso donde puedes seleccionar donantes basándote en diversos criterios.
-        </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {["Grupo Étnico", "Características Físicas", "Nivel Educativo", "Historial Médico"].map(tag => (
-            <div key={tag} className="bg-white px-6 py-4 rounded-2xl shadow-sm border border-slate-100 text-center text-lg font-bold text-brand-violet hover:shadow-md transition-shadow">
-              {tag}
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-12 items-center justify-center">
-          <div className="h-24 transition-all hover:scale-110 flex items-center">
-            <Image src="https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-xytex.png" alt="Xytex" width={240} height={80} className="h-full w-auto object-contain" unoptimized />
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Por qué ser donante de óvulos?</h2>
+      <p className="text-slate-600 mb-6 leading-relaxed">
+        En <strong>LifeStart Donors by Advanced Fertility Center Cancun</strong>, entendemos el valor de tu decisión. Por eso, cuidamos cada detalle para que tu experiencia sea cercana, informada y acompañada.
+      </p>
+      <div className="grid md:grid-cols-2 gap-4 mb-12">
+        {reasons.map((item) => (
+          <div key={item} className="flex items-start gap-3 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
+            <CheckCircle className="w-5 h-5 text-brand-green shrink-0 mt-0.5" />
+            <span className="text-slate-700">{item}</span>
           </div>
-          <div className="h-24 transition-all hover:scale-110 flex items-center">
-            <Image src="https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-european.png" alt="European Sperm Bank" width={240} height={80} className="h-full w-auto object-contain" unoptimized />
-          </div>
-          <div className="h-24 transition-all hover:scale-110 flex items-center">
-            <Image src="https://fertilitycentercancun.com/wp-content/uploads/2025/05/logo-cryos.png" alt="Cryos International" width={200} height={70} className="h-full w-auto object-contain" unoptimized />
-          </div>
-        </div>
+        ))}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-          <Globe className="w-10 h-10 text-brand-green mb-4" />
-          <h3 className="text-xl font-bold text-brand-violet mb-2">Logística Internacional</h3>
-          <p className="text-slate-600 text-base">
-            Gestionamos integralmente la importación de muestras cumpliendo todas las regulaciones sanitarias y aduanales de México.
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-          <ShieldCheck className="w-10 h-10 text-brand-green mb-4" />
-          <h3 className="text-xl font-bold text-brand-violet mb-2">Seguridad Garantizada</h3>
-          <p className="text-slate-600 text-base">
-            Todos los donantes pasan por rigurosos filtros médicos, genéticos y psicológicos antes de ser aceptados en el programa.
-          </p>
-        </div>
-      </div>
-
-      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Para quién es?</h2>
-      <ul className="space-y-4">
-        {[
-          "Mujeres solteras que desean ser madres (Maternidad en Solitario).",
-          "Parejas de mujeres (lesbomaternidad).",
-          "Parejas con infertilidad masculina severa (azoospermia, alteraciones genéticas).",
-          "Riesgo de transmitir enfermedades hereditarias por parte del padre."
-        ].map((item, i) => (
-          <li key={i} className="flex gap-3 items-center p-3 bg-brand-violet/5 rounded-lg border border-transparent hover:border-brand-violet/20 transition-colors">
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Quién puede ser donante?</h2>
+      <p className="text-slate-600 mb-5 leading-relaxed">
+        Buscamos mujeres comprometidas, saludables y con deseo de ayudar. Puedes aplicar si cumples con:
+      </p>
+      <ul className="space-y-3 mb-6">
+        {requirements.map((item) => (
+          <li key={item} className="flex gap-3 items-center p-3 bg-brand-violet/5 rounded-lg border border-transparent hover:border-brand-violet/20 transition-colors">
             <CheckCircle className="w-5 h-5 text-brand-violet shrink-0" />
             <span className="text-slate-700">{item}</span>
           </li>
         ))}
       </ul>
+      <p className="text-slate-600 mb-12 leading-relaxed">
+        En Advanced Fertility Center Cancun, te guiamos paso a paso. No necesitas experiencia previa.
+      </p>
+
+      <div className="bg-slate-50 p-8 md:p-10 rounded-[2.5rem] border border-slate-100 mb-12">
+        <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Cómo es el proceso?</h2>
+        <p className="text-slate-600 mb-8 leading-relaxed">
+          Nuestro programa de donación de óvulos está diseñado para ser claro, seguro y acompañado en cada etapa:
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+          {steps.map((step, idx) => (
+            <article key={step.title} className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+              <div className="w-9 h-9 rounded-full bg-brand-violet text-white font-bold flex items-center justify-center mb-3">
+                {idx + 1}
+              </div>
+              <h3 className="text-base font-bold text-brand-violet mb-2">{step.title}</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">{step.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <ShieldCheck className="w-10 h-10 text-brand-green mb-4" />
+          <h3 className="text-xl font-bold text-brand-violet mb-2">Seguridad y confianza</h3>
+          <p className="text-slate-600 text-base">
+            En Advanced Fertility Center Cancun, tu bienestar es nuestra prioridad. Contamos con especialistas certificados en medicina reproductiva y protocolos médicos internacionales.
+          </p>
+        </div>
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <Globe className="w-10 h-10 text-brand-green mb-4" />
+          <h3 className="text-xl font-bold text-brand-violet mb-2">Tecnología y atención profesional</h3>
+          <p className="text-slate-600 text-base">
+            Trabajamos con tecnología avanzada en fertilidad y una atención ética, confidencial y profesional durante todo el proceso.
+          </p>
+        </div>
+      </div>
+
+      <div className="bg-brand-gray p-8 rounded-3xl mb-12 border border-brand-violet/5">
+        <h2 className="text-3xl font-serif text-brand-violet mb-5">Una decisión con impacto</h2>
+        <p className="text-slate-700 leading-relaxed mb-4">
+          Ser donante es una decisión personal que implica tiempo, compromiso y generosidad. Como parte del programa, se contemplan apoyos y beneficios asociados al proceso, siempre dentro de un marco ético y transparente.
+        </p>
+        <h3 className="text-2xl font-serif text-brand-violet mb-3">Donación de óvulos en Cancún</h3>
+        <p className="text-slate-700 leading-relaxed mb-4">
+          Como parte de Advanced Fertility Center Cancun, nuestro programa atiende a pacientes nacionales e internacionales, posicionando a Cancún como un referente en fertilidad y turismo médico.
+        </p>
+        <h3 className="text-2xl font-serif text-brand-violet mb-3">Sé parte de algo más grande</h3>
+        <p className="text-slate-700 leading-relaxed mb-6">
+          Cada donación representa una nueva historia, una oportunidad y una familia. Hoy puedes ser parte de ese comienzo.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
+          <Link
+            href="mailto:donantes@afcc.com.mx?subject=Aplicaci%C3%B3n%20LifeStart%20Donors"
+            className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
+          >
+            Aplica ahora
+          </Link>
+          <p className="text-slate-600 text-sm sm:text-base">
+            Correo de recepción: <a className="font-semibold text-brand-violet" href="mailto:donantes@afcc.com.mx">donantes@afcc.com.mx</a>
+          </p>
+        </div>
+      </div>
+
+      <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+        <h2 className="text-3xl font-serif text-brand-violet mb-4">Formulario de aplicación</h2>
+        <p className="text-slate-600 mb-6 leading-relaxed">
+          En el cuestionario deberá contemplarse la siguiente información:
+        </p>
+        <div className="grid md:grid-cols-2 gap-3 mb-6">
+          {formFields.map((field) => (
+            <div key={field} className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+              <CheckCircle className="w-4 h-4 text-brand-green shrink-0" />
+              <span className="text-slate-700">{field}</span>
+            </div>
+          ))}
+        </div>
+        <p className="text-slate-600">
+          El botón de envío debe dirigir la solicitud al correo <a className="font-semibold text-brand-violet" href="mailto:donantes@afcc.com.mx">donantes@afcc.com.mx</a>.
+        </p>
+      </div>
 
     </InnerPageLayout>
   );
 }
+

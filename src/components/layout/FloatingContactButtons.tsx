@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 declare global {
   interface Window {
@@ -70,6 +71,8 @@ function loadOriginalLiveChat() {
 }
 
 export default function FloatingContactButtons() {
+  const pathname = usePathname();
+  const isEs = !pathname?.startsWith('/en');
   const [whatsAppPosition, setWhatsAppPosition] = useState<{ right?: string; bottom?: string; left?: string; top?: string }>({
     right: '1.5rem',
     bottom: '6rem',
@@ -125,7 +128,7 @@ export default function FloatingContactButtons() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Abrir WhatsApp"
+        aria-label={isEs ? 'Abrir WhatsApp' : 'Open WhatsApp'}
         className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-105 transition-transform"
       >
         <svg

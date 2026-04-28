@@ -56,7 +56,8 @@ export default function Footer() {
             links: [
                 { name: t('sections.treatments.links.fiv'), href: route('/fiv-fertilizacion-in-vitro', '/ivf-in-vitro-fertilization') },
                 { name: t('sections.treatments.links.artificial_insemination'), href: route('/inseminacion-artificial', '/artificial-insemination') },
-                { name: t('sections.treatments.links.egg_donation'), href: route('/donacion-de-ovulos', '/egg-donation') },
+                { name: t('sections.treatments.links.egg_donation'), href: route('/ovodon', '/ovodon') },
+                { name: t('sections.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/programa-donacion-lifestart') },
                 { name: t('sections.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method') },
                 { name: t('sections.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation') },
             ]

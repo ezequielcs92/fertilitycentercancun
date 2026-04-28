@@ -46,7 +46,7 @@
             "genetic": "PGT-A - Genetic Testing",
             "preservation": "Fertility Preservation",
             "embryo_donation": "Embryo Donation",
-            "lgbt": "LGBT+ Support",
+            "lgbt": "Inclusive Fertility Program",
             "consultation": "Specialized Consultation"
         },
         "labels": {
@@ -162,6 +162,7 @@
                     "fiv": "IVF - In Vitro",
                     "artificial_insemination": "Artificial Insemination",
                     "egg_donation": "Egg Donation",
+                    "sperm_donation": "LifeStart Donation Program",
                     "ropa": "ROPA Method",
                     "preservation": "Fertility Preservation"
                 }
@@ -243,13 +244,13 @@
                     "mini_fiv": "Mini IVF",
                     "artificial_insemination": "Artificial Insemination",
                     "egg_donation": "Egg Donation",
-                    "sperm_donation": "Sperm Donation",
+                    "sperm_donation": "LifeStart Donation Program",
                     "embryo": "Embryo Donation and Adoption",
                     "ropa": "ROPA Method",
                     "preservation": "Fertility Preservation",
                     "timed_intercourse": "Timed Intercourse",
                     "transfer": "Embryo Transfer",
-                    "lgbt": "LGBT+ Community"
+                    "lgbt": "Inclusive Fertility Program"
                 }
             },
             "experience": {

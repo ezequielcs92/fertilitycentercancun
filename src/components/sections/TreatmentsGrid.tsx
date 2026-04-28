@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
@@ -27,7 +26,7 @@ export default function TreatmentsGrid() {
             title: t('items.egg_donation.title'),
             desc: t('items.egg_donation.description'),
             image: "/images/treatments/DONANTES.png",
-            href: "/donacion-de-ovulos"
+            href: "/ovodon"
         },
         {
             title: t('items.ropa.title'),
@@ -38,13 +37,13 @@ export default function TreatmentsGrid() {
         {
             title: t('items.genetic.title'),
             desc: t('items.genetic.description'),
-            image: "/images/treatments/GENETIC.jpg",
+            image: "/images/treatments/GENETIC TASTING.jpg",
             href: "/estudios-geneticos"
         },
         {
             title: t('items.preservation.title'),
             desc: t('items.preservation.description'),
-            image: "/images/treatments/CRIOPRESERVACION.png",
+            image: "/images/treatments/CRIOPERSERVATION.png",
             href: "/preservacion-de-la-fertilidad"
         }
     ];
@@ -79,8 +78,8 @@ export default function TreatmentsGrid() {
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-violet/5 rounded-full -mr-16 -mt-16 group-hover:bg-brand-green/10 transition-colors" />
 
-                                <div className="w-full h-48 rounded-2xl overflow-hidden mb-8 group-hover:scale-[1.02] transition-all duration-500 relative">
-                                    <Image src={t_item.image} alt={t_item.title} fill className="object-cover" />
+                                <div className="w-full h-48 rounded-2xl overflow-hidden mb-8 group-hover:scale-[1.02] transition-all duration-500 relative bg-brand-violet/5 flex items-center justify-center p-4">
+                                    <img src={t_item.image} alt={t_item.title} className="w-full h-full object-contain mix-blend-multiply" loading="lazy" />
                                 </div>
 
                                 <h3 className="text-2xl font-serif text-brand-violet mb-4 group-hover:text-brand-green transition-colors">{t_item.title}</h3>

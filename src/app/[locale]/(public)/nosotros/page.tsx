@@ -4,8 +4,11 @@ import Image from 'next/image';
 import { CheckCircle, Play, ArrowRight, Award, ShieldCheck, Microscope, Users, Star, Globe, Building2, Heart } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 
-export default function Page() {
-  const reasons = [
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isEs = locale === 'es';
+
+  const reasons = isEs ? [
     { id: 1, title: 'Equipo médico con experiencia', description: 'Con más de 20 años en reproducción asistida, nuestro equipo de ginecólogos, embriólogos y coordinadores está dedicado a tu proceso.' },
     { id: 2, title: 'Tecnología de vanguardia', description: 'Laboratorios de FIV y quirófanos completamente equipados con los avances más recientes en tecnología para fertilidad.' },
     { id: 3, title: 'Excelentes tasas de éxito', description: 'Protocolos rigurosos y tecnología avanzada que se traducen en excelentes resultados en todos nuestros procedimientos.' },
@@ -13,9 +16,20 @@ export default function Page() {
     { id: 5, title: 'Instalaciones de primer nivel', description: 'Espacios modernos diseñados para brindar comodidad, seguridad y privacidad integral.' },
     { id: 6, title: 'Compromiso con la inclusión', description: 'Todas las personas son bienvenidas: mujeres y hombres solteros, parejas heterosexuales y comunidad LGBT+.' },
     { id: 7, title: 'Testimonios de éxito', description: 'Cientos de familias formadas avalan la confianza, el cuidado y los resultados que ofrecemos día a día.' },
-    { id: 8, title: 'Opciones internacionales', description: 'Atencíon bilingüe y coordinación logística para pacientes de todo el mundo que buscan fertilidad en Cancún.' },
+    { id: 8, title: 'Opciones internacionales', description: 'Atención bilingüe y coordinación logística para pacientes de todo el mundo que buscan fertilidad en Cancún.' },
     { id: 9, title: 'Servicio integral', description: 'Diagnóstico y tratamiento en un solo lugar, asegurando atención continua sin traslados innecesarios.' },
     { id: 10, title: 'Destino paradisíaco', description: 'Recibe atención médica de calidad en el entorno relajante y hermoso que ofrece Cancún.' },
+  ] : [
+    { id: 1, title: 'Experienced medical team', description: 'With over 20 years in assisted reproduction, our team of gynecologists, embryologists and coordinators is dedicated to your process.' },
+    { id: 2, title: 'Cutting-edge technology', description: 'Fully equipped IVF laboratories and operating rooms with the latest advances in fertility technology.' },
+    { id: 3, title: 'Excellent success rates', description: 'Rigorous protocols and advanced technology that translate into excellent results across all our procedures.' },
+    { id: 4, title: 'Personalized care', description: 'Each patient receives individualized attention, characterized by empathy, commitment and human closeness.' },
+    { id: 5, title: 'World-class facilities', description: 'Modern spaces designed to provide comfort, safety and full privacy.' },
+    { id: 6, title: 'Commitment to inclusion', description: 'Everyone is welcome: single women and men, heterosexual couples and the LGBT+ community.' },
+    { id: 7, title: 'Success stories', description: 'Hundreds of families formed stand behind the trust, care and results we offer every day.' },
+    { id: 8, title: 'International options', description: 'Bilingual care and logistical coordination for patients worldwide seeking fertility treatment in Cancún.' },
+    { id: 9, title: 'Comprehensive service', description: 'Diagnosis and treatment in one place, ensuring continuous care without unnecessary transfers.' },
+    { id: 10, title: 'Paradise destination', description: 'Receive quality medical care in the relaxing and beautiful setting that Cancún offers.' },
   ];
 
   const partners = [
@@ -41,23 +55,30 @@ export default function Page() {
 
   return (
     <InnerPageLayout
-      title="¿Por qué AFCC?"
+      title={isEs ? '¿Por qué AFCC?' : 'Why AFCC?'}
       breadcrumb={[
-        { label: 'Inicio', href: '/' },
-        { label: 'Sobre Nosotros', href: '#' },
-        { label: '¿Por qué elegirnos?', href: '#' }
+        { label: isEs ? 'Inicio' : 'Home', href: '/' },
+        { label: isEs ? 'Sobre Nosotros' : 'About Us', href: '#' },
+        { label: isEs ? '¿Por qué elegirnos?' : 'Why Choose Us?', href: '#' }
       ]}
     >
       <div className="space-y-20">
         {/* Introduction */}
         <section>
           <p className="text-xl text-slate-600 font-light leading-relaxed mb-12">
-            En <strong className="text-brand-violet font-bold">Advanced Fertility Center Cancún (AFCC)</strong>, ofrecemos instalaciones de primer nivel con tecnología de vanguardia. Nuestra calidad está respaldada por organizaciones internacionales como <strong className="text-brand-violet font-bold">ASRM, RedLARA, ESHRE</strong> y más.
+            {isEs ? (
+              <>En <strong className="text-brand-violet font-bold">Advanced Fertility Center Cancún (AFCC)</strong>, ofrecemos instalaciones de primer nivel con tecnología de vanguardia. Nuestra calidad está respaldada por organizaciones internacionales como <strong className="text-brand-violet font-bold">ASRM, RedLARA, ESHRE</strong> y más.</>
+            ) : (
+              <>At <strong className="text-brand-violet font-bold">Advanced Fertility Center Cancún (AFCC)</strong>, we offer world-class facilities with cutting-edge technology. Our quality is backed by international organizations such as <strong className="text-brand-violet font-bold">ASRM, RedLARA, ESHRE</strong> and more.</>
+            )}
           </p>
 
           <h2 className="text-4xl font-serif text-brand-violet mb-12 text-center">
-            El TOP 10 del por qué elegir <br />
-            <span className="text-brand-green italic">Advanced Fertility Center Cancún</span>
+            {isEs ? (
+              <>El TOP 10 del por qué elegir <br /><span className="text-brand-green italic">Advanced Fertility Center Cancún</span></>
+            ) : (
+              <>The TOP 10 reasons to choose <br /><span className="text-brand-green italic">Advanced Fertility Center Cancún</span></>
+            )}
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -82,14 +103,18 @@ export default function Page() {
           <div className="absolute top-0 left-0 w-96 h-96 bg-brand-green/20 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-green/10 rounded-full blur-[100px] translate-y-1/2 translate-x-1/2 pointer-events-none" />
           <div className="relative z-10 max-w-3xl mx-auto">
-            <h3 className="!text-white !mt-0 text-3xl md:text-5xl font-serif mb-6 leading-tight">¿Listo/a para dar el <span className="text-brand-green italic underline underline-offset-8 decoration-white/20">primer paso</span>?</h3>
-            <p className="!text-white/90 text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto">Solicita una videollamada con nuestro equipo. Estaremos encantados de orientarte y resolver todas tus dudas.</p>
+            <h3 className="!text-white !mt-0 text-3xl md:text-5xl font-serif mb-6 leading-tight">
+              {isEs ? <>¿Listo/a para dar el <span className="text-brand-green italic underline underline-offset-8 decoration-white/20">primer paso</span>?</> : <>Ready to take the <span className="text-brand-green italic underline underline-offset-8 decoration-white/20">first step</span>?</>}
+            </h3>
+            <p className="!text-white/90 text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto">
+              {isEs ? 'Solicita una videollamada con nuestro equipo. Estaremos encantados de orientarte y resolver todas tus dudas.' : 'Request a video call with our team. We will be happy to guide you and answer all your questions.'}
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="/contacto" className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold text-base shadow-xl hover:bg-white transition-all hover:-translate-y-1 whitespace-nowrap w-full sm:w-auto flex items-center justify-center">
-                Agendar videollamada
+              <a href={isEs ? '/contacto' : '/en/contact-ivf-doctors'} className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold text-base shadow-xl hover:bg-white transition-all hover:-translate-y-1 whitespace-nowrap w-full sm:w-auto flex items-center justify-center">
+                {isEs ? 'Agendar videollamada' : 'Schedule a video call'}
               </a>
               <a href="tel:+529988035530" className="border border-white/30 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-all flex items-center justify-center gap-2 whitespace-nowrap w-full sm:w-auto">
-                <Phone className="w-5 h-5" /> Llamar ahora
+                <Phone className="w-5 h-5" /> {isEs ? 'Llamar ahora' : 'Call now'}
               </a>
             </div>
           </div>

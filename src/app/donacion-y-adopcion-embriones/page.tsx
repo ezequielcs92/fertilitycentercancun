@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -39,7 +39,7 @@ export default function Page() {
         <div className="w-full lg:w-1/3 shrink-0">
           <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-100 p-4">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Proceso-de-preparacion-endometrial.jpg"
+              src="/images/treatments/IVF.jpg"
               alt="Proceso de preparación endometrial"
               fill
               className="object-contain m-0"
@@ -85,3 +85,4 @@ export default function Page() {
     </InnerPageLayout>
   );
 }
+

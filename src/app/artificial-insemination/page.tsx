@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import { Check, Heart } from 'lucide-react';
@@ -22,7 +22,7 @@ export default function Page() {
 
       <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl mb-12">
         <Image
-          src="https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-del-IUI-inseminacion-intrauterina-01-1024x591.jpg"
+          src="/images/treatments/IVF.jpg"
           alt="Intrauterine insemination process"
           fill
           className="object-cover"
@@ -35,7 +35,7 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Ultrasonido.jpg"
+              src="/images/treatments/IVF.jpg"
               alt="Follicular monitoring"
               fill
               className="object-cover object-[45%_35%]"
@@ -50,7 +50,7 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/cateter-esperma-y-ovocito-1024x607.jpg"
+              src="/images/treatments/IVF.jpg"
               alt="Insemination procedure"
               fill
               className="object-contain p-2 bg-white"
@@ -102,3 +102,4 @@ export default function Page() {
     </InnerPageLayout>
   );
 }
+

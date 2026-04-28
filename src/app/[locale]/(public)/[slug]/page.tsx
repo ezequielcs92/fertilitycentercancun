@@ -14,8 +14,9 @@ const pageLoaders: Record<string, () => Promise<PageModule>> = {
   'aviso-de-privacidad': () => import('@/app/aviso-de-privacidad/page'),
   'certificaciones-acreditaciones-y-alianzas': () => import('@/app/certificaciones-acreditaciones-y-alianzas/page'),
   'certifications-accreditations-and-partnerships': () => import('@/app/certifications-accreditations-and-partnerships/page'),
+  'building-families': () => import('@/app/building-families/page'),
   'coito-programado-e-induccion-de-ovulacion': () => import('@/app/coito-programado-e-induccion-de-ovulacion/page'),
-  'comunidad-lgbt-tratamiento': () => import('@/app/comunidad-lgbt-tratamiento/page'),
+  'construyendo-familias': () => import('@/app/construyendo-familias/page'),
   'contact-ivf-doctors': () => import('@/app/contact-ivf-doctors/page'),
   'contacto-annecy-aguirre': () => import('@/app/contacto-annecy-aguirre/page'),
   'contacto-tere-anguiano': () => import('@/app/contacto-tere-anguiano/page'),
@@ -50,7 +51,6 @@ const pageLoaders: Record<string, () => Promise<PageModule>> = {
   'ixchel': () => import('@/app/ixchel/page'),
   'laboratories-and-services': () => import('@/app/laboratories-and-services/page'),
   'laboratorios-y-servicios': () => import('@/app/laboratorios-y-servicios/page'),
-  'lgbt-community-treatments': () => import('@/app/lgbt-community-treatments/page'),
   'metodo-ropa': () => import('@/app/metodo-ropa/page'),
   'mini-fiv': () => import('@/app/mini-fiv/page'),
   'mini-ivf': () => import('@/app/mini-ivf/page'),
@@ -92,7 +92,7 @@ const esToEnSlugMap: Record<string, string> = {
   'preservacion-de-la-fertilidad': 'fertility-preservation',
   'coito-programado-e-induccion-de-ovulacion': 'timed-intercourse-and-ovulation-induction',
   'transferencia-de-embriones-y-preparacion-endometrial': 'embryo-transfer-and-endometrial-preparation',
-  'comunidad-lgbt-tratamiento': 'lgbt-community-treatments',
+  'construyendo-familias': 'building-families',
   'estudios-geneticos': 'genetic-studies',
   'fertilizacion-in-vitro-en-fiv-ciclo-natural': 'in-vitro-fertilization-in-ivf-natural-cycle',
   'doble-acumulacion': 'double-accumulation-back-to-back-or-duo-stim',
@@ -107,12 +107,34 @@ const enToEsSlugMap = Object.fromEntries(
   Object.entries(esToEnSlugMap).map(([esSlug, enSlug]) => [enSlug, esSlug])
 )
 
+const legacySlugMap: Record<string, string> = {
+  'donacion-de-ovulos': 'ovodon',
+  'egg-donation': 'ovodon',
+  'donacion-de-espermatozoides': 'programa-donacion-lifestart',
+  'sperm-donation': 'programa-donacion-lifestart',
+  'comunidad-lgbt-tratamiento': 'construyendo-familias',
+  'lgbt-community-treatments': 'building-families'
+}
+
 export default async function LegacyPublicPage({
   params
 }: {
   params: Promise<{ slug: string; locale: string }>
 }) {
   const { slug, locale } = await params
+
+  const canonicalSlug = legacySlugMap[slug]
+  if (canonicalSlug) {
+    if (locale === 'en') {
+      const enSlug = esToEnSlugMap[canonicalSlug] ?? canonicalSlug
+      redirect(`/en/${enSlug}`)
+    }
+
+    if (locale === 'es') {
+      const esSlug = enToEsSlugMap[canonicalSlug] ?? canonicalSlug
+      redirect(`/es/${esSlug}`)
+    }
+  }
 
   if (locale === 'en' && esToEnSlugMap[slug]) {
     redirect(`/en/${esToEnSlugMap[slug]}`)
@@ -122,7 +144,16 @@ export default async function LegacyPublicPage({
     redirect(`/es/${enToEsSlugMap[slug]}`)
   }
 
-  const loader = pageLoaders[slug]
+  const loader =
+    slug === 'ovodon'
+      ? locale === 'en'
+        ? () => import('@/app/egg-donation/page')
+        : () => import('@/app/donacion-de-ovulos/page')
+      : slug === 'programa-donacion-lifestart'
+        ? locale === 'en'
+          ? () => import('@/app/sperm-donation/page')
+          : () => import('@/app/donacion-de-espermatozoides/page')
+      : pageLoaders[slug]
 
   if (!loader) {
     notFound()

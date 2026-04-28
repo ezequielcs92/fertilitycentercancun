@@ -92,7 +92,7 @@ export default async function Page({
                   <h3 className="text-2xl font-serif text-brand-violet mb-4">{isEs ? 'Tour Virtual 360°' : '360° Virtual Tour'}</h3>
                   <p className="text-slate-500 font-light text-base mb-6">{isEs ? 'Explora nuestra clínica y laboratorios de alta tecnología desde la comodidad de tu hogar.' : 'Explore our clinic and high-tech laboratories from the comfort of your home.'}</p>
                   <a
-                    href="https://tinyurl.com/advancedfertilitycentercancun"
+                    href="https://my.matterport.com/show/?m=KMsYvXiwCHb"
                     target="_blank"
                     rel="nofollow noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-all font-bold text-base shadow-lg shadow-brand-violet/20"

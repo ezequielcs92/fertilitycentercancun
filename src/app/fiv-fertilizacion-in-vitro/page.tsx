@@ -1,4 +1,4 @@
-
+﻿
 import React from 'react';
 import Image from 'next/image';
 import PageHeader from '@/components/layout/PageHeader';
@@ -10,27 +10,27 @@ export default function Page() {
     {
       title: "Estimulación Ovárica",
       desc: "Se utilizan medicamentos para estimular los folículos en los ovarios con la intención de obtener el mayor número de óvulos de alta calidad.",
-      image: "https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Medicamentos-FIV.jpg"
+      image: "/images/treatments/IVF.jpg"
     },
     {
       title: "Captura de Óvulos",
       desc: "Los óvulos se capturan mediante aspiración dirigida por ultrasonido en nuestro quirófano especializado bajo sedación ligera.",
-      image: "https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Quirofano001.jpg"
+      image: "/images/treatments/IVF.jpg"
     },
     {
       title: "Capacitación de Esperma",
       desc: "El esperma se procesa en el laboratorio para seleccionar los espermatozoides con mejor movilidad y morfología para la fertilización.",
-      image: "https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-001.jpg"
+      image: "/images/treatments/IVF.jpg"
     },
     {
       title: "Laboratorio y Fertilización",
       desc: "Los ovocitos se fertilizan en el laboratorio (FIV o ICSI) y se cultivan los embriones bajo monitoreo constante de nuestros embriólogos.",
-      image: "https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion.jpg"
+      image: "/images/treatments/IVF.jpg"
     },
     {
       title: "Transferencia o Vitrificación",
       desc: "Los embriones pueden ser transferidos al útero o vitrificados (congelados) para su almacenamiento y transferencia posterior.",
-      image: "https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-5.-Se-congelan.jpg"
+      image: "/images/treatments/IVF.jpg"
     }
   ];
 
@@ -72,7 +72,7 @@ export default function Page() {
 
           <div className="not-prose relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2024/12/medico-de-fertilidad-en-Mexico-fertility-center-mexico-682x1024.jpg"
+              src="/images/treatments/RODOLFO.png"
               alt="Tratamiento FIV"
               fill
               className="object-cover"
@@ -149,3 +149,5 @@ export default function Page() {
     </main>
   );
 }
+
+

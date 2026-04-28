@@ -5,101 +5,52 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-const treatments = [
-  {
-    title: 'FIV – Fertilización In vitro',
-    href: '/fiv-fertilizacion-in-vitro',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/FIV-–-Fertilizacion-In-vitro.png',
-    description: 'Tratamiento líder mundial con las más altas tasas de éxito para diversas causas de infertilidad.',
-  },
-  {
-    title: 'FIV con Estudio Genético y Selección de Sexo',
-    href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-In-vitro-con-estudio-genetico-y-seleccion-de-sexo.png',
-    description: 'Asegura la salud genética de tu bebé y planifica tu familia con precisión médica.',
-  },
-  {
-    title: 'Mini FIV',
-    href: '/mini-fiv',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Mini-FIV.png',
-    description: 'Estimulación ovárica suave para una opción más natural y menos invasiva.',
-  },
-  {
-    title: 'FIV Ciclo Natural',
-    href: '/fertilizacion-in-vitro-en-fiv-ciclo-natural',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Fertilizacion-in-vitro-en-FIV-Ciclo-natural.png',
-    description: 'Aprovecha tu ciclo menstrual natural sin medicación hormonal estimulante.',
-  },
-  {
-    title: 'Transferencia de Embriones Congelados',
-    href: '/transferencia-de-embriones-y-preparacion-endometrial',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Transferencia-de-embriones-congelados.png',
-    description: 'Preparamos tu endometrio de forma óptima para recibir embriones preservados.',
-  },
-  {
-    title: 'Donación de Óvulos',
-    href: '/donacion-de-ovulos',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-de-Ovulos.png',
-    description: 'Ovulos de donantes sanas y rigurosamente seleccionadas para lograr tu embarazo.',
-  },
-  {
-    title: 'Inseminación Artificial',
-    href: '/inseminacion-artificial',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/08/Inseminacion-Artificial.png',
-    description: 'Tratamiento de baja complejidad ideal como primer abordaje terapéutico.',
-  },
-  {
-    title: 'Preservación de la Fertilidad',
-    href: '/preservacion-de-la-fertilidad',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Preservacion-de-la-Fertilidad-1.png',
-    description: 'Congela tus óvulos o espermatozoides y decide cuándo es el mejor momento para ser padre o madre.',
-  },
-  {
-    title: 'Donación y Adopción de Embriones',
-    href: '/donacion-y-adopcion-embriones',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Donacion-y-Adopcion-de-embriones.png',
-    description: 'La oportunidad de dar vida a un embrión previamente criopreservado.',
-  },
-  {
-    title: 'Coito Programado',
-    href: '/coito-programado-e-induccion-de-ovulacion',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2024/07/Coito-programado-e-Induccion-de-Ovulo.png',
-    description: 'Monitoreo ecográfico y hormonal para maximizar las probabilidades naturales.',
-  },
-  {
-    title: 'Donación de Espermatozoides',
-    href: '/donacion-de-espermatozoides',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/05/Donacion-de-espermatozoides.png',
-    description: 'Muestras seminales de donantes avalados por bancos internacionales.',
-  },
-  {
-    title: 'Doble Acumulación',
-    href: '/doble-acumulacion',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/05/Doble-Acumulacion.png',
-    description: 'Estrategia de estimulación dual (DuoStim) para obtener más óvulos en menos tiempo.',
-  },
-  {
-    title: 'Método ROPA',
-    href: '/metodo-ropa',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/05/ROPA.png',
-    description: 'Maternidad compartida para parejas de mujeres donde ambas participan en el proceso.',
-  },
-  {
-    title: 'Add Ons',
-    href: '/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad',
-    image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/05/add-ons.png',
-    description: 'Tecnologías complementarias para potenciar y optimizar tu tratamiento base.',
-  }
+const treatmentsEs = [
+  { title: 'FIV – Fertilización In vitro', href: '/fiv-fertilizacion-in-vitro', image: '/images/treatments/IVF.jpg', description: 'Tratamiento líder mundial con las más altas tasas de éxito para diversas causas de infertilidad.' },
+  { title: 'FIV con Estudio Genético y Selección de Sexo', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', image: '/images/treatments/GENETIC TASTING.jpg', description: 'Asegura la salud genética de tu bebé y planifica tu familia con precisión médica.' },
+  { title: 'Mini FIV', href: '/mini-fiv', image: '/images/treatments/IVF.jpg', description: 'Estimulación ovárica suave para una opción más natural y menos invasiva.' },
+  { title: 'FIV Ciclo Natural', href: '/fertilizacion-in-vitro-en-fiv-ciclo-natural', image: '/images/treatments/IVF.jpg', description: 'Aprovecha tu ciclo menstrual natural sin medicación hormonal estimulante.' },
+  { title: 'Transferencia de Embriones Congelados', href: '/transferencia-de-embriones-y-preparacion-endometrial', image: '/images/treatments/IVF.jpg', description: 'Preparamos tu endometrio de forma óptima para recibir embriones preservados.' },
+  { title: 'Ovodón', href: '/ovodon', image: '/images/treatments/DONANTES.png', description: 'Ovulos de donantes sanas y rigurosamente seleccionadas para lograr tu embarazo.' },
+  { title: 'Inseminación Artificial', href: '/inseminacion-artificial', image: '/images/treatments/INSEMINACION.png', description: 'Tratamiento de baja complejidad ideal como primer abordaje terapéutico.' },
+  { title: 'Preservación de la Fertilidad', href: '/preservacion-de-la-fertilidad', image: '/images/treatments/CRIOPERSERVATION.png', description: 'Congela tus óvulos o espermatozoides y decide cuándo es el mejor momento para ser padre o madre.' },
+  { title: 'Donación y Adopción de Embriones', href: '/donacion-y-adopcion-embriones', image: '/images/treatments/IVF.jpg', description: 'La oportunidad de dar vida a un embrión previamente criopreservado.' },
+  { title: 'Coito Programado', href: '/coito-programado-e-induccion-de-ovulacion', image: '/images/treatments/INSEMINACION.png', description: 'Monitoreo ecográfico y hormonal para maximizar las probabilidades naturales.' },
+  { title: 'Programa Donación LifeStart', href: '/programa-donacion-lifestart', image: '/images/treatments/IVF.jpg', description: 'Programa de donación de óvulos para mujeres jóvenes que desean generar un impacto real.' },
+  { title: 'Doble Acumulación', href: '/doble-acumulacion', image: '/images/treatments/IVF.jpg', description: 'Estrategia de estimulación dual (DuoStim) para obtener más óvulos en menos tiempo.' },
+  { title: 'Método ROPA', href: '/metodo-ropa', image: '/images/treatments/ROPA.png', description: 'Maternidad compartida para parejas de mujeres donde ambas participan en el proceso.' },
+  { title: 'Add Ons', href: '/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad', image: '/images/treatments/IVF.jpg', description: 'Tecnologías complementarias para potenciar y optimizar tu tratamiento base.' },
 ];
 
-export default function Page() {
+const treatmentsEn = [
+  { title: 'IVF – In Vitro Fertilization', href: '/fiv-fertilizacion-in-vitro', image: '/images/treatments/IVF.jpg', description: 'World-leading treatment with the highest success rates for various causes of infertility.' },
+  { title: 'IVF with Genetic Testing & Sex Selection', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', image: '/images/treatments/GENETIC TASTING.jpg', description: 'Ensure your baby\'s genetic health and plan your family with medical precision.' },
+  { title: 'Mini IVF', href: '/mini-fiv', image: '/images/treatments/IVF.jpg', description: 'Gentle ovarian stimulation for a more natural, less invasive option.' },
+  { title: 'Natural Cycle IVF', href: '/fertilizacion-in-vitro-en-fiv-ciclo-natural', image: '/images/treatments/IVF.jpg', description: 'Take advantage of your natural menstrual cycle without stimulating hormonal medication.' },
+  { title: 'Frozen Embryo Transfer', href: '/transferencia-de-embriones-y-preparacion-endometrial', image: '/images/treatments/IVF.jpg', description: 'We optimally prepare your endometrium to receive preserved embryos.' },
+  { title: 'Egg Donation', href: '/ovodon', image: '/images/treatments/DONANTES.png', description: 'Eggs from healthy, rigorously selected donors to achieve your pregnancy.' },
+  { title: 'Artificial Insemination', href: '/inseminacion-artificial', image: '/images/treatments/INSEMINACION.png', description: 'Low-complexity treatment ideal as a first therapeutic approach.' },
+  { title: 'Fertility Preservation', href: '/preservacion-de-la-fertilidad', image: '/images/treatments/CRIOPERSERVATION.png', description: 'Freeze your eggs or sperm and decide when the right time is to become a parent.' },
+  { title: 'Embryo Donation & Adoption', href: '/donacion-y-adopcion-embriones', image: '/images/treatments/IVF.jpg', description: 'The opportunity to give life to a previously cryopreserved embryo.' },
+  { title: 'Timed Intercourse', href: '/coito-programado-e-induccion-de-ovulacion', image: '/images/treatments/INSEMINACION.png', description: 'Ultrasound and hormonal monitoring to maximize natural probabilities.' },
+  { title: 'LifeStart Donation Program', href: '/programa-donacion-lifestart', image: '/images/treatments/IVF.jpg', description: 'Egg donation program for young women who want to make a meaningful impact.' },
+  { title: 'Double Stimulation (DuoStim)', href: '/doble-acumulacion', image: '/images/treatments/IVF.jpg', description: 'Dual stimulation strategy to obtain more eggs in less time.' },
+  { title: 'ROPA Method', href: '/metodo-ropa', image: '/images/treatments/ROPA.png', description: 'Shared motherhood for female couples where both partners participate in the process.' },
+  { title: 'Add-Ons', href: '/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad', image: '/images/treatments/IVF.jpg', description: 'Complementary technologies to enhance and optimize your base treatment.' },
+];
+
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isEs = locale === 'es';
+  const treatments = isEs ? treatmentsEs : treatmentsEn;
+
   return (
     <main className="bg-brand-slate pb-24 min-h-screen">
       <PageHeader
-        title="Tratamientos de Fertilidad"
+        title={isEs ? 'Tratamientos de Fertilidad' : 'Fertility Treatments'}
         breadcrumb={[
-          { label: 'Inicio', href: '/' },
-          { label: 'Tratamientos', href: '#' }
+          { label: isEs ? 'Inicio' : 'Home', href: '/' },
+          { label: isEs ? 'Tratamientos' : 'Treatments', href: '#' }
         ]}
       />
 
@@ -108,13 +59,19 @@ export default function Page() {
         <Container>
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-5xl font-serif text-brand-violet mb-8">
-              Tu Familia Comienza Aquí
+              {isEs ? 'Tu Familia Comienza Aquí' : 'Your Family Starts Here'}
             </h2>
             <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
-              En <strong className="text-brand-violet">Advanced Fertility Center Cancún</strong>, entendemos lo importante que es el camino hacia la paternidad. Ofrecemos una gama completa de tratamientos de fertilidad diseñados para satisfacer las necesidades individuales de cada paciente y pareja.
+              {isEs ? (
+                <>En <strong className="text-brand-violet">Advanced Fertility Center Cancún</strong>, entendemos lo importante que es el camino hacia la paternidad. Ofrecemos una gama completa de tratamientos de fertilidad diseñados para satisfacer las necesidades individuales de cada paciente y pareja.</>
+              ) : (
+                <>At <strong className="text-brand-violet">Advanced Fertility Center Cancún</strong>, we understand how important the path to parenthood is. We offer a complete range of fertility treatments designed to meet the individual needs of each patient and couple.</>
+              )}
             </p>
             <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
-              Nuestro equipo médico, conformado por especialistas en fertilidad y reproducción asistida está altamente capacitado y contamos con instalaciones de vanguardia que están a tu disposición para brindarte los mejores cuidados y las mayores probabilidades de éxito.
+              {isEs
+                ? 'Nuestro equipo médico, conformado por especialistas en fertilidad y reproducción asistida está altamente capacitado y contamos con instalaciones de vanguardia que están a tu disposición para brindarte los mejores cuidados y las mayores probabilidades de éxito.'
+                : 'Our medical team, made up of fertility and assisted reproduction specialists, is highly trained and our state-of-the-art facilities are at your disposal to provide you with the best care and the highest chances of success.'}
             </p>
           </div>
         </Container>
@@ -126,7 +83,7 @@ export default function Page() {
           <div className="flex items-center gap-3 mb-16 justify-center">
             <Sparkles className="w-6 h-6 text-brand-green" />
             <h3 className="text-2xl md:text-3xl font-serif text-brand-violet text-center">
-              Programas y Tratamientos Personalizados
+              {isEs ? 'Programas y Tratamientos Personalizados' : 'Personalized Programs and Treatments'}
             </h3>
             <Sparkles className="w-6 h-6 text-brand-green" />
           </div>
@@ -139,7 +96,6 @@ export default function Page() {
                 className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100"
               >
                 <div className="relative aspect-[4/3] w-full bg-brand-violet/5 overflow-hidden flex items-center justify-center p-8">
-                  {/* Fallback pattern if image is missing/broken */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Sparkles className="w-10 h-10 text-brand-violet/10" />
                   </div>
@@ -162,7 +118,7 @@ export default function Page() {
                   </p>
 
                   <div className="flex items-center gap-2 text-brand-green font-bold text-base uppercase tracking-widest mt-auto">
-                    <span>Conocer más</span>
+                    <span>{isEs ? 'Conocer más' : 'Learn more'}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                   </div>
                 </div>

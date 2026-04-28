@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -39,7 +39,7 @@ export default function Page() {
         <div className="w-full lg:w-1/3 shrink-0">
           <div className="not-prose relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2024/08/coito-programado-01.jpg"
+              src="/images/treatments/IVF.jpg"
               alt="Happy couple"
               fill
               className="object-cover m-0"
@@ -72,7 +72,7 @@ export default function Page() {
         </div>
         <div className="not-prose relative h-64 md:h-full rounded-2xl overflow-hidden shadow-lg">
           <Image
-            src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-Coito-programado-1.jpg"
+            src="/images/treatments/IVF.jpg"
             alt="Medical consultation"
             fill
             className="object-cover m-0"
@@ -118,3 +118,4 @@ export default function Page() {
     </InnerPageLayout>
   );
 }
+

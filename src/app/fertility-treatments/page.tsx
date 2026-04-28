@@ -32,7 +32,7 @@ const treatments = [
   {
     title: 'Egg Donation',
     description: 'Specialized donor-egg programs for patients requiring advanced options.',
-    href: '/egg-donation',
+    href: '/ovodon',
     image: '/images/wp/2024_07_Donacion-de-Ovulos.png'
   },
   {

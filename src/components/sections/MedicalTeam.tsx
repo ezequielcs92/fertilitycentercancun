@@ -113,7 +113,7 @@ export default function MedicalTeam() {
                                 <button
                                     onClick={() => setActiveVideo(doctor.videoId)}
                                     className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center justify-center z-10"
-                                    aria-label={`Ver video de ${doctor.name}`}
+                                    aria-label={isEs ? `Ver video de ${doctor.name}` : `Watch video of ${doctor.name}`}
                                 >
                                     <div className="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-brand-green transition-all duration-300 hover:scale-110">
                                         <PlayCircle className="w-10 h-10 text-brand-violet hover:text-white transition-colors" />

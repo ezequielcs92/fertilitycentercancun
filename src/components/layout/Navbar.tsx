@@ -61,13 +61,14 @@ export default function Navbar() {
                 { name: t('items.treatments.links.genetic'), href: route('/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', '/in-vitro-fertilization-with-genetic-testing-and-sex-selection'), icon: Dna },
                 { name: t('items.treatments.links.mini_fiv'), href: route('/mini-fiv', '/mini-ivf'), icon: Zap },
                 { name: t('items.treatments.links.artificial_insemination'), href: route('/inseminacion-artificial', '/artificial-insemination'), icon: UserCheck },
-                { name: t('items.treatments.links.egg_donation'), href: route('/donacion-de-ovulos', '/egg-donation'), icon: Heart },
+                { name: t('items.treatments.links.egg_donation'), href: route('/ovodon', '/ovodon'), icon: Heart },
+                { name: t('items.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/programa-donacion-lifestart'), icon: Droplets },
                 { name: t('items.treatments.links.embryo'), href: route('/donacion-y-adopcion-embriones', '/embryo-donation-and-adoption'), icon: Baby },
                 { name: t('items.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method'), icon: Users },
                 { name: t('items.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation'), icon: Clock },
                 { name: t('items.treatments.links.timed_intercourse'), href: route('/coito-programado-e-induccion-de-ovulacion', '/timed-intercourse-and-ovulation-induction'), icon: Calendar },
                 { name: t('items.treatments.links.transfer'), href: route('/transferencia-de-embriones-y-preparacion-endometrial', '/embryo-transfer-and-endometrial-preparation'), icon: ArrowLeftRight },
-                { name: t('items.treatments.links.lgbt'), href: route('/comunidad-lgbt-tratamiento', '/lgbt-community-treatments'), icon: HeartHandshake },
+                { name: t('items.treatments.links.lgbt'), href: route('/construyendo-familias', '/building-families'), icon: HeartHandshake },
             ]
         },
         {
@@ -178,7 +179,7 @@ export default function Navbar() {
                         <button
                             className="lg:hidden text-white w-10 h-10 flex items-center justify-center bg-white/10 rounded-xl"
                             onClick={() => setMobileOpen(true)}
-                            title="Abrir menú"
+                            title={isEs ? "Abrir menú" : "Open menu"}
                         >
                             <Menu className="w-6 h-6" />
                         </button>
@@ -255,7 +256,7 @@ export default function Navbar() {
                                 </div>
                                 <span className="text-white font-serif font-bold text-xl uppercase tracking-tighter">AFCC</span>
                             </div>
-                            <button onClick={() => setMobileOpen(false)} className="text-white/60 hover:text-white" title="Cerrar menú">
+                            <button onClick={() => setMobileOpen(false)} className="text-white/60 hover:text-white" title={isEs ? "Cerrar menú" : "Close menu"}>
                                 <X className="w-8 h-8" />
                             </button>
                         </div>

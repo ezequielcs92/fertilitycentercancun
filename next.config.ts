@@ -7,6 +7,16 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'fertilitycentercancun.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.supabase.co',
+      },
+    ],
   },
 };
 

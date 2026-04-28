@@ -40,13 +40,13 @@
         },
         "treatments": {
             "fiv": "FIV - Fertilización In Vitro",
-            "egg_donation": "Ovodonación",
+            "egg_donation": "Ovodón",
             "artificial_insemination": "Inseminación Artificial",
             "ropa": "Método ROPA",
             "genetic": "PGT-A - Diagnóstico Genético",
             "preservation": "Preservación de Fertilidad",
             "embryo_donation": "Donación de Embriones",
-            "lgbt": "Apoyo LGBT+",
+            "lgbt": "Programa de Fertilidad Inclusivo",
             "consultation": "Consulta Especializada"
         },
         "labels": {
@@ -120,7 +120,7 @@
                 "description": "Un proceso sencillo y menos invasivo para casos de baja complejidad."
             },
             "egg_donation": {
-                "title": "Donación de Óvulos",
+                "title": "Ovodón",
                 "description": "Programas éticos y seguros con donantes rigurosamente seleccionadas."
             },
             "ropa": {
@@ -161,7 +161,8 @@
                 "links": {
                     "fiv": "FIV - In Vitro",
                     "artificial_insemination": "Inseminación Artificial",
-                    "egg_donation": "Donación de Óvulos",
+                    "egg_donation": "Ovodón",
+                    "sperm_donation": "Programa Donación LifeStart",
                     "ropa": "Método ROPA",
                     "preservation": "Preservación Fertilidad"
                 }
@@ -242,14 +243,14 @@
                     "genetic": "FIV con Estudio Genético",
                     "mini_fiv": "Mini FIV",
                     "artificial_insemination": "Inseminación Artificial",
-                    "egg_donation": "Donación de Óvulos",
-                    "sperm_donation": "Donación de Esperma",
+                    "egg_donation": "Ovodón",
+                    "sperm_donation": "Programa Donación LifeStart",
                     "embryo": "Donación y Adopción de Embriones",
                     "ropa": "Método ROPA",
                     "preservation": "Preservación de la Fertilidad",
                     "timed_intercourse": "Coito Programado",
                     "transfer": "Transferencia de Embriones",
-                    "lgbt": "Comunidad LGBT+"
+                    "lgbt": "Programa de Fertilidad Inclusivo"
                 }
             },
             "experience": {

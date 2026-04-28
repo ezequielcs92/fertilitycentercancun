@@ -1,17 +1,17 @@
-import React from 'react';
+﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
-import { Check, Heart, Stethoscope, AlertCircle, Clock, Dna } from 'lucide-react';
+import { CheckCircle2, Globe2, ShieldCheck, Sparkles, Users } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Page() {
   return (
     <InnerPageLayout
-      title="Donación de óvulos"
+      title="Ovodón"
       breadcrumb={[
         { label: 'Inicio', href: '/' },
         { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
-        { label: 'Donación de óvulos', href: '#' }
+        { label: 'Ovodón', href: '#' }
       ]}
     >
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-12">
@@ -21,10 +21,10 @@ export default function Page() {
           </p>
           <div className="space-y-4 text-lg text-slate-600 font-light mb-8">
             <p>
-              La <strong>ovodonación</strong> (FIV con donante de óvulos) representa un camino lleno de luz para aquellas pacientes que, por diversas razones médicas, no pueden utilizar sus propios óvulos. En nuestro centro, este programa ofrece las tasas de éxito más altas, brindando una oportunidad real de alcanzar el sueño de la maternidad.
+              En <strong>Advanced Fertility Center Cancun</strong>, la ovodonación (FIV con donante de óvulos) es uno de los tratamientos con mayor probabilidad de éxito en medicina reproductiva. Representa una opción sólida y esperanzadora para mujeres y familias que, por diferentes razones médicas, no pueden utilizar sus propios óvulos.
             </p>
             <p>
-              Contamos con un riguroso proceso de selección de donantes, garantizando salud física y compatibilidad genética. Todo el proceso se realiza bajo estrictos estándares de anonimato y seguridad legal en México, proporcionándote la tranquilidad necesaria para enfocarte en lo más importante: la llegada de tu futuro bebé.
+              Hoy, gracias a los avances en reproducción asistida, este tratamiento ofrece tasas de éxito que pueden superar el <strong>60%–70% por transferencia embrionaria</strong>, dependiendo de cada caso, posicionándose como una de las alternativas más efectivas para lograr un embarazo.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -32,101 +32,126 @@ export default function Page() {
               href="/contacto"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
             >
-              Agendar Consulta de Valoración
+              Agendar consulta
             </Link>
           </div>
         </div>
         <div className="w-full lg:w-1/3 shrink-0">
           <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Aplicacion-de-medicamentos.jpg"
-              alt="Proceso de Donación de Óvulos"
+              src="/images/treatments/DONANTES.png"
+              alt="Tratamiento Ovodón"
               fill
-              className="object-cover m-0"
+              className="object-cover object-center m-0"
               unoptimized
             />
           </div>
         </div>
       </div>
 
-      <h2 className="text-3xl font-serif text-brand-violet mb-8">¿Cómo funciona el proceso?</h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <div className="flex flex-col gap-4 p-8 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:border-brand-violet/20 transition-all hover:shadow-md">
-          <div className="w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-violet flex items-center justify-center shrink-0 font-bold text-2xl shadow-inner group-hover:scale-110 transition-transform">1</div>
-          <div>
-            <h4 className="text-xl font-bold text-brand-violet mb-3">Estimulación de la Donante</h4>
-            <p className="text-slate-600 leading-relaxed">La donante se somete a un tratamiento de estimulación ovárica para obtener múltiples óvulos maduros de alta calidad.</p>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 p-8 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:border-brand-violet/20 transition-all hover:shadow-md">
-          <div className="w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-violet flex items-center justify-center shrink-0 font-bold text-2xl shadow-inner group-hover:scale-110 transition-transform">2</div>
-          <div>
-            <h4 className="text-xl font-bold text-brand-violet mb-3">Preparación de la Receptora</h4>
-            <p className="text-slate-600 leading-relaxed">Simultáneamente, la paciente receptora prepara su endometrio mediante medicación para asegurar que el útero esté listo para recibir el embrión.</p>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 p-8 bg-white rounded-3xl shadow-sm border border-slate-100 group hover:border-brand-violet/20 transition-all hover:shadow-md">
-          <div className="w-12 h-12 rounded-2xl bg-brand-green/10 text-brand-violet flex items-center justify-center shrink-0 font-bold text-2xl shadow-inner group-hover:scale-110 transition-transform">3</div>
-          <div>
-            <h4 className="text-xl font-bold text-brand-violet mb-3">Fertilización y Transferencia</h4>
-            <p className="text-slate-600 leading-relaxed">Los óvulos se fertilizan en el laboratorio (FIV/ICSI). Los embriones resultantes se transfieren al útero de la paciente o se pueden vitrificar para el futuro.</p>
-          </div>
-        </div>
-      </div>
-
-      <h2 className="text-3xl font-serif text-brand-violet mb-6">Ventajas de la Ovodonación</h2>
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Un camino real hacia la maternidad y la paternidad</h2>
+      <p className="text-slate-600 mb-6 leading-relaxed">
+        La ovodonación no solo es una solución médica, es una oportunidad tangible de construir una familia. En nuestro centro, acompañamos a:
+      </p>
       <div className="grid md:grid-cols-2 gap-4 mb-12">
         {[
-          "Altas tasas de éxito (hasta 70-80%).",
-          "Independiente de la edad de la paciente.",
-          "Donantes rigurosamente seleccionadas.",
-          "Proceso anónimo y confidencial.",
-          "Experiencia completa del embarazo.",
-        ].map((item, i) => (
-          <div key={i} className="flex gap-4 items-center p-6 bg-brand-violet/5 rounded-2xl border border-brand-violet/10">
-            <Check className="w-8 h-8 text-brand-green shrink-0" />
-            <span className="font-bold text-lg text-slate-700">{item}</span>
+          'Mujeres con baja reserva ovárica',
+          'Pacientes con fallas previas en FIV',
+          'Mujeres de edad reproductiva avanzada',
+          'Familias diversas, incluyendo parejas del mismo sexo y personas solteras'
+        ].map((item) => (
+          <div key={item} className="flex items-center gap-3 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
+            <Users className="w-5 h-5 text-brand-green shrink-0" />
+            <span className="text-slate-700">{item}</span>
           </div>
         ))}
       </div>
 
-      <h2 className="text-3xl font-serif text-brand-violet mb-6">Nuestras Donantes</h2>
       <div className="bg-brand-gray p-8 rounded-3xl mb-12 border border-brand-violet/5">
-        <p className="mb-6 text-slate-700 leading-relaxed">
-          En <strong>Advanced Fertility Center Cancún</strong>, contamos con un banco de óvulos propio y una estricta selección de donantes. Todas nuestras candidatas pasan por evaluaciones:
+        <h2 className="text-3xl font-serif text-brand-violet mb-5">Selección estricta, mejores resultados</h2>
+        <p className="text-slate-700 leading-relaxed mb-5">
+          Entendemos que la calidad de los óvulos es determinante para el éxito. Por ello, contamos con un proceso de selección de donantes altamente estricto y alineado a estándares internacionales. Solo un pequeño porcentaje de candidatas (<strong>aprox. 10%–15%</strong>) logra ser aceptado en nuestro programa.
         </p>
-        <div className="flex flex-wrap gap-3 mb-6">
-          {["Médicas", "Genéticas", "Psicológicas", "Legales"].map(tag => (
-            <span key={tag} className="px-4 py-2 bg-white rounded-full text-base font-bold text-brand-violet shadow-sm border border-slate-100">
-              {tag}
-            </span>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {[
+            'Evaluación médica integral',
+            'Estudios genéticos avanzados',
+            'Análisis hormonal y de fertilidad',
+            'Evaluación psicológica',
+            'Historial familiar detallado'
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl border border-slate-100">
+              <Sparkles className="w-4 h-4 text-brand-green shrink-0" />
+              <span className="text-slate-700 text-sm md:text-base">{item}</span>
+            </div>
           ))}
         </div>
-        <p className="text-base text-slate-500 italic">
-          Garantizamos que solo las mejores candidatas forman parte de nuestro programa.
-        </p>
       </div>
 
-      <h2 className="text-3xl font-serif text-brand-violet mb-12">¿Para quién está indicada?</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">Seguridad, anonimato y respaldo legal</h2>
+      <div className="grid md:grid-cols-2 gap-4 mb-12">
         {[
-          { text: "Baja Reserva Ovárica", icon: Stethoscope },
-          { text: "Fallas en FIV", icon: AlertCircle },
-          { text: "Menopausia Precoz", icon: Clock },
-          { text: "Riesgos Genéticos", icon: Dna },
-        ].map((item, i) => (
-          <div key={i} className="flex flex-col items-center text-center gap-6 group">
-            <div className="w-20 h-20 rounded-3xl bg-brand-violet/5 flex items-center justify-center text-brand-violet group-hover:bg-brand-violet group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-xl group-hover:-translate-y-2">
-              <item.icon className="w-10 h-10 stroke-[1.5]" />
-            </div>
-            <p className="text-xl font-bold text-brand-violet leading-tight">{item.text}</p>
+          'Anonimato entre donante y receptora',
+          'Protocolos clínicos seguros y supervisados',
+          'Cumplimiento de normativas médicas internacionales',
+          'Acompañamiento continuo por especialistas'
+        ].map((item) => (
+          <div key={item} className="flex items-center gap-3 p-5 bg-brand-violet/5 rounded-2xl border border-brand-violet/10">
+            <ShieldCheck className="w-5 h-5 text-brand-green shrink-0" />
+            <span className="text-slate-700">{item}</span>
           </div>
         ))}
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Por qué elegir ovodonación?</h2>
+      <div className="grid md:grid-cols-2 gap-4 mb-12">
+        {[
+          'Hasta 70% de éxito por transferencia en condiciones óptimas',
+          'Mayor calidad embrionaria al utilizar óvulos de donantes jóvenes',
+          'Reducción significativa en riesgos asociados a la edad ovárica',
+          'Alternativa ideal tras múltiples intentos fallidos'
+        ].map((item) => (
+          <div key={item} className="flex items-center gap-3 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
+            <CheckCircle2 className="w-5 h-5 text-brand-green shrink-0" />
+            <span className="text-slate-700">{item}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm mb-12">
+        <h2 className="text-3xl font-serif text-brand-violet mb-4">Cancún, destino clave en fertilidad</h2>
+        <p className="text-slate-600 leading-relaxed mb-4">
+          Atendemos pacientes de México, Estados Unidos, Canadá y otros países, posicionando a Cancún como un destino clave en fertilidad y turismo médico.
+        </p>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {['Tecnología avanzada', 'Atención personalizada', 'Experiencia internacional'].map((item) => (
+            <div key={item} className="flex items-center gap-2 px-4 py-3 rounded-xl bg-brand-violet/5 border border-brand-violet/10">
+              <Globe2 className="w-4 h-4 text-brand-green" />
+              <span className="text-brand-violet font-medium">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-serif text-brand-violet mb-4">Construyendo familias, sin límites</h2>
+      <p className="text-slate-600 leading-relaxed mb-6">
+        Creemos en una medicina reproductiva inclusiva, moderna y humana. La ovodonación es una opción para todas las formas de familia, brindando una oportunidad real a quienes desean vivir la experiencia de tener un hijo.
+      </p>
+
+      <div className="bg-brand-violet text-white p-8 rounded-3xl">
+        <h3 className="text-2xl font-serif mb-3">Da el siguiente paso</h3>
+        <p className="text-white/85 mb-5 leading-relaxed">
+          Estamos listos para acompañarte en este camino y ayudarte a determinar si la ovodonación es la mejor opción para ti.
+        </p>
+        <Link
+          href="/contacto"
+          className="inline-flex items-center justify-center px-7 py-3 bg-brand-green text-brand-violet rounded-full font-bold hover:bg-white transition-colors"
+        >
+          Agendar consulta
+        </Link>
       </div>
 
     </InnerPageLayout>
   );
 }
+

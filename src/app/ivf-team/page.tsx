@@ -15,9 +15,14 @@ const team = [
     image: '/dr-everardo-trevino.jpg'
   },
   {
-    name: 'Dr. Esther Iyune Cojab',
+    name: 'Dra. Esther Iyune Cojab',
     role: 'Gynecology and Obstetrics / Reproductive Biology',
     image: '/dra-esther-iyune.jpg'
+  },
+  {
+    name: 'Dr. Rodolfo González Hovelman',
+    role: 'Gynecology and Obstetrics / Reproductive Biology',
+    image: '/images/treatments/RODOLFO.png'
   }
 ];
 

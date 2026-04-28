@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import Image from 'next/image';
@@ -9,32 +9,32 @@ export default function Page() {
     {
       title: 'Ovarian Stimulation',
       desc: 'Medication is used to stimulate ovarian follicles in order to obtain the highest possible number of high-quality eggs.',
-      image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Medicamentos.jpg'
+      image: '/images/treatments/IVF.jpg'
     },
     {
       title: 'Egg Retrieval',
       desc: 'Eggs are collected through ultrasound-guided aspiration in our specialized operating room under light sedation.',
-      image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/10/WEB-2.-Quirofano001.jpg'
+      image: '/images/treatments/IVF.jpg'
     },
     {
       title: 'Sperm Preparation',
       desc: 'Sperm is processed in the lab to select the best motility and morphology before fertilization.',
-      image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/10/esperma-se-capacita-003.jpg'
+      image: '/images/treatments/IVF.jpg'
     },
     {
       title: 'Fertilization (IVF/ICSI)',
       desc: 'Oocytes are fertilized in the laboratory using conventional IVF or Intracytoplasmic Sperm Injection (ICSI).',
-      image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-2.-Inyeccion.jpg'
+      image: '/images/treatments/IVF.jpg'
     },
     {
       title: 'Blastocyst Biopsy',
       desc: 'A biopsy from the embryo outer layer (day 5-6) is analyzed to assess chromosomal status without compromising viability.',
-      image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/10/biopsia-001.jpg'
+      image: '/images/treatments/IVF.jpg'
     },
     {
       title: 'Vitrification and PGT',
       desc: 'Embryos are vitrified while genetic results are processed to plan a safer, more effective transfer.',
-      image: 'https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-5.-Se-congelan.jpg'
+      image: '/images/treatments/IVF.jpg'
     }
   ];
 
@@ -73,7 +73,7 @@ export default function Page() {
 
           <div className="not-prose relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2025/10/biopsia-001.jpg"
+              src="/images/treatments/IVF.jpg"
               alt="Genetic embryo biopsy in IVF laboratory"
               fill
               className="object-cover"
@@ -84,7 +84,7 @@ export default function Page() {
 
         <div className="not-prose relative aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl mb-24 bg-slate-100">
           <Image
-            src="https://fertilitycentercancun.com/wp-content/uploads/2025/06/Etapas-del-FIV-2-ENG.jpg"
+            src="/images/treatments/IVF.jpg"
             alt="IVF with PGT-A process timeline"
             fill
             className="object-cover"
@@ -182,3 +182,4 @@ export default function Page() {
     </main>
   );
 }
+

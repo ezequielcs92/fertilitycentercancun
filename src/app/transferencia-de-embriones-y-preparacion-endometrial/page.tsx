@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import { Calendar, CheckCircle, Activity, Star } from 'lucide-react';
@@ -22,7 +22,7 @@ export default function Page() {
 
       <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
         <Image
-          src="https://fertilitycentercancun.com/wp-content/uploads/2025/10/transferencia-embrionaria-001.jpg"
+          src="/images/treatments/IVF.jpg"
           alt="Transferencia embrionaria"
           fill
           className="object-cover"
@@ -75,3 +75,4 @@ export default function Page() {
     </InnerPageLayout>
   );
 }
+

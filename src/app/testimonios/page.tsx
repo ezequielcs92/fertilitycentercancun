@@ -90,7 +90,7 @@ export default function Page({ locale = 'es' }: { locale?: string }) {
         {loading ? (
           <div className="py-24 text-center">
             <div className="w-12 h-12 border-4 border-brand-violet border-t-brand-green rounded-full animate-spin mx-auto mb-4" />
-            <p className="text-slate-400 italic font-light">Cargando historias...</p>
+            <p className="text-slate-400 italic font-light">{isEs ? 'Cargando historias...' : 'Loading stories...'}</p>
           </div>
         ) : testimonials.length === 0 ? (
           <div className="py-24 text-center">
@@ -139,7 +139,7 @@ export default function Page({ locale = 'es' }: { locale?: string }) {
 
         {/* Baby Gallery */}
         <div className="mb-24">
-          <h3 className="text-3xl font-serif text-center text-brand-violet mb-12">Familias creadas con <span className="text-brand-green">amor</span></h3>
+          <h3 className="text-3xl font-serif text-center text-brand-violet mb-12">{isEs ? <>Familias creadas con <span className="text-brand-green">amor</span></> : <>Families created with <span className="text-brand-green">love</span></>}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
             {babyImages.map((image) => (
               <div key={image.id} className="aspect-square rounded-3xl overflow-hidden relative group">

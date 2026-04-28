@@ -1,101 +1,177 @@
-
 import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
-import { Container } from '@/components/ui/Container';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getTeamMembers } from '@/lib/actions/team';
+import { CheckCircle2 } from 'lucide-react';
 
-const MedicalTeamPage = async () => {
-  const teamMembers = await getTeamMembers();
+const specialists = [
+  {
+    name: 'Dra. Azul Estefanía Torres Rivera',
+    roleEs: 'Directora Médica · Especialista en Reproducción Asistida',
+    roleEn: 'Medical Director · Assisted Reproduction Specialist',
+    image: '/images/team/azul-torres.jpg',
+  },
+  {
+    name: 'Dr. Eduardo Emanuel Espadas Reyes',
+    roleEs: 'Especialista en Reproducción Asistida',
+    roleEn: 'Assisted Reproduction Specialist',
+    image: '/dr-eduardo-espadas.jpg',
+  },
+  {
+    name: 'Dr. Everardo Treviño Ortiz',
+    roleEs: 'Especialista en Reproducción Asistida',
+    roleEn: 'Assisted Reproduction Specialist',
+    image: '/dr-everardo-trevino.jpg',
+  },
+  {
+    name: 'Dra. Esther Iyune Cojab',
+    roleEs: 'Especialista en Reproducción Asistida',
+    roleEn: 'Assisted Reproduction Specialist',
+    image: '/dra-esther-iyune.jpg',
+  },
+  {
+    name: 'Dr. Rodolfo González Hovelman',
+    roleEs: 'Especialista en Reproducción Asistida',
+    roleEn: 'Assisted Reproduction Specialist',
+    image: '/images/team/rodolfo-gonzalez.png',
+  },
+];
+
+const supportTeam = [
+  {
+    name: 'Carolina González Cortés',
+    roleEs: 'Jefa de Andrología',
+    roleEn: 'Head of Andrology',
+    image: '/images/team/carolina-gonzalez.jpg',
+  },
+  {
+    name: 'Beatriz Martínez Manzanares',
+    roleEs: 'Jefa de Laboratorio de Embriología',
+    roleEn: 'Head of Embryology Laboratory',
+    image: '/images/team/beatriz-martinez.jpg',
+  },
+  {
+    name: 'Luz Clarita Domínguez Millares',
+    roleEs: 'Jefa de Laboratorio Clínico',
+    roleEn: 'Head of Clinical Laboratory',
+    image: '/images/team/luz-dominguez.jpg',
+  },
+  {
+    name: 'Wendy Isabel Montes Morales',
+    roleEs: 'Jefa de Enfermería',
+    roleEn: 'Head of Nursing',
+    image: '/images/team/wendy-montes.jpg',
+  },
+  {
+    name: 'Inda Inés Estrada Ramos',
+    roleEs: 'Coordinadora Clínica',
+    roleEn: 'Clinical Coordinator',
+    image: '/images/team/inda-estrada.jpg',
+  },
+  {
+    name: 'Elisheva Vianey García Ticante',
+    roleEs: 'Coordinadora de Ciclos',
+    roleEn: 'Cycle Coordinator',
+    image: '/images/team/vianey-garcia.jpg',
+  },
+  {
+    name: 'Yhadira Sarai Serrano Díaz',
+    roleEs: 'Coordinadora de Donantes',
+    roleEn: 'Donor Coordinator',
+    image: '/images/team/yhadira-serrano.jpg',
+  },
+  {
+    name: 'Luis Iván Hernández Fuentes',
+    roleEs: 'Director Comercial',
+    roleEn: 'Commercial Director',
+    image: '/images/team/luis-hernandez.jpg',
+  },
+];
+
+function MemberCard({ name, role, image }: { name: string; role: string; image: string }) {
+  return (
+    <div className="not-prose bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
+      <div className="relative aspect-[4/5] bg-slate-100">
+        <Image src={image} alt={name} fill className="object-cover object-top" />
+      </div>
+      <div className="p-5">
+        <h3 className="text-base font-serif text-brand-violet mb-1 leading-snug">{name}</h3>
+        <p className="text-slate-500 text-sm font-light leading-snug">{role}</p>
+      </div>
+    </div>
+  );
+}
+
+export default async function MedicalTeamPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const isEs = locale === 'es';
 
   return (
     <InnerPageLayout
-      title="Nuestro equipo médico"
+      title={isEs ? 'Nuestro Equipo Médico' : 'Our Medical Team'}
       breadcrumb={[
-        { label: 'Inicio', href: '/' },
-        { label: 'Nuestro equipo médico', href: '#' },
+        { label: isEs ? 'Inicio' : 'Home', href: '/' },
+        { label: isEs ? 'Nosotros' : 'About Us', href: '#' },
+        { label: isEs ? 'Equipo Médico' : 'Medical Team', href: '#' },
       ]}
     >
-      <section className="py-16 bg-gray-50">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-violet mb-6">
-              Expertos comprometidos con tu sueño
-            </h2>
-            <p className="text-lg text-gray-600">
-              Nuestro equipo está conformado por especialistas de renombre internacional,
-              dedicados a brindar la mejor atención y tecnología en medicina reproductiva.
-            </p>
-          </div>
+      <p className="lead text-2xl font-serif text-brand-violet italic mb-12">
+        {isEs
+          ? 'Un equipo multidisciplinario de especialistas en fertilidad, comprometidos con tu cuidado, seguridad y el éxito de tu tratamiento.'
+          : 'A multidisciplinary team of fertility specialists, committed to your care, safety, and the success of your treatment.'}
+      </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {teamMembers.map((member: any) => {
-              // Image resolution logic
-              const imageSrc = member.foto_url || '/medical-team.jpg';
+      {/* Specialists */}
+      <h2 className="text-2xl font-serif text-brand-violet mb-8">
+        {isEs ? 'Especialistas en Reproducción Asistida' : 'Assisted Reproduction Specialists'}
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
+        {specialists.map((member) => (
+          <MemberCard key={member.name} name={member.name} role={isEs ? member.roleEs : member.roleEn} image={member.image} />
+        ))}
+      </div>
 
-              return (
-                <Link
-                  key={member.id}
-                  href={`/equipo/${member.slug || member.id}`}
-                  className="not-prose group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full no-underline hover:no-underline"
-                >
-                  <div className="relative aspect-square overflow-hidden">
-                    <Image
-                      src={imageSrc}
-                      alt={member.nombre}
-                      fill
-                      style={{ margin: 0, padding: 0 }}
-                      className="object-cover object-center scale-[1.12] transition-transform duration-500 group-hover:scale-125 !m-0 !p-0 block"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+      {/* Support team */}
+      <h2 className="text-2xl font-serif text-brand-violet mb-8">
+        {isEs ? 'Equipo de Apoyo Clínico' : 'Clinical Support Team'}
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
+        {supportTeam.map((member) => (
+          <MemberCard key={member.name} name={member.name} role={isEs ? member.roleEs : member.roleEn} image={member.image} />
+        ))}
+      </div>
 
-                  <div className="p-5 flex flex-col flex-grow">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-brand-violet transition-colors no-underline">
-                      {member.nombre}
-                    </h3>
-                    <p className="text-brand-violet font-medium text-sm mb-4 line-clamp-2 no-underline">
-                      {member.especialidad}
-                    </p>
-                    <div className="mt-auto pt-3 border-t border-gray-50 flex items-center text-brand-violet font-semibold text-sm">
-                      Ver perfil completo
-                      <svg
-                        className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-brand-violet text-white">
-        <Container className="text-center">
-          <h2 className="!text-white text-3xl md:text-4xl font-bold mb-8">
-            ¿Listo para iniciar tu proceso?
-          </h2>
-          <p className="!text-white/90 text-xl mb-10 max-w-2xl mx-auto">
-            Agenda una cita con nuestros especialistas y da el primer paso hacia tu nueva familia.
-          </p>
+      <div className="bg-brand-violet rounded-[2.5rem] p-10 text-white shadow-xl">
+        <h2 className="!text-white text-3xl font-serif mb-4">
+          {isEs ? 'Atención centrada en el paciente' : 'Patient-Centered Care'}
+        </h2>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 list-none p-0 m-0">
+          {(isEs ? [
+            'Atención bilingüe y seguimiento personalizado',
+            'Protocolos clínicos basados en evidencia',
+            'Tecnología reproductiva de vanguardia',
+            'Apoyo empático durante todo el proceso',
+          ] : [
+            'Bilingual care and personalized follow-up',
+            'Evidence-based clinical protocols',
+            'Cutting-edge reproductive technology',
+            'Empathetic support throughout the process',
+          ]).map((item) => (
+            <li key={item} className="flex items-start gap-2 text-white/90">
+              <CheckCircle2 className="w-5 h-5 text-brand-green mt-0.5 shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8">
           <Link
-            href="/contacto"
-            className="inline-block bg-brand-green text-brand-violet px-10 py-4 rounded-full font-bold text-lg hover:bg-white transition-colors shadow-lg"
+            href={isEs ? '/contacto' : '/en/contact-ivf-doctors'}
+            className="inline-block bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold text-base hover:bg-white transition-colors shadow-lg"
           >
-            Agendar Consulta
+            {isEs ? 'Agendar consulta' : 'Book a consultation'}
           </Link>
-        </Container>
-      </section>
+        </div>
+      </div>
     </InnerPageLayout>
   );
-};
-
-export default MedicalTeamPage;
+}

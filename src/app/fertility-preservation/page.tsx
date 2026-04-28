@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import { Snowflake, Clock, Shield, Baby } from 'lucide-react';
@@ -14,8 +14,8 @@ export default function Page() {
         { label: 'Preservation', href: '#' }
       ]}
     >
-      <div className="flex flex-col gap-12 mb-16">
-        <div className="w-full">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center mb-12">
+        <div className="flex-1">
           <p className="lead text-2xl font-serif text-brand-violet italic mb-6">
             We protect your reproductive future so you can decide the best time.
           </p>
@@ -37,13 +37,13 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="w-full">
-          <div className="not-prose relative aspect-video md:aspect-[21/9] rounded-[3.5rem] overflow-hidden shadow-2xl border border-slate-50">
+        <div className="w-full lg:w-1/3 shrink-0">
+          <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2024/08/Etapas-criopreservacion-01.jpg"
+              src="/images/treatments/criopreservaciontanqueadvancedfertilitycentercancun.png"
               alt="Cryopreservation Stages"
               fill
-              className="object-contain"
+              className="object-cover object-center"
               unoptimized
             />
           </div>
@@ -55,7 +55,7 @@ export default function Page() {
         <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-500">
           <div className="relative aspect-[5/4] overflow-hidden bg-slate-50 m-0">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2025/08/WEB-1.-Medicamentos.jpg"
+              src="/images/treatments/IVF.jpg"
               alt="Egg Vitrification"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700 m-0 p-0"
@@ -72,7 +72,7 @@ export default function Page() {
         <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-500">
           <div className="relative aspect-[5/4] overflow-hidden bg-slate-50 m-0">
             <Image
-              src="https://fertilitycentercancun.com/wp-content/uploads/2024/07/Criopreservacion-masculina-894x1024.jpg"
+              src="/images/treatments/IVF.jpg"
               alt="Sperm Cryopreservation"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700 m-0 p-0"
@@ -116,3 +116,4 @@ export default function Page() {
     </InnerPageLayout>
   );
 }
+
