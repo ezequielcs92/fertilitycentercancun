@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/Container';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-function Counter({ value, suffix }: { value: number; suffix: string }) {
+function Counter({ value, suffix, decimals = 0 }: { value: number; suffix: string; decimals?: number }) {
     const ref = React.useRef(null);
     const inView = useInView(ref, { once: true });
     const count = useMotionValue(0);
@@ -21,9 +21,9 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
     useEffect(() => {
         return rounded.on("change", (v) => {
-            setDisplayValue(Math.floor(v).toLocaleString());
+            setDisplayValue(decimals > 0 ? v.toFixed(decimals) : Math.floor(v).toLocaleString());
         });
-    }, [rounded]);
+    }, [rounded, decimals]);
 
     return (
         <span ref={ref} className="block text-6xl md:text-7xl font-sans font-bold text-white mb-4 tracking-tighter">
@@ -41,21 +41,24 @@ export default function SuccessRates() {
             label: t('stats.cycles.label'),
             sublabel: t('stats.cycles.date'),
             delay: 0.1,
-            suffix: ""
+            suffix: "",
+            decimals: 0
         },
         {
-            number: 100,
+            number: 40.23,
             label: t('stats.betas.label'),
             sublabel: "",
             delay: 0.2,
-            suffix: ""
+            suffix: "%",
+            decimals: 2
         },
         {
-            number: 1000,
+            number: 31.01,
             label: t('stats.babies.label'),
             sublabel: "",
             delay: 0.3,
-            suffix: "+"
+            suffix: "%",
+            decimals: 2
         }
     ];
 
@@ -107,7 +110,7 @@ export default function SuccessRates() {
                             <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-[3rem] -z-10" />
 
                             <div className="relative z-10">
-                                <Counter value={stat.number} suffix={stat.suffix} />
+                                <Counter value={stat.number} suffix={stat.suffix} decimals={stat.decimals} />
                                 <h3 className="text-2xl font-serif text-brand-green font-medium mb-1">
                                     {stat.label}
                                 </h3>

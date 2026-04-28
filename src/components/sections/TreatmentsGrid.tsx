@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
-import { Microscope, Heart, Sparkles, UserCheck, Baby, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
@@ -14,37 +14,37 @@ export default function TreatmentsGrid() {
         {
             title: t('items.fiv.title'),
             desc: t('items.fiv.description'),
-            icon: Microscope,
+            image: "/images/treatments/IVF.jpg",
             href: "/fiv-fertilizacion-in-vitro"
         },
         {
             title: t('items.artificial_insemination.title'),
             desc: t('items.artificial_insemination.description'),
-            icon: UserCheck,
+            image: "/images/treatments/INSEMINACION.png",
             href: "/inseminacion-artificial"
         },
         {
             title: t('items.egg_donation.title'),
             desc: t('items.egg_donation.description'),
-            icon: Heart,
+            image: "/images/treatments/DONANTES.png",
             href: "/donacion-de-ovulos"
         },
         {
             title: t('items.ropa.title'),
             desc: t('items.ropa.description'),
-            icon: Sparkles,
+            image: "/images/treatments/ROPA.png",
             href: "/metodo-ropa"
         },
         {
             title: t('items.genetic.title'),
             desc: t('items.genetic.description'),
-            icon: ShieldCheck,
+            image: "/images/treatments/GENETIC.jpg",
             href: "/estudios-geneticos"
         },
         {
             title: t('items.preservation.title'),
             desc: t('items.preservation.description'),
-            icon: Baby,
+            image: "/images/treatments/CRIOPRESERVACION.png",
             href: "/preservacion-de-la-fertilidad"
         }
     ];
@@ -79,8 +79,8 @@ export default function TreatmentsGrid() {
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-violet/5 rounded-full -mr-16 -mt-16 group-hover:bg-brand-green/10 transition-colors" />
 
-                                <div className="w-16 h-16 bg-brand-violet/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-violet group-hover:rotate-6 transition-all duration-500">
-                                    <t_item.icon className="w-8 h-8 text-brand-violet group-hover:text-white transition-colors" />
+                                <div className="w-full h-48 rounded-2xl overflow-hidden mb-8 group-hover:scale-[1.02] transition-all duration-500 relative">
+                                    <Image src={t_item.image} alt={t_item.title} fill className="object-cover" />
                                 </div>
 
                                 <h3 className="text-2xl font-serif text-brand-violet mb-4 group-hover:text-brand-green transition-colors">{t_item.title}</h3>

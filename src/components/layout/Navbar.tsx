@@ -48,7 +48,7 @@ export default function Navbar() {
                 { name: t('items.about.links.facilities.name'), href: route('/laboratorios-y-servicios', '/laboratories-and-services'), description: t('items.about.links.facilities.description') },
                 { name: t('items.about.links.team.name'), href: route('/equipo', '/ivf-team'), description: t('items.about.links.team.description') },
                 { name: t('items.about.links.podcast.name'), href: route('/podcast', '/podcast'), description: t('items.about.links.podcast.description') },
-                { name: t('items.about.links.support.name'), href: route('/soporte-internacional', '/international-support'), description: t('items.about.links.support.description') },
+                { name: t('items.about.links.tour.name'), href: route('/instalaciones', '/clinic-tour'), description: t('items.about.links.tour.description') },
                 { name: t('items.about.links.certifications.name'), href: route('/certificaciones-acreditaciones-y-alianzas', '/certifications-accreditations-and-partnerships'), description: t('items.about.links.certifications.description') },
             ]
         },
@@ -62,7 +62,6 @@ export default function Navbar() {
                 { name: t('items.treatments.links.mini_fiv'), href: route('/mini-fiv', '/mini-ivf'), icon: Zap },
                 { name: t('items.treatments.links.artificial_insemination'), href: route('/inseminacion-artificial', '/artificial-insemination'), icon: UserCheck },
                 { name: t('items.treatments.links.egg_donation'), href: route('/donacion-de-ovulos', '/egg-donation'), icon: Heart },
-                { name: t('items.treatments.links.sperm_donation'), href: route('/donacion-de-espermatozoides', '/sperm-donation'), icon: Droplets },
                 { name: t('items.treatments.links.embryo'), href: route('/donacion-y-adopcion-embriones', '/embryo-donation-and-adoption'), icon: Baby },
                 { name: t('items.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method'), icon: Users },
                 { name: t('items.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation'), icon: Clock },

@@ -1,10 +1,10 @@
 {
     "Hero": {
-        "tagline": "Líderes en Reproducción Asistida",
-        "title": "Tu sueño de ser <italic>mamá, hecho realidad.</italic>",
+        "tagline": "14 Años Experiencia",
+        "title": "Hacemos tu sueño <italic>realidad.</italic>",
         "description": "En Advanced Fertility Center Cancun combinamos tecnología de vanguardia con un trato cálido e inclusivo para brindarte la mayor probabilidad de éxito en tu tratamiento.",
-        "cta": "Iniciar mi camino",
-        "stats_button": "Tasas de éxito",
+        "cta": "Tratamientos",
+        "stats_button": "Primera Vez",
         "care_title": "Trato Humano",
         "care_subtitle": "Atención personalizada 24/7",
         "stats": {
@@ -85,7 +85,7 @@
         "description": "Nuestra clínica cuenta con equipo médico de última generación en laboratorios de análisis clínicos, andrología, quirófanos y unidad materno-fetal.",
         "image_alt": "Laboratorio Fertility Center Cancun",
         "stats": {
-            "years": "20+",
+            "years": "14",
             "label": "Años de Exp."
         },
         "features": {
@@ -142,13 +142,13 @@
         "stats": {
             "cycles": {
                 "label": "Ciclos realizados",
-                "date": "2012 - 2025"
+                "date": "2012 - 2026"
             },
             "betas": {
-                "label": "Betas positivas"
+                "label": "Tasa de Embarazo"
             },
             "babies": {
-                "label": "Bebés"
+                "label": "Tasa de Implantación"
             }
         }
     },
@@ -205,7 +205,7 @@
                         "description": "Logística para pacientes internacionales."
                     },
                     "facilities": {
-                        "name": "Instalaciones",
+                        "name": "Laboratorios y Servicios",
                         "description": "Tecnología de vanguardia."
                     },
                     "team": {
@@ -219,6 +219,10 @@
                     "support": {
                         "name": "Soporte Internacional",
                         "description": "Te acompañamos en cada paso."
+                    },
+                    "tour": {
+                        "name": "Instalaciones",
+                        "description": "Tour virtual 360° de nuestras instalaciones."
                     },
                     "certifications": {
                         "name": "Certificaciones",

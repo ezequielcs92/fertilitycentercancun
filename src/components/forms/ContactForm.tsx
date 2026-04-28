@@ -139,7 +139,7 @@ export default function ContactForm() {
             className="w-full"
         >
             <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-sm border border-slate-50">
+                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_8px_60px_-10px_rgba(109,40,217,0.25)] border border-brand-violet/10">
 
                     {/* Mensaje de Estado */}
                     <AnimatePresence mode="wait">

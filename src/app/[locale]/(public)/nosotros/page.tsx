@@ -77,57 +77,15 @@ export default function Page() {
 
         <hr className="border-slate-100" />
 
-        {/* International Science */}
-        <section>
-          <div className="text-center mb-16">
-            <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base">Vanguardia Mundial</span>
-            <h2 className="text-4xl font-serif text-brand-violet mt-4">Respaldo Científico <span className="text-brand-green italic">Internacional</span></h2>
-            <p className="text-slate-500 mt-6 max-w-2xl mx-auto font-light">
-              Nuestros socios son referentes globales que garantizan que nuestros tratamientos cumplan con los más altos estándares de calidad.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-12">
-            {partners.map((partner, i) => (
-              <div key={i} className="not-prose flex flex-col items-center group">
-                <div className="w-full aspect-[4/5] rounded-[2rem] shadow-2xl mb-8 group-hover:-translate-y-2 transition-transform duration-500 overflow-hidden relative">
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    fill
-                    style={{ margin: 0, padding: 0 }}
-                    className="object-cover object-center scale-[1.15] group-hover:scale-[1.25] transition-transform duration-700 !m-0 !p-0 block"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                </div>
-                <div className="text-center px-4">
-                  <h4 className="text-2xl font-serif text-brand-violet mb-1">{partner.name}</h4>
-                  <span className="text-brand-green font-bold uppercase tracking-widest text-[10px] block mb-4">{partner.role}</span>
-                  <p className="text-base text-slate-500 font-light leading-relaxed">{partner.description}</p>
-
-                  <button className="mt-8 inline-flex items-center gap-2 text-brand-violet font-bold text-base uppercase tracking-widest hover:text-brand-green transition-colors group/btn">
-                    <div className="w-8 h-8 rounded-full bg-brand-violet group-hover/btn:bg-brand-green flex items-center justify-center transition-colors">
-                      <Play className="w-3 h-3 text-white fill-white" />
-                    </div>
-                    Ver Video
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <hr className="border-slate-100" />
-
         {/* Final CTA */}
         <section className="bg-brand-violet rounded-[3rem] md:rounded-[4rem] p-10 md:p-20 text-white relative overflow-hidden text-center">
           <div className="absolute top-0 left-0 w-96 h-96 bg-brand-green/20 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-green/10 rounded-full blur-[100px] translate-y-1/2 translate-x-1/2 pointer-events-none" />
           <div className="relative z-10 max-w-3xl mx-auto">
-            <h3 className="!text-white text-3xl md:text-5xl font-serif mb-6 leading-tight">¿Listo/a para dar el <span className="text-brand-green italic underline underline-offset-8 decoration-white/20">primer paso</span>?</h3>
+            <h3 className="!text-white !mt-0 text-3xl md:text-5xl font-serif mb-6 leading-tight">¿Listo/a para dar el <span className="text-brand-green italic underline underline-offset-8 decoration-white/20">primer paso</span>?</h3>
             <p className="!text-white/90 text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto">Solicita una videollamada con nuestro equipo. Estaremos encantados de orientarte y resolver todas tus dudas.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="/contacto" className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold text-base shadow-xl hover:bg-white transition-all hover:-translate-y-1 whitespace-nowrap w-full sm:w-auto">
+              <a href="/contacto" className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold text-base shadow-xl hover:bg-white transition-all hover:-translate-y-1 whitespace-nowrap w-full sm:w-auto flex items-center justify-center">
                 Agendar videollamada
               </a>
               <a href="tel:+529988035530" className="border border-white/30 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-all flex items-center justify-center gap-2 whitespace-nowrap w-full sm:w-auto">

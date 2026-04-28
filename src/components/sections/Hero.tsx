@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
-import { ChevronRight, Heart, Star, Calculator, Sparkles } from 'lucide-react';
+import { ChevronRight, MessageCircle, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -54,14 +53,14 @@ export default function Hero() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                                <button className="bg-brand-green text-brand-violet px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl flex items-center justify-center gap-2 group">
+                                <a href="#tratamientos" className="bg-brand-green text-brand-violet px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl flex items-center justify-center gap-2 group">
                                     {t('cta')}
                                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                </button>
-                                <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-3">
-                                    <Calculator className="w-5 h-5 text-brand-green" />
+                                </a>
+                                <a href="https://wa.me/5219983050373" target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-3">
+                                    <MessageCircle className="w-5 h-5 text-brand-green" />
                                     {t('stats_button')}
-                                </button>
+                                </a>
                             </div>
 
                             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
@@ -94,23 +93,6 @@ export default function Hero() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 via-transparent to-transparent z-20" />
                             </div>
-
-                            {/* Floating Info Card */}
-                            <motion.div
-                                animate={{ y: [0, -20, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -bottom-6 -left-12 bg-white/90 backdrop-blur-xl p-8 rounded-[2rem] shadow-2xl hidden xl:block border border-white/20 z-30"
-                            >
-                                <div className="flex items-center gap-4">
-                                    <div className="w-14 h-14 bg-brand-green/20 rounded-2xl flex items-center justify-center">
-                                        <Heart className="text-brand-green w-7 h-7 fill-brand-green" />
-                                    </div>
-                                    <div>
-                                        <div className="text-brand-violet font-serif text-xl leading-tight">{t('care_title')}</div>
-                                        <div className="text-slate-500 text-base font-medium">{t('care_subtitle')}</div>
-                                    </div>
-                                </div>
-                            </motion.div>
                         </div>
                     </ScrollReveal>
                 </div>

@@ -1,10 +1,10 @@
 {
     "Hero": {
-        "tagline": "Leaders in Assisted Reproduction",
-        "title": "Your dream of being a <italic>mom, made reality.</italic>",
+        "tagline": "14 Years Experience",
+        "title": "We make your <italic>dream a reality.</italic>",
         "description": "At Advanced Fertility Center Cancun, we combine cutting-edge technology with a warm and inclusive approach to provide you with the highest probability of success in your treatment.",
-        "cta": "Start my journey",
-        "stats_button": "Success Rates",
+        "cta": "Treatments",
+        "stats_button": "First Time",
         "care_title": "Human Care",
         "care_subtitle": "Personalized attention 24/7",
         "stats": {
@@ -85,7 +85,7 @@
         "description": "Our clinic features state-of-the-art medical equipment in clinical analysis laboratories, andrology, operating rooms, and maternal-fetal units.",
         "image_alt": "Fertility Center Cancun Laboratory",
         "stats": {
-            "years": "20+",
+            "years": "14",
             "label": "Years of Exp."
         },
         "features": {
@@ -141,14 +141,14 @@
         "title": "Our success <italic>rates</italic>",
         "stats": {
             "cycles": {
-                "label": "Cycles performed",
-                "date": "2012 - 2025"
+                "label": "Cycles Performed",
+                "date": "2012 - 2026"
             },
             "betas": {
-                "label": "Positive betas"
+                "label": "Pregnancy Rate"
             },
             "babies": {
-                "label": "Babies"
+                "label": "Implantation Rate"
             }
         }
     },
@@ -205,7 +205,7 @@
                         "description": "Logistics for international patients."
                     },
                     "facilities": {
-                        "name": "Facilities",
+                        "name": "Laboratories and Services",
                         "description": "State-of-the-art technology."
                     },
                     "team": {
@@ -219,6 +219,10 @@
                     "support": {
                         "name": "International Support",
                         "description": "We accompany you every step."
+                    },
+                    "tour": {
+                        "name": "Facilities",
+                        "description": "360° virtual tour of our facilities."
                     },
                     "certifications": {
                         "name": "Certifications",
