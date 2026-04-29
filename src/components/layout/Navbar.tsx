@@ -9,14 +9,57 @@ import { Container } from '@/components/ui/Container';
 import { useLocale, useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
+function TiktokIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.2 8.2 0 0 0 4.78 1.52V6.82a4.85 4.85 0 0 1-1.01-.13z" />
+        </svg>
+    );
+}
+
+function XIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.629L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+        </svg>
+    );
+}
+
+function SpotifyIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+        </svg>
+    );
+}
+
+function YoutubeIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg>
+    );
+}
+
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeMega, setActiveMega] = useState<string | null>(null);
     const t = useTranslations('Navbar');
+    const tFooter = useTranslations('Footer');
     const locale = useLocale();
     const isEs = locale === 'es';
     const route = (es: string, en: string) => (isEs ? es : en);
+
+    const socialLinks: Array<{ href: string; label: string; icon: React.ElementType }> = [
+        { href: 'https://share.google/ESPToAzwRd2je1P8r', label: 'Google Maps', icon: MapPin },
+        { href: 'https://www.facebook.com/AdvancedFertilityCenterCancun', label: 'Facebook', icon: Facebook },
+        { href: 'https://www.youtube.com/channel/UCC2jGdKaXHDn9G6J0NcSjAQ', label: 'YouTube', icon: YoutubeIcon },
+        { href: 'https://www.instagram.com/advancedfertilitycentercancun/', label: 'Instagram', icon: Instagram },
+        { href: 'https://www.tiktok.com/@fertilitycentercancun', label: 'TikTok', icon: TiktokIcon },
+        { href: 'https://x.com/fertilitycc', label: 'X (Twitter)', icon: XIcon },
+        { href: 'https://open.spotify.com/show/4jzZYLfhfb3xiXaYpB8WQC', label: 'Spotify', icon: SpotifyIcon },
+    ];
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -81,6 +124,14 @@ export default function Navbar() {
                 { name: t('items.experience.links.first_visit'), href: route('/primera-visita-a-nuestra-clinica-de-fertilidad', '/first-visit') },
             ]
         },
+        {
+            name: tFooter('sections.legal.title'),
+            href: '#',
+            submenu: [
+                { name: tFooter('sections.legal.links.privacy'), href: route('/aviso-de-privacidad', '/privacy-notice') },
+                { name: tFooter('sections.legal.links.terms'), href: route('/terminos-y-condiciones', '/terminos-y-condiciones') },
+            ]
+        },
         { name: t('items.contact'), href: route('/contacto', '/contact-ivf-doctors') },
     ];
 
@@ -89,11 +140,19 @@ export default function Navbar() {
             {/* Top Bar - High Premium Detail */}
             <div className={`fixed top-0 left-0 right-0 z-[60] py-2 bg-brand-violet border-b border-white/5 transition-all duration-500 ${scrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
                 <Container className="flex justify-between items-center">
-                    <div className="flex items-center gap-6">
-                        <div className="flex items-center gap-2 text-[10px] font-bold text-white/50 tracking-widest uppercase">
-                            <Link href="https://instagram.com" className="hover:text-brand-green transition-colors"><Instagram className="w-3.5 h-3.5" /></Link>
-                            <Link href="https://facebook.com" className="hover:text-brand-green transition-colors"><Facebook className="w-3.5 h-3.5" /></Link>
-                        </div>
+                    <div className="flex items-center gap-2 text-[10px] font-bold text-white/50 tracking-widest uppercase">
+                        {socialLinks.map(({ href, label, icon: Icon }) => (
+                            <Link
+                                key={label}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-brand-green transition-colors"
+                                aria-label={label}
+                            >
+                                <Icon className="w-3.5 h-3.5" />
+                            </Link>
+                        ))}
                     </div>
                     <div className="flex items-center gap-6 text-[10px] font-bold text-white/60 tracking-widest uppercase">
                         <Link href="tel:+529988035530" className="hover:text-brand-green transition-colors flex items-center gap-1.5 font-sans">
