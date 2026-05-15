@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -13,13 +13,13 @@ export default function TreatmentsGrid() {
         {
             title: t('items.fiv.title'),
             desc: t('items.fiv.description'),
-            image: "/images/treatments/IVF.jpg",
+            image: "/images/treatments/ivf-portada.png",
             href: "/fiv-fertilizacion-in-vitro"
         },
         {
             title: t('items.artificial_insemination.title'),
             desc: t('items.artificial_insemination.description'),
-            image: "/images/treatments/INSEMINACION.png",
+            image: "/images/treatments/inseminacion-artificial-portada.png",
             href: "/inseminacion-artificial"
         },
         {
@@ -31,19 +31,19 @@ export default function TreatmentsGrid() {
         {
             title: t('items.ropa.title'),
             desc: t('items.ropa.description'),
-            image: "/images/treatments/ROPA.png",
+            image: "/images/treatments/ropa-portada.png",
             href: "/metodo-ropa"
         },
         {
             title: t('items.genetic.title'),
             desc: t('items.genetic.description'),
-            image: "/images/treatments/GENETIC TASTING.jpg",
+            image: "/images/treatments/fiv-estudio-genetico-portada.png",
             href: "/estudios-geneticos"
         },
         {
             title: t('items.preservation.title'),
             desc: t('items.preservation.description'),
-            image: "/images/treatments/CRIOPERSERVATION.png",
+            image: "/images/treatments/preservacion-fertilidad-portada.png",
             href: "/preservacion-de-la-fertilidad"
         }
     ];
@@ -78,8 +78,8 @@ export default function TreatmentsGrid() {
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-violet/5 rounded-full -mr-16 -mt-16 group-hover:bg-brand-green/10 transition-colors" />
 
-                                <div className="w-full h-48 rounded-2xl overflow-hidden mb-8 group-hover:scale-[1.02] transition-all duration-500 relative bg-brand-violet/5 flex items-center justify-center p-4">
-                                    <img src={t_item.image} alt={t_item.title} className="w-full h-full object-contain mix-blend-multiply" loading="lazy" />
+                                <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-8 group-hover:scale-[1.02] transition-all duration-500 relative bg-brand-violet/5">
+                                    <img src={t_item.image} alt={t_item.title} className="w-full h-full object-cover object-center" loading="lazy" />
                                 </div>
 
                                 <h3 className="text-2xl font-serif text-brand-violet mb-4 group-hover:text-brand-green transition-colors">{t_item.title}</h3>

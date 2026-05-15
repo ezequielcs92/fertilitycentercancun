@@ -39,7 +39,7 @@ export default function Page() {
         <div className="w-full lg:w-1/3 shrink-0">
           <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-100 p-4">
             <Image
-              src="/images/treatments/IVF.jpg"
+              src="/images/treatments/donacion-adopcion-embriones-portada.png"
               alt="Endometrial preparation process"
               fill
               className="object-contain m-0"

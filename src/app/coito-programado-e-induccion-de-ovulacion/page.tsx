@@ -39,7 +39,7 @@ export default function Page() {
         <div className="w-full lg:w-1/3 shrink-0">
           <div className="not-prose relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="/images/treatments/IVF.jpg"
+              src="/images/treatments/coito-programado-portada.png"
               alt="Pareja feliz"
               fill
               className="object-cover m-0"
@@ -72,7 +72,7 @@ export default function Page() {
         </div>
         <div className="not-prose relative h-64 md:h-full rounded-2xl overflow-hidden shadow-lg">
           <Image
-            src="/images/treatments/IVF.jpg"
+            src="/images/treatments/coito-programado-portada.png"
             alt="Consulta médica"
             fill
             className="object-cover m-0"

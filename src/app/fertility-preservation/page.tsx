@@ -40,7 +40,7 @@ export default function Page() {
         <div className="w-full lg:w-1/3 shrink-0">
           <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="/images/treatments/criopreservaciontanqueadvancedfertilitycentercancun.png"
+              src="/images/treatments/preservacion-fertilidad-portada.png"
               alt="Cryopreservation Stages"
               fill
               className="object-cover object-center"
@@ -55,7 +55,7 @@ export default function Page() {
         <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-500">
           <div className="relative aspect-[5/4] overflow-hidden bg-slate-50 m-0">
             <Image
-              src="/images/treatments/IVF.jpg"
+              src="/images/treatments/preservacion-fertilidad-portada.png"
               alt="Egg Vitrification"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700 m-0 p-0"
@@ -72,7 +72,7 @@ export default function Page() {
         <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden group hover:shadow-xl transition-all duration-500">
           <div className="relative aspect-[5/4] overflow-hidden bg-slate-50 m-0">
             <Image
-              src="/images/treatments/IVF.jpg"
+              src="/images/treatments/preservacion-fertilidad-portada.png"
               alt="Sperm Cryopreservation"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700 m-0 p-0"

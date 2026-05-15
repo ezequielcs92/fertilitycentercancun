@@ -10,27 +10,27 @@ export default function Page() {
     {
       title: "Ovarian Stimulation",
       desc: "Medications are used to stimulate the ovarian follicles with the goal of obtaining the highest number of high-quality eggs.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-estimulacion-ovarica.png"
     },
     {
       title: "Egg Retrieval",
       desc: "Eggs are retrieved through ultrasound-guided aspiration in our specialized operating room under light sedation.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-captura-ovulos.png"
     },
     {
       title: "Sperm Processing",
       desc: "The sperm is processed in the laboratory to select the spermatozoa with the best motility and morphology for fertilization.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-capacitacion-esperma.png"
     },
     {
       title: "Laboratory and Fertilization",
       desc: "The oocytes are fertilized in the laboratory (IVF or ICSI) and embryos are cultured under constant monitoring by our embryologists.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-laboratorio-fertilizacion.png"
     },
     {
       title: "Transfer or Vitrification",
       desc: "Embryos can be transferred to the uterus or vitrified (frozen) for storage and future transfer.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-transferencia-vitrificacion.png"
     }
   ];
 
@@ -72,7 +72,7 @@ export default function Page() {
 
           <div className="not-prose relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="/images/treatments/RODOLFO.png"
+              src="/images/treatments/ivf-portada.png"
               alt="IVF Treatment"
               fill
               className="object-cover"

@@ -10,32 +10,32 @@ export default function GeneticStudyPage() {
     {
       title: "Estimulación Ovárica",
       desc: "Se utilizan medicamentos para estimular los folículos en los ovarios con la intención de obtener el mayor número de óvulos de alta calidad.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/fiv-genetico-estimulacion-ovarica.png"
     },
     {
       title: "Captura y Quirófano",
       desc: "Los óvulos se capturan mediante aspiración dirigida por ultrasonido en nuestro quirófano especializado bajo sedación ligera.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/fiv-genetico-captura-ovulos.png"
     },
     {
       title: "Capacitación de Esperma",
       desc: "El esperma se procesa en el laboratorio para seleccionar los espermatozoides con mejor movilidad y morfología para la fertilización.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/fiv-genetico-capacitacion-esperma.png"
     },
     {
       title: "Fertilización (FIV/ICSI)",
       desc: "Se realiza la fertilización en el laboratorio para crear los embriones, ya sea mediante FIV convencional o Inyección Intracitoplásmica (ICSI).",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/fiv-genetico-fertilizacion-fiv-icsi.png"
     },
     {
       title: "Biopsia Blastocisto",
       desc: "Se realiza una biopsia de la capa externa del embrión (día 5-6) para analizar sus cromosomas sin afectar su potencial de desarrollo.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/fiv-genetico-biopsia-blastocisto.png"
     },
     {
       title: "Vitrificación y PGT",
       desc: "Los embriones se congelan de forma ultrarrápida mientras esperamos los resultados del estudio genético para una transferencia segura.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/fiv-genetico-vitrificacion-pgt.png"
     }
   ];
 
@@ -76,7 +76,7 @@ export default function GeneticStudyPage() {
 
           <div className="not-prose relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="/images/treatments/IVF.jpg"
+              src="/images/treatments/fiv-estudio-genetico-portada.png"
               alt="Biopsia embrionaria para estudio genético"
               fill
               className="object-cover"
@@ -87,7 +87,7 @@ export default function GeneticStudyPage() {
 
         <div className="not-prose relative aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl mb-24 bg-slate-100">
           <Image
-            src="/images/treatments/IVF.jpg"
+            src="/images/treatments/fiv-estudio-genetico-portada.png"
             alt="Etapas del proceso FIV con PGT-A"
             fill
             className="object-cover m-0"

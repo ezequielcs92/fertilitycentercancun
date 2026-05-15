@@ -9,32 +9,32 @@ export default function Page() {
     {
       title: 'Ovarian Stimulation',
       desc: 'Medication is used to stimulate ovarian follicles in order to obtain the highest possible number of high-quality eggs.',
-      image: '/images/treatments/IVF.jpg'
+      image: '/images/treatments/fiv-genetico-estimulacion-ovarica.png'
     },
     {
       title: 'Egg Retrieval',
       desc: 'Eggs are collected through ultrasound-guided aspiration in our specialized operating room under light sedation.',
-      image: '/images/treatments/IVF.jpg'
+      image: '/images/treatments/fiv-genetico-captura-ovulos.png'
     },
     {
       title: 'Sperm Preparation',
       desc: 'Sperm is processed in the lab to select the best motility and morphology before fertilization.',
-      image: '/images/treatments/IVF.jpg'
+      image: '/images/treatments/fiv-genetico-capacitacion-esperma.png'
     },
     {
       title: 'Fertilization (IVF/ICSI)',
       desc: 'Oocytes are fertilized in the laboratory using conventional IVF or Intracytoplasmic Sperm Injection (ICSI).',
-      image: '/images/treatments/IVF.jpg'
+      image: '/images/treatments/fiv-genetico-fertilizacion-fiv-icsi.png'
     },
     {
       title: 'Blastocyst Biopsy',
       desc: 'A biopsy from the embryo outer layer (day 5-6) is analyzed to assess chromosomal status without compromising viability.',
-      image: '/images/treatments/IVF.jpg'
+      image: '/images/treatments/fiv-genetico-biopsia-blastocisto.png'
     },
     {
       title: 'Vitrification and PGT',
       desc: 'Embryos are vitrified while genetic results are processed to plan a safer, more effective transfer.',
-      image: '/images/treatments/IVF.jpg'
+      image: '/images/treatments/fiv-genetico-vitrificacion-pgt.png'
     }
   ];
 
@@ -73,7 +73,7 @@ export default function Page() {
 
           <div className="not-prose relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="/images/treatments/IVF.jpg"
+              src="/images/treatments/fiv-estudio-genetico-portada.png"
               alt="Genetic embryo biopsy in IVF laboratory"
               fill
               className="object-cover"
@@ -84,7 +84,7 @@ export default function Page() {
 
         <div className="not-prose relative aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl mb-24 bg-slate-100">
           <Image
-            src="/images/treatments/IVF.jpg"
+            src="/images/treatments/fiv-estudio-genetico-portada.png"
             alt="IVF with PGT-A process timeline"
             fill
             className="object-cover"

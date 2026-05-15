@@ -24,7 +24,7 @@ export default function Page() {
       {/* Main Image */}
       <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl mb-12">
         <Image
-          src="/images/treatments/IVF.jpg"
+          src="/images/treatments/inseminacion-artificial-portada.png"
           alt="Proceso de Inseminación Intrauterina"
           fill
           className="object-cover"
@@ -38,7 +38,7 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="/images/treatments/IVF.jpg"
+              src="/images/treatments/inseminacion-artificial-portada.png"
               alt="Seguimiento Folicular"
               fill
               className="object-cover object-[45%_35%]"
@@ -53,7 +53,7 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="/images/treatments/IVF.jpg"
+              src="/images/treatments/inseminacion-artificial-portada.png"
               alt="Inseminación"
               fill
               className="object-contain p-2 bg-white"

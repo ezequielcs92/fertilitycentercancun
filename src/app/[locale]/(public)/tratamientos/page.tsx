@@ -6,37 +6,37 @@ import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const treatmentsEs = [
-  { title: 'FIV – Fertilización In vitro', href: '/fiv-fertilizacion-in-vitro', image: '/images/treatments/IVF.jpg', description: 'Tratamiento líder mundial con las más altas tasas de éxito para diversas causas de infertilidad.' },
-  { title: 'FIV con Estudio Genético y Selección de Sexo', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', image: '/images/treatments/GENETIC TASTING.jpg', description: 'Asegura la salud genética de tu bebé y planifica tu familia con precisión médica.' },
-  { title: 'Mini FIV', href: '/mini-fiv', image: '/images/treatments/IVF.jpg', description: 'Estimulación ovárica suave para una opción más natural y menos invasiva.' },
-  { title: 'FIV Ciclo Natural', href: '/fertilizacion-in-vitro-en-fiv-ciclo-natural', image: '/images/treatments/IVF.jpg', description: 'Aprovecha tu ciclo menstrual natural sin medicación hormonal estimulante.' },
-  { title: 'Transferencia de Embriones Congelados', href: '/transferencia-de-embriones-y-preparacion-endometrial', image: '/images/treatments/IVF.jpg', description: 'Preparamos tu endometrio de forma óptima para recibir embriones preservados.' },
+  { title: 'FIV – Fertilización In vitro', href: '/fiv-fertilizacion-in-vitro', image: '/images/treatments/ivf-portada.png', description: 'Tratamiento líder mundial con las más altas tasas de éxito para diversas causas de infertilidad.' },
+  { title: 'FIV con Estudio Genético y Selección de Sexo', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', image: '/images/treatments/fiv-estudio-genetico-portada.png', description: 'Asegura la salud genética de tu bebé y planifica tu familia con precisión médica.' },
+  { title: 'Mini FIV', href: '/mini-fiv', image: '/images/treatments/mini-fiv-portada.png', description: 'Estimulación ovárica suave para una opción más natural y menos invasiva.' },
+  { title: 'FIV Ciclo Natural', href: '/fertilizacion-in-vitro-en-fiv-ciclo-natural', image: '/images/treatments/ivf-portada.png', description: 'Aprovecha tu ciclo menstrual natural sin medicación hormonal estimulante.' },
+  { title: 'Transferencia de Embriones Congelados', href: '/transferencia-de-embriones-y-preparacion-endometrial', image: '/images/treatments/transferencia-embriones-portada.png', description: 'Preparamos tu endometrio de forma óptima para recibir embriones preservados.' },
   { title: 'Ovodón', href: '/ovodon', image: '/images/treatments/DONANTES.png', description: 'Ovulos de donantes sanas y rigurosamente seleccionadas para lograr tu embarazo.' },
-  { title: 'Inseminación Artificial', href: '/inseminacion-artificial', image: '/images/treatments/INSEMINACION.png', description: 'Tratamiento de baja complejidad ideal como primer abordaje terapéutico.' },
-  { title: 'Preservación de la Fertilidad', href: '/preservacion-de-la-fertilidad', image: '/images/treatments/CRIOPERSERVATION.png', description: 'Congela tus óvulos o espermatozoides y decide cuándo es el mejor momento para ser padre o madre.' },
-  { title: 'Donación y Adopción de Embriones', href: '/donacion-y-adopcion-embriones', image: '/images/treatments/IVF.jpg', description: 'La oportunidad de dar vida a un embrión previamente criopreservado.' },
-  { title: 'Coito Programado', href: '/coito-programado-e-induccion-de-ovulacion', image: '/images/treatments/INSEMINACION.png', description: 'Monitoreo ecográfico y hormonal para maximizar las probabilidades naturales.' },
-  { title: 'Programa Donación LifeStart', href: '/programa-donacion-lifestart', image: '/images/treatments/IVF.jpg', description: 'Programa de donación de óvulos para mujeres jóvenes que desean generar un impacto real.' },
-  { title: 'Doble Acumulación', href: '/doble-acumulacion', image: '/images/treatments/IVF.jpg', description: 'Estrategia de estimulación dual (DuoStim) para obtener más óvulos en menos tiempo.' },
-  { title: 'Método ROPA', href: '/metodo-ropa', image: '/images/treatments/ROPA.png', description: 'Maternidad compartida para parejas de mujeres donde ambas participan en el proceso.' },
-  { title: 'Add Ons', href: '/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad', image: '/images/treatments/IVF.jpg', description: 'Tecnologías complementarias para potenciar y optimizar tu tratamiento base.' },
+  { title: 'Inseminación Artificial', href: '/inseminacion-artificial', image: '/images/treatments/inseminacion-artificial-portada.png', description: 'Tratamiento de baja complejidad ideal como primer abordaje terapéutico.' },
+  { title: 'Preservación de la Fertilidad', href: '/preservacion-de-la-fertilidad', image: '/images/treatments/preservacion-fertilidad-portada.png', description: 'Congela tus óvulos o espermatozoides y decide cuándo es el mejor momento para ser padre o madre.' },
+  { title: 'Donación y Adopción de Embriones', href: '/donacion-y-adopcion-embriones', image: '/images/treatments/donacion-adopcion-embriones-portada.png', description: 'La oportunidad de dar vida a un embrión previamente criopreservado.' },
+  { title: 'Coito Programado', href: '/coito-programado-e-induccion-de-ovulacion', image: '/images/treatments/coito-programado-portada.png', description: 'Monitoreo ecográfico y hormonal para maximizar las probabilidades naturales.' },
+  { title: 'Programa Donación LifeStart', href: '/programa-donacion-lifestart', image: '/images/treatments/programa-donacion-lifestart-portada.jpg', description: 'Programa de donación de óvulos para mujeres jóvenes que desean generar un impacto real.' },
+  { title: 'Doble Acumulación', href: '/doble-acumulacion', image: '/images/treatments/ivf-portada.png', description: 'Estrategia de estimulación dual (DuoStim) para obtener más óvulos en menos tiempo.' },
+  { title: 'Método ROPA', href: '/metodo-ropa', image: '/images/treatments/ropa-portada.png', description: 'Maternidad compartida para parejas de mujeres donde ambas participan en el proceso.' },
+  { title: 'Add Ons', href: '/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad', image: '/images/treatments/ivf-portada.png', description: 'Tecnologías complementarias para potenciar y optimizar tu tratamiento base.' },
 ];
 
 const treatmentsEn = [
-  { title: 'IVF – In Vitro Fertilization', href: '/fiv-fertilizacion-in-vitro', image: '/images/treatments/IVF.jpg', description: 'World-leading treatment with the highest success rates for various causes of infertility.' },
-  { title: 'IVF with Genetic Testing & Sex Selection', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', image: '/images/treatments/GENETIC TASTING.jpg', description: 'Ensure your baby\'s genetic health and plan your family with medical precision.' },
-  { title: 'Mini IVF', href: '/mini-fiv', image: '/images/treatments/IVF.jpg', description: 'Gentle ovarian stimulation for a more natural, less invasive option.' },
-  { title: 'Natural Cycle IVF', href: '/fertilizacion-in-vitro-en-fiv-ciclo-natural', image: '/images/treatments/IVF.jpg', description: 'Take advantage of your natural menstrual cycle without stimulating hormonal medication.' },
-  { title: 'Frozen Embryo Transfer', href: '/transferencia-de-embriones-y-preparacion-endometrial', image: '/images/treatments/IVF.jpg', description: 'We optimally prepare your endometrium to receive preserved embryos.' },
+  { title: 'IVF – In Vitro Fertilization', href: '/fiv-fertilizacion-in-vitro', image: '/images/treatments/ivf-portada.png', description: 'World-leading treatment with the highest success rates for various causes of infertility.' },
+  { title: 'IVF with Genetic Testing & Sex Selection', href: '/fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo', image: '/images/treatments/fiv-estudio-genetico-portada.png', description: 'Ensure your baby\'s genetic health and plan your family with medical precision.' },
+  { title: 'Mini IVF', href: '/mini-fiv', image: '/images/treatments/mini-fiv-portada.png', description: 'Gentle ovarian stimulation for a more natural, less invasive option.' },
+  { title: 'Natural Cycle IVF', href: '/fertilizacion-in-vitro-en-fiv-ciclo-natural', image: '/images/treatments/ivf-portada.png', description: 'Take advantage of your natural menstrual cycle without stimulating hormonal medication.' },
+  { title: 'Frozen Embryo Transfer', href: '/transferencia-de-embriones-y-preparacion-endometrial', image: '/images/treatments/transferencia-embriones-portada.png', description: 'We optimally prepare your endometrium to receive preserved embryos.' },
   { title: 'Egg Donation', href: '/ovodon', image: '/images/treatments/DONANTES.png', description: 'Eggs from healthy, rigorously selected donors to achieve your pregnancy.' },
-  { title: 'Artificial Insemination', href: '/inseminacion-artificial', image: '/images/treatments/INSEMINACION.png', description: 'Low-complexity treatment ideal as a first therapeutic approach.' },
-  { title: 'Fertility Preservation', href: '/preservacion-de-la-fertilidad', image: '/images/treatments/CRIOPERSERVATION.png', description: 'Freeze your eggs or sperm and decide when the right time is to become a parent.' },
-  { title: 'Embryo Donation & Adoption', href: '/donacion-y-adopcion-embriones', image: '/images/treatments/IVF.jpg', description: 'The opportunity to give life to a previously cryopreserved embryo.' },
-  { title: 'Timed Intercourse', href: '/coito-programado-e-induccion-de-ovulacion', image: '/images/treatments/INSEMINACION.png', description: 'Ultrasound and hormonal monitoring to maximize natural probabilities.' },
-  { title: 'LifeStart Donation Program', href: '/programa-donacion-lifestart', image: '/images/treatments/IVF.jpg', description: 'Egg donation program for young women who want to make a meaningful impact.' },
-  { title: 'Double Stimulation (DuoStim)', href: '/doble-acumulacion', image: '/images/treatments/IVF.jpg', description: 'Dual stimulation strategy to obtain more eggs in less time.' },
-  { title: 'ROPA Method', href: '/metodo-ropa', image: '/images/treatments/ROPA.png', description: 'Shared motherhood for female couples where both partners participate in the process.' },
-  { title: 'Add-Ons', href: '/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad', image: '/images/treatments/IVF.jpg', description: 'Complementary technologies to enhance and optimize your base treatment.' },
+  { title: 'Artificial Insemination', href: '/inseminacion-artificial', image: '/images/treatments/inseminacion-artificial-portada.png', description: 'Low-complexity treatment ideal as a first therapeutic approach.' },
+  { title: 'Fertility Preservation', href: '/preservacion-de-la-fertilidad', image: '/images/treatments/preservacion-fertilidad-portada.png', description: 'Freeze your eggs or sperm and decide when the right time is to become a parent.' },
+  { title: 'Embryo Donation & Adoption', href: '/donacion-y-adopcion-embriones', image: '/images/treatments/donacion-adopcion-embriones-portada.png', description: 'The opportunity to give life to a previously cryopreserved embryo.' },
+  { title: 'Timed Intercourse', href: '/coito-programado-e-induccion-de-ovulacion', image: '/images/treatments/coito-programado-portada.png', description: 'Ultrasound and hormonal monitoring to maximize natural probabilities.' },
+  { title: 'LifeStart Donation Program', href: '/programa-donacion-lifestart', image: '/images/treatments/programa-donacion-lifestart-portada.jpg', description: 'Egg donation program for young women who want to make a meaningful impact.' },
+  { title: 'Double Stimulation (DuoStim)', href: '/doble-acumulacion', image: '/images/treatments/ivf-portada.png', description: 'Dual stimulation strategy to obtain more eggs in less time.' },
+  { title: 'ROPA Method', href: '/metodo-ropa', image: '/images/treatments/ropa-portada.png', description: 'Shared motherhood for female couples where both partners participate in the process.' },
+  { title: 'Add-Ons', href: '/add-ons-complementos-para-optimizar-tu-tratamiento-de-fertilidad', image: '/images/treatments/ivf-portada.png', description: 'Complementary technologies to enhance and optimize your base treatment.' },
 ];
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
@@ -95,17 +95,17 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                 key={index}
                 className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100"
               >
-                <div className="relative aspect-[4/3] w-full bg-brand-violet/5 overflow-hidden flex items-center justify-center p-8">
+                <div className="relative aspect-[4/3] w-full bg-brand-violet/5 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Sparkles className="w-10 h-10 text-brand-violet/10" />
                   </div>
                   <img
                     src={treatment.image}
                     alt={treatment.title}
-                    className="relative w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 mix-blend-multiply opacity-95 z-10"
+                    className="relative w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 z-10"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/10 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                 </div>
 
                 <div className="p-8 flex flex-col flex-1 relative bg-white">
