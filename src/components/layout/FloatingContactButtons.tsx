@@ -74,8 +74,8 @@ export default function FloatingContactButtons() {
   const pathname = usePathname();
   const isEs = !pathname?.startsWith('/en');
   const [whatsAppPosition, setWhatsAppPosition] = useState<{ right?: string; bottom?: string; left?: string; top?: string }>({
-    right: '1.5rem',
-    bottom: '6rem',
+    left: '1.5rem',
+    bottom: '1.5rem',
   });
 
   useEffect(() => {
@@ -96,9 +96,8 @@ export default function FloatingContactButtons() {
 
       const rect = launcher.getBoundingClientRect();
       const buttonSize = 56;
-      const gap = 16;
-      const left = rect.left + (rect.width - buttonSize) / 2;
-      const top = rect.top - buttonSize - gap;
+      const left = window.innerWidth - rect.right + (rect.width - buttonSize) / 2;
+      const top = rect.top + (rect.height - buttonSize) / 2;
 
       setWhatsAppPosition({
         left: `${Math.max(8, left)}px`,

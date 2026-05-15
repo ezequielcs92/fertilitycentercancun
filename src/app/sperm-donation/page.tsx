@@ -88,7 +88,7 @@ export default function Page() {
         <div className="w-full lg:w-1/3 order-1 lg:order-2 not-prose">
           <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-slate-50 bg-slate-50 m-0">
             <Image
-              src="/images/treatments/DONANTES.png"
+              src="/images/treatments/programa-donacion-lifestart-portada.jpg"
               alt="LifeStart Donation Program"
               fill
               className="object-cover m-0 p-0"

@@ -10,27 +10,27 @@ export default function Page() {
     {
       title: "Estimulación Ovárica",
       desc: "Se utilizan medicamentos para estimular los folículos en los ovarios con la intención de obtener el mayor número de óvulos de alta calidad.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-estimulacion-ovarica.png"
     },
     {
       title: "Captura de Óvulos",
       desc: "Los óvulos se capturan mediante aspiración dirigida por ultrasonido en nuestro quirófano especializado bajo sedación ligera.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-captura-ovulos.png"
     },
     {
       title: "Capacitación de Esperma",
       desc: "El esperma se procesa en el laboratorio para seleccionar los espermatozoides con mejor movilidad y morfología para la fertilización.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-capacitacion-esperma.png"
     },
     {
       title: "Laboratorio y Fertilización",
       desc: "Los ovocitos se fertilizan en el laboratorio (FIV o ICSI) y se cultivan los embriones bajo monitoreo constante de nuestros embriólogos.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-laboratorio-fertilizacion.png"
     },
     {
       title: "Transferencia o Vitrificación",
       desc: "Los embriones pueden ser transferidos al útero o vitrificados (congelados) para su almacenamiento y transferencia posterior.",
-      image: "/images/treatments/IVF.jpg"
+      image: "/images/treatments/ivf-transferencia-vitrificacion.png"
     }
   ];
 
@@ -72,7 +72,7 @@ export default function Page() {
 
           <div className="not-prose relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl bg-slate-100 border border-slate-100">
             <Image
-              src="/images/treatments/RODOLFO.png"
+              src="/images/treatments/ivf-portada.png"
               alt="Tratamiento FIV"
               fill
               className="object-cover"

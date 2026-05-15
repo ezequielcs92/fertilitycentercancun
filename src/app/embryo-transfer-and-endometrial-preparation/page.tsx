@@ -22,7 +22,7 @@ export default function Page() {
 
       <div className="relative aspect-video rounded-3xl overflow-hidden shadow-xl mb-12 bg-slate-100">
         <Image
-          src="/images/treatments/IVF.jpg"
+          src="/images/treatments/transferencia-embriones-portada.png"
           alt="Embryo transfer"
           fill
           className="object-cover"
