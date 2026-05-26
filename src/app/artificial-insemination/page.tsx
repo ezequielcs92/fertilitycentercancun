@@ -50,7 +50,7 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="/images/treatments/inseminacion.png"
+              src="/images/treatments/inseminacion-procedimiento.png"
               alt="Insemination procedure"
               fill
               className="object-cover"
