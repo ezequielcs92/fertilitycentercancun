@@ -85,16 +85,6 @@ export default function GeneticStudyPage() {
           </div>
         </div>
 
-        <div className="not-prose relative aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl mb-24 bg-slate-100">
-          <Image
-            src="/images/treatments/fiv-estudio-genetico-portada.png"
-            alt="Etapas del proceso FIV con PGT-A"
-            fill
-            className="object-cover m-0"
-            unoptimized
-          />
-        </div>
-
         <h2 className="text-3xl font-serif text-brand-violet text-center mb-12">El Proceso Paso a Paso</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {steps.map((step, i) => (

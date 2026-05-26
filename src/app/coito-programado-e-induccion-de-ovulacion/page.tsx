@@ -50,35 +50,24 @@ export default function Page() {
       </div>
 
       <h2 className="text-3xl font-serif text-brand-violet mb-6">¿Cómo funciona?</h2>
-      <div className="grid md:grid-cols-2 gap-8 mb-12 items-center">
-        <div>
-          <p className="text-slate-600 mb-4">
-            El proceso es sencillo y mínimamente invasivo:
-          </p>
-          <ul className="space-y-6">
-            <li className="flex gap-4 items-center">
-              <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">1</div>
-              <p className="text-slate-700 text-lg"><strong>Seguimiento Folicular:</strong> Realizamos ultrasonidos periódicos para observar el crecimiento del folículo dominante.</p>
-            </li>
-            <li className="flex gap-4 items-center">
-              <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">2</div>
-              <p className="text-slate-700 text-lg"><strong>Inducción (Opcional):</strong> Si es necesario, recetamos medicamentos suaves para asegurar la ovulación.</p>
-            </li>
-            <li className="flex gap-4 items-center">
-              <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">3</div>
-              <p className="text-slate-700 text-lg"><strong>Programación:</strong> El médico indica los días exactos para mantener relaciones sexuales.</p>
-            </li>
-          </ul>
-        </div>
-        <div className="not-prose relative h-64 md:h-full rounded-2xl overflow-hidden shadow-lg">
-          <Image
-            src="/images/treatments/coito-programado-portada.png"
-            alt="Consulta médica"
-            fill
-            className="object-cover m-0"
-            unoptimized
-          />
-        </div>
+      <div className="mb-12">
+        <p className="text-slate-600 mb-4">
+          El proceso es sencillo y mínimamente invasivo:
+        </p>
+        <ul className="space-y-6">
+          <li className="flex gap-4 items-center">
+            <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">1</div>
+            <p className="text-slate-700 text-lg"><strong>Seguimiento Folicular:</strong> Realizamos ultrasonidos periódicos para observar el crecimiento del folículo dominante.</p>
+          </li>
+          <li className="flex gap-4 items-center">
+            <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">2</div>
+            <p className="text-slate-700 text-lg"><strong>Inducción (Opcional):</strong> Si es necesario, recetamos medicamentos suaves para asegurar la ovulación.</p>
+          </li>
+          <li className="flex gap-4 items-center">
+            <div className="w-10 h-10 rounded-full bg-brand-violet/10 flex items-center justify-center shrink-0 font-bold text-brand-violet text-lg">3</div>
+            <p className="text-slate-700 text-lg"><strong>Programación:</strong> El médico indica los días exactos para mantener relaciones sexuales.</p>
+          </li>
+        </ul>
       </div>
 
       <h2 className="text-3xl font-serif text-brand-violet mb-6">Ventajas Principales</h2>
