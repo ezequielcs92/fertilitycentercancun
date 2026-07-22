@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/Container';
 import ContactForm from '@/components/forms/ContactForm';
 import { Phone, Mail, MapPin, ExternalLink, Globe, Instagram, Facebook, Youtube, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
+import SitePhoneLink, { SitePhoneText } from '@/components/ui/SitePhoneLink';
 
 export default async function Page({
   params
@@ -45,7 +46,7 @@ export default async function Page({
                 icon={<Phone className="w-6 h-6 text-brand-violet" />}
                 title={isEs ? 'Llámanos' : 'Call us'}
                 lines={[
-                  { label: isEs ? 'México:' : 'Mexico:', value: '+52 998 803 5530', href: 'tel:+529988035530' },
+                  { label: isEs ? 'México:' : 'Mexico:', cell: <SitePhoneLink className="text-base text-slate-600 hover:text-brand-violet transition-colors font-medium"><SitePhoneText /></SitePhoneLink> },
                   { label: 'USA/CAN:', value: '+1 310 272 94 88', href: 'tel:+13102729488' }
                 ]}
               />
@@ -151,7 +152,7 @@ export default async function Page({
   );
 }
 
-function ContactMethod({ icon, title, lines }: { icon: React.ReactNode, title: string, lines: { label?: string, value: string, href?: string }[] }) {
+function ContactMethod({ icon, title, lines }: { icon: React.ReactNode, title: string, lines: { label?: string, value?: string, href?: string, cell?: React.ReactNode }[] }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-3">
@@ -164,7 +165,9 @@ function ContactMethod({ icon, title, lines }: { icon: React.ReactNode, title: s
         {lines.map((line, idx) => (
           <div key={idx} className="group flex items-baseline gap-3">
             {line.label && <span className="text-[10px] uppercase font-black text-slate-300 tracking-widest w-14 shrink-0 mt-1">{line.label}</span>}
-            {line.href ? (
+            {line.cell ? (
+              line.cell
+            ) : line.href ? (
               <a href={line.href} className="text-base text-slate-600 hover:text-brand-violet transition-colors font-medium">
                 {line.value}
               </a>

@@ -37,12 +37,12 @@ export default function Page() {
           </div>
         </div>
         <div className="w-full lg:w-1/3 shrink-0">
-          <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-100 p-4">
+          <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
             <Image
               src="/images/treatments/donacion-adopcion-embriones-portada.png"
               alt="Proceso de preparación endometrial"
               fill
-              className="object-contain m-0"
+              className="object-cover m-0"
               unoptimized
             />
           </div>

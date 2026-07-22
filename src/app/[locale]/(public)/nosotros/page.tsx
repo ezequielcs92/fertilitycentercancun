@@ -3,6 +3,7 @@ import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import { CheckCircle, Play, ArrowRight, Award, ShieldCheck, Microscope, Users, Star, Globe, Building2, Heart } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import SitePhoneLink from '@/components/ui/SitePhoneLink';
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -113,9 +114,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               <a href={isEs ? '/contacto' : '/en/contact-ivf-doctors'} className="bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold text-base shadow-xl hover:bg-white transition-all hover:-translate-y-1 whitespace-nowrap w-full sm:w-auto flex items-center justify-center">
                 {isEs ? 'Agendar videollamada' : 'Schedule a video call'}
               </a>
-              <a href="tel:+529988035530" className="border border-white/30 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-all flex items-center justify-center gap-2 whitespace-nowrap w-full sm:w-auto">
+              <SitePhoneLink className="border border-white/30 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-all flex items-center justify-center gap-2 whitespace-nowrap w-full sm:w-auto">
                 <Phone className="w-5 h-5" /> {isEs ? 'Llamar ahora' : 'Call now'}
-              </a>
+              </SitePhoneLink>
             </div>
           </div>
         </section>
