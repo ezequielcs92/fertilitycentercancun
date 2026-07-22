@@ -8,6 +8,7 @@ import { Menu, X, ChevronDown, Heart, Phone, Microscope, Dna, Zap, UserCheck, Dr
 import { Container } from '@/components/ui/Container';
 import { useLocale, useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import { useSitePhone } from '@/components/ui/SitePhoneLink';
 
 function TiktokIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
     return (
@@ -50,6 +51,7 @@ export default function Navbar() {
     const locale = useLocale();
     const isEs = locale === 'es';
     const route = (es: string, en: string) => (isEs ? es : en);
+    const sitePhone = useSitePhone();
 
     const socialLinks: Array<{ href: string; label: string; icon: React.ElementType }> = [
         { href: 'https://share.google/ESPToAzwRd2je1P8r', label: 'Google Maps', icon: MapPin },
@@ -155,8 +157,8 @@ export default function Navbar() {
                         ))}
                     </div>
                     <div className="flex items-center gap-6 text-[10px] font-bold text-white/60 tracking-widest uppercase">
-                        <Link href="tel:+529988035530" className="hover:text-brand-green transition-colors flex items-center gap-1.5 font-sans">
-                            <Phone className="w-3 h-3 text-brand-green" /> +52 998 803 5530
+                        <Link href={sitePhone.href} className="hover:text-brand-green transition-colors flex items-center gap-1.5 font-sans">
+                            <Phone className="w-3 h-3 text-brand-green" /> {sitePhone.display}
                         </Link>
                         <LanguageSwitcher />
                     </div>
@@ -354,8 +356,8 @@ export default function Navbar() {
 
                         <div className="p-8 border-t border-white/5 bg-black/10">
                             <div className="flex flex-col gap-4">
-                                <Link href="tel:+529988035530" className="text-brand-green font-bold text-lg flex items-center gap-2">
-                                    <Phone className="w-5 h-5" /> +52 998 803 5530
+                                <Link href={sitePhone.href} className="text-brand-green font-bold text-lg flex items-center gap-2">
+                                    <Phone className="w-5 h-5" /> {sitePhone.display}
                                 </Link>
                                 <p className="text-white/40 text-base flex items-center gap-2 uppercase tracking-widest font-bold">
                                     <MapPin className="w-4 h-4 text-brand-green" /> {isEs ? 'Cancún, México' : 'Cancun, Mexico'}
