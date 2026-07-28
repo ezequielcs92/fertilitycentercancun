@@ -58,6 +58,8 @@ const pageLoaders: Record<string, () => Promise<PageModule>> = {
   'preservacion-de-la-fertilidad': () => import('@/app/preservacion-de-la-fertilidad/page'),
   'primera-visita-a-nuestra-clinica-de-fertilidad': () => import('@/app/primera-visita-a-nuestra-clinica-de-fertilidad/page'),
   'privacy-notice': () => import('@/app/privacy-notice/page'),
+  'promociones': () => import('@/app/promociones/page'),
+  'promotions': () => import('@/app/promotions/page'),
   'programa-de-referidos': () => import('@/app/programa-de-referidos/page'),
   'referral-program': () => import('@/app/referral-program/page'),
   'ropa-method': () => import('@/app/ropa-method/page'),

@@ -134,6 +134,7 @@ export default function Navbar() {
                 { name: tFooter('sections.legal.links.terms'), href: route('/terminos-y-condiciones', '/terminos-y-condiciones') },
             ]
         },
+        { name: t('items.promotions'), href: route('/promociones', '/promotions') },
         { name: t('items.contact'), href: route('/contacto', '/contact-ivf-doctors') },
     ];
 

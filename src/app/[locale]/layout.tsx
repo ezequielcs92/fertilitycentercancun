@@ -7,6 +7,7 @@ import React from 'react';
 import FloatingElements from '@/components/ui/FloatingElements';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import PromoPopup from '@/components/ui/PromoPopup';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fertilitycentercancun.com';
 
@@ -84,6 +85,7 @@ export default async function LocaleLayout({
                 {children}
                 <Footer />
             </div>
+            <PromoPopup />
         </NextIntlClientProvider>
     );
 }
