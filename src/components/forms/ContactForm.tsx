@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Turnstile } from '@marsidev/react-turnstile'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { submitLead, type LeadFormData } from '@/lib/actions/leads'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
@@ -16,6 +16,8 @@ interface ContactFormProps {
 
 export default function ContactForm({ compact = false }: ContactFormProps) {
     const t = useTranslations('ContactForm')
+    const locale = useLocale()
+    const isEs = locale === 'es'
     const labelClassName = compact
         ? 'block text-xs font-bold text-brand-violet mb-1 uppercase tracking-wider'
         : 'block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider'
@@ -99,7 +101,7 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
         setIsLoading(true)
 
         try {
-            const result = await submitLead({ ...formData, captchaToken })
+            const result = await submitLead({ ...formData, locale: isEs ? 'es' : 'en', captchaToken })
 
             if (result.success) {
                 setSubmitStatus('success')
@@ -119,7 +121,7 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
                 setSubmitStatus('error')
                 setSubmitMessage(result.message)
             }
-        } catch (error) {
+        } catch {
             setSubmitStatus('error')
             setSubmitMessage(t('errors.connection_error'))
         } finally {
@@ -241,11 +243,11 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
                                 className={compact ? 'h-10 rounded-xl px-4 py-2 text-sm' : undefined}
                             >
                                 <option value="">{t('country_placeholder')}</option>
-                                <option value="Estados Unidos">{t('countries.usa')}</option>
-                                <option value="Canadá">{t('countries.canada')}</option>
-                                <option value="México">{t('countries.mexico')}</option>
+                                <option value={isEs ? 'Estados Unidos' : 'United States'}>{t('countries.usa')}</option>
+                                <option value={isEs ? 'Canadá' : 'Canada'}>{t('countries.canada')}</option>
+                                <option value={isEs ? 'México' : 'Mexico'}>{t('countries.mexico')}</option>
                                 <option value="Argentina">{t('countries.argentina')}</option>
-                                <option value="Otro">{t('countries.other')}</option>
+                                <option value={isEs ? 'Otro' : 'Other'}>{t('countries.other')}</option>
                             </Select>
                         </div>
 
@@ -263,15 +265,19 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
                                 className={compact ? 'h-10 rounded-xl px-4 py-2 text-sm' : undefined}
                             >
                                 <option value="">{t('treatment_placeholder')}</option>
-                                <option value="FIV - Fertilización In Vitro">{t('treatments.fiv')}</option>
-                                <option value="Ovodonación">{t('treatments.egg_donation')}</option>
-                                <option value="Inseminación Artificial">{t('treatments.artificial_insemination')}</option>
-                                <option value="Método ROPA">{t('treatments.ropa')}</option>
-                                <option value="PGT-A - Diagnóstico Genético">{t('treatments.genetic')}</option>
-                                <option value="Preservación de Fertilidad">{t('treatments.preservation')}</option>
-                                <option value="Donación de Embriones">{t('treatments.embryo_donation')}</option>
-                                <option value="Apoyo LGBT+">{t('treatments.lgbt')}</option>
-                                <option value="Consulta Especializada">{t('treatments.consultation')}</option>
+                                <option value={t('treatments.fiv')}>{t('treatments.fiv')}</option>
+                                <option value={t('treatments.genetic')}>{t('treatments.genetic')}</option>
+                                <option value={t('treatments.mini_fiv')}>{t('treatments.mini_fiv')}</option>
+                                <option value={t('treatments.artificial_insemination')}>{t('treatments.artificial_insemination')}</option>
+                                <option value={t('treatments.egg_donation')}>{t('treatments.egg_donation')}</option>
+                                <option value={t('treatments.sperm_donation')}>{t('treatments.sperm_donation')}</option>
+                                <option value={t('treatments.embryo_donation')}>{t('treatments.embryo_donation')}</option>
+                                <option value={t('treatments.ropa')}>{t('treatments.ropa')}</option>
+                                <option value={t('treatments.preservation')}>{t('treatments.preservation')}</option>
+                                <option value={t('treatments.timed_intercourse')}>{t('treatments.timed_intercourse')}</option>
+                                <option value={t('treatments.transfer')}>{t('treatments.transfer')}</option>
+                                <option value={t('treatments.lgbt')}>{t('treatments.lgbt')}</option>
+                                <option value={t('treatments.consultation')}>{t('treatments.consultation')}</option>
                             </Select>
                         </div>
 

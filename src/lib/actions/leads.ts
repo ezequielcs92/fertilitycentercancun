@@ -12,6 +12,7 @@ export interface LeadFormData {
     pais: string
     tratamiento: string
     mensaje: string
+    locale?: 'es' | 'en'
     captchaToken?: string | null
 }
 
@@ -21,15 +22,27 @@ export interface ActionResult {
     error?: string
 }
 
-function resolveUpnifyIntegrationUrl(): string | null {
-    const directUrl = process.env.UPNIFY_INTEGRATION_URL?.trim()
+function resolveUpnifyIntegrationUrl(locale: 'es' | 'en'): string | null {
+    const suffix = locale === 'en' ? 'EN' : 'ES'
+    const directUrl = process.env[`UPNIFY_INTEGRATION_URL_${suffix}`]?.trim()
     if (directUrl) {
         return directUrl
     }
 
-    const integrationToken = process.env.UPNIFY_INTEGRATION_TOKEN?.trim()
+    const integrationToken = process.env[`UPNIFY_INTEGRATION_TOKEN_${suffix}`]?.trim()
     if (integrationToken) {
         return `https://api.upnify.com/v4/integraciones/${integrationToken}`
+    }
+
+    // Mantiene operativa la integración existente mientras se configuran las dos nuevas.
+    const legacyUrl = process.env.UPNIFY_INTEGRATION_URL?.trim()
+    if (legacyUrl) {
+        return legacyUrl
+    }
+
+    const legacyToken = process.env.UPNIFY_INTEGRATION_TOKEN?.trim()
+    if (legacyToken) {
+        return `https://api.upnify.com/v4/integraciones/${legacyToken}`
     }
 
     return null
@@ -56,21 +69,27 @@ function parseUpnifyCode(responseBody: unknown): number | null {
 }
 
 async function sendLeadToUpnify(formData: LeadFormData): Promise<{ delivered: boolean; error?: string }> {
-    const upnifyUrl = resolveUpnifyIntegrationUrl()
+    const locale = formData.locale === 'en' ? 'en' : 'es'
+    const upnifyUrl = resolveUpnifyIntegrationUrl(locale)
     if (!upnifyUrl) {
         return { delivered: false, error: 'UPNIFY_NOT_CONFIGURED' }
     }
 
     const { nombre, apellidos } = splitName(formData.nombre)
-    const upnifyPayload = {
+    const treatmentField = process.env.UPNIFY_TREATMENT_FIELD?.trim() || 'tratamiento'
+    const countryField = process.env.UPNIFY_COUNTRY_FIELD?.trim() || 'pais'
+    const upnifyPayload: Record<string, string | undefined> = {
         nombre,
         apellidos,
         correo: formData.email.trim().toLowerCase(),
         telefono: formData.telefono?.trim() || undefined,
         movil: formData.telefono?.trim() || undefined,
+        [countryField]: formData.pais || undefined,
+        [treatmentField]: formData.tratamiento || undefined,
         comentarios: [
             formData.tratamiento ? `Tratamiento: ${formData.tratamiento}` : null,
             formData.pais ? `Pais: ${formData.pais}` : null,
+            `Idioma: ${locale === 'en' ? 'Ingles' : 'Español'}`,
             formData.mensaje?.trim() ? `Mensaje: ${formData.mensaje.trim()}` : null,
             'Origen: formulario web fertilitycentercancun.com',
         ].filter(Boolean).join('\n'),
@@ -160,6 +179,7 @@ async function sendLeadToCrm(formData: LeadFormData): Promise<{ delivered: boole
         pais: formData.pais || null,
         tratamiento: formData.tratamiento || null,
         mensaje: formData.mensaje?.trim() || null,
+        locale: formData.locale === 'en' ? 'en' : 'es',
         source: 'fertilitycentercancun_web_form',
         submittedAt: new Date().toISOString(),
     }
@@ -302,11 +322,7 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
 
         if (error) {
             console.error('Error al insertar lead:', error)
-            return {
-                success: false,
-                message: 'Hubo un error al enviar su consulta. Por favor intente nuevamente.',
-                error: error.message
-            }
+            // CRM y correo son canales independientes; continuamos para evitar perder el lead.
         }
 
         // Entregar lead al CRM: primero Upnify (si está configurado), luego webhook genérico.
@@ -318,17 +334,10 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
 
         if (!crmResult.delivered) {
             console.error('No se pudo entregar lead al CRM:', crmResult.error)
-            if (requireCrmDelivery) {
-                return {
-                    success: false,
-                    message: 'Recibimos tus datos, pero no pudimos procesar el registro en CRM. Intenta nuevamente en unos minutos.',
-                    error: crmResult.error || 'CRM_DELIVERY_FAILED'
-                }
-            }
         }
 
-        // Obtener el email de notificación configurado
-        let notificationEmail = null;
+        // Obtener destinatarios configurados y conservar las copias corporativas acordadas.
+        let configuredNotificationEmail: string | null = null;
         try {
             const { data: settings } = await supabase
                 .from('site_settings')
@@ -337,18 +346,25 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
                 .single();
 
             if (settings && settings.notification_email) {
-                notificationEmail = settings.notification_email;
+                configuredNotificationEmail = settings.notification_email;
             }
         } catch (settingsError) {
             console.error('Error fetching notification settings:', settingsError);
         }
 
-        // Enviar email si hay un destinatario configurado y la API key de Resend existe
-        if (notificationEmail && process.env.RESEND_API_KEY) {
+        const notificationEmails = Array.from(new Set([
+            'comercial@afcc.com.mx',
+            'info@fertilitycentercancun.com.mx',
+            configuredNotificationEmail,
+            ...(process.env.LEAD_NOTIFICATION_EMAILS || '').split(',').map((email) => email.trim()),
+        ].filter((email): email is string => Boolean(email))))
+
+        // Enviar email si hay destinatarios y la API key de Resend existe.
+        if (notificationEmails.length > 0 && process.env.RESEND_API_KEY) {
             try {
                 await resend.emails.send({
-                    from: 'Fertility Center Cancun <onboarding@resend.dev>',
-                    to: notificationEmail,
+                    from: process.env.RESEND_FROM_EMAIL || 'Fertility Center Cancun <onboarding@resend.dev>',
+                    to: notificationEmails,
                     subject: `Nuevo Lead: ${formData.nombre} - ${formData.tratamiento || 'Consulta general'}`,
                     html: `
                         <h2>Nueva Solicitud de Consulta</h2>
@@ -359,6 +375,7 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
                             <tr style="background-color: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Teléfono:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${formData.telefono || 'No especificado'}</td></tr>
                             <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>País:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${formData.pais || 'No especificado'}</td></tr>
                             <tr style="background-color: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Tratamiento de Interés:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${formData.tratamiento || 'No especificado'}</td></tr>
+                            <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Idioma:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${formData.locale === 'en' ? 'Inglés' : 'Español'}</td></tr>
                         </table>
                         <div style="margin-top: 20px; padding: 15px; background-color: #f8fafc; border-left: 4px solid #8b5cf6;">
                             <strong>Mensaje del paciente:</strong><br/>
@@ -373,9 +390,21 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
             }
         }
 
+        if (!crmResult.delivered && requireCrmDelivery) {
+            return {
+                success: false,
+                message: formData.locale === 'en'
+                    ? 'We received your information, but could not process the CRM registration. Please try again in a few minutes.'
+                    : 'Recibimos tus datos, pero no pudimos procesar el registro en CRM. Intenta nuevamente en unos minutos.',
+                error: crmResult.error || 'CRM_DELIVERY_FAILED'
+            }
+        }
+
         return {
             success: true,
-            message: 'Gracias por contactarnos. Nuestro equipo médico se pondrá en contacto en menos de 24 horas.'
+            message: formData.locale === 'en'
+                ? 'Thank you for contacting us. Our medical team will contact you within 24 hours.'
+                : 'Gracias por contactarnos. Nuestro equipo médico se pondrá en contacto en menos de 24 horas.'
         }
 
     } catch (error) {

@@ -77,11 +77,12 @@ export default function PromotionsForm({ locale }: PromotionsFormProps) {
                 email: formData.email,
                 telefono: formData.telefono,
                 pais: '',
-                tratamiento: 'Promociones',
+                tratamiento: isEs ? 'Promociones' : 'Promotions',
                 mensaje: [
                     formData.promocion ? `Promoción: ${formData.promocion}` : null,
                     formData.mensaje ? `Mensaje: ${formData.mensaje}` : null,
                 ].filter(Boolean).join('\n'),
+                locale,
                 captchaToken,
             });
 
@@ -165,9 +166,9 @@ export default function PromotionsForm({ locale }: PromotionsFormProps) {
                             className="flex h-10 w-full rounded-xl bg-slate-50 px-4 py-2 text-sm transition-all focus:outline-none focus:ring-4 focus:ring-brand-green/20 focus:bg-white disabled:cursor-not-allowed disabled:opacity-50"
                         >
                             <option value="">{isEs ? 'Selecciona una opción' : 'Select an option'}</option>
-                            <option value="Información general">{isEs ? 'Información general' : 'General information'}</option>
-                            <option value="Tratamientos de fertilidad">{isEs ? 'Tratamientos de fertilidad' : 'Fertility treatments'}</option>
-                            <option value="Consulta inicial">{isEs ? 'Consulta inicial' : 'Initial consultation'}</option>
+                            <option value={isEs ? 'Información general' : 'General information'}>{isEs ? 'Información general' : 'General information'}</option>
+                            <option value={isEs ? 'Tratamientos de fertilidad' : 'Fertility treatments'}>{isEs ? 'Tratamientos de fertilidad' : 'Fertility treatments'}</option>
+                            <option value={isEs ? 'Consulta inicial' : 'Initial consultation'}>{isEs ? 'Consulta inicial' : 'Initial consultation'}</option>
                         </select>
                     </Field>
 

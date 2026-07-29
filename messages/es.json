@@ -40,12 +40,16 @@
         },
         "treatments": {
             "fiv": "FIV - Fertilización In Vitro",
+            "mini_fiv": "Mini FIV",
             "egg_donation": "Ovodón",
+            "sperm_donation": "Programa de Donación LifeStart",
             "artificial_insemination": "Inseminación Artificial",
             "ropa": "Método ROPA",
             "genetic": "PGT-A - Diagnóstico Genético",
             "preservation": "Preservación de Fertilidad",
             "embryo_donation": "Donación de Embriones",
+            "timed_intercourse": "Coito Programado",
+            "transfer": "Transferencia de Embriones",
             "lgbt": "Programa de Fertilidad Inclusivo",
             "consultation": "Consulta Especializada"
         },

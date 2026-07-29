@@ -20,14 +20,22 @@ Debes agregar estas variables en el Dashboard de Vercel (**Settings > Environmen
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://albhkcvkihratkrxcavi.supabase.co` | URL de tu proyecto Supabase |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` | La clave que me proporcionaste |
 | `NEXT_PUBLIC_TINYMCE_API_KEY` | `vw1ypnbl6ql8xs11n5r66qpu9057j3z65jcc2xfufsx3auq7` | Clave para el editor de texto |
-| `RESEND_API_KEY` | `re_T4eTu8z5_4TmWEknV2KHXpSvnJXSq8k78` | Clave para envío de correos |
+| `RESEND_API_KEY` | Tu clave privada de Resend | Clave para envío de correos. Nunca subirla al repositorio |
+| `RESEND_FROM_EMAIL` | Remitente verificado en Resend | Ejemplo: `Fertility Center Cancun <contacto@tudominio.com>` |
+| `LEAD_NOTIFICATION_EMAILS` | Correos adicionales separados por coma | Los correos corporativos acordados ya se incluyen por defecto |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Tu **Site Key** de Cloudflare | Ver paso 2 abajo |
 | `TURNSTILE_SECRET_KEY` | Tu **Secret Key** de Cloudflare | Ver paso 2 abajo |
 | `CRM_WEBHOOK_URL` | URL del webhook de tu CRM | Recibe los leads del formulario en JSON |
 | `CRM_WEBHOOK_TOKEN` | Token Bearer del webhook (opcional) | Si tu CRM requiere autenticación |
 | `REQUIRE_CRM_DELIVERY` | `true`/`false` (opcional) | Si es `true`, el formulario falla cuando CRM no responde |
-| `UPNIFY_INTEGRATION_URL` | URL completa de integración Upnify | Formato: `https://api.upnify.com/v4/integraciones/<token>` |
-| `UPNIFY_INTEGRATION_TOKEN` | Token de integración Upnify (alternativa) | Si lo defines, el sistema construye la URL automáticamente |
+| `UPNIFY_INTEGRATION_URL_ES` | URL de integración Upnify en español | Debe tener fase/origen/etiqueta ES configurados en CRM |
+| `UPNIFY_INTEGRATION_URL_EN` | URL de integración Upnify en inglés | Debe tener fase/origen/etiqueta EN configurados en CRM |
+| `UPNIFY_INTEGRATION_TOKEN_ES` | Token ES (alternativa a URL) | El sistema construye la URL automáticamente |
+| `UPNIFY_INTEGRATION_TOKEN_EN` | Token EN (alternativa a URL) | El sistema construye la URL automáticamente |
+| `UPNIFY_TREATMENT_FIELD` | Nombre API del campo personalizado | Debe ser el campo de texto "Tratamiento de interés" creado en CRM |
+| `UPNIFY_COUNTRY_FIELD` | Nombre API del campo país | Por defecto: `pais` |
+
+`UPNIFY_INTEGRATION_URL` y `UPNIFY_INTEGRATION_TOKEN` se conservan temporalmente como fallback de compatibilidad, pero producción debe configurar las variables separadas por idioma.
 
 ## 2. Configurar Cloudflare Turnstile (CAPTCHA)
 
