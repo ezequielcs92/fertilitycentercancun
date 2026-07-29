@@ -174,8 +174,8 @@ export default function Navbar() {
             >
                 <Container className="flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3 group">
-                        <div className="relative w-48 h-12 md:w-56 md:h-16 flex items-center group-hover:scale-105 transition-transform duration-500">
+                    <Link href="/" className="flex items-center gap-3 group shrink-0">
+                        <div className="relative w-48 h-12 md:w-56 md:h-16 lg:w-44 xl:w-56 flex items-center group-hover:scale-105 transition-transform duration-500">
                             <Image
                                 src="/images/logotipo-AFCC.svg"
                                 alt="Advanced Fertility Center Cancun"
@@ -186,7 +186,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center gap-8">
+                    <nav className="hidden lg:flex items-center gap-4 xl:gap-8">
                         {navigation.map((item) => (
                             <div
                                 key={item.name}
@@ -196,7 +196,7 @@ export default function Navbar() {
                             >
                                 <Link
                                     href={item.href}
-                                    className="text-white/80 hover:text-white text-[13px] font-bold uppercase tracking-widest flex items-center gap-1.5 py-2 transition-colors relative"
+                                    className="text-white/80 hover:text-white text-[11px] xl:text-[13px] font-bold uppercase tracking-wider xl:tracking-widest flex items-center gap-1.5 py-2 transition-colors relative whitespace-nowrap"
                                 >
                                     {item.name}
                                     {item.submenu && <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${activeMega === item.name ? 'rotate-180' : ''}`} />}
@@ -233,7 +233,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-4 md:gap-6">
                         <Link
                             href={route('/contacto', '/contact-ivf-doctors')}
-                            className="hidden sm:flex items-center gap-2 bg-brand-green text-brand-violet px-6 py-2.5 rounded-full text-base font-bold hover:bg-white transition-all shadow-lg hover:-translate-y-0.5"
+                            className="hidden sm:flex items-center gap-2 bg-brand-green text-brand-violet px-4 xl:px-6 py-2.5 rounded-full text-sm xl:text-base font-bold hover:bg-white transition-all shadow-lg hover:-translate-y-0.5 whitespace-nowrap"
                         >
                             {t('cta')}
                         </Link>

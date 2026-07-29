@@ -26,11 +26,11 @@ export default async function Page({
 
       <Container className="py-20">
         {/* Sección: Texto + Formulario */}
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          <div className="space-y-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+          <div className="space-y-16 min-w-0">
             <section>
               <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base">{isEs ? 'Atención Personalizada' : 'Personalized Care'}</span>
-              <h2 className="text-5xl font-serif text-brand-violet mt-4 mb-8 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-serif text-brand-violet mt-4 mb-8 leading-tight">
                 {isEs ? 'Estamos aquí para ' : 'We are here to '}
                 <span className="text-brand-green italic underline decoration-brand-green/30">{isEs ? 'ayudarte' : 'help you'}</span>
               </h2>
@@ -129,7 +129,7 @@ export default async function Page({
           </div>
 
           {/* Formulario */}
-          <div className="bg-slate-50/50 rounded-[4rem] p-4">
+          <div id="formulario" className="bg-slate-50/50 rounded-[4rem] p-4 min-w-0 scroll-mt-32">
             <div className="bg-white rounded-[3.5rem] p-10 md:p-14 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-violet/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
 
@@ -166,11 +166,11 @@ function ContactMethod({ icon, title, lines }: { icon: React.ReactNode, title: s
             {line.cell ? (
               line.cell
             ) : line.href ? (
-              <a href={line.href} className="text-base text-slate-600 hover:text-brand-violet transition-colors font-medium">
+              <a href={line.href} className="text-base text-slate-600 hover:text-brand-violet transition-colors font-medium break-all">
                 {line.value}
               </a>
             ) : (
-              <span className="text-base text-slate-600 font-medium">{line.value}</span>
+              <span className="text-base text-slate-600 font-medium break-all">{line.value}</span>
             )}
           </div>
         ))}

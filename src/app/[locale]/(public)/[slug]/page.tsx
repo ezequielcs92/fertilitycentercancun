@@ -1,9 +1,42 @@
 import React from 'react'
 import { notFound, redirect } from 'next/navigation'
+import TreatmentCTA from '@/components/sections/TreatmentCTA'
 
 type PageModule = {
   default: React.ComponentType<any>
 }
+
+const treatmentSlugs = new Set([
+  // Español
+  'fiv-fertilizacion-in-vitro',
+  'fertilizacion-in-vitro-estudio-genetico-seleccion-de-sexo',
+  'fertilizacion-in-vitro-en-fiv-ciclo-natural',
+  'mini-fiv',
+  'inseminacion-artificial',
+  'ovodon',
+  'programa-donacion-lifestart',
+  'donacion-y-adopcion-embriones',
+  'metodo-ropa',
+  'preservacion-de-la-fertilidad',
+  'coito-programado-e-induccion-de-ovulacion',
+  'transferencia-de-embriones-y-preparacion-endometrial',
+  'transferencia-de-embriones-congelados',
+  'construyendo-familias',
+  'doble-acumulacion',
+  // English
+  'ivf-in-vitro-fertilization',
+  'in-vitro-fertilization-with-genetic-testing-and-sex-selection',
+  'in-vitro-fertilization-in-ivf-natural-cycle',
+  'mini-ivf',
+  'artificial-insemination',
+  'embryo-donation-and-adoption',
+  'ropa-method',
+  'fertility-preservation',
+  'timed-intercourse-and-ovulation-induction',
+  'embryo-transfer-and-endometrial-preparation',
+  'building-families',
+  'double-accumulation-back-to-back-or-duo-stim',
+])
 
 const pageLoaders: Record<string, () => Promise<PageModule>> = {
   'about-fertility-center': () => import('@/app/about-fertility-center/page'),
@@ -164,5 +197,10 @@ export default async function LegacyPublicPage({
   const module = await loader()
   const PageComponent = module.default
 
-  return <PageComponent />
+  return (
+    <>
+      <PageComponent />
+      {treatmentSlugs.has(slug) && <TreatmentCTA locale={locale === 'en' ? 'en' : 'es'} />}
+    </>
+  )
 }
