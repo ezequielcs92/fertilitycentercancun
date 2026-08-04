@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Turnstile } from '@marsidev/react-turnstile';
 import { AlertCircle, CheckCircle2, Send } from 'lucide-react';
 import { submitLead } from '@/lib/actions/leads';
+import { readUtmParams } from '@/lib/utm';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 
@@ -78,10 +79,11 @@ export default function PromotionsForm({ locale }: PromotionsFormProps) {
                 telefono: formData.telefono,
                 pais: '',
                 tratamiento: isEs ? 'Promociones' : 'Promotions',
-                mensaje: [
-                    formData.promocion ? `Promoción: ${formData.promocion}` : null,
-                    formData.mensaje ? `Mensaje: ${formData.mensaje}` : null,
-                ].filter(Boolean).join('\n'),
+                // La promoción concreta viaja en su propio campo para que el CRM
+                // pueda segmentarla, en vez de quedar dentro del mensaje.
+                promocion: formData.promocion || undefined,
+                mensaje: formData.mensaje,
+                utm: readUtmParams(),
                 locale,
                 captchaToken,
             });

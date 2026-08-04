@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Turnstile } from '@marsidev/react-turnstile'
 import { useLocale, useTranslations } from 'next-intl'
 import { submitLead, type LeadFormData } from '@/lib/actions/leads'
+import { readUtmParams } from '@/lib/utm'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
 import { Button } from '@/components/ui/Button'
@@ -101,7 +102,12 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
         setIsLoading(true)
 
         try {
-            const result = await submitLead({ ...formData, locale: isEs ? 'es' : 'en', captchaToken })
+            const result = await submitLead({
+                ...formData,
+                utm: readUtmParams(),
+                locale: isEs ? 'es' : 'en',
+                captchaToken
+            })
 
             if (result.success) {
                 setSubmitStatus('success')
