@@ -5,7 +5,13 @@ import { routing } from './i18n/routing';
 
 const intlMiddleware = createMiddleware(routing);
 
-export async function middleware(request: NextRequest) {
+/**
+ * Convención `proxy` de Next 16 (antes `middleware`).
+ *
+ * Las rutas de administración y autenticación no llevan prefijo de idioma, así
+ * que se resuelven con la sesión de Supabase y se saltan el middleware de i18n.
+ */
+export default async function proxy(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
     const isAdminOrAuthRoute =
         pathname.startsWith('/admin') ||

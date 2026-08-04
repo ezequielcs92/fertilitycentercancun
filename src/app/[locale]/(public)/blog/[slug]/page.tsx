@@ -1,44 +1,22 @@
-
-import React from 'react';
+import React, { cache } from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import { autoTranslateHtml, autoTranslateText } from '@/lib/i18n/auto-translate';
+import { getPostBySlug } from '@/lib/actions/posts';
+import { siteUrl } from '@/lib/seo';
+import legacyPosts from '@/data/legacy-posts.json';
 
-// Nota: En una app real esto vendría de una DB o API. 
-// Para el prototipo, usamos el JSON procesado.
-const SCRAPED_POSTS = [
-  {
-    slug: 'la-fertilidad-despues-del-diagnostico-oncologico',
-    title: 'La fertilidad después del diagnóstico oncológico',
-    content: '<p>Contenido detallado sobre la preservación de la fertilidad en pacientes oncológicos...</p>'
-  },
-  {
-    slug: 'el-viaje-del-ovocito',
-    title: 'El viaje del ovocito',
-    content: '<p>Exploración científica del desarrollo del ovocito...</p>'
-  },
-  {
-    slug: 'que-es-la-endometriosis',
-    title: '¿Qué es la endometriosis?',
-    content: '<p>Información completa sobre la endometriosis y su impacto...</p>'
-  },
-  {
-    slug: 'abordaje-de-la-pareja-infertil',
-    title: 'Abordaje de la pareja infértil',
-    content: '<p>Guía sobre el proceso de diagnóstico de infertilidad...</p>'
-  },
-  {
-    slug: 'por-que-elegir-una-clinica-de-fertilidad-especializada',
-    title: 'Por qué elegir una clínica de fertilidad especializada',
-    content: '<p>Ventajas competitivas y tecnológicas de AFCC...</p>'
-  },
-  {
-    slug: 'combina-la-fertilidad-con-tus-vacaciones',
-    title: 'Combina la fertilidad con tus vacaciones',
-    content: '<p>El turismo médico en Cancún para tratamientos de reproducción asistida...</p>'
-  }
-];
+export const revalidate = 60;
+
+interface ArticleData {
+  title: string;
+  content: string;
+  excerpt: string;
+  image?: string | null;
+  publishedAt?: string | null;
+}
 
 function cleanContent(content: string) {
   if (!content) return '';
@@ -51,50 +29,110 @@ function cleanContent(content: string) {
     .trim();
 }
 
-async function getData(slug: string, type: string) {
-  try {
-    const data = require('@/../migrating_data.json');
-    // En migrating_data.json, los artículos están bajo la clave 'posts'
-    const actualType = type === 'blog' ? 'posts' : type;
-    const item = data[actualType]?.find((item: any) => item.slug === slug);
-
-    if (item) {
-      return { ...item, content: cleanContent(item.content) };
-    }
-
-    // Fallback a los posts scrapeados si no se encuentra en el JSON de migración
-    const fallback = SCRAPED_POSTS.find(p => p.slug === slug);
-    return fallback ? { ...fallback, content: cleanContent(fallback.content) } : null;
-  } catch (error) {
-    console.error('Error loading migrating_data:', error);
-    const fallback = SCRAPED_POSTS.find(p => p.slug === slug);
-    return fallback ? { ...fallback, content: cleanContent(fallback.content) } : null;
-  }
+/** Extracto de texto plano para la meta description. */
+function toExcerpt(html: string, max = 158) {
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1).replace(/\s+\S*$/, '')}…`;
 }
 
-export default async function DynamicPage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
+/**
+ * Resuelve un artículo por slug. Prioridad:
+ *   1. Supabase — los posts publicados desde el panel de administración.
+ *   2. Contenido heredado de WordPress (src/data/legacy-posts.json).
+ */
+const getArticle = cache(async (slug: string, locale: string): Promise<ArticleData | null> => {
+  const post = await getPostBySlug(slug, locale);
+  if (post) {
+    return {
+      title: post.titulo,
+      content: post.contenido_html,
+      excerpt: post.extracto || toExcerpt(post.contenido_html),
+      image: post.imagen_banner_url,
+      publishedAt: post.fecha_publicacion,
+    };
+  }
+
+  const legacy = legacyPosts.find((item) => item.slug === slug);
+  if (legacy) {
+    const content = cleanContent(legacy.content);
+    return {
+      title: await autoTranslateText(legacy.title, locale),
+      content: await autoTranslateHtml(content, locale),
+      excerpt: toExcerpt(content),
+      publishedAt: legacy.date ?? null,
+    };
+  }
+
+  return null;
+});
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string; locale: string }>;
+}): Promise<Metadata> {
+  const { slug, locale } = await params;
+  const article = await getArticle(slug, locale);
+
+  if (!article) return {};
+
+  const current = locale === 'en' ? 'en' : 'es';
+  const canonical = `${siteUrl}/${current}/blog/${slug}`;
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: article.title,
+    description: article.excerpt,
+    alternates: {
+      canonical,
+      languages: {
+        es: `${siteUrl}/es/blog/${slug}`,
+        en: `${siteUrl}/en/blog/${slug}`,
+      },
+    },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: canonical,
+      type: 'article',
+      publishedTime: article.publishedAt ?? undefined,
+      images: article.image ? [article.image] : undefined,
+      locale: current === 'es' ? 'es_MX' : 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: article.image ? [article.image] : undefined,
+    },
+  };
+}
+
+export default async function BlogArticlePage({
+  params
+}: {
+  params: Promise<{ slug: string; locale: string }>;
+}) {
   const { slug, locale } = await params;
   const isEs = locale === 'es';
 
-  const item = await getData(slug, 'blog');
+  const article = await getArticle(slug, locale);
 
-  if (!item) return notFound();
-
-  const translatedTitle = await autoTranslateText(item.title, locale);
-  const translatedContent = await autoTranslateHtml(item.content, locale);
+  if (!article) return notFound();
 
   return (
     <main className="bg-white pb-24">
       <PageHeader
-        title={translatedTitle}
+        title={article.title}
         breadcrumb={[
           { label: isEs ? 'Inicio' : 'Home', href: '/' },
           { label: 'Blog', href: '/blog' },
-          { label: translatedTitle, href: '#' }
+          { label: article.title, href: '#' }
         ]}
       />
       <Container className="pt-16 prose prose-lg prose-violet max-w-4xl mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: translatedContent }} />
+        <div dangerouslySetInnerHTML={{ __html: article.content }} />
       </Container>
     </main>
   );
