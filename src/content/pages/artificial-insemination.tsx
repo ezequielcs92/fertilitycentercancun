@@ -26,7 +26,6 @@ export default function Page() {
           alt="Intrauterine insemination process"
           fill
           className="object-cover"
-          unoptimized
         />
       </div>
 
@@ -35,11 +34,10 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="/images/treatments/seguimiento-folicular.png"
+              src="/images/treatments/inseminacion-artificial-portada.png"
               alt="Follicular monitoring"
               fill
               className="object-cover object-[45%_35%]"
-              unoptimized
             />
           </div>
           <h3 className="text-xl font-bold text-brand-violet mb-3">1. Follicular Monitoring</h3>
@@ -50,11 +48,10 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="/images/treatments/inseminacion-procedimiento.png"
+              src="/images/treatments/inseminacion-artificial-portada.png"
               alt="Insemination procedure"
               fill
-              className="object-cover"
-              unoptimized
+              className="object-contain p-2 bg-white"
             />
           </div>
           <h3 className="text-xl font-bold text-brand-violet mb-3">2. Insemination</h3>

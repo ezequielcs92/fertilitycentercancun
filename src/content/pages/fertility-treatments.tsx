@@ -106,7 +106,6 @@ export default function Page() {
                 alt={treatment.title}
                 fill
                 className="object-cover"
-                unoptimized
               />
             </div>
             <div className="p-6">

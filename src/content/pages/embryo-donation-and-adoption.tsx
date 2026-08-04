@@ -43,7 +43,6 @@ export default function Page() {
               alt="Endometrial preparation process"
               fill
               className="object-contain m-0"
-              unoptimized
             />
           </div>
         </div>

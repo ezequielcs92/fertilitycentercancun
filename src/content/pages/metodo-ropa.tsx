@@ -43,7 +43,6 @@ export default function Page() {
               alt="Pareja método ROPA"
               fill
               className="object-cover m-0"
-              unoptimized
             />
           </div>
         </div>

@@ -92,7 +92,6 @@ export default function Page() {
               alt="LifeStart Donation Program"
               fill
               className="object-cover m-0 p-0"
-              unoptimized
             />
           </div>
         </div>

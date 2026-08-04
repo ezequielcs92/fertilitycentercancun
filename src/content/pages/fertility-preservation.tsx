@@ -44,7 +44,6 @@ export default function Page() {
               alt="Cryopreservation Stages"
               fill
               className="object-cover object-center"
-              unoptimized
             />
           </div>
         </div>
@@ -59,7 +58,6 @@ export default function Page() {
               alt="Egg Vitrification"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700 m-0 p-0"
-              unoptimized
             />
           </div>
           <div className="p-8">
@@ -76,7 +74,6 @@ export default function Page() {
               alt="Sperm Cryopreservation"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-700 m-0 p-0"
-              unoptimized
             />
           </div>
           <div className="p-8">

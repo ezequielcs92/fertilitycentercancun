@@ -28,7 +28,6 @@ export default function Page() {
           alt="Proceso de Inseminación Intrauterina"
           fill
           className="object-cover"
-          unoptimized // Using remote image directly
         />
       </div>
 
@@ -38,11 +37,10 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="/images/treatments/seguimiento-folicular.png"
+              src="/images/treatments/inseminacion-artificial-portada.png"
               alt="Seguimiento Folicular"
               fill
               className="object-cover object-[45%_35%]"
-              unoptimized
             />
           </div>
           <h3 className="text-xl font-bold text-brand-violet mb-3">1. Seguimiento Folicular</h3>
@@ -53,11 +51,10 @@ export default function Page() {
         <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5">
           <div className="aspect-square relative rounded-2xl overflow-hidden mb-6">
             <Image
-              src="/images/treatments/inseminacion-procedimiento.png"
+              src="/images/treatments/inseminacion-artificial-portada.png"
               alt="Inseminación"
               fill
-              className="object-cover"
-              unoptimized
+              className="object-contain p-2 bg-white"
             />
           </div>
           <h3 className="text-xl font-bold text-brand-violet mb-3">2. Inseminación</h3>

@@ -216,16 +216,16 @@ export default function Page() {
 
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="p-6 bg-white rounded-[2rem] shadow-sm border border-slate-100 italic font-light text-slate-600 leading-relaxed">
-                  "Nuestro equipo estará disponible para resolver cualquier duda sobre el tratamiento."
+                  &quot;Nuestro equipo estará disponible para resolver cualquier duda sobre el tratamiento.&quot;
                 </div>
                 <div className="p-6 bg-white rounded-[2rem] shadow-sm border border-slate-100 italic font-light text-slate-600 leading-relaxed">
-                  "Si viajas desde otro país, te asesoraremos sobre traslados y alojamiento."
+                  &quot;Si viajas desde otro país, te asesoraremos sobre traslados y alojamiento.&quot;
                 </div>
                 <div className="p-6 bg-white rounded-[2rem] shadow-sm border border-slate-100 italic font-light text-slate-600 leading-relaxed">
-                  "Recibirás orientación detallada en caso de optar por elección de donantes."
+                  &quot;Recibirás orientación detallada en caso de optar por elección de donantes.&quot;
                 </div>
                 <div className="p-6 bg-white rounded-[2rem] shadow-sm border border-slate-100 italic font-light text-slate-600 leading-relaxed">
-                  "Comunicación directa con el especialista en todo momento."
+                  &quot;Comunicación directa con el especialista en todo momento.&quot;
                 </div>
               </div>
             </motion.div>
@@ -326,7 +326,7 @@ export default function Page() {
               <div className="bg-white p-10 rounded-[3rem] shadow-sm relative italic leading-relaxed text-slate-600 font-light italic">
                 <Quote className="absolute top-6 left-6 w-12 h-12 text-brand-green/10" />
                 <p className="relative z-10">
-                  "Nunca imaginamos que lograríamos concebir, pero el equipo de Advanced Fertility Center Cancun fue increíble desde el primer día. Nos dieron el apoyo y la confianza que necesitábamos."
+                  &quot;Nunca imaginamos que lograríamos concebir, pero el equipo de Advanced Fertility Center Cancun fue increíble desde el primer día. Nos dieron el apoyo y la confianza que necesitábamos.&quot;
                 </p>
                 <div className="mt-8 pt-6 border-t border-slate-100 not-italic font-serif text-brand-violet">
                   Mónica y Ricardo
@@ -335,7 +335,7 @@ export default function Page() {
               <div className="bg-white p-10 rounded-[3rem] shadow-sm relative italic leading-relaxed text-slate-600 font-light italic">
                 <Quote className="absolute top-6 left-6 w-12 h-12 text-brand-green/10" />
                 <p className="relative z-10">
-                  "Gracias a la dedicación y profesionalismo de los médicos y todo el equipo, ahora tenemos a nuestro bebé en casa. ¡Estamos muy agradecidos!"
+                  &quot;Gracias a la dedicación y profesionalismo de los médicos y todo el equipo, ahora tenemos a nuestro bebé en casa. ¡Estamos muy agradecidos!&quot;
                 </p>
                 <div className="mt-8 pt-6 border-t border-slate-100 not-italic font-serif text-brand-violet">
                   Laura y Juan

@@ -48,7 +48,6 @@ export default function Page() {
               alt="Happy couple"
               fill
               className="object-cover object-center m-0"
-              unoptimized
             />
           </div>
         </div>
@@ -104,7 +103,6 @@ export default function Page() {
               alt="IVF Process"
               fill
               className="object-contain p-4 m-0"
-              unoptimized
             />
           </div>
         </div>

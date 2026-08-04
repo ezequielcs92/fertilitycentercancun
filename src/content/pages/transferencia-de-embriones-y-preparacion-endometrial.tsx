@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
-import { Calendar, CheckCircle, Activity, Star } from 'lucide-react';
+import { Calendar, CheckCircle, Activity } from 'lucide-react';
 
 export default function Page() {
   return (
@@ -26,14 +26,13 @@ export default function Page() {
           alt="Transferencia embrionaria"
           fill
           className="object-cover"
-          unoptimized
         />
       </div>
 
       <h2 className="text-3xl font-serif text-brand-violet mb-6">Preparación Endometrial</h2>
       <div className="bg-brand-gray p-8 rounded-3xl border border-brand-violet/5 mb-12">
         <p className="text-slate-700 mb-6">
-          Para que el embrión se implante, el "nido" (endometrio) debe estar en condiciones óptimas. Personalizamos este proceso según tu cuerpo:
+          Para que el embrión se implante, el &quot;nido&quot; (endometrio) debe estar en condiciones óptimas. Personalizamos este proceso según tu cuerpo:
         </p>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-6 rounded-2xl shadow-sm">

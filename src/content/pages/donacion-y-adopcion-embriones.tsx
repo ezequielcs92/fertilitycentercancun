@@ -2,7 +2,7 @@
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Gift, HeartHandshake, Smile } from 'lucide-react';
+import { Gift, HeartHandshake } from 'lucide-react';
 
 export default function Page() {
   return (
@@ -37,13 +37,12 @@ export default function Page() {
           </div>
         </div>
         <div className="w-full lg:w-1/3 shrink-0">
-          <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
+          <div className="not-prose relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white border border-slate-100 p-4">
             <Image
               src="/images/treatments/donacion-adopcion-embriones-portada.png"
               alt="Proceso de preparación endometrial"
               fill
-              className="object-cover m-0"
-              unoptimized
+              className="object-contain m-0"
             />
           </div>
         </div>
@@ -58,7 +57,7 @@ export default function Page() {
         </div>
         <div className="not-prose bg-brand-violet text-white p-8 rounded-3xl flex flex-col justify-center items-center text-center shadow-lg border border-brand-violet">
           <HeartHandshake className="w-16 h-16 mb-4 text-brand-green" />
-          <p className="font-serif text-xl leading-relaxed text-white">"Un regalo de vida que transforma dos familias para siempre"</p>
+          <p className="font-serif text-xl leading-relaxed text-white">&quot;Un regalo de vida que transforma dos familias para siempre&quot;</p>
         </div>
       </div>
 

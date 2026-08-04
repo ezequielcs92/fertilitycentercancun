@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
-import { Calendar, CheckCircle, Activity, Star } from 'lucide-react';
+import { Calendar, CheckCircle, Activity } from 'lucide-react';
 
 export default function Page() {
   return (
@@ -26,7 +26,6 @@ export default function Page() {
           alt="Embryo transfer"
           fill
           className="object-cover"
-          unoptimized
         />
       </div>
 

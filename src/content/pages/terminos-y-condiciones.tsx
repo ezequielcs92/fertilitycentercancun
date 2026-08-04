@@ -36,7 +36,7 @@ export default function Page() {
                                 1. Uso del Sitio Web
                             </h3>
                             <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 italic font-light text-slate-600">
-                                "El contenido de las páginas de este sitio web es para su información general y uso exclusivamente. Está sujeto a cambios sin previo aviso. Ni nosotros ni terceros ofrecemos ninguna garantía en cuanto a la exactitud, puntualidad, rendimiento, integridad o adecuación de la información y los materiales encontrados u ofrecidos en este sitio para cualquier propósito particular."
+                                &quot;El contenido de las páginas de este sitio web es para su información general y uso exclusivamente. Está sujeto a cambios sin previo aviso. Ni nosotros ni terceros ofrecemos ninguna garantía en cuanto a la exactitud, puntualidad, rendimiento, integridad o adecuación de la información y los materiales encontrados u ofrecidos en este sitio para cualquier propósito particular.&quot;
                             </div>
                         </section>
 

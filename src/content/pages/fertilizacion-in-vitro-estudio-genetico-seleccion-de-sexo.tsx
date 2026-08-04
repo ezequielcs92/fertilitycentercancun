@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
-import { Heart, Sparkles, Activity, Microscope, Baby, CheckCircle2, MessageCircle } from 'lucide-react';
+import { Sparkles, Activity, Microscope, Baby, CheckCircle2, MessageCircle } from 'lucide-react';
 
 export default function GeneticStudyPage() {
   const steps = [
@@ -80,9 +80,17 @@ export default function GeneticStudyPage() {
               alt="Biopsia embrionaria para estudio genético"
               fill
               className="object-cover"
-              unoptimized
             />
           </div>
+        </div>
+
+        <div className="not-prose relative aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl mb-24 bg-slate-100">
+          <Image
+            src="/images/treatments/fiv-estudio-genetico-portada.png"
+            alt="Etapas del proceso FIV con PGT-A"
+            fill
+            className="object-cover m-0"
+          />
         </div>
 
         <h2 className="text-3xl font-serif text-brand-violet text-center mb-12">El Proceso Paso a Paso</h2>
@@ -95,7 +103,6 @@ export default function GeneticStudyPage() {
                   alt={step.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  unoptimized
                 />
                 <div className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center font-bold text-brand-violet shadow-sm">
                   {i + 1}

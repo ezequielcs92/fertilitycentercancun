@@ -9,7 +9,7 @@ import {
   Award,
   Handshake,
   Globe,
-  Microscope,
+  
   CheckCircle2,
   Heart
 } from 'lucide-react';

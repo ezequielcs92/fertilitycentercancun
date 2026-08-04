@@ -58,7 +58,7 @@ const InternationalSupportPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {partnersData.map((partner: any) => (
+            {partnersData.map((partner) => (
               <div
                 key={partner.id}
                 className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full group"

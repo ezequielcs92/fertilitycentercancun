@@ -3,16 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { TestimonialModal } from '@/components/testimonials/TestimonialModal';
-import { getTestimonials } from '@/lib/actions/testimonials';
-import { getStorageFiles } from '@/lib/actions/storage';
+import { getTestimonials, type Testimonial } from '@/lib/actions/testimonials';
+import { getStorageFiles, type StorageFile } from '@/lib/actions/storage';
 
 export default function Page({ locale = 'es' }: { locale?: string }) {
   const isEs = locale === 'es';
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(8);
-  const [babyImages, setBabyImages] = useState<any[]>([]);
+  const [babyImages, setBabyImages] = useState<StorageFile[]>([]);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -26,7 +26,8 @@ export default function Page({ locale = 'es' }: { locale?: string }) {
     };
     fetchTestimonials();
     fetchGallery();
-  }, []);
+    // Recarga los testimonios traducidos cuando cambia el idioma.
+  }, [locale]);
 
   return (
     <main className="bg-slate-50 pb-24">
@@ -101,7 +102,7 @@ export default function Page({ locale = 'es' }: { locale?: string }) {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
               {testimonials.slice(0, visibleCount).map((testimonial) => (
                 <div key={testimonial.id} className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 relative group hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-                  <div className="text-6xl text-brand-green/20 font-serif leading-none absolute top-4 left-6 group-hover:text-brand-green/40 transition-colors">"</div>
+                  <div className="text-6xl text-brand-green/20 font-serif leading-none absolute top-4 left-6 group-hover:text-brand-green/40 transition-colors">&quot;</div>
                   <p className="text-slate-600 font-light italic mb-6 relative z-10 pt-4 leading-relaxed flex-grow line-clamp-6 hover:line-clamp-none transition-all">
                     {testimonial.mensaje}
                   </p>

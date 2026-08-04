@@ -77,7 +77,6 @@ export default function Page() {
               alt="Genetic embryo biopsy in IVF laboratory"
               fill
               className="object-cover"
-              unoptimized
             />
           </div>
         </div>
@@ -88,7 +87,6 @@ export default function Page() {
             alt="IVF with PGT-A process timeline"
             fill
             className="object-cover"
-            unoptimized
           />
         </div>
 
@@ -102,7 +100,6 @@ export default function Page() {
                   alt={step.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  unoptimized
                 />
                 <div className="absolute top-4 left-4 w-10 h-10 bg-white/90 backdrop-blur rounded-xl flex items-center justify-center font-bold text-brand-violet shadow-sm">
                   {i + 1}

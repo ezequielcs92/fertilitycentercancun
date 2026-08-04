@@ -76,7 +76,6 @@ export default function Page() {
               alt="Tratamiento FIV"
               fill
               className="object-cover"
-              unoptimized
             />
           </div>
         </div>
@@ -91,7 +90,6 @@ export default function Page() {
                   alt={step.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  unoptimized
                 />
                 <div className="absolute top-4 left-4 w-10 h-10 rounded-2xl bg-white/90 backdrop-blur-sm text-brand-violet flex items-center justify-center font-bold text-xl shadow-sm">
                   {i + 1}

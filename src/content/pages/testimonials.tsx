@@ -3,15 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { TestimonialModal } from '@/components/testimonials/TestimonialModal';
-import { getTestimonials } from '@/lib/actions/testimonials';
-import { getStorageFiles } from '@/lib/actions/storage';
+import { getTestimonials, type Testimonial } from '@/lib/actions/testimonials';
+import { getStorageFiles, type StorageFile } from '@/lib/actions/storage';
 
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(8);
-  const [babyImages, setBabyImages] = useState<any[]>([]);
+  const [babyImages, setBabyImages] = useState<StorageFile[]>([]);
 
   useEffect(() => {
     const fetchTestimonials = async () => {

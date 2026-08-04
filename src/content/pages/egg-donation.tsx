@@ -43,7 +43,6 @@ export default function Page() {
               alt="Ovodon treatment"
               fill
               className="object-cover object-center m-0"
-              unoptimized
             />
           </div>
         </div>

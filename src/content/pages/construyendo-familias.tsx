@@ -48,7 +48,6 @@ export default function Page() {
               alt="Pareja feliz"
               fill
               className="object-cover object-center m-0"
-              unoptimized
             />
           </div>
         </div>
@@ -64,7 +63,7 @@ export default function Page() {
             <h3 className="font-bold text-brand-violet text-2xl leading-tight">Método ROPA</h3>
           </div>
           <p className="text-lg text-slate-600 font-light leading-relaxed">
-            <strong>"Maternidad compartida"</strong>. Una mujer aporta los óvulos (madre genética) y la otra gesta el embarazo (madre gestante).
+            <strong>&quot;Maternidad compartida&quot;</strong>. Una mujer aporta los óvulos (madre genética) y la otra gesta el embarazo (madre gestante).
           </p>
         </div>
 
@@ -104,7 +103,6 @@ export default function Page() {
               alt="Proceso FIV"
               fill
               className="object-contain p-4 m-0"
-              unoptimized
             />
           </div>
         </div>

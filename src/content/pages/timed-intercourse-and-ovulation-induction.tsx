@@ -43,7 +43,6 @@ export default function Page() {
               alt="Happy couple"
               fill
               className="object-cover m-0"
-              unoptimized
             />
           </div>
         </div>
@@ -76,7 +75,6 @@ export default function Page() {
             alt="Medical consultation"
             fill
             className="object-cover m-0"
-            unoptimized
           />
         </div>
       </div>
