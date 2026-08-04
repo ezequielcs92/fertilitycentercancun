@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import { Container } from '@/components/ui/Container';
-import { getTeamMemberByIdentifier } from '@/lib/actions/team';
+import { getTeamMemberByIdentifier, type StoredExperienceEntry } from '@/lib/actions/team';
 import Image from 'next/image';
 import { MapPin, Mail, Phone, Award } from 'lucide-react';
 
@@ -91,7 +91,7 @@ export default async function TeamMemberProfilePage({
                 <div>
                   <h2 className="text-xl font-bold text-brand-violet mb-4">{isEs ? 'Experiencia profesional' : 'Professional experience'}</h2>
                   <ul className="space-y-3">
-                    {member.experiencia_profesional.map((item: any, index: number) => (
+                    {member.experiencia_profesional.map((item: StoredExperienceEntry, index: number) => (
                       <li key={index} className="p-4 rounded-2xl bg-brand-violet/5 border border-brand-violet/10 text-slate-700">
                         {typeof item === 'string' ? item : item?.titulo || item?.descripcion || JSON.stringify(item)}
                       </li>

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import GlassCard from '@/components/ui/GlassCard';
-import { BadgeCheck, MessageCircle, MoreVertical, ThumbsUp, Trash2 } from 'lucide-react';
+import { MoreVertical, ThumbsUp, Trash2 } from 'lucide-react';
 
 // Mock data for initial UI - will be replaced with Supabase fetch
 const initialComments = [
@@ -29,7 +29,7 @@ export default function AdminComments() {
                                 <span className="text-base px-2 py-0.5 bg-brand-violet/10 text-brand-violet rounded-full">Pendiente</span>
                                 <span className="text-base text-slate-400">{comment.date}</span>
                             </div>
-                            <p className="text-slate-600 mb-2 italic">"{comment.content}"</p>
+                            <p className="text-slate-600 mb-2 italic">&quot;{comment.content}&quot;</p>
                             <p className="text-base text-brand-green font-bold uppercase tracking-wider">
                                 Post: {comment.post}
                             </p>

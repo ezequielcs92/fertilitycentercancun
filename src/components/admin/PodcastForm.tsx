@@ -83,8 +83,8 @@ export default function PodcastForm({ initialData }: PodcastFormProps) {
         .getPublicUrl(filePath);
 
       setFormData((prev) => ({ ...prev, thumbnail_url: publicUrl }));
-    } catch (uploadError: any) {
-      setError('Error al subir la imagen: ' + uploadError.message);
+    } catch (uploadError) {
+      setError('Error al subir la imagen: ' + (uploadError instanceof Error ? uploadError.message : 'error desconocido'));
     } finally {
       setUploadingImage(false);
       e.target.value = '';

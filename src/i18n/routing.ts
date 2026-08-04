@@ -21,5 +21,11 @@ export const routing = defineRouting({
     }
 });
 
+export type AppLocale = (typeof routing.locales)[number];
+
+export function isValidLocale(value: unknown): value is AppLocale {
+    return typeof value === 'string' && (routing.locales as readonly string[]).includes(value);
+}
+
 export const { Link, redirect, usePathname, useRouter, getPathname } =
     createNavigation(routing);

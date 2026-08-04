@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Plus, Edit, Trash2, Search, FileText, Eye, CheckCircle, Clock } from 'lucide-react';
+import { Plus, Edit, Trash2, Search, Eye, CheckCircle, Clock } from 'lucide-react';
 import Link from 'next/link';
 import { deletePost, togglePostStatus, type Post } from '@/lib/actions/posts';
 import { createClient } from '@/lib/supabase/client';
@@ -23,12 +23,14 @@ export default function BlogManagerPage() {
             .order('created_at', { ascending: false });
 
         if (!error && data) {
-            setPosts(data as any[]);
+            setPosts(data as Post[]);
         }
         setLoading(false);
     };
 
     useEffect(() => {
+        // Carga de datos en el montaje: el setState ocurre tras el await, no de forma síncrona.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchPosts();
     }, []);
 

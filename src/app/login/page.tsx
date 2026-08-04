@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { login } from '@/lib/actions/auth';
 import { Sparkles, Mail, Lock, Loader2, ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 
 export default function LoginPage() {
     const [isLoading, setIsLoading] = useState(false);

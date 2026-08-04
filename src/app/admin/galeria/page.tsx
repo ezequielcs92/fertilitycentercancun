@@ -11,7 +11,7 @@ interface MediaFile {
     updated_at: string;
     created_at: string;
     last_accessed_at: string;
-    metadata: any;
+    metadata: Record<string, unknown> | null;
     publicUrl: string;
 }
 
@@ -30,6 +30,8 @@ export default function MediaGallery() {
     };
 
     useEffect(() => {
+        // Carga de datos en el montaje: el setState ocurre tras el await, no de forma síncrona.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchFiles();
     }, [bucket]);
 

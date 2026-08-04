@@ -30,7 +30,7 @@ export default function RichTextEditor({ value, onChange }: RichTextEditorProps)
                 content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                 branding: false,
                 promotion: false,
-                setup: (editor: any) => {
+                setup: (editor: { on: (event: string, handler: () => void) => void }) => {
                     editor.on('init', () => {
                         const style = document.createElement('style');
                         style.innerHTML = `

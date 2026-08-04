@@ -1,12 +1,13 @@
-import { getPostsByCategory, getCategoriesTranslated } from '@/lib/actions/posts'
+import { getPostsByCategory, getCategoriesTranslated, type Category } from '@/lib/actions/posts'
 import BlogGrid from '@/components/blog/BlogGrid'
+import Link from 'next/link'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 export async function generateMetadata({ params }: { params: Promise<{ categoria: string, locale: string }> }): Promise<Metadata> {
     const { categoria, locale } = await params;
     const categories = await getCategoriesTranslated(locale)
-    const category = categories.find((cat: any) => cat.slug === categoria)
+    const category = categories.find((cat: Category) => cat.slug === categoria)
 
     if (!category) {
         return { title: locale === 'en' ? 'Category not found' : 'Categoría no encontrada' }
@@ -29,7 +30,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
         getCategoriesTranslated(locale)
     ])
 
-    const category = categories.find((cat: any) => cat.slug === categoria)
+    const category = categories.find((cat: Category) => cat.slug === categoria)
 
     if (!category) {
         notFound()
@@ -41,9 +42,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             <section className="bg-gradient-to-b from-brand-slate to-white py-16">
                 <div className="container mx-auto px-6">
                     <div className="max-w-3xl">
-                        <a href="/blog" className="text-brand-violet hover:underline mb-4 inline-block">
+                        <Link href="/blog" className="text-brand-violet hover:underline mb-4 inline-block">
                             {isEs ? '← Volver al blog' : '← Back to blog'}
-                        </a>
+                        </Link>
                         <h1 className="text-5xl md:text-7xl font-serif text-brand-violet mb-6">
                             {category.nombre}
                         </h1>

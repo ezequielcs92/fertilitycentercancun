@@ -4,15 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Hero from '@/components/sections/Hero';
-import QuoteSection from '@/components/sections/QuoteSection';
 import TreatmentsGrid from '@/components/sections/TreatmentsGrid';
 import AboutClinic from '@/components/sections/AboutClinic';
 import SuccessStories from '@/components/sections/SuccessStories';
 import SuccessRates from '@/components/sections/SuccessRates';
 import ContactForm from '@/components/forms/ContactForm';
-import { motion } from 'framer-motion';
 import { Award, ArrowRight, ShieldCheck, Microscope, Heart, Users, MapPin, Sparkles } from 'lucide-react';
-import GlassCard from '@/components/ui/GlassCard';
 import { Container } from '@/components/ui/Container';
 import { useLocale } from 'next-intl';
 

@@ -19,6 +19,7 @@ import {
     Area
 } from 'recharts';
 import { getDashboardStats } from '@/lib/actions/dashboard';
+import type { ContactMessage } from '@/lib/actions/messages';
 import Link from 'next/link';
 
 const data = [
@@ -38,7 +39,7 @@ export default function AdminDashboard() {
         testimonials: 0,
         messages: 0
     });
-    const [messages, setMessages] = useState<any[]>([]);
+    const [messages, setMessages] = useState<ContactMessage[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -175,7 +176,7 @@ export default function AdminDashboard() {
                                     <p className="font-bold text-brand-violet text-sm truncate">{m.nombre}</p>
                                     {!m.leido && <div className="w-2 h-2 rounded-full bg-brand-green" />}
                                 </div>
-                                <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed italic">"{m.mensaje}"</p>
+                                <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed italic">&quot;{m.mensaje}&quot;</p>
                                 <p className="text-[10px] text-slate-300 mt-2 flex items-center gap-1">
                                     <Clock className="w-3 h-3" /> {new Date(m.created_at).toLocaleDateString()}
                                 </p>
@@ -195,7 +196,15 @@ export default function AdminDashboard() {
     );
 }
 
-function StatCard({ title, value, icon: Icon, trend, color }: any) {
+interface StatCardProps {
+    title: string;
+    value: number | string;
+    icon: React.ComponentType<{ className?: string }>;
+    trend?: string;
+    color: string;
+}
+
+function StatCard({ title, value, icon: Icon, trend, color }: StatCardProps) {
     return (
         <div className="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-brand-violet/5 border border-brand-violet/5 group hover:scale-[1.02] transition-all">
             <div className="flex items-center justify-between mb-4">

@@ -17,7 +17,6 @@ export default function PromoPopup() {
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        let timer: ReturnType<typeof setTimeout> | undefined;
         try {
             if (window.sessionStorage.getItem(SESSION_KEY)) {
                 return;
@@ -26,10 +25,8 @@ export default function PromoPopup() {
             // sessionStorage no disponible: mostramos el popup igualmente
         }
 
-        timer = setTimeout(() => setOpen(true), SHOW_DELAY_MS);
-        return () => {
-            if (timer) clearTimeout(timer);
-        };
+        const timer = setTimeout(() => setOpen(true), SHOW_DELAY_MS);
+        return () => clearTimeout(timer);
     }, []);
 
     useEffect(() => {

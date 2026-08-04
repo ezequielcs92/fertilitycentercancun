@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname, routing } from '@/i18n/routing';
+import { useRouter, usePathname } from '@/i18n/routing';
 import { useParams } from 'next/navigation';
 import { Globe } from 'lucide-react';
 
@@ -14,7 +14,9 @@ export default function LanguageSwitcher() {
     const toggleLanguage = () => {
         const nextLocale = locale === 'es' ? 'en' : 'es';
         router.replace(
-            // @ts-ignore
+            // Los `params` de la ruta actual son genéricos; next-intl espera el
+            // tipo concreto de cada pathname declarado en routing.ts.
+            // @ts-expect-error -- pathname/params dinámicos
             { pathname, params },
             { locale: nextLocale }
         );
