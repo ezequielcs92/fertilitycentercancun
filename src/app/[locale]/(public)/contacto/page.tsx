@@ -5,6 +5,24 @@ import ContactForm from '@/components/forms/ContactForm';
 import { Phone, Mail, MapPin, ExternalLink, Globe, Instagram, Facebook, Youtube, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 import SitePhoneLink, { SitePhoneText } from '@/components/ui/SitePhoneLink';
+import { buildRouteMetadata } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildRouteMetadata({
+    locale,
+    es: {
+      path: 'contacto',
+      title: 'Contacto',
+      description: 'Agenda tu consulta de fertilidad en Cancún. Escríbenos y nuestro equipo médico te responderá con una valoración personalizada en menos de 24 horas.',
+    },
+    en: {
+      path: 'contact-ivf-doctors',
+      title: 'Contact Us',
+      description: 'Book your fertility consultation in Cancun. Write to us and our medical team will reply with a personalized assessment within 24 hours.',
+    },
+  });
+}
 
 export default async function Page({
   params

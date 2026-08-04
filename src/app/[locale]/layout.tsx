@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { routing } from '@/i18n/routing';
+import { isValidLocale, routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
@@ -8,8 +8,9 @@ import FloatingElements from '@/components/ui/FloatingElements';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import PromoPopup from '@/components/ui/PromoPopup';
+import UtmTracker from '@/components/analytics/UtmTracker';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://fertilitycentercancun.com';
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://fertilitycentercancun.com').replace(/\/$/, '');
 
 export async function generateMetadata({
     params
@@ -18,22 +19,32 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { locale } = await params;
     const isEs = locale === 'es';
-    const title = 'Advanced Fertility Center Cancun';
+    const siteName = 'Advanced Fertility Center Cancún';
+    const title = isEs
+        ? 'Clínica de Fertilidad en Cancún | Advanced Fertility Center'
+        : 'Fertility Clinic in Cancun | Advanced Fertility Center';
     const description = isEs
-        ? 'Lideres en reproduccion asistida en el Caribe Mexicano. Combinamos tecnologia de vanguardia con un trato humano y calido para hacer realidad tu sueno.'
+        ? 'Líderes en reproducción asistida en el Caribe Mexicano. Combinamos tecnología de vanguardia con un trato humano y cálido para hacer realidad tu sueño.'
         : 'Leaders in assisted reproduction in the Mexican Caribbean. We combine cutting-edge technology with warm, human care to help make your dream come true.';
-    const localePath = locale === 'es' ? '/es' : '';
-    const canonical = `${siteUrl}${localePath}`;
+
+    // localePrefix es 'always': todas las URLs llevan prefijo, incluido el idioma
+    // por defecto. El canonical debe reflejarlo o Google ve un canonical que
+    // redirige.
+    const canonical = `${siteUrl}/${isEs ? 'es' : 'en'}`;
 
     return {
         metadataBase: new URL(siteUrl),
-        title,
+        title: {
+            default: title,
+            template: `%s | ${siteName}`
+        },
         description,
         alternates: {
             canonical,
             languages: {
                 es: `${siteUrl}/es`,
-                en: siteUrl
+                en: `${siteUrl}/en`,
+                'x-default': `${siteUrl}/es`
             }
         },
         openGraph: {
@@ -66,7 +77,7 @@ export default async function LocaleLayout({
     const { locale } = await params;
 
     // Ensure that the incoming `locale` is valid
-    if (!routing.locales.includes(locale as any)) {
+    if (!isValidLocale(locale)) {
         notFound();
     }
 
@@ -79,6 +90,7 @@ export default async function LocaleLayout({
 
     return (
         <NextIntlClientProvider messages={messages}>
+            <UtmTracker />
             <FloatingElements />
             <div className="relative z-10">
                 <Navbar />

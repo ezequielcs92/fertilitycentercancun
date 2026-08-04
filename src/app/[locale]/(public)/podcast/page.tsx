@@ -4,6 +4,24 @@ import { Container } from '@/components/ui/Container';
 import { getPodcasts } from '@/lib/actions/podcasts';
 import { Headphones, Clock, PlayCircle } from 'lucide-react';
 import Link from 'next/link';
+import { buildRouteMetadata } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildRouteMetadata({
+    locale,
+    es: {
+      path: 'podcast',
+      title: 'Podcast de Fertilidad',
+      description: 'Escucha nuestro podcast: especialistas resolviendo dudas sobre FIV, infertilidad, embarazo y reproducción asistida en cada episodio.',
+    },
+    en: {
+      path: 'podcast',
+      title: 'Fertility Podcast',
+      description: 'Listen to our podcast: specialists answering questions about IVF, infertility, pregnancy and assisted reproduction in every episode.',
+    },
+  });
+}
 
 function stripHtml(html: string | null | undefined) {
   if (!html) return '';

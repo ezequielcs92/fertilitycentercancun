@@ -1,9 +1,24 @@
 import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
-import Image from 'next/image';
-import { CheckCircle, Play, ArrowRight, Award, ShieldCheck, Microscope, Users, Star, Globe, Building2, Heart } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
 import SitePhoneLink from '@/components/ui/SitePhoneLink';
+import { buildRouteMetadata } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildRouteMetadata({
+    locale,
+    es: {
+      path: 'sobre-fertility-center-cancun',
+      title: 'Sobre Nosotros',
+      description: 'Más de 20 años de experiencia en reproducción asistida en Cancún. Conoce nuestra historia, nuestro equipo y por qué miles de familias nos eligen.',
+    },
+    en: {
+      path: 'about-fertility-center',
+      title: 'About Us',
+      description: 'Over 20 years of experience in assisted reproduction in Cancun. Learn about our story, our team and why thousands of families choose us.',
+    },
+  });
+}
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

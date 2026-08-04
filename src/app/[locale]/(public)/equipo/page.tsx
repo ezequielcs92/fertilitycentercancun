@@ -3,6 +3,24 @@ import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle2 } from 'lucide-react';
+import { buildRouteMetadata } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildRouteMetadata({
+    locale,
+    es: {
+      path: 'equipo',
+      title: 'Nuestro Equipo Médico',
+      description: 'Conoce a los ginecólogos, embriólogos y coordinadores especializados en reproducción asistida que acompañarán tu tratamiento en Cancún.',
+    },
+    en: {
+      path: 'equipo',
+      title: 'Our Medical Team',
+      description: 'Meet the gynecologists, embryologists and coordinators specialized in assisted reproduction who will guide your treatment in Cancun.',
+    },
+  });
+}
 
 const specialists = [
   {
