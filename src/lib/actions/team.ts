@@ -1,7 +1,17 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 import { revalidatePath } from 'next/cache'
+
+export interface ExperienceEntry {
+    rango: string
+    titulo: string
+    descripcion: string
+}
+
+/** Una entrada de experiencia tal como puede venir de la base de datos. */
+export type StoredExperienceEntry = ExperienceEntry | string
 
 export interface TeamMember {
     id?: string
@@ -10,7 +20,11 @@ export interface TeamMember {
     especialidad: string
     bio: string
     perfil_profesional: string
-    experiencia_profesional: any[]
+    /**
+     * Entradas creadas con ExperienceForm. Los perfiles migrados de WordPress
+     * pueden traer texto plano, así que la lectura acepta ambas formas.
+     */
+    experiencia_profesional: ExperienceEntry[]
     foto_url: string
     telefono: string
     ubicacion: string
@@ -63,6 +77,9 @@ export async function getTeamMemberByIdentifier(identifier: string) {
 }
 
 export async function saveTeamMember(member: TeamMember) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false, error: 'Client not initialized' }
 
@@ -91,6 +108,9 @@ export async function saveTeamMember(member: TeamMember) {
 }
 
 export async function deleteTeamMember(id: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false, error: 'Client not initialized' }
 

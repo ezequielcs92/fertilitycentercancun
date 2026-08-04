@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 import { revalidatePath } from 'next/cache'
 
 export interface CategoryData {
@@ -27,6 +28,9 @@ export async function getCategories() {
 }
 
 export async function saveCategory(id: string | null, data: CategoryData) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false }
 
@@ -45,6 +49,9 @@ export async function saveCategory(id: string | null, data: CategoryData) {
 }
 
 export async function deleteCategory(id: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false }
 

@@ -1,9 +1,22 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 import { revalidatePath } from 'next/cache'
 
+export interface StorageFile {
+    id: string
+    name: string
+    created_at: string
+    updated_at: string
+    last_accessed_at: string
+    metadata: Record<string, unknown> | null
+    publicUrl: string
+}
+
 export async function getStorageFiles(bucket: string) {
+    if (await requireAdmin()) return []
+
     const supabase = await createClient()
     if (!supabase) return []
 
@@ -27,6 +40,9 @@ export async function getStorageFiles(bucket: string) {
 }
 
 export async function deleteStorageFile(bucket: string, fileName: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false }
 

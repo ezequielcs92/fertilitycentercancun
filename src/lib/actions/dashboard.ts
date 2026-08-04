@@ -1,8 +1,11 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 
 export async function getDashboardStats() {
+    if (await requireAdmin()) return null
+
     const supabase = await createClient()
     if (!supabase) return null
 
