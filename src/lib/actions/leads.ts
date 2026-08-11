@@ -170,14 +170,24 @@ function splitName(fullName: string): { nombre: string; apellidos?: string } {
     }
 }
 
-function parseUpnifyCode(responseBody: unknown): number | null {
+/**
+ * Upnify responde `[{ code, msg }]`. `code: 0` es éxito; cualquier otro trae el
+ * motivo en `msg`, y ese motivo es lo único que permite distinguir un correo
+ * duplicado de un campo obligatorio vacío.
+ */
+function parseUpnifyResult(responseBody: unknown): { code: number | null; msg?: string } {
     const body = Array.isArray(responseBody) ? responseBody[0] : responseBody
     if (!body || typeof body !== 'object') {
-        return null
+        return { code: null }
     }
 
-    const maybeCode = (body as { code?: unknown }).code
-    return typeof maybeCode === 'number' ? maybeCode : null
+    const { code, msg, message } = body as { code?: unknown; msg?: unknown; message?: unknown }
+    const detalle = typeof msg === 'string' ? msg : typeof message === 'string' ? message : undefined
+
+    return {
+        code: typeof code === 'number' ? code : null,
+        msg: detalle,
+    }
 }
 
 const warnedMissingFields = new Set<string>()
@@ -322,16 +332,18 @@ async function sendLeadToUpnify(formData: LeadFormData): Promise<{ delivered: bo
                 continue
             }
 
-            const code = parseUpnifyCode(responseBody)
+            const { code, msg } = parseUpnifyResult(responseBody)
             if (code === null || code === 0) {
                 return { delivered: true }
             }
 
-            if (attempt === maxAttempts) {
-                return {
-                    delivered: false,
-                    error: `UPNIFY_CODE_${code}`,
-                }
+            // Un rechazo con code != 0 es una decision de Upnify (correo
+            // duplicado, campo obligatorio vacio): reintentar no cambia nada y
+            // solo retrasa la respuesta al paciente.
+            console.error(`[crm] Upnify rechazo el lead (code ${code})${msg ? `: ${msg}` : ''}`)
+            return {
+                delivered: false,
+                error: `UPNIFY_CODE_${code}${msg ? `: ${msg}` : ''}`,
             }
         } catch (error) {
             if (attempt === maxAttempts) {
@@ -570,7 +582,7 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
                         <div style="margin: 16px 0; padding: 14px; background-color: #fef2f2; border-left: 4px solid #dc2626; color: #7f1d1d;">
                             <strong>Este prospecto NO se registró en el CRM.</strong>
                             <p style="margin: 6px 0 0;">Hay que darlo de alta a mano en Upnify. Causa: ${escapeHtml(crmResult.error || 'desconocida')}.</p>
-                            <p style="margin: 6px 0 0; font-size: 12px;">Si el correo del paciente ya existe como prospecto, Upnify lo rechaza porque el campo Correo es único.</p>
+                            <p style="margin: 6px 0 0; font-size: 12px;">Revisa la causa antes de reintentar: si es un problema de configuración, se va a repetir con todos los leads.</p>
                         </div>`}
                         <p>Se ha registrado un nuevo contacto desde el sitio web.</p>
                         <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
