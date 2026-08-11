@@ -3,15 +3,25 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Turnstile } from '@marsidev/react-turnstile'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { submitLead, type LeadFormData } from '@/lib/actions/leads'
+import { readUtmParams } from '@/lib/utm'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
 import { Button } from '@/components/ui/Button'
 import { Send, CheckCircle2, AlertCircle } from 'lucide-react'
 
-export default function ContactForm() {
+interface ContactFormProps {
+    compact?: boolean
+}
+
+export default function ContactForm({ compact = false }: ContactFormProps) {
     const t = useTranslations('ContactForm')
+    const locale = useLocale()
+    const isEs = locale === 'es'
+    const labelClassName = compact
+        ? 'block text-xs font-bold text-brand-violet mb-1 uppercase tracking-wider'
+        : 'block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider'
     const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
     const isTurnstileTestKey = turnstileSiteKey === '1x00000000000000000000AA'
     const isProduction = process.env.NODE_ENV === 'production'
@@ -92,7 +102,12 @@ export default function ContactForm() {
         setIsLoading(true)
 
         try {
-            const result = await submitLead({ ...formData, captchaToken })
+            const result = await submitLead({
+                ...formData,
+                utm: readUtmParams(),
+                locale: isEs ? 'es' : 'en',
+                captchaToken
+            })
 
             if (result.success) {
                 setSubmitStatus('success')
@@ -112,7 +127,7 @@ export default function ContactForm() {
                 setSubmitStatus('error')
                 setSubmitMessage(result.message)
             }
-        } catch (error) {
+        } catch {
             setSubmitStatus('error')
             setSubmitMessage(t('errors.connection_error'))
         } finally {
@@ -138,8 +153,8 @@ export default function ContactForm() {
             transition={{ duration: 0.6 }}
             className="w-full"
         >
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-[0_8px_60px_-10px_rgba(109,40,217,0.25)] border border-brand-violet/10">
+            <form onSubmit={handleSubmit} className={compact ? 'space-y-3' : 'space-y-6'}>
+                <div className={`bg-white shadow-[0_8px_60px_-10px_rgba(109,40,217,0.25)] border border-brand-violet/10 ${compact ? 'rounded-3xl p-6 md:p-8' : 'rounded-[3rem] p-8 md:p-12'}`}>
 
                     {/* Mensaje de Estado */}
                     <AnimatePresence mode="wait">
@@ -168,10 +183,10 @@ export default function ContactForm() {
                         )}
                     </AnimatePresence>
 
-                    <div className="grid md:grid-cols-2 gap-6">
+                    <div className={`grid grid-cols-1 ${compact ? 'gap-3' : 'gap-6'}`}>
                         {/* Nombre Completo */}
-                        <div className="md:col-span-1">
-                            <label htmlFor="nombre" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
+                        <div>
+                            <label htmlFor="nombre" className={labelClassName}>
                                 {t('name_label')} *
                             </label>
                             <Input
@@ -182,12 +197,13 @@ export default function ContactForm() {
                                 onChange={(e) => handleChange('nombre', e.target.value)}
                                 error={errors.nombre}
                                 disabled={isLoading}
+                                className={compact ? 'h-10 rounded-xl px-4 py-2 text-sm' : undefined}
                             />
                         </div>
 
                         {/* Email */}
-                        <div className="md:col-span-1">
-                            <label htmlFor="email" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
+                        <div>
+                            <label htmlFor="email" className={labelClassName}>
                                 {t('email_label')} *
                             </label>
                             <Input
@@ -198,12 +214,13 @@ export default function ContactForm() {
                                 onChange={(e) => handleChange('email', e.target.value)}
                                 error={errors.email}
                                 disabled={isLoading}
+                                className={compact ? 'h-10 rounded-xl px-4 py-2 text-sm' : undefined}
                             />
                         </div>
 
                         {/* Teléfono */}
-                        <div className="md:col-span-1">
-                            <label htmlFor="telefono" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
+                        <div>
+                            <label htmlFor="telefono" className={labelClassName}>
                                 {t('phone_label')} *
                             </label>
                             <Input
@@ -214,12 +231,13 @@ export default function ContactForm() {
                                 onChange={(e) => handleChange('telefono', e.target.value)}
                                 error={errors.telefono}
                                 disabled={isLoading}
+                                className={compact ? 'h-10 rounded-xl px-4 py-2 text-sm' : undefined}
                             />
                         </div>
 
                         {/* País */}
-                        <div className="md:col-span-1">
-                            <label htmlFor="pais" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
+                        <div>
+                            <label htmlFor="pais" className={labelClassName}>
                                 {t('country_label')} *
                             </label>
                             <Select
@@ -228,19 +246,20 @@ export default function ContactForm() {
                                 onChange={(e) => handleChange('pais', e.target.value)}
                                 error={errors.pais}
                                 disabled={isLoading}
+                                className={compact ? 'h-10 rounded-xl px-4 py-2 text-sm' : undefined}
                             >
                                 <option value="">{t('country_placeholder')}</option>
-                                <option value="Estados Unidos">{t('countries.usa')}</option>
-                                <option value="Canadá">{t('countries.canada')}</option>
-                                <option value="México">{t('countries.mexico')}</option>
+                                <option value={isEs ? 'Estados Unidos' : 'United States'}>{t('countries.usa')}</option>
+                                <option value={isEs ? 'Canadá' : 'Canada'}>{t('countries.canada')}</option>
+                                <option value={isEs ? 'México' : 'Mexico'}>{t('countries.mexico')}</option>
                                 <option value="Argentina">{t('countries.argentina')}</option>
-                                <option value="Otro">{t('countries.other')}</option>
+                                <option value={isEs ? 'Otro' : 'Other'}>{t('countries.other')}</option>
                             </Select>
                         </div>
 
                         {/* Tratamiento de Interés */}
-                        <div className="md:col-span-2">
-                            <label htmlFor="tratamiento" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
+                        <div>
+                            <label htmlFor="tratamiento" className={labelClassName}>
                                 {t('treatment_label')} *
                             </label>
                             <Select
@@ -249,39 +268,44 @@ export default function ContactForm() {
                                 onChange={(e) => handleChange('tratamiento', e.target.value)}
                                 error={errors.tratamiento}
                                 disabled={isLoading}
+                                className={compact ? 'h-10 rounded-xl px-4 py-2 text-sm' : undefined}
                             >
                                 <option value="">{t('treatment_placeholder')}</option>
-                                <option value="FIV - Fertilización In Vitro">{t('treatments.fiv')}</option>
-                                <option value="Ovodonación">{t('treatments.egg_donation')}</option>
-                                <option value="Inseminación Artificial">{t('treatments.artificial_insemination')}</option>
-                                <option value="Método ROPA">{t('treatments.ropa')}</option>
-                                <option value="PGT-A - Diagnóstico Genético">{t('treatments.genetic')}</option>
-                                <option value="Preservación de Fertilidad">{t('treatments.preservation')}</option>
-                                <option value="Donación de Embriones">{t('treatments.embryo_donation')}</option>
-                                <option value="Apoyo LGBT+">{t('treatments.lgbt')}</option>
-                                <option value="Consulta Especializada">{t('treatments.consultation')}</option>
+                                <option value={t('treatments.fiv')}>{t('treatments.fiv')}</option>
+                                <option value={t('treatments.genetic')}>{t('treatments.genetic')}</option>
+                                <option value={t('treatments.mini_fiv')}>{t('treatments.mini_fiv')}</option>
+                                <option value={t('treatments.artificial_insemination')}>{t('treatments.artificial_insemination')}</option>
+                                <option value={t('treatments.egg_donation')}>{t('treatments.egg_donation')}</option>
+                                <option value={t('treatments.sperm_donation')}>{t('treatments.sperm_donation')}</option>
+                                <option value={t('treatments.embryo_donation')}>{t('treatments.embryo_donation')}</option>
+                                <option value={t('treatments.ropa')}>{t('treatments.ropa')}</option>
+                                <option value={t('treatments.preservation')}>{t('treatments.preservation')}</option>
+                                <option value={t('treatments.timed_intercourse')}>{t('treatments.timed_intercourse')}</option>
+                                <option value={t('treatments.transfer')}>{t('treatments.transfer')}</option>
+                                <option value={t('treatments.lgbt')}>{t('treatments.lgbt')}</option>
+                                <option value={t('treatments.consultation')}>{t('treatments.consultation')}</option>
                             </Select>
                         </div>
 
                         {/* Mensaje */}
-                        <div className="md:col-span-2">
-                            <label htmlFor="mensaje" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wider">
+                        <div>
+                            <label htmlFor="mensaje" className={labelClassName}>
                                 {t('message_label')}
                             </label>
                             <textarea
                                 id="mensaje"
-                                rows={4}
+                                rows={compact ? 2 : 4}
                                 placeholder={t('message_placeholder')}
                                 value={formData.mensaje}
                                 onChange={(e) => handleChange('mensaje', e.target.value)}
                                 disabled={isLoading}
-                                className="flex w-full rounded-2xl bg-slate-50 px-6 py-4 text-base transition-all placeholder:text-slate-400 placeholder:font-light focus:outline-none focus:ring-4 focus:ring-brand-green/20 focus:bg-white disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                                className={`flex w-full bg-slate-50 transition-all placeholder:text-slate-400 placeholder:font-light focus:outline-none focus:ring-4 focus:ring-brand-green/20 focus:bg-white disabled:cursor-not-allowed disabled:opacity-50 resize-none ${compact ? 'rounded-xl px-4 py-2 text-sm' : 'rounded-2xl px-6 py-4 text-base'}`}
                             />
                         </div>
                     </div>
 
                     {/* CAPTCHA */}
-                    <div className="mt-8 flex justify-center min-h-[65px]">
+                    <div className={`flex justify-center ${compact ? 'mt-3 min-h-0' : 'mt-8 min-h-[65px]'}`}>
                         {isMounted && isCaptchaEnabled && (
                             <Turnstile
                                 siteKey={turnstileSiteKey!}
@@ -299,12 +323,12 @@ export default function ContactForm() {
                     </div>
 
                     {/* Submit Button */}
-                    <div className="mt-6 flex justify-center">
+                    <div className={`flex justify-center ${compact ? 'mt-3' : 'mt-6'}`}>
                         <Button
                             type="submit"
                             variant="primary"
                             isLoading={isLoading}
-                            className="w-full md:w-auto min-w-[280px]"
+                            className={compact ? 'w-full px-6 py-3 text-sm' : 'w-full md:w-auto min-w-[280px]'}
                         >
                             {!isLoading && <Send className="w-5 h-5" />}
                             {t('submit_button')}
@@ -312,7 +336,7 @@ export default function ContactForm() {
                     </div>
 
                     {/* Nota de Privacidad */}
-                    <p className="mt-6 text-center text-base text-slate-400 font-light">
+                    <p className={`text-center text-slate-400 font-light ${compact ? 'mt-3 text-xs' : 'mt-6 text-base'}`}>
                         {t('privacy_note')}
                     </p>
                 </div>

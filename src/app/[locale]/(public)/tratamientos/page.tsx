@@ -2,8 +2,25 @@ import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { buildRouteMetadata } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildRouteMetadata({
+    locale,
+    es: {
+      path: 'tratamientos',
+      title: 'Tratamientos de Fertilidad',
+      description: 'FIV, inseminación artificial, ovodonación, método ROPA, preservación de la fertilidad y más. Encuentra el tratamiento adecuado para tu caso.',
+    },
+    en: {
+      path: 'tratamientos',
+      title: 'Fertility Treatments',
+      description: 'IVF, artificial insemination, egg donation, ROPA method, fertility preservation and more. Find the right treatment for your situation.',
+    },
+  });
+}
 
 const treatmentsEs = [
   { title: 'FIV – Fertilización In vitro', href: '/fiv-fertilizacion-in-vitro', image: '/images/treatments/ivf-portada.png', description: 'Tratamiento líder mundial con las más altas tasas de éxito para diversas causas de infertilidad.' },

@@ -1,9 +1,23 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 import { revalidatePath } from 'next/cache'
 
+export interface ContactMessage {
+    id: string
+    nombre: string
+    email: string
+    telefono: string | null
+    asunto: string | null
+    mensaje: string
+    leido: boolean
+    created_at: string
+}
+
 export async function getMessages() {
+    if (await requireAdmin()) return []
+
     const supabase = await createClient()
     if (!supabase) return []
 
@@ -21,6 +35,9 @@ export async function getMessages() {
 }
 
 export async function markMessageAsRead(id: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false }
 
@@ -36,6 +53,9 @@ export async function markMessageAsRead(id: string) {
 }
 
 export async function deleteMessage(id: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false }
 

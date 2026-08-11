@@ -3,8 +3,8 @@
         "tagline": "Líderes en reproducción asistida",
         "title": "Hacemos tu sueño <italic>realidad.</italic>",
         "description": "En Advanced Fertility Center Cancun combinamos tecnología de vanguardia con un trato cálido e inclusivo para brindarte la mayor probabilidad de éxito en tu tratamiento.",
-        "cta": "Tratamientos",
-        "stats_button": "Primera Vez",
+        "cta": "Promociones",
+        "stats_button": "Agenda video llamada sin costo",
         "care_title": "Trato Humano",
         "care_subtitle": "Atención personalizada 24/7",
         "stats": {
@@ -40,12 +40,16 @@
         },
         "treatments": {
             "fiv": "FIV - Fertilización In Vitro",
+            "mini_fiv": "Mini FIV",
             "egg_donation": "Ovodón",
+            "sperm_donation": "Programa de Donación LifeStart",
             "artificial_insemination": "Inseminación Artificial",
             "ropa": "Método ROPA",
             "genetic": "PGT-A - Diagnóstico Genético",
             "preservation": "Preservación de Fertilidad",
             "embryo_donation": "Donación de Embriones",
+            "timed_intercourse": "Coito Programado",
+            "transfer": "Transferencia de Embriones",
             "lgbt": "Programa de Fertilidad Inclusivo",
             "consultation": "Consulta Especializada"
         },
@@ -262,6 +266,7 @@
                     "first_visit": "Primera Visita"
                 }
             },
+            "promotions": "Promociones",
             "contact": "Contacto"
         }
     }

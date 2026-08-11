@@ -1,102 +1,51 @@
-'use client';
-
 import React from 'react';
-import {
-    Users,
-    MessageSquare,
-    Mic,
-    LayoutDashboard,
-    Settings,
-    LogOut,
-    Sparkles,
-    Mail
-} from 'lucide-react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { ShieldAlert } from 'lucide-react';
+import { getAdminUser } from '@/lib/auth/admin';
 import { logout } from '@/lib/actions/auth';
+import AdminShell from '@/components/admin/AdminShell';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname();
-    const router = useRouter();
+// La sesión se comprueba en cada request: el panel nunca debe cachearse.
+export const dynamic = 'force-dynamic';
 
-    const handleLogout = async () => {
-        await logout();
-    };
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+    const user = await getAdminUser();
 
-    const menuItems = [
-        { name: 'Dashboard', icon: LayoutDashboard, href: '/admin' },
-        { name: 'Blog', icon: MessageSquare, href: '/admin/blog' },
-        { name: 'Podcasts', icon: Mic, href: '/admin/podcasts' },
-        { name: 'Categorías', icon: Sparkles, href: '/admin/categorias' },
-        { name: 'Testimonios', icon: MessageSquare, href: '/admin/testimonios' },
-        { name: 'Galería', icon: Sparkles, href: '/admin/galeria' },
-        { name: 'Bandeja', icon: Mail, href: '/admin/contacto' },
-    ];
-
-    return (
-        <div className="min-h-screen bg-brand-slate flex">
-            {/* Blue Sidebar */}
-            <aside className="w-72 bg-brand-violet text-white p-8 flex flex-col shadow-2xl z-20">
-                <div className="flex items-center gap-3 mb-12">
-                    <div className="w-10 h-10 bg-brand-green rounded-xl flex items-center justify-center">
-                        <span className="text-brand-violet font-serif font-bold text-xl">A</span>
+    // El middleware ya redirige a /login cuando no hay sesión. Aquí cubrimos el
+    // caso distinto: hay sesión, pero la cuenta no está dada de alta como
+    // administradora en `admin_users`.
+    if (!user) {
+        return (
+            <div className="min-h-screen bg-brand-slate flex items-center justify-center p-6">
+                <div className="max-w-md w-full bg-white rounded-3xl shadow-2xl border border-brand-violet/5 p-10 text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-red-50 mb-6">
+                        <ShieldAlert className="w-8 h-8 text-red-500" />
                     </div>
-                    <span className="text-xl font-serif font-bold tracking-tight">Admin Panel</span>
-                </div>
-
-                <nav className="flex-1 space-y-2">
-                    {menuItems.map((item) => {
-                        const isActive = pathname === item.href;
-                        return (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className={`flex items-center justify-between p-4 rounded-2xl transition-all group ${isActive
-                                    ? 'bg-brand-green text-brand-violet font-bold'
-                                    : 'hover:bg-white/10'
-                                    }`}
+                    <h1 className="text-2xl font-serif text-brand-violet mb-3">Acceso no autorizado</h1>
+                    <p className="text-slate-500 mb-8">
+                        Tu cuenta no tiene permisos de administración. Solicita a un administrador
+                        que te dé de alta para acceder al panel.
+                    </p>
+                    <div className="flex flex-col gap-3">
+                        <form action={logout}>
+                            <button
+                                type="submit"
+                                className="w-full py-3 rounded-2xl bg-brand-violet text-white font-bold hover:opacity-90 transition-all"
                             >
-                                <div className="flex items-center gap-3">
-                                    <item.icon className={`w-5 h-5 ${isActive ? 'text-brand-violet' : 'text-white/60 group-hover:text-white'}`} />
-                                    <span>{item.name}</span>
-                                </div>
-                            </Link>
-                        );
-                    })}
-                </nav>
-
-                <div className="mt-auto pt-8 border-t border-white/10 space-y-2">
-                    <Link href="/admin/configuracion" className="w-full flex items-center gap-3 p-4 rounded-2xl hover:bg-white/10 transition-all text-white/60 hover:text-white">
-                        <Settings className="w-5 h-5" />
-                        <span>Configuración</span>
-                    </Link>
-                    <button
-                        onClick={handleLogout}
-                        className="w-full flex items-center gap-3 p-4 rounded-2xl hover:bg-red-500/20 text-red-300 hover:text-white transition-all"
-                    >
-                        <LogOut className="w-5 h-5" />
-                        <span>Cerrar Sesión</span>
-                    </button>
+                                Cerrar sesión
+                            </button>
+                        </form>
+                        <Link
+                            href="/"
+                            className="w-full py-3 rounded-2xl border border-brand-violet/10 text-brand-violet font-bold hover:bg-brand-violet/5 transition-all"
+                        >
+                            Volver al sitio
+                        </Link>
+                    </div>
                 </div>
-            </aside>
+            </div>
+        );
+    }
 
-            {/* Main Content */}
-            <main className="flex-1 overflow-y-auto min-w-0">
-                <header className="h-20 bg-white border-b border-brand-violet/5 flex items-center justify-between px-10 sticky top-0 z-10">
-                    <div className="flex items-center gap-2">
-                        <span className="text-slate-400 font-bold">Resumen de Hoy</span>
-                        <Sparkles className="w-4 h-4 text-brand-green" />
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <div className="text-right">
-                            <p className="text-base font-bold text-brand-violet">Fertility Center</p>
-                            <p className="text-[10px] text-slate-400 uppercase tracking-widest">Super Administrador</p>
-                        </div>
-                        <div className="w-10 h-10 bg-brand-violet/10 rounded-full border-2 border-brand-green" />
-                    </div>
-                </header>
-                {children}
-            </main>
-        </div>
-    );
+    return <AdminShell userEmail={user.email}>{children}</AdminShell>;
 }

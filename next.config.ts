@@ -6,7 +6,9 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig: NextConfig = {
   output: 'standalone',
   images: {
-    unoptimized: true,
+    // Optimización activa: Next sirve WebP/AVIF redimensionado. Requiere `sharp`
+    // en dependencies (ya declarado) también en el runtime standalone.
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',

@@ -61,7 +61,7 @@ async function translateWithGoogle(text: string, targetLocale: string): Promise<
         if (!Array.isArray(data) || !Array.isArray(data[0])) return null
 
         const translated = data[0]
-            .map((part: any) => (Array.isArray(part) ? part[0] : ''))
+            .map((part: unknown) => (Array.isArray(part) ? String(part[0] ?? '') : ''))
             .join('')
             .trim()
 

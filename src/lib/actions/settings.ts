@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 import { revalidatePath } from 'next/cache'
 
 export interface SiteSettings {
@@ -31,6 +32,9 @@ export async function getSettings(): Promise<SiteSettings | null> {
 }
 
 export async function updateNotificationEmail(email: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false, error: 'Database client not initialized' }
 

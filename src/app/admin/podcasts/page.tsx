@@ -32,6 +32,8 @@ export default function PodcastsManagerPage() {
   };
 
   useEffect(() => {
+    // Carga de datos en el montaje: el setState ocurre tras el await, no de forma síncrona.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchItems();
   }, []);
 

@@ -35,6 +35,8 @@ export function useSitePhone(): SitePhoneValue {
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
+        // Carga de datos en el montaje: el setState ocurre tras el await, no de forma síncrona.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setPhone(pickPhone());
         setReady(true);
     }, []);

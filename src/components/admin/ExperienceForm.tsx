@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Plus, Trash2, GripVertical } from 'lucide-react';
+import { Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 export interface ExperienceItem {
@@ -47,7 +47,7 @@ export default function ExperienceForm({ value, onChange }: ExperienceFormProps)
             <div className="space-y-4">
                 {value.length === 0 && (
                     <div className="text-center py-12 bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200">
-                        <p className="text-slate-400">No hay experiencia añadida. Haz clic en "Agregar Logro".</p>
+                        <p className="text-slate-400">No hay experiencia añadida. Haz clic en &quot;Agregar Logro&quot;.</p>
                     </div>
                 )}
 

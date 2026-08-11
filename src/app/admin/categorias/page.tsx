@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Plus, Trash2, Edit, Save, X, Search } from 'lucide-react';
+import { Plus, Trash2, Edit } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { getCategories, saveCategory, deleteCategory } from '@/lib/actions/categories';
 
@@ -26,6 +26,8 @@ export default function CategoriesManager() {
     };
 
     useEffect(() => {
+        // Carga de datos en el montaje: el setState ocurre tras el await, no de forma síncrona.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchCategories();
     }, []);
 

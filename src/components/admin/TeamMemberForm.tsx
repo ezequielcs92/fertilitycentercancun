@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { saveTeamMember, type TeamMember } from '@/lib/actions/team';
 import { Button } from '@/components/ui/Button';
-import ExperienceForm from './ExperienceForm';
+import ExperienceForm, { type ExperienceItem } from './ExperienceForm';
 import { ArrowLeft, Save, Upload, User, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
@@ -37,7 +37,7 @@ export default function TeamMemberForm({ initialData }: TeamMemberFormProps) {
         setFormData(prev => ({ ...prev, [name]: val }));
     };
 
-    const handleExperienceChange = (exp: any[]) => {
+    const handleExperienceChange = (exp: ExperienceItem[]) => {
         setFormData(prev => ({ ...prev, experiencia_profesional: exp }));
     };
 
@@ -54,7 +54,7 @@ export default function TeamMemberForm({ initialData }: TeamMemberFormProps) {
             } else {
                 setError(result.error || 'Ocurrió un error al guardar.');
             }
-        } catch (err) {
+        } catch (_err) {
             setError('Error de conexión.');
         } finally {
             setLoading(false);
@@ -86,8 +86,8 @@ export default function TeamMemberForm({ initialData }: TeamMemberFormProps) {
                 .getPublicUrl(fileName);
 
             setFormData(prev => ({ ...prev, foto_url: publicUrl }));
-        } catch (uploadError: any) {
-            setError('Error al subir la imagen: ' + uploadError.message);
+        } catch (uploadError) {
+            setError('Error al subir la imagen: ' + (uploadError instanceof Error ? uploadError.message : 'error desconocido'));
         } finally {
             setUploadingImage(false);
             e.target.value = '';

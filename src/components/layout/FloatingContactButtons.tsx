@@ -40,19 +40,39 @@ function loadOriginalLiveChat() {
     _h: null,
     _v: '2.0',
     on: function (...args: unknown[]) {
-      widget._h ? widget._h(['on', c.call(args)]) : widget._q?.push(['on', c.call(args)]);
+      if (widget._h) {
+        widget._h(['on', c.call(args)]);
+      } else {
+        widget._q?.push(['on', c.call(args)]);
+      }
     },
     once: function (...args: unknown[]) {
-      widget._h ? widget._h(['once', c.call(args)]) : widget._q?.push(['once', c.call(args)]);
+      if (widget._h) {
+        widget._h(['once', c.call(args)]);
+      } else {
+        widget._q?.push(['once', c.call(args)]);
+      }
     },
     off: function (...args: unknown[]) {
-      widget._h ? widget._h(['off', c.call(args)]) : widget._q?.push(['off', c.call(args)]);
+      if (widget._h) {
+        widget._h(['off', c.call(args)]);
+      } else {
+        widget._q?.push(['off', c.call(args)]);
+      }
     },
     get: function (...args: unknown[]) {
-      widget._h ? widget._h(['get', c.call(args)]) : widget._q?.push(['get', c.call(args)]);
+      if (widget._h) {
+        widget._h(['get', c.call(args)]);
+      } else {
+        widget._q?.push(['get', c.call(args)]);
+      }
     },
     call: function (...args: unknown[]) {
-      widget._h ? widget._h(['call', c.call(args)]) : widget._q?.push(['call', c.call(args)]);
+      if (widget._h) {
+        widget._h(['call', c.call(args)]);
+      } else {
+        widget._q?.push(['call', c.call(args)]);
+      }
     },
     init: function () {
       const script = t.createElement('script');

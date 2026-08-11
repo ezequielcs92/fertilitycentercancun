@@ -11,7 +11,7 @@ interface FAQAccordionProps {
     respuesta: string;
 }
 
-export default function FAQAccordion({ id, pregunta, respuesta }: FAQAccordionProps) {
+export default function FAQAccordion({ pregunta, respuesta }: FAQAccordionProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (

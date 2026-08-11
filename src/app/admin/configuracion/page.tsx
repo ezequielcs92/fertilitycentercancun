@@ -67,10 +67,10 @@ export default function ConfiguracionPage() {
                 <form onSubmit={handleSave} className="space-y-6">
                     <div>
                         <label htmlFor="email" className="block text-sm font-bold text-brand-violet mb-2 uppercase tracking-wide">
-                            Email Receptor de Consultas (Leads)
+                            Email Adicional para Consultas (Leads)
                         </label>
                         <p className="text-xs text-slate-500 mb-4 font-light">
-                            Cada vez que un paciente llene el formulario de contacto, enviaremos un resumen a esta dirección.
+                            Cada lead se envía a los correos corporativos configurados; aquí puedes agregar un destinatario adicional.
                         </p>
                         <input
                             type="email"

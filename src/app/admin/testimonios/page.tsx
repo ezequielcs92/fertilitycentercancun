@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { CheckCircle, XCircle, Clock, Trash2, Star, Search, Filter, Edit2, Save, X, Plus } from 'lucide-react';
+import { CheckCircle, XCircle, Trash2, Star, Edit2, Save, X, Plus } from 'lucide-react';
 import { updateTestimonial, deleteTestimonial, getTestimonials, submitTestimonial } from '@/lib/actions/testimonials';
 import { Button } from '@/components/ui/Button';
 
@@ -34,6 +34,8 @@ export default function TestimonialModerator() {
     };
 
     useEffect(() => {
+        // Carga de datos en el montaje: el setState ocurre tras el await, no de forma síncrona.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchTestimonials();
     }, [filter]);
 
@@ -109,10 +111,10 @@ export default function TestimonialModerator() {
                     </Button>
 
                     <div className="flex bg-white p-1 rounded-2xl shadow-lg border border-brand-violet/5 overflow-x-auto max-w-full">
-                        {['all', 'pending', 'approved', 'rejected'].map((f) => (
+                        {(['all', 'pending', 'approved', 'rejected'] as const).map((f) => (
                             <button
                                 key={f}
-                                onClick={() => setFilter(f as any)}
+                                onClick={() => setFilter(f)}
                                 className={`px-6 py-2 rounded-xl text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${filter === f
                                     ? 'bg-brand-violet text-white'
                                     : 'text-slate-400 hover:text-brand-violet'
@@ -265,7 +267,7 @@ export default function TestimonialModerator() {
                                         </div>
 
                                         <div className="flex-1">
-                                            <p className="text-slate-600 text-sm italic font-light leading-relaxed">"{t.mensaje}"</p>
+                                            <p className="text-slate-600 text-sm italic font-light leading-relaxed">&quot;{t.mensaje}&quot;</p>
                                             <p className="text-[10px] text-slate-300 mt-4">{new Date(t.created_at).toLocaleString()}</p>
                                         </div>
 

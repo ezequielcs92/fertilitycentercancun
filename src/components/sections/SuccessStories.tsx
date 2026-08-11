@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import Image from 'next/image';
 import { Quote } from 'lucide-react';
-import { getTestimonials } from '@/lib/actions/testimonials';
+import { getTestimonials, type Testimonial } from '@/lib/actions/testimonials';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 export default function SuccessStories() {
-    const [testimonials, setTestimonials] = useState<any[]>([]);
+    const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
     const t = useTranslations('SuccessStories');
 
     useEffect(() => {
@@ -58,7 +58,7 @@ export default function SuccessStories() {
                                     <Quote className="text-white w-6 h-6" />
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
-                                    <p className="text-base italic font-light line-clamp-4">"{t_item.mensaje}"</p>
+                                    <p className="text-base italic font-light line-clamp-4">&quot;{t_item.mensaje}&quot;</p>
                                 </div>
                             </div>
                             <h3 className="text-2xl font-serif text-brand-violet line-clamp-1">{t_item.nombre}</h3>

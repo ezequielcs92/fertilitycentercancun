@@ -3,15 +3,20 @@
 import React from 'react';
 import { Container } from '@/components/ui/Container';
 import { ChevronRight, MessageCircle, Sparkles } from 'lucide-react';
-import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
-export default function Hero() {
+interface HeroProps {
+    rightContent: React.ReactNode;
+}
+
+export default function Hero({ rightContent }: HeroProps) {
     const t = useTranslations('Hero');
+    const locale = useLocale();
+    const isEs = locale === 'es';
 
     return (
-        <section className="relative min-h-screen flex items-center pt-32 pb-12 overflow-hidden bg-brand-violet">
+        <section id="contacto" className="relative min-h-screen flex items-center pt-32 pb-12 overflow-hidden bg-brand-violet">
             {/* Background Video */}
             <div className="absolute inset-0 z-0">
                 <video
@@ -53,11 +58,11 @@ export default function Hero() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                                <a href="#tratamientos" className="bg-brand-green text-brand-violet px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl flex items-center justify-center gap-2 group">
+                                <a href={isEs ? '/es/promociones' : '/en/promotions'} className="bg-brand-green text-brand-violet px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl flex items-center justify-center gap-2 group">
                                     {t('cta')}
                                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </a>
-                                <a href="https://wa.me/5219983050373" target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-3">
+                                <a href={isEs ? '/es/contacto' : '/en/contact-ivf-doctors'} className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-3">
                                     <MessageCircle className="w-5 h-5 text-brand-green" />
                                     {t('stats_button')}
                                 </a>
@@ -81,17 +86,9 @@ export default function Hero() {
                     </ScrollReveal>
 
                     <ScrollReveal direction="left" delay={0.4}>
-                        <div className="relative flex justify-center lg:justify-end xl:pr-12">
-                            <div className="relative w-full max-w-[520px] lg:max-w-none aspect-[4/5] lg:aspect-auto lg:h-[650px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/10 group">
-                                <div className="absolute inset-0 bg-brand-violet/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                                <Image
-                                    src="/medical-team.jpg"
-                                    alt="Fertility Center Cancun Medical Team"
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    priority
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-brand-violet/60 via-transparent to-transparent z-20" />
+                        <div className="relative flex justify-center">
+                            <div className="w-full max-w-[640px]">
+                                {rightContent}
                             </div>
                         </div>
                     </ScrollReveal>

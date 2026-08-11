@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { Mail, Trash2, Search, CheckCircle2, User, Clock, Phone } from 'lucide-react';
-import { getMessages, markMessageAsRead, deleteMessage } from '@/lib/actions/messages';
+import { getMessages, markMessageAsRead, deleteMessage, type ContactMessage } from '@/lib/actions/messages';
 
 export default function ContactInbox() {
-    const [messages, setMessages] = useState<any[]>([]);
+    const [messages, setMessages] = useState<ContactMessage[]>([]);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -17,6 +17,8 @@ export default function ContactInbox() {
     };
 
     useEffect(() => {
+        // Carga de datos en el montaje: el setState ocurre tras el await, no de forma síncrona.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchMessages();
     }, []);
 
@@ -97,7 +99,7 @@ export default function ContactInbox() {
                                     </div>
                                     <div className="flex-1">
                                         <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative italic leading-relaxed text-slate-600">
-                                            "{m.mensaje}"
+                                            &quot;{m.mensaje}&quot;
                                         </div>
                                     </div>
                                     <div className="flex flex-row md:flex-col justify-end gap-2">

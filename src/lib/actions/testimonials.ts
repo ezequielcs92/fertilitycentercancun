@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 import { revalidatePath } from 'next/cache'
 import { autoTranslateText } from '@/lib/i18n/auto-translate'
 
@@ -9,6 +10,11 @@ export interface TestimonialSubmission {
     mensaje: string
     calificacion?: number
     status?: 'pending' | 'approved' | 'rejected'
+}
+
+export interface Testimonial extends TestimonialSubmission {
+    id: string
+    created_at: string
 }
 
 export async function submitTestimonial(data: TestimonialSubmission) {
@@ -42,6 +48,9 @@ export async function submitTestimonial(data: TestimonialSubmission) {
 }
 
 export async function updateTestimonial(id: string, data: Partial<TestimonialSubmission> & { status?: string }) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
 
     if (!supabase) {
@@ -64,6 +73,9 @@ export async function updateTestimonial(id: string, data: Partial<TestimonialSub
 }
 
 export async function deleteTestimonial(id: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
 
     if (!supabase) {
@@ -110,7 +122,7 @@ export async function getTestimonials(status?: string, locale = 'es') {
     }
 
     return await Promise.all(
-        (data || []).map(async (testimonial: any) => ({
+        (data || []).map(async (testimonial: Testimonial) => ({
             ...testimonial,
             mensaje: await autoTranslateText(testimonial.mensaje, locale)
         }))

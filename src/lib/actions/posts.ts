@@ -1,8 +1,16 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 import { revalidatePath } from 'next/cache'
 import { autoTranslateHtml, autoTranslateText } from '@/lib/i18n/auto-translate'
+
+export interface Category {
+    id: string
+    nombre: string
+    slug: string
+    descripcion?: string
+}
 
 export interface Post {
     id: string
@@ -44,13 +52,10 @@ export async function getPublishedPosts(limit = 12, offset = 0, locale = 'es') {
 
     if (error) {
         console.error('Error fetching posts:', {
-            message: error?.message,
-            code: (error as any)?.code,
-            details: (error as any)?.details,
-            hint: (error as any)?.hint,
-            name: error?.name,
-            stack: error?.stack,
-            rawString: String(error)
+            message: error.message,
+            code: error.code,
+            details: error.details,
+            hint: error.hint
         })
         return []
     }
@@ -92,12 +97,16 @@ export async function getPostBySlug(slug: string, locale = 'es') {
     `)
         .eq('slug', slug)
         .eq('status', 'published')
-        .single()
+        .maybeSingle()
 
     if (error) {
         console.error('Error fetching post:', error)
         return null
     }
+
+    // Slug inexistente en Supabase: puede ser un artículo heredado de WordPress,
+    // así que no es un error — quien llama decide el fallback.
+    if (!data) return null
 
     // Incrementar contador de vistas
     await supabase
@@ -199,7 +208,7 @@ export async function getCategoriesTranslated(locale = 'es') {
     }
 
     return await Promise.all(
-        (categories || []).map(async (category: any) => ({
+        (categories || []).map(async (category: Category) => ({
             ...category,
             nombre: await autoTranslateText(category.nombre, locale),
             descripcion: await autoTranslateText(category.descripcion, locale)
@@ -241,10 +250,14 @@ export async function getRelatedPosts(postId: string, categoryId: string | null,
  * Guarda un post (crear o actualizar)
  */
 export async function savePost(post: Partial<Post>) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false, error: 'Client not initialized' }
 
-    const { id, categoria, ...data } = post as any
+    // `categoria` es la relación expandida en las lecturas, no una columna.
+    const { id, categoria: _categoria, ...data } = post
 
     let result
     if (id) {
@@ -284,6 +297,9 @@ export async function savePost(post: Partial<Post>) {
  * Elimina un post
  */
 export async function deletePost(id: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false, error: 'Client not initialized' }
 
@@ -304,12 +320,14 @@ export async function deletePost(id: string) {
  * Cambia el estado de un post
  */
 export async function togglePostStatus(id: string, currentStatus: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false, error: 'Client not initialized' }
 
     const newStatus = currentStatus === 'published' ? 'draft' : 'published'
-    const
-        payload: any = { status: newStatus }
+    const payload: { status: string; fecha_publicacion?: string } = { status: newStatus }
 
     if (newStatus === 'published') {
         payload.fecha_publicacion = new Date().toISOString()

@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { savePost, type Post } from '@/lib/actions/posts';
-import { getCategories } from '@/lib/actions/posts';
+import { savePost, getCategories, type Category, type Post } from '@/lib/actions/posts';
 import { Button } from '@/components/ui/Button';
 import RichTextEditor from './RichTextEditor';
 import { ArrowLeft, Save, Image as ImageIcon, Sparkles, UploadCloud, Loader2 } from 'lucide-react';
@@ -19,7 +18,7 @@ export default function PostForm({ initialData }: PostFormProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [uploadingImage, setUploadingImage] = useState(false);
-    const [categories, setCategories] = useState<any[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
     const [formData, setFormData] = useState<Partial<Post>>(initialData || {
         titulo: '',
         slug: '',
@@ -84,8 +83,8 @@ export default function PostForm({ initialData }: PostFormProps) {
                 .getPublicUrl(filePath);
 
             setFormData(prev => ({ ...prev, imagen_banner_url: publicUrl }));
-        } catch (error: any) {
-            setError('Error al subir la imagen: ' + error.message);
+        } catch (error) {
+            setError('Error al subir la imagen: ' + (error instanceof Error ? error.message : 'error desconocido'));
         } finally {
             setUploadingImage(false);
         }
@@ -105,7 +104,7 @@ export default function PostForm({ initialData }: PostFormProps) {
                 setError(result.error || 'Ocurrió un error al guardar.');
                 setLoading(false);
             }
-        } catch (err) {
+        } catch (_err) {
             setError('Error de conexión.');
             setLoading(false);
         }

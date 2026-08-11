@@ -1,184 +1,136 @@
-# 🚀 Configuración Final - Fertility Center Cancun
+# Puesta a punto del entorno
 
-## ✅ Pasos Completados
-
-1. ✅ Credenciales de Supabase configuradas en `.env.local`
-2. ✅ Arquitectura completa implementada
-3. ✅ Componente ContactForm creado
+Checklist de lo que hay que configurar **fuera del código** para que el sitio
+funcione completo. Para la arquitectura y los scripts, ver [`README.md`](README.md).
 
 ---
 
-## 📋 Pasos Pendientes (Acción Requerida)
-
-### 1. Ejecutar SQL en Supabase
-
-**Instrucciones**:
-
-1. Ve a tu proyecto Supabase: https://supabase.com/dashboard/project/albhkcvkihratkrxcavi
-
-2. Navega a: **SQL Editor** (en el menú lateral izquierdo)
-
-3. Haz clic en **"New Query"**
-
-4. Copia y pega el siguiente SQL:
-
-```sql
--- Crear tabla para almacenar leads del formulario de contacto
-CREATE TABLE IF NOT EXISTS public.leads (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  nombre TEXT NOT NULL,
-  email TEXT NOT NULL,
-  telefono TEXT,
-  pais TEXT,
-  tratamiento TEXT,
-  mensaje TEXT,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
-);
-
--- Habilitar RLS en la tabla
-ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
-
--- Política: Permitir INSERT sin autenticación (formulario público)
-DROP POLICY IF EXISTS "Permitir inserción pública de leads" ON public.leads;
-CREATE POLICY "Permitir inserción pública de leads"
-  ON public.leads
-  FOR INSERT
-  WITH CHECK (true);
-
--- Política: Solo usuarios autenticados pueden leer leads
-DROP POLICY IF EXISTS "Solo admins pueden leer leads" ON public.leads;
-CREATE POLICY "Solo admins pueden leer leads"
-  ON public.leads
-  FOR SELECT
-  USING (auth.role() = 'authenticated');
-
--- Índices para optimizar consultas
-CREATE INDEX IF NOT EXISTS idx_leads_email ON public.leads(email);
-CREATE INDEX IF NOT EXISTS idx_leads_created_at ON public.leads(created_at DESC);
-CREATE INDEX IF NOT EXISTS idx_leads_tratamiento ON public.leads(tratamiento);
-```
-
-5. Haz clic en **"Run"** o presiona `Ctrl+Enter`
-
-6. Deberías ver el mensaje: ✅ **"Success. No rows returned"**
-
----
-
-### 2. Verificar la Tabla
-
-Después de ejecutar el SQL:
-
-1. Ve a: **Table Editor** (menú lateral)
-2. Deberías ver la tabla **`leads`** con las siguientes columnas:
-   - id
-   - nombre
-   - email
-   - telefono
-   - pais
-   - tratamiento
-   - mensaje
-   - created_at
-
----
-
-### 3. Probar el Formulario Localmente
-
-Ejecuta el servidor de desarrollo:
+## 1. Variables de entorno
 
 ```bash
+cp .env.example .env.local
+```
+
+Rellena al menos:
+
+| Variable | Para qué |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Base de datos, auth y storage |
+| `NEXT_PUBLIC_SITE_URL` | Canonical, hreflang, sitemap y RSS |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Anti-spam. **En producción el formulario se bloquea si faltan** |
+| `RESEND_API_KEY` | Aviso por correo de cada lead |
+| `UPNIFY_INTEGRATION_URL_ES` / `_EN` | Alta del lead en el CRM |
+| `ADMIN_EMAILS` | Acceso al panel durante el arranque |
+
+El resto está documentado en `.env.example`.
+
+---
+
+## 2. Base de datos
+
+En **Supabase → SQL Editor**, ejecutar en este orden:
+
+1. `supabase-schema.sql` — tabla `leads`
+2. `supabase-schema-fase2.sql` — blog, equipo, podcasts, comentarios
+3. `supabase-schema-contact-messages.sql` — bandeja de contacto
+4. `supabase-schema-admin-updates.sql` — testimonios de pacientes
+5. `supabase-schema-admin-roles.sql` — **control de acceso por rol**
+
+### ⚠️ Antes de ejecutar el paso 5
+
+Abre el archivo y descomenta el `INSERT` que da de alta al primer administrador,
+poniendo tu correo:
+
+```sql
+INSERT INTO public.admin_users (user_id, email)
+SELECT id, email FROM auth.users WHERE email = 'tu-correo@afcc.com.mx'
+ON CONFLICT (user_id) DO NOTHING;
+```
+
+Para ver qué cuentas existen:
+
+```sql
+SELECT id, email, created_at FROM auth.users ORDER BY created_at;
+```
+
+Si no lo haces, nadie podrá entrar al panel. (El código tiene una salida de
+emergencia: la variable `ADMIN_EMAILS`.)
+
+### ⚠️ Cerrar el alta de usuarios
+
+**Authentication → Providers → Email → desactivar "Enable Sign Ups".**
+
+Con el registro abierto cualquiera puede crearse una cuenta. La migración del
+paso 5 impide que esa cuenta administre el sitio, pero el alta debe cerrarse
+igualmente.
+
+---
+
+## 3. Storage
+
+Crear tres buckets **públicos en lectura**:
+
+- `blog-images`
+- `team-photos`
+- `galeria-familias`
+
+Las políticas de escritura (solo administradores) las aplica
+`supabase-schema-admin-roles.sql`.
+
+---
+
+## 4. Verificación
+
+```bash
+npm install
+npm run typecheck
+npm run lint
+npm run build
 npm run dev
 ```
 
-1. Abre http://localhost:3000
-2. Scroll hasta el formulario de contacto
-3. Completa todos los campos requeridos:
-   - Nombre completo
-   - Email
-   - Teléfono
-   - País
-   - Tratamiento de interés
-4. (Opcional) Agrega un mensaje
-5. Haz clic en **"Solicitar Consulta"**
+Comprobaciones manuales:
 
-**Resultado esperado**:
-- ✅ Aparece mensaje de éxito en verde
-- ✅ El formulario se limpia automáticamente
+- [ ] `/es` y `/en` cargan con Navbar y Footer
+- [ ] Una página de tratamiento (`/es/inseminacion-artificial`) muestra su propio
+      `<title>` y `<meta name="description">` en el HTML
+- [ ] `/sitemap.xml` lista las páginas de contenido y los posts
+- [ ] `/robots.txt` responde y apunta al sitemap
+- [ ] El formulario de contacto guarda en `leads`, dispara el correo y crea el
+      registro en Upnify
+- [ ] `/admin` con una cuenta **no** administradora muestra "Acceso no autorizado"
+- [ ] `/admin` con una cuenta administradora carga el dashboard
+- [ ] Un post creado desde `/admin/blog` se ve en `/es/blog/<slug>`
 
 ---
 
-### 4. Verificar en Supabase
+## 5. Despliegue
 
-1. Ve a: **Table Editor** → **leads**
-2. Deberías ver tu registro de prueba
-3. Verificar que todos los campos se guardaron correctamente
+Docker (`output: 'standalone'`) sobre Coolify. Ver
+[`coolify_ubuntu_deploy.md`](coolify_ubuntu_deploy.md).
 
----
-
-## 🎯 Checklist de Verificación
-
-- [ ] SQL ejecutado en Supabase ✓
-- [ ] Tabla `leads` visible en Table Editor ✓
-- [ ] Servidor dev corriendo (`npm run dev`) ✓
-- [ ] Formulario carga sin errores ✓
-- [ ] Formulario se envía exitosamente ✓
-- [ ] Datos aparecen en Supabase ✓
+Todas las variables de `.env.example` deben existir también en el entorno de
+producción: las que faltan no rompen el build, pero degradan el sitio en
+silencio (sin `TURNSTILE_SECRET_KEY` el formulario deja de aceptar envíos; sin
+`NEXT_PUBLIC_SITE_URL` los canonical apuntan al dominio por defecto).
 
 ---
 
-## 🐛 Troubleshooting
+## Problemas frecuentes
 
-### Si el formulario no se envía:
+**"Acceso no autorizado" con la cuenta correcta**
+La cuenta no está en `admin_users`. Añádela con el `INSERT` del paso 2 o
+inclúyela temporalmente en `ADMIN_EMAILS`.
 
-1. **Abre la consola del navegador** (F12 → Console)
-2. Busca errores relacionados con Supabase
-3. **Verifica** que `.env.local` tiene las credenciales correctas
-4. **Reinicia** el servidor de desarrollo (`Ctrl+C` y luego `npm run dev`)
+**En los logs aparece "La tabla `admin_users` no existe"**
+No se ejecutó `supabase-schema-admin-roles.sql`. Mientras tanto el panel sigue
+abierto a cualquier usuario autenticado.
 
-### Si aparece error de RLS:
+**El formulario responde "Sistema anti-spam no configurado"**
+Falta `TURNSTILE_SECRET_KEY` en producción.
 
-Significa que las políticas de seguridad no se aplicaron. Vuelve a ejecutar la sección de políticas del SQL:
+**Un post nuevo del panel da 404**
+El slug debe ser único y el post estar en estado `published`.
 
-```sql
-ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
-
-DROP POLICY IF EXISTS "Permitir inserción pública de leads" ON public.leads;
-CREATE POLICY "Permitir inserción pública de leads"
-  ON public.leads
-  FOR INSERT
-  WITH CHECK (true);
-```
-
----
-
-## 🚀 Deploy a Vercel
-
-Una vez que hayas verificado que todo funciona localmente:
-
-1. **Configurar variables de entorno en Vercel**:
-   - Ve a tu proyecto en Vercel
-   - Settings → Environment Variables
-   - Agrega:
-     - `NEXT_PUBLIC_SUPABASE_URL` = `https://albhkcvkihratkrxcavi.supabase.co`
-     - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `eyJhbGci...` (tu key completa)
-
-2. **Push a Git**:
-   ```bash
-   git add .
-   git commit -m "feat: add contact form with Supabase integration"
-   git push
-   ```
-
-3. Vercel deployará automáticamente
-
----
-
-## ✨ ¡Listo!
-
-Tu sitio web de Fertility Center Cancun está completo con:
-- ✅ Formulario de contacto funcional
-- ✅ Integración con Supabase
-- ✅ Diseño médico premium
-- ✅ Validación completa
-- ✅ Responsive y optimizado
-
-**Próximo paso**: Panel de administración para gestionar los leads (Fase 2)
+**Error de RLS al escribir desde el panel**
+Las políticas del paso 5 no se aplicaron, o la cuenta no está en `admin_users`.

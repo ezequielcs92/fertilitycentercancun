@@ -2,17 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Hero from '@/components/sections/Hero';
-import QuoteSection from '@/components/sections/QuoteSection';
 import TreatmentsGrid from '@/components/sections/TreatmentsGrid';
 import AboutClinic from '@/components/sections/AboutClinic';
-import MedicalTeam from '@/components/sections/MedicalTeam';
 import SuccessStories from '@/components/sections/SuccessStories';
 import SuccessRates from '@/components/sections/SuccessRates';
 import ContactForm from '@/components/forms/ContactForm';
-import { motion } from 'framer-motion';
 import { Award, ArrowRight, ShieldCheck, Microscope, Heart, Users, MapPin, Sparkles } from 'lucide-react';
-import GlassCard from '@/components/ui/GlassCard';
 import { Container } from '@/components/ui/Container';
 import { useLocale } from 'next-intl';
 
@@ -25,7 +22,7 @@ export default function HomePage() {
   return (
     <main className="bg-white">
       {/* 1. Impact Hero - Inspired by Ingenes */}
-      <Hero />
+      <Hero rightContent={<ContactForm compact />} />
 
       {/* 2. Trust Metrics / Partners */}
       <ScrollReveal delay={0.1}>
@@ -64,12 +61,7 @@ export default function HomePage() {
         <SuccessStories />
       </ScrollReveal>
 
-      {/* 6. Medical Team */}
-      <ScrollReveal>
-        <MedicalTeam />
-      </ScrollReveal>
-
-      {/* 7. Final Call to Action */}
+      {/* 8. Final Call to Action */}
       <ScrollReveal direction="down">
         <section className="py-24 bg-brand-violet relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
@@ -99,9 +91,9 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      {/* 8. Contact Section */}
+      {/* 9. Contact Information */}
       <ScrollReveal>
-        <section id="contacto" className="py-24 bg-white overflow-hidden">
+        <section className="py-24 bg-white overflow-hidden">
           <Container>
             <div className="grid md:grid-cols-2 gap-20 items-center">
               <div>
@@ -183,10 +175,16 @@ export default function HomePage() {
 
               <div className="relative">
                 <div className="absolute -inset-4 bg-brand-violet/5 rounded-[4rem] blur-2xl opacity-50" />
-                <div className="relative bg-white rounded-[3.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(117,98,162,0.1)] border border-slate-50">
-                  <ContactForm />
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[3.5rem] shadow-[0_20px_50px_rgba(117,98,162,0.1)] border border-slate-50">
+                  <Image
+                    src="/medical-team.jpg"
+                    alt="Fertility Center Cancun Medical Team"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
+
             </div>
           </Container>
         </section>

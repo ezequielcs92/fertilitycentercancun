@@ -1,8 +1,25 @@
 import React from 'react';
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
-import { ExternalLink, Globe, CheckCircle, ShieldCheck, Microscope, Heart } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
+import { ExternalLink, Globe, ShieldCheck, Microscope, Heart } from 'lucide-react';
+import { buildRouteMetadata } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildRouteMetadata({
+    locale,
+    es: {
+      path: 'experiencia',
+      title: 'La Experiencia AFCC',
+      description: 'Recorre nuestras instalaciones, laboratorios de FIV y áreas de atención. Descubre cómo es vivir tu tratamiento de fertilidad en Cancún.',
+    },
+    en: {
+      path: 'experiencia',
+      title: 'The AFCC Experience',
+      description: 'Take a look at our facilities, IVF laboratories and patient areas. Discover what going through fertility treatment in Cancun feels like.',
+    },
+  });
+}
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

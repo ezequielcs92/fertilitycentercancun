@@ -3,8 +3,8 @@
         "tagline": "14 Years Experience",
         "title": "We make your <italic>dream a reality.</italic>",
         "description": "At Advanced Fertility Center Cancun, we combine cutting-edge technology with a warm and inclusive approach to provide you with the highest probability of success in your treatment.",
-        "cta": "Treatments",
-        "stats_button": "First Time",
+        "cta": "Promotions",
+        "stats_button": "Schedule a free video call",
         "care_title": "Human Care",
         "care_subtitle": "Personalized attention 24/7",
         "stats": {
@@ -40,12 +40,16 @@
         },
         "treatments": {
             "fiv": "IVF - In Vitro Fertilization",
+            "mini_fiv": "Mini IVF",
             "egg_donation": "Egg Donation",
+            "sperm_donation": "LifeStart Donation Program",
             "artificial_insemination": "Artificial Insemination",
             "ropa": "ROPA Method",
             "genetic": "PGT-A - Genetic Testing",
             "preservation": "Fertility Preservation",
             "embryo_donation": "Embryo Donation",
+            "timed_intercourse": "Timed Intercourse",
+            "transfer": "Embryo Transfer",
             "lgbt": "Inclusive Fertility Program",
             "consultation": "Specialized Consultation"
         },
@@ -262,6 +266,7 @@
                     "first_visit": "First Visit"
                 }
             },
+            "promotions": "Promotions",
             "contact": "Contact"
         }
     }

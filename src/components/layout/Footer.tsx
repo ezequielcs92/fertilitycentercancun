@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { useSitePhone } from '@/components/ui/SitePhoneLink';
 
 // Social icon SVGs inline para Tiktok, X, Spotify, Maps
 const TiktokIcon = () => (
@@ -49,6 +50,7 @@ export default function Footer() {
     const locale = useLocale();
     const isEs = locale === 'es';
     const route = (es: string, en: string) => (isEs ? es : en);
+    const sitePhone = useSitePhone();
 
     const footerLinks = [
         {
@@ -162,7 +164,7 @@ export default function Footer() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-base text-white/40">
                         <div className="flex items-center gap-3">
                             <Phone className="w-4 h-4 text-brand-green" />
-                            <span>+52 998 803 5530</span>
+                            <a href={sitePhone.href} className="hover:text-white transition-colors">{sitePhone.display}</a>
                         </div>
                         <div className="flex items-center gap-3">
                             <Mail className="w-4 h-4 text-brand-green" />

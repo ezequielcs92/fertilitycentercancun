@@ -5,6 +5,24 @@ import ContactForm from '@/components/forms/ContactForm';
 import { Phone, Mail, MapPin, ExternalLink, Globe, Instagram, Facebook, Youtube, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 import SitePhoneLink, { SitePhoneText } from '@/components/ui/SitePhoneLink';
+import { buildRouteMetadata } from '@/lib/seo';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildRouteMetadata({
+    locale,
+    es: {
+      path: 'contacto',
+      title: 'Contacto',
+      description: 'Agenda tu consulta de fertilidad en Cancún. Escríbenos y nuestro equipo médico te responderá con una valoración personalizada en menos de 24 horas.',
+    },
+    en: {
+      path: 'contact-ivf-doctors',
+      title: 'Contact Us',
+      description: 'Book your fertility consultation in Cancun. Write to us and our medical team will reply with a personalized assessment within 24 hours.',
+    },
+  });
+}
 
 export default async function Page({
   params
@@ -25,12 +43,12 @@ export default async function Page({
       />
 
       <Container className="py-20">
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          {/* Left Side: Info & Details */}
-          <div className="space-y-16">
+        {/* Sección: Texto + Formulario */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+          <div className="space-y-16 min-w-0">
             <section>
               <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-base">{isEs ? 'Atención Personalizada' : 'Personalized Care'}</span>
-              <h2 className="text-5xl font-serif text-brand-violet mt-4 mb-8 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-serif text-brand-violet mt-4 mb-8 leading-tight">
                 {isEs ? 'Estamos aquí para ' : 'We are here to '}
                 <span className="text-brand-green italic underline decoration-brand-green/30">{isEs ? 'ayudarte' : 'help you'}</span>
               </h2>
@@ -128,22 +146,20 @@ export default async function Page({
             </div>
           </div>
 
-          {/* Right Side: Form Card */}
-          <div className="sticky top-32">
-            <div className="bg-slate-50/50 rounded-[4rem] p-4">
-              <div className="bg-white rounded-[3.5rem] p-10 md:p-14 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-violet/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
+          {/* Formulario */}
+          <div id="formulario" className="bg-slate-50/50 rounded-[4rem] p-4 min-w-0 scroll-mt-32">
+            <div className="bg-white rounded-[3.5rem] p-10 md:p-14 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-violet/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
 
-                <div className="text-center mb-12 relative z-10">
-                  <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <MessageSquare className="w-8 h-8 text-brand-green" />
-                  </div>
-                  <h3 className="text-3xl font-serif text-brand-violet leading-tight">{isEs ? 'Envíanos un mensaje' : 'Send us a message'}</h3>
-                  <p className="text-slate-500 mt-4 font-light text-base">{isEs ? 'Pronto nos pondremos en contacto contigo para resolver todas tus dudas.' : 'We will get in touch with you shortly to answer all your questions.'}</p>
+              <div className="text-center mb-12 relative z-10">
+                <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <MessageSquare className="w-8 h-8 text-brand-green" />
                 </div>
-
-                <ContactForm />
+                <h3 className="text-3xl font-serif text-brand-violet leading-tight">{isEs ? 'Envíanos un mensaje' : 'Send us a message'}</h3>
+                <p className="text-slate-500 mt-4 font-light text-base">{isEs ? 'Pronto nos pondremos en contacto contigo para resolver todas tus dudas.' : 'We will get in touch with you shortly to answer all your questions.'}</p>
               </div>
+
+              <ContactForm />
             </div>
           </div>
         </div>
@@ -168,11 +184,11 @@ function ContactMethod({ icon, title, lines }: { icon: React.ReactNode, title: s
             {line.cell ? (
               line.cell
             ) : line.href ? (
-              <a href={line.href} className="text-base text-slate-600 hover:text-brand-violet transition-colors font-medium">
+              <a href={line.href} className="text-base text-slate-600 hover:text-brand-violet transition-colors font-medium break-all">
                 {line.value}
               </a>
             ) : (
-              <span className="text-base text-slate-600 font-medium">{line.value}</span>
+              <span className="text-base text-slate-600 font-medium break-all">{line.value}</span>
             )}
           </div>
         ))}

@@ -27,7 +27,7 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({ onSuccess }) =
             } else {
                 setError(result.error || 'Ocurrió un error al enviar tu testimonio.');
             }
-        } catch (err) {
+        } catch (_err) {
             setError('Error de conexión. Por favor intenta de nuevo.');
         } finally {
             setLoading(false);

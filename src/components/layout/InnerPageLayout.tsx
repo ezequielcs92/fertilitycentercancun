@@ -3,9 +3,6 @@
 import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
-import GlassCard from '@/components/ui/GlassCard';
-import { Heart, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
 
 interface InnerPageLayoutProps {
     title: string;

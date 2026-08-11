@@ -3,9 +3,8 @@ import React from 'react';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import BlogGrid from '@/components/blog/BlogGrid';
-import { getPublishedPosts, getCategoriesTranslated, type Post } from '@/lib/actions/posts';
-import GlassCard from '@/components/ui/GlassCard';
-import { Search, Sparkles } from 'lucide-react';
+import { getPublishedPosts, getCategoriesTranslated, type Category } from '@/lib/actions/posts';
+import { Search } from 'lucide-react';
 import Link from 'next/link';
 
 export const revalidate = 3600;
@@ -56,7 +55,7 @@ export default async function Page({
             >
               {isEs ? 'Todos' : 'All'}
             </Link>
-            {categories?.length > 0 ? categories.map((cat: any) => (
+            {categories?.length > 0 ? categories.map((cat: Category) => (
               <Link
                 key={cat.id}
                 href={`/blog/categoria/${cat.slug}`}

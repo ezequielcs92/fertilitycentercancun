@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Plus, Edit, Trash2, UserPlus, Search } from 'lucide-react';
+import { Edit, Trash2, UserPlus, Search } from 'lucide-react';
 import Link from 'next/link';
 import { getTeamMembers, deleteTeamMember, type TeamMember } from '@/lib/actions/team';
 import { Button } from '@/components/ui/Button';
@@ -19,6 +19,8 @@ export default function TeamManagerPage() {
     };
 
     useEffect(() => {
+        // Carga de datos en el montaje: el setState ocurre tras el await, no de forma síncrona.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchMembers();
     }, []);
 

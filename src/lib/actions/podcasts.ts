@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/auth/admin'
 import { revalidatePath } from 'next/cache'
 import { autoTranslateText } from '@/lib/i18n/auto-translate'
 
@@ -73,10 +74,13 @@ export async function getPodcastById(id: string, locale = 'es') {
 }
 
 export async function savePodcast(podcast: Partial<Podcast>) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false, error: 'Client not initialized' }
 
-    const { id, ...payload } = podcast as any
+    const { id, ...payload } = podcast
 
     let result
     if (id) {
@@ -104,6 +108,9 @@ export async function savePodcast(podcast: Partial<Podcast>) {
 }
 
 export async function deletePodcast(id: string) {
+    const denied = await requireAdmin()
+    if (denied) return denied
+
     const supabase = await createClient()
     if (!supabase) return { success: false, error: 'Client not initialized' }
 
