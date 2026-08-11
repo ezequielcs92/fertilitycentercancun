@@ -29,12 +29,19 @@ export default async function proxy(request: NextRequest) {
 export const config = {
     matcher: [
         /*
-         * Match all request paths except for the ones starting with:
-         * - _next/static (static files)
-         * - _next/image (image optimization files)
-         * - favicon.ico (favicon file)
-         * - public assets
+         * Todo menos:
+         * - api
+         * - los internos de Next (_next, _vercel)
+         * - cualquier ruta con extension
+         *
+         * Lo ultimo es imprescindible: el matcher anterior solo excluia
+         * imagenes por extension, asi que next-intl anteponia el idioma a
+         * robots.txt, sitemap.xml y rss.xml, y esas rutas no existen con
+         * prefijo. Google recibia un 307 a /es/robots.txt y un 404 detras.
+         *
+         * Ningun slug del sitio lleva punto, asi que excluir las rutas con
+         * extension no deja ninguna pagina sin localizar.
          */
-        '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+        '/((?!api|_next|_vercel|.*\\..*).*)',
     ],
 }
