@@ -62,13 +62,27 @@ interface UpnifyFieldMap {
 }
 
 /**
- * El CRM muestra las etiquetas entre corchetes ([TRATAMIENTODEINTERES]), pero la
- * API espera el nombre pelado. Se normaliza aquí para que dé igual cómo se copie
- * el valor a la variable de entorno.
+ * Prefijo que Upnify exige para los campos personalizados. Los campos de
+ * sistema (nombre, correo, telefono, comentarios) van sin él.
+ */
+const CUSTOM_FIELD_PREFIX = 'cp.'
+
+/**
+ * Normaliza el nombre de un campo personalizado.
+ *
+ * El CRM muestra las etiquetas entre corchetes ([TRATAMIENTODEINTERES]) y la
+ * API las espera peladas y con el prefijo `cp.`. Se resuelven las dos cosas
+ * aquí para que dé igual cómo se copie el valor a la variable de entorno:
+ * `[TRATAMIENTODEINTERES]`, `TRATAMIENTODEINTERES` y `cp.TRATAMIENTODEINTERES`
+ * terminan todas en `cp.TRATAMIENTODEINTERES`.
  */
 function normalizeFieldName(value: string | undefined): string | undefined {
     const clean = value?.trim().replace(/^\[|\]$/g, '').trim()
-    return clean || undefined
+    if (!clean) return undefined
+
+    return clean.toLowerCase().startsWith(CUSTOM_FIELD_PREFIX)
+        ? clean
+        : `${CUSTOM_FIELD_PREFIX}${clean}`
 }
 
 function readUpnifyFieldMap(locale: 'es' | 'en'): UpnifyFieldMap {

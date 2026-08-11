@@ -120,6 +120,19 @@ UPNIFY_TREATMENT_FIELD=TRATAMIENTODEINTERES
 UPNIFY_COUNTRY_FIELD=PAISUSUARIO
 ```
 
+La API de Upnify espera los campos personalizados con el prefijo `cp.`. El
+código lo añade solo, así que el valor de la variable puede escribirse de
+cualquiera de estas tres formas y termina igual:
+
+| En la variable | Se envía como |
+| --- | --- |
+| `TRATAMIENTODEINTERES` | `cp.TRATAMIENTODEINTERES` |
+| `[TRATAMIENTODEINTERES]` | `cp.TRATAMIENTODEINTERES` |
+| `cp.TRATAMIENTODEINTERES` | `cp.TRATAMIENTODEINTERES` |
+
+Los campos de sistema (`nombre`, `apellidos`, `correo`, `telefono`, `movil`,
+`comentarios`) van sin prefijo.
+
 Payload verificado contra un endpoint de prueba, con estos mismos valores:
 
 ```json
