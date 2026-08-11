@@ -125,6 +125,8 @@ export interface ActionResult {
  */
 const UPNIFY_API_BASE = (process.env.UPNIFY_API_BASE_URL?.trim() || 'https://api.salesup.com/integraciones').replace(/\/$/, '')
 
+const warnedIntegrations = new Set<string>()
+
 function resolveUpnifyIntegrationUrl(locale: 'es' | 'en'): string | null {
     const suffix = locale === 'en' ? 'EN' : 'ES'
     const directUrl = process.env[`UPNIFY_INTEGRATION_URL_${suffix}`]?.trim()
@@ -137,18 +139,25 @@ function resolveUpnifyIntegrationUrl(locale: 'es' | 'en'): string | null {
         return `${UPNIFY_API_BASE}/${integrationToken}`
     }
 
-    // Mantiene operativa la integración existente mientras se configuran las dos nuevas.
+    // Fallback a la integración única heredada. Sirve de red de seguridad, pero
+    // manda el lead a la integración equivocada: la vieja tiene otra fase, otro
+    // origen y la etiqueta de español fija. Se avisa para que no pase inadvertido.
     const legacyUrl = process.env.UPNIFY_INTEGRATION_URL?.trim()
-    if (legacyUrl) {
-        return legacyUrl
-    }
-
     const legacyToken = process.env.UPNIFY_INTEGRATION_TOKEN?.trim()
-    if (legacyToken) {
-        return `${UPNIFY_API_BASE}/${legacyToken}`
+    const legacy = legacyUrl || (legacyToken ? `${UPNIFY_API_BASE}/${legacyToken}` : null)
+
+    if (!warnedIntegrations.has(suffix)) {
+        warnedIntegrations.add(suffix)
+        console.error(
+            `[crm] Falta UPNIFY_INTEGRATION_URL_${suffix}: los leads en ` +
+            `${locale === 'en' ? 'ingles' : 'espanol'} ` +
+            (legacy
+                ? 'se estan enviando a la integracion heredada, con la fase, el origen y la etiqueta equivocados.'
+                : 'NO se estan registrando en el CRM. Quedan en Supabase y en el correo marcado [NO ENTRO AL CRM].')
+        )
     }
 
-    return null
+    return legacy
 }
 
 function splitName(fullName: string): { nombre: string; apellidos?: string } {
