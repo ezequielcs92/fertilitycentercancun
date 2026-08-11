@@ -124,10 +124,15 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
                 setErrors({})
                 setCaptchaToken(null)
             } else {
+                // El paciente ve un mensaje amable; el motivo tecnico va a la
+                // consola, que es lo unico que permite diagnosticar por que un
+                // lead no llego al CRM sin acceso a los logs del servidor.
+                console.error('[formulario] el lead no se registro:', result.error || result.message)
                 setSubmitStatus('error')
                 setSubmitMessage(result.message)
             }
-        } catch {
+        } catch (error) {
+            console.error('[formulario] fallo la accion del servidor:', error)
             setSubmitStatus('error')
             setSubmitMessage(t('errors.connection_error'))
         } finally {

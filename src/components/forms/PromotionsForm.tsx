@@ -89,6 +89,7 @@ export default function PromotionsForm({ locale }: PromotionsFormProps) {
             });
 
             if (!result.success) {
+                console.error('[formulario] el lead no se registro:', result.error || result.message);
                 throw new Error(result.message);
             }
 
@@ -96,7 +97,8 @@ export default function PromotionsForm({ locale }: PromotionsFormProps) {
             setMessage(isEs ? 'Gracias. Nuestro equipo te contactará pronto.' : 'Thank you. Our team will contact you soon.');
             setFormData({ nombre: '', email: '', telefono: '', promocion: '', mensaje: '' });
             setCaptchaToken(null);
-        } catch {
+        } catch (error) {
+            console.error('[formulario] fallo el envio de la promocion:', error);
             setStatus('error');
             setMessage(isEs ? 'No pudimos enviar tu solicitud. Inténtalo nuevamente.' : 'We could not send your request. Please try again.');
         } finally {
