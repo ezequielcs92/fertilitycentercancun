@@ -53,17 +53,23 @@ CREATE POLICY "Admins gestionan admins"
   WITH CHECK (public.is_admin());
 
 -- --------------------------------------------
--- 3. IMPORTANTE — Alta del primer administrador
+-- 3. Alta del administrador
 -- --------------------------------------------
--- Sin este paso te quedas fuera del panel. Sustituye el correo por el tuyo y
--- descomenta:
+-- Sin este paso nadie puede entrar al panel.
 --
--- INSERT INTO public.admin_users (user_id, email)
--- SELECT id, email FROM auth.users WHERE email = 'tu-correo@afcc.com.mx'
--- ON CONFLICT (user_id) DO NOTHING;
---
--- Para ver qué cuentas existen hoy en el proyecto:
+-- A fecha de esta migración, la única cuenta del proyecto es
+-- admin@fertilitycentercancun.com, así que se da de alta directamente.
+
+INSERT INTO public.admin_users (user_id, email)
+SELECT id, email FROM auth.users WHERE email = 'admin@fertilitycentercancun.com'
+ON CONFLICT (user_id) DO NOTHING;
+
+-- Para añadir más administradores en el futuro, repetir el INSERT con el otro
+-- correo. Para ver qué cuentas existen:
 --   SELECT id, email, created_at FROM auth.users ORDER BY created_at;
+--
+-- Comprobar quién quedó como administrador:
+--   SELECT email, created_at FROM public.admin_users;
 
 -- --------------------------------------------
 -- 4. Sustituir las políticas permisivas por control de rol
