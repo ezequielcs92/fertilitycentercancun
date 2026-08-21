@@ -8,6 +8,7 @@ import FloatingElements from '@/components/ui/FloatingElements';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import PromoPopup from '@/components/ui/PromoPopup';
+import GoogleAdsTracking from '@/components/GoogleAdsTracking';
 import UtmTracker from '@/components/analytics/UtmTracker';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://fertilitycentercancun.com').replace(/\/$/, '');
@@ -98,6 +99,7 @@ export default async function LocaleLayout({
                 <Footer />
             </div>
             <PromoPopup />
+            <GoogleAdsTracking />
         </NextIntlClientProvider>
     );
 }
