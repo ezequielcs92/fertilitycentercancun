@@ -90,10 +90,10 @@ export default function PromoPopup() {
                             aria-label={isEs ? 'Ver promociones' : 'View promotions'}
                         >
                             <Image
-                                src={isEs ? '/images/promo-popup-es.png' : '/images/promo-popup-en.png'}
+                                src={isEs ? '/images/promo-popup-es.jpg' : '/images/promo-popup-en.jpg'}
                                 alt={isEs ? 'Promoción FIV - Advanced Fertility Center Cancún' : 'IVF Promotion - Advanced Fertility Center Cancun'}
-                                width={1000}
-                                height={1000}
+                                width={1080}
+                                height={1350}
                                 className="w-full h-auto max-h-[85vh] object-contain"
                                 priority
                             />
