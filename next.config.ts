@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
     // Optimización activa: Next sirve WebP/AVIF redimensionado. Requiere `sharp`
     // en dependencies (ya declarado) también en el runtime standalone.
     formats: ['image/avif', 'image/webp'],
+    // Optimizar una foto de donante en frío cuesta ~2,5 s de CPU, así que
+    // interesa reutilizar el resultado el máximo tiempo posible. Hoy el
+    // servidor de Moscú manda `max-age=2592000` y Next lo respeta, pero si
+    // algún día deja de mandarlo, sin este suelo la caché caducaría enseguida
+    // y cada visita volvería a pagar esos 2,5 s por imagen.
+    minimumCacheTTL: 2592000,
     remotePatterns: [
       {
         protocol: 'https',

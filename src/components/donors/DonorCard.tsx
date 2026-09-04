@@ -42,7 +42,11 @@ export default function DonorCard({ donor, priority = false }: DonorCardProps) {
                         src={cover}
                         alt={t('card.donor_number', { id: donor.id })}
                         fill
-                        sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
+                        // Debe seguir a la rejilla de abajo (1 / 2 / 3 / 4 columnas).
+                        // Cuando decía 50vw en móvil, donde ya solo hay una
+                        // columna, el navegador se bajaba una imagen de la mitad
+                        // de ancho y la estiraba: se veía borrosa.
+                        sizes="(min-width: 1280px) 22vw, (min-width: 768px) 30vw, (min-width: 640px) 46vw, 92vw"
                         priority={priority}
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />

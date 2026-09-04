@@ -13,28 +13,37 @@ const DEFAULT_NOTIFICATION_TO = 'comercial@afcc.com.mx'
 const DEFAULT_NOTIFICATION_CC = ['info@fertilitycentercancun.com.mx']
 
 /**
- * Copia a AltraVita de las solicitudes del catálogo de donantes.
+ * Copia de las solicitudes del catálogo para el equipo de AltraVita.
  *
  * El banco de donantes es suyo, así que necesitan ver cada consulta para
- * confirmar disponibilidad. Cada tipo de donante tiene su propio buzón.
+ * confirmar disponibilidad. La lista es la misma para óvulos y esperma.
  *
- * El mapa está aquí, en el servidor, y no llega del formulario: si el
- * destinatario viajara en la petición, cualquiera podría usar el formulario
- * para mandar correos a la dirección que quisiera.
+ * Vive aquí, en el servidor, y no llega del formulario: si el destinatario
+ * viajara en la petición, cualquiera podría usar el formulario para mandar
+ * correos a la dirección que quisiera.
  */
-const DONOR_CATALOG_CC: Record<DonorLeadType, string> = {
-    egg: 'vk_lead_do@altravita.ru',
-    sperm: 'vk_lead_sperm@altravita.ru',
-}
+const DONOR_CATALOG_CC = [
+    'supermycolog@mail.ru',
+    'e_vinogradskaya@altravita.ru',
+    '7909018@mail.ru',
+    'seo@altravita.ru',
+]
 
 export type DonorLeadType = 'egg' | 'sperm'
 
+/**
+ * `DONOR_LEAD_CC` cambia la lista de golpe; `DONOR_LEAD_CC_EGG` y
+ * `DONOR_LEAD_CC_SPERM` siguen existiendo por si algún día vuelven a querer
+ * un buzón distinto para cada tipo, y en ese caso mandan sobre la lista común.
+ */
 function resolveDonorCc(donorType: DonorLeadType): string[] {
-    const override = parseEmailList(
+    const perType = parseEmailList(
         process.env[donorType === 'egg' ? 'DONOR_LEAD_CC_EGG' : 'DONOR_LEAD_CC_SPERM'],
     )
+    if (perType.length > 0) return perType
 
-    return override.length > 0 ? override : [DONOR_CATALOG_CC[donorType]]
+    const shared = parseEmailList(process.env.DONOR_LEAD_CC)
+    return shared.length > 0 ? shared : DONOR_CATALOG_CC
 }
 
 /**
