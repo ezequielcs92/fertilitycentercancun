@@ -18,6 +18,17 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '**.supabase.co',
       },
+      // Fotografías del catálogo de donantes. Las sirve la clínica de Moscú
+      // desde los mismos dominios que publican los feeds XML: `esp.` es el
+      // feed en castellano y el dominio pelado el de inglés.
+      {
+        protocol: 'https',
+        hostname: 'altravita-ivf.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'esp.altravita-ivf.com',
+      },
     ],
   },
 };

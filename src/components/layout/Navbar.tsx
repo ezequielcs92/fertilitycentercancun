@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Heart, Phone, Microscope, Dna, Zap, UserCheck, Droplets, Baby, Users, Clock, Calendar, ArrowLeftRight, HeartHandshake, MapPin, Instagram, Facebook } from 'lucide-react';
+import { Menu, X, ChevronDown, Heart, Phone, Microscope, Dna, Zap, UserCheck, Droplets, Baby, Users, Clock, Calendar, ArrowLeftRight, HeartHandshake, MapPin, Instagram, Facebook, BookUser, BookOpen } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import { donorCatalogHref } from '@/lib/donors/routes';
 import { useLocale, useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { useSitePhone } from '@/components/ui/SitePhoneLink';
@@ -110,8 +111,10 @@ export default function Navbar() {
                 { name: t('items.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/programa-donacion-lifestart'), icon: Droplets },
                 { name: t('items.treatments.links.embryo'), href: route('/donacion-y-adopcion-embriones', '/embryo-donation-and-adoption'), icon: Baby },
                 { name: t('items.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method'), icon: Users },
+                { name: t('items.treatments.links.egg_donor_catalog'), href: donorCatalogHref('egg', locale), icon: BookUser },
                 { name: t('items.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation'), icon: Clock },
                 { name: t('items.treatments.links.timed_intercourse'), href: route('/coito-programado-e-induccion-de-ovulacion', '/timed-intercourse-and-ovulation-induction'), icon: Calendar },
+                { name: t('items.treatments.links.sperm_donor_catalog'), href: donorCatalogHref('sperm', locale), icon: BookOpen },
                 { name: t('items.treatments.links.transfer'), href: route('/transferencia-de-embriones-y-preparacion-endometrial', '/embryo-transfer-and-endometrial-preparation'), icon: ArrowLeftRight },
                 { name: t('items.treatments.links.lgbt'), href: route('/construyendo-familias', '/building-families'), icon: HeartHandshake },
             ]

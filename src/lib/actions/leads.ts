@@ -1,7 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
-import { resolveNotificationRecipients } from '@/lib/notifications'
+import { resolveNotificationRecipients, type DonorLeadType } from '@/lib/notifications'
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key_to_prevent_crash')
@@ -35,6 +35,25 @@ export interface LeadFormData {
     utm?: Record<string, string | undefined>
     locale?: 'es' | 'en'
     captchaToken?: string | null
+    /**
+     * Tipo de donante cuando la consulta sale del catálogo. Solo admite 'egg' o
+     * 'sperm': de ahí se deduce en el servidor a qué buzón de AltraVita se
+     * manda la copia.
+     */
+    donorType?: DonorLeadType
+    /** Fichas por las que se pregunta, por número de donante. */
+    donorIds?: string[]
+}
+
+/** Los identificadores del feed son alfanuméricos cortos: `100866`, `102v`. */
+function sanitizeDonorIds(ids: string[] | undefined): string[] {
+    if (!Array.isArray(ids)) return []
+
+    return ids
+        .filter((id): id is string => typeof id === 'string')
+        .map((id) => id.trim())
+        .filter((id) => /^[A-Za-z0-9-]{1,24}$/.test(id))
+        .slice(0, 10)
 }
 
 /**
@@ -561,7 +580,15 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
             console.error('Error fetching notification settings:', settingsError);
         }
 
-        const { to: notificationTo, cc: notificationCc } = resolveNotificationRecipients(configuredNotificationEmail)
+        // Las consultas del catálogo llevan en copia el buzón de AltraVita que
+        // corresponda al tipo de donante, además de los destinatarios de siempre.
+        const donorType = formData.donorType === 'egg' || formData.donorType === 'sperm' ? formData.donorType : undefined
+        const donorIds = donorType ? sanitizeDonorIds(formData.donorIds) : []
+
+        const { to: notificationTo, cc: notificationCc } = resolveNotificationRecipients(
+            configuredNotificationEmail,
+            { donorType },
+        )
 
         const attributionSummary = Object.entries(formData.utm || {})
             .filter(([, value]) => Boolean(value))
@@ -575,7 +602,7 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
                     from: process.env.RESEND_FROM_EMAIL || 'Fertility Center Cancun <onboarding@resend.dev>',
                     to: notificationTo,
                     ...(notificationCc.length > 0 ? { cc: notificationCc } : {}),
-                    subject: `${crmResult.delivered ? 'Nuevo Lead' : '[NO ENTRÓ AL CRM] Nuevo Lead'}: ${formData.nombre} - ${formData.tratamiento || 'Consulta general'}`,
+                    subject: `${crmResult.delivered ? 'Nuevo Lead' : '[NO ENTRÓ AL CRM] Nuevo Lead'}: ${formData.nombre} - ${formData.tratamiento || 'Consulta general'}${donorIds.length > 0 ? ` (donante ${donorIds.join(', ')})` : ''}`,
                     html: `
                         <h2>Nueva Solicitud de Consulta</h2>
                         ${crmResult.delivered ? '' : `
@@ -592,6 +619,8 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
                             <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>País:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${escapeHtml(formData.pais) || 'No especificado'}</td></tr>
                             <tr style="background-color: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Tratamiento de Interés:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${escapeHtml(formData.tratamiento) || 'No especificado'}</td></tr>
                             ${formData.promocion ? `<tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Promoción:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${escapeHtml(formData.promocion)}</td></tr>` : ''}
+                            ${donorType ? `<tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Catálogo:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${donorType === 'egg' ? 'Donantes de óvulos' : 'Donantes de esperma'}</td></tr>` : ''}
+                            ${donorIds.length > 0 ? `<tr style="background-color: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Donante(s) de interés:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>${donorIds.map((id) => `n.º ${escapeHtml(id)}`).join(', ')}</strong></td></tr>` : ''}
                             <tr><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Idioma:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${formData.locale === 'en' ? 'Inglés' : 'Español'}</td></tr>
                             ${attributionSummary ? `<tr style="background-color: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Atribución:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${escapeHtml(attributionSummary)}</td></tr>` : ''}
                         </table>
