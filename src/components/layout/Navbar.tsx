@@ -75,6 +75,12 @@ export default function Navbar() {
         href: string;
         description?: string;
         icon?: React.ElementType;
+        /**
+         * En escritorio el orden del array coloca el enlace donde toca dentro
+         * de la rejilla de tres columnas. El menú móvil es una lista plana, así
+         * que ese mismo orden lo dejaría a media lista: con esto baja al final.
+         */
+        mobileLast?: boolean;
     }
 
     interface NavItem {
@@ -111,10 +117,10 @@ export default function Navbar() {
                 { name: t('items.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/programa-donacion-lifestart'), icon: Droplets },
                 { name: t('items.treatments.links.embryo'), href: route('/donacion-y-adopcion-embriones', '/embryo-donation-and-adoption'), icon: Baby },
                 { name: t('items.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method'), icon: Users },
-                { name: t('items.treatments.links.egg_donor_catalog'), href: donorCatalogHref('egg', locale), icon: BookUser },
+                { name: t('items.treatments.links.egg_donor_catalog'), href: donorCatalogHref('egg', locale), icon: BookUser, mobileLast: true },
                 { name: t('items.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation'), icon: Clock },
                 { name: t('items.treatments.links.timed_intercourse'), href: route('/coito-programado-e-induccion-de-ovulacion', '/timed-intercourse-and-ovulation-induction'), icon: Calendar },
-                { name: t('items.treatments.links.sperm_donor_catalog'), href: donorCatalogHref('sperm', locale), icon: BookOpen },
+                { name: t('items.treatments.links.sperm_donor_catalog'), href: donorCatalogHref('sperm', locale), icon: BookOpen, mobileLast: true },
                 { name: t('items.treatments.links.transfer'), href: route('/transferencia-de-embriones-y-preparacion-endometrial', '/embryo-transfer-and-endometrial-preparation'), icon: ArrowLeftRight },
                 { name: t('items.treatments.links.lgbt'), href: route('/construyendo-familias', '/building-families'), icon: HeartHandshake },
             ]
@@ -340,7 +346,9 @@ export default function Navbar() {
                                         </Link>
                                         {item.submenu && (
                                             <div className="grid grid-cols-1 gap-3 pl-4 border-l border-white/10">
-                                                {item.submenu.map((sub) => (
+                                                {[...item.submenu]
+                                                    .sort((a, b) => Number(a.mobileLast ?? false) - Number(b.mobileLast ?? false))
+                                                    .map((sub) => (
                                                     <Link
                                                         key={sub.name}
                                                         href={sub.href}

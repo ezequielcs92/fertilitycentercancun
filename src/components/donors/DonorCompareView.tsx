@@ -129,7 +129,10 @@ export default function DonorCompareView({ donors }: DonorCompareViewProps) {
                             </th>
                             {selected.map((donor) => (
                                 <th key={`${donor.type}:${donor.id}`} scope="col" className="p-3 align-bottom">
-                                    <div className="relative bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+                                    {/* El ancho de columna lo reparte `table-fixed`, así que con
+                                        una o dos fichas seleccionadas la foto crecía hasta ocupar
+                                        media pantalla en móvil. Se le pone un techo y se centra. */}
+                                    <div className="relative bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden max-w-[140px] lg:max-w-[190px] mx-auto">
                                         <button
                                             type="button"
                                             onClick={() => compare.remove(donor.type, donor.id)}
@@ -146,7 +149,7 @@ export default function DonorCompareView({ donors }: DonorCompareViewProps) {
                                                     src={donor.photos[0]}
                                                     alt={t('card.donor_number', { id: donor.id })}
                                                     fill
-                                                    sizes="200px"
+                                                    sizes="(min-width: 1024px) 190px, 140px"
                                                     className="object-cover"
                                                 />
                                             ) : (
