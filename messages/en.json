@@ -248,7 +248,9 @@
                     "mini_fiv": "Mini IVF",
                     "artificial_insemination": "Artificial Insemination",
                     "egg_donation": "Egg Donation",
+                    "egg_donor_catalog": "Egg donor catalog",
                     "sperm_donation": "LifeStart Donation Program",
+                    "sperm_donor_catalog": "Sperm donor catalog",
                     "embryo": "Embryo Donation and Adoption",
                     "ropa": "ROPA Method",
                     "preservation": "Fertility Preservation",
@@ -268,6 +270,173 @@
             },
             "promotions": "Promotions",
             "contact": "Contact"
+        }
+    },
+    "Donors": {
+        "catalog": {
+            "egg": {
+                "title": "Egg donor catalog",
+                "subtitle": "Browse our egg donor profiles and filter by the traits that matter to you.",
+                "breadcrumb": "Egg donors",
+                "meta_title": "Egg donor catalog",
+                "meta_description": "Browse the egg donor catalog at Advanced Fertility Center Cancun: nationality, blood type, eye and hair color, height and education for every donor."
+            },
+            "sperm": {
+                "title": "Sperm donor catalog",
+                "subtitle": "Browse our sperm donor profiles and filter by the traits that matter to you.",
+                "breadcrumb": "Sperm donors",
+                "meta_title": "Sperm donor catalog",
+                "meta_description": "Browse the sperm donor catalog at Advanced Fertility Center Cancun: nationality, blood type, eye and hair color, height and education for every donor."
+            },
+            "intro": "All profiles come from our partner donor bank. Every donor has passed the medical, genetic and psychological screening the program requires.",
+            "results": "{count, plural, =0 {No donors} one {# donor} other {# donors}}",
+            "results_filtered": "{count, plural, =0 {No donors} one {# donor} other {# donors}} of {total}",
+            "empty_title": "No donors match your search",
+            "empty_description": "Try removing a filter or widening the height and weight ranges.",
+            "empty_reset": "Clear all filters",
+            "unavailable_title": "The catalog is unavailable right now",
+            "unavailable_description": "We could not load the donor profiles. Please try again in a few minutes, or write to us and we will help you personally.",
+            "load_more": "Show more donors",
+            "showing": "Showing {shown} of {total}"
+        },
+        "filters": {
+            "title": "Filters",
+            "search_label": "Search",
+            "search_placeholder": "Donor number, eye color, nationality...",
+            "open": "Filter",
+            "close": "Close",
+            "apply": "Show results",
+            "clear": "Clear",
+            "clear_all": "Clear all filters",
+            "active": "{count} active",
+            "with_photo": "With photo only",
+            "sort_label": "Sort by",
+            "sort": {
+                "id_asc": "Donor number (ascending)",
+                "id_desc": "Donor number (descending)",
+                "height_asc": "Height (low to high)",
+                "height_desc": "Height (high to low)"
+            },
+            "groups": {
+                "nationality": "Nationality",
+                "bloodType": "Blood type",
+                "rhesusFactor": "Rh factor",
+                "hairColor": "Hair color",
+                "hairType": "Hair type",
+                "eyeColor": "Eye color",
+                "education": "Education"
+            },
+            "height": "Height (cm)",
+            "weight": "Weight (kg)",
+            "min": "Min.",
+            "max": "Max.",
+            "show_more": "Show {count} more",
+            "show_less": "Show less"
+        },
+        "card": {
+            "donor_number": "Donor #{id}",
+            "view": "View profile",
+            "no_photo": "No photo",
+            "photo_count": "{count, plural, one {# photo} other {# photos}}",
+            "donor_short": "#{id}"
+        },
+        "fields": {
+            "nationality": "Nationality",
+            "bloodType": "Blood type",
+            "rhesusFactor": "Rh factor",
+            "height": "Height",
+            "weight": "Weight",
+            "hairType": "Hair type",
+            "hairColor": "Hair color",
+            "hairLength": "Hair length",
+            "eyeColor": "Eye color",
+            "eyeSize": "Eye size",
+            "eyeType": "Eye shape",
+            "faceType": "Face shape",
+            "noseSize": "Nose size",
+            "noseType": "Nose shape",
+            "foreheadType": "Forehead",
+            "constitution": "Build",
+            "handedness": "Dominant hand",
+            "education": "Education",
+            "gpaSchool": "School GPA",
+            "gpaUniversity": "University GPA",
+            "dressSize": "Dress size",
+            "shoesSize": "Shoe size",
+            "braSize": "Bra size"
+        },
+        "units": {
+            "cm": "{value} cm",
+            "kg": "{value} kg"
+        },
+        "sections": {
+            "general": "General information",
+            "appearance": "Physical traits",
+            "education": "Education",
+            "measurements": "Measurements"
+        },
+        "detail": {
+            "title_egg": "Egg donor #{id}",
+            "title_sperm": "Sperm donor #{id}",
+            "meta_description_egg": "Profile of egg donor #{id}: nationality, blood type, physical traits and education. Check availability with Advanced Fertility Center Cancun.",
+            "meta_description_sperm": "Profile of sperm donor #{id}: nationality, blood type, physical traits and education. Check availability with Advanced Fertility Center Cancun.",
+            "back_to_catalog": "Back to the catalog",
+            "not_found_title": "We could not find this profile",
+            "not_found_description": "This donor may no longer be available. Browse the full catalog to see the current profiles.",
+            "no_data": "Not specified",
+            "gallery_previous": "Previous photo",
+            "gallery_next": "Next photo",
+            "gallery_thumb": "View photo {index}",
+            "similar_title": "Similar donors",
+            "similar_description": "Profiles with traits close to this donor's.",
+            "photos_notice": "The photographs are from the donor's childhood, in line with the donor bank's anonymity program.",
+            "photos_notice_sperm": "The photographs are from the donor's childhood, in line with the donor bank's anonymity program."
+        },
+        "actions": {
+            "add_favorite": "Add to favorites",
+            "remove_favorite": "Remove from favorites",
+            "add_compare": "Add to comparison",
+            "remove_compare": "Remove from comparison",
+            "compare_full": "You can compare up to {max} donors",
+            "favorites": "Favorites",
+            "compare": "Compare",
+            "view_favorites": "View favorites ({count})",
+            "view_compare": "Compare ({count})"
+        },
+        "favorites": {
+            "title": "My favorite donors",
+            "breadcrumb": "Favorites",
+            "meta_description": "The donors you have saved as favorites at Advanced Fertility Center Cancun.",
+            "description": "The profiles you save are kept in this browser. If you switch devices, you will need to mark them again.",
+            "empty_title": "You have not saved any profiles yet",
+            "empty_description": "Tap the heart on any donor to save them here and review them later.",
+            "browse_egg": "Browse egg donors",
+            "browse_sperm": "Browse sperm donors",
+            "clear": "Clear favorites",
+            "group_egg": "Egg donors",
+            "group_sperm": "Sperm donors"
+        },
+        "compare": {
+            "title": "Compare donors",
+            "breadcrumb": "Compare",
+            "meta_description": "Compare the traits of your selected donors side by side.",
+            "description": "Compare up to {max} profiles side by side. Your selection is saved in this browser.",
+            "empty_title": "You have not selected any profiles",
+            "empty_description": "Tap “Compare” on the profiles you are interested in and they will show up here, side by side.",
+            "clear": "Clear comparison",
+            "remove": "Remove from comparison",
+            "characteristic": "Characteristic",
+            "mixed_types_notice": "You are comparing egg and sperm donors: some rows only apply to one of them."
+        },
+        "form": {
+            "title": "Ask about this donor",
+            "title_multiple": "Ask about these donors",
+            "description": "Leave us your details and a coordinator will confirm availability and next steps.",
+            "selected_label": "Selected donor",
+            "selected_label_multiple": "Selected donors",
+            "submit": "Send inquiry",
+            "success": "Thank you for your inquiry. One of our coordinators will contact you within 24 hours.",
+            "open": "Check availability"
         }
     }
 }

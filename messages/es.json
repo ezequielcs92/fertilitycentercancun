@@ -248,7 +248,9 @@
                     "mini_fiv": "Mini FIV",
                     "artificial_insemination": "Inseminación Artificial",
                     "egg_donation": "Ovodón",
+                    "egg_donor_catalog": "Catálogo de donantes de óvulos",
                     "sperm_donation": "Programa Donación LifeStart",
+                    "sperm_donor_catalog": "Catálogo de donantes de esperma",
                     "embryo": "Donación y Adopción de Embriones",
                     "ropa": "Método ROPA",
                     "preservation": "Preservación de la Fertilidad",
@@ -268,6 +270,173 @@
             },
             "promotions": "Promociones",
             "contact": "Contacto"
+        }
+    },
+    "Donors": {
+        "catalog": {
+            "egg": {
+                "title": "Catálogo de donantes de óvulos",
+                "subtitle": "Consulta las fichas de nuestras donantes de óvulos y filtra por los rasgos que te importan.",
+                "breadcrumb": "Donantes de óvulos",
+                "meta_title": "Catálogo de donantes de óvulos",
+                "meta_description": "Explora el catálogo de donantes de óvulos de Advanced Fertility Center Cancún: nacionalidad, grupo sanguíneo, color de ojos y cabello, altura y formación de cada donante."
+            },
+            "sperm": {
+                "title": "Catálogo de donantes de esperma",
+                "subtitle": "Consulta las fichas de nuestros donantes de esperma y filtra por los rasgos que te importan.",
+                "breadcrumb": "Donantes de esperma",
+                "meta_title": "Catálogo de donantes de esperma",
+                "meta_description": "Explora el catálogo de donantes de esperma de Advanced Fertility Center Cancún: nacionalidad, grupo sanguíneo, color de ojos y cabello, altura y formación de cada donante."
+            },
+            "intro": "Todas las fichas proceden de nuestro banco de donantes asociado. Los donantes han superado los estudios médicos, genéticos y psicológicos que exige el programa.",
+            "results": "{count, plural, =0 {Ningún donante} one {# donante} other {# donantes}}",
+            "results_filtered": "{count, plural, =0 {Ningún donante} one {# donante} other {# donantes}} de {total}",
+            "empty_title": "No hay donantes que coincidan",
+            "empty_description": "Prueba a quitar algún filtro o a ampliar los rangos de altura y peso.",
+            "empty_reset": "Quitar todos los filtros",
+            "unavailable_title": "El catálogo no está disponible ahora mismo",
+            "unavailable_description": "No hemos podido cargar las fichas de donantes. Vuelve a intentarlo en unos minutos o escríbenos y te ayudamos personalmente.",
+            "load_more": "Ver más donantes",
+            "showing": "Mostrando {shown} de {total}"
+        },
+        "filters": {
+            "title": "Filtros",
+            "search_label": "Buscar",
+            "search_placeholder": "Número de donante, color de ojos, nacionalidad...",
+            "open": "Filtrar",
+            "close": "Cerrar",
+            "apply": "Ver resultados",
+            "clear": "Limpiar",
+            "clear_all": "Limpiar todos los filtros",
+            "active": "{count} activos",
+            "with_photo": "Solo con fotografía",
+            "sort_label": "Ordenar por",
+            "sort": {
+                "id_asc": "Número de donante (ascendente)",
+                "id_desc": "Número de donante (descendente)",
+                "height_asc": "Altura (menor a mayor)",
+                "height_desc": "Altura (mayor a menor)"
+            },
+            "groups": {
+                "nationality": "Nacionalidad",
+                "bloodType": "Grupo sanguíneo",
+                "rhesusFactor": "Factor Rh",
+                "hairColor": "Color de cabello",
+                "hairType": "Tipo de cabello",
+                "eyeColor": "Color de ojos",
+                "education": "Formación"
+            },
+            "height": "Altura (cm)",
+            "weight": "Peso (kg)",
+            "min": "Mín.",
+            "max": "Máx.",
+            "show_more": "Ver {count} más",
+            "show_less": "Ver menos"
+        },
+        "card": {
+            "donor_number": "Donante n.º {id}",
+            "view": "Ver ficha",
+            "no_photo": "Sin fotografía",
+            "photo_count": "{count, plural, one {# foto} other {# fotos}}",
+            "donor_short": "n.º {id}"
+        },
+        "fields": {
+            "nationality": "Nacionalidad",
+            "bloodType": "Grupo sanguíneo",
+            "rhesusFactor": "Factor Rh",
+            "height": "Altura",
+            "weight": "Peso",
+            "hairType": "Tipo de cabello",
+            "hairColor": "Color de cabello",
+            "hairLength": "Largo de cabello",
+            "eyeColor": "Color de ojos",
+            "eyeSize": "Tamaño de ojos",
+            "eyeType": "Forma de ojos",
+            "faceType": "Forma del rostro",
+            "noseSize": "Tamaño de nariz",
+            "noseType": "Forma de nariz",
+            "foreheadType": "Frente",
+            "constitution": "Complexión",
+            "handedness": "Mano dominante",
+            "education": "Formación",
+            "gpaSchool": "Nota media escolar",
+            "gpaUniversity": "Nota media universitaria",
+            "dressSize": "Talla de ropa",
+            "shoesSize": "Talla de calzado",
+            "braSize": "Talla de sujetador"
+        },
+        "units": {
+            "cm": "{value} cm",
+            "kg": "{value} kg"
+        },
+        "sections": {
+            "general": "Datos generales",
+            "appearance": "Rasgos físicos",
+            "education": "Formación",
+            "measurements": "Medidas"
+        },
+        "detail": {
+            "title_egg": "Donante de óvulos n.º {id}",
+            "title_sperm": "Donante de esperma n.º {id}",
+            "meta_description_egg": "Ficha de la donante de óvulos n.º {id}: nacionalidad, grupo sanguíneo, rasgos físicos y formación. Consulta disponibilidad con Advanced Fertility Center Cancún.",
+            "meta_description_sperm": "Ficha del donante de esperma n.º {id}: nacionalidad, grupo sanguíneo, rasgos físicos y formación. Consulta disponibilidad con Advanced Fertility Center Cancún.",
+            "back_to_catalog": "Volver al catálogo",
+            "not_found_title": "No encontramos esta ficha",
+            "not_found_description": "Puede que el donante ya no esté disponible. Consulta el catálogo completo para ver las fichas vigentes.",
+            "no_data": "No especificado",
+            "gallery_previous": "Foto anterior",
+            "gallery_next": "Foto siguiente",
+            "gallery_thumb": "Ver foto {index}",
+            "similar_title": "Donantes parecidos",
+            "similar_description": "Fichas con rasgos próximos a los de este donante.",
+            "photos_notice": "Las fotografías son de la infancia de la donante, conforme al programa de anonimato del banco de donantes.",
+            "photos_notice_sperm": "Las fotografías son de la infancia del donante, conforme al programa de anonimato del banco de donantes."
+        },
+        "actions": {
+            "add_favorite": "Añadir a favoritos",
+            "remove_favorite": "Quitar de favoritos",
+            "add_compare": "Añadir al comparador",
+            "remove_compare": "Quitar del comparador",
+            "compare_full": "El comparador admite hasta {max} donantes",
+            "favorites": "Favoritos",
+            "compare": "Comparar",
+            "view_favorites": "Ver favoritos ({count})",
+            "view_compare": "Comparar ({count})"
+        },
+        "favorites": {
+            "title": "Mis donantes favoritos",
+            "breadcrumb": "Favoritos",
+            "meta_description": "Los donantes que has guardado como favoritos en Advanced Fertility Center Cancún.",
+            "description": "Las fichas que has guardado se conservan en este navegador. Si cambias de dispositivo, tendrás que volver a marcarlas.",
+            "empty_title": "Todavía no has guardado ninguna ficha",
+            "empty_description": "Pulsa el corazón de cualquier donante para guardarlo aquí y consultarlo más tarde.",
+            "browse_egg": "Ver donantes de óvulos",
+            "browse_sperm": "Ver donantes de esperma",
+            "clear": "Vaciar favoritos",
+            "group_egg": "Donantes de óvulos",
+            "group_sperm": "Donantes de esperma"
+        },
+        "compare": {
+            "title": "Comparar donantes",
+            "breadcrumb": "Comparar",
+            "meta_description": "Compara lado a lado los rasgos de los donantes que has seleccionado.",
+            "description": "Compara hasta {max} fichas lado a lado. La selección se guarda en este navegador.",
+            "empty_title": "No has seleccionado ninguna ficha",
+            "empty_description": "Marca «Comparar» en las fichas que te interesen y aparecerán aquí, una junto a otra.",
+            "clear": "Vaciar comparador",
+            "remove": "Quitar del comparador",
+            "characteristic": "Característica",
+            "mixed_types_notice": "Estás comparando donantes de óvulos y de esperma: algunas filas solo aplican a uno de los dos."
+        },
+        "form": {
+            "title": "Consultar por este donante",
+            "title_multiple": "Consultar por estos donantes",
+            "description": "Déjanos tus datos y una coordinadora te confirmará la disponibilidad y los siguientes pasos.",
+            "selected_label": "Donante seleccionado",
+            "selected_label_multiple": "Donantes seleccionados",
+            "submit": "Enviar consulta",
+            "success": "Gracias por tu consulta. Una de nuestras coordinadoras te contactará en menos de 24 horas.",
+            "open": "Consultar disponibilidad"
         }
     }
 }
