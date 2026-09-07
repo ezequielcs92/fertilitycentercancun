@@ -96,6 +96,50 @@ export function matchesFilters(donor: Donor, filters: DonorFilters): boolean {
 }
 
 /**
+ * Grupo de nacionalidad dentro del orden por defecto, en tres escalones:
+ * delante los pueblos de Asia, Siberia, el Volga y el Cáucaso; después las
+ * nacionalidades eslavas y europeas de la CEI; y al final cualquier otra cosa,
+ * incluido lo que llegue sin concretar («Mixed» / «Mestiza»).
+ *
+ * Igual que con los ojos, se resuelve por raíces y no por la cadena exacta: el
+ * feed llega en dos idiomas y así un valor nuevo cae solo en el grupo que le
+ * toca. Lo que no reconozca se va al final, que es justo lo que se busca.
+ *
+ * Los dos conjuntos son disjuntos: ninguna raíz del primero aparece dentro de
+ * un valor del segundo, ni al revés, en ninguno de los dos idiomas.
+ */
+const ASIAN_AND_SIBERIAN = new RegExp(
+    [
+        // Asia central y el Cáucaso meridional.
+        'kazakh', 'kazaj', 'kyrgyz', 'kirguis', 'uzbek', 'tajik', 'tayik',
+        'turkmen', 'azer', 'armeni', 'georgian', 'georgiana',
+        // Volga, Siberia y el Extremo Oriente ruso.
+        'tatar', 'tartar', 'chuvash', 'chuvas', 'bashkir', 'baskir',
+        'yakut', 'buryat', 'buriat', 'kalmyk', 'calmuc', 'tuvan', 'tuvana', 'altai',
+        // Pueblos del Cáucaso ruso.
+        'chechen', 'kabardian', 'cabardin', 'avar', 'lezgin', 'lezgu',
+        'kumyk', 'circassian', 'circasian', 'osset', 'oset', 'ingush', 'ingus',
+        // Resto de Asia.
+        'irani', 'korean', 'coreana', 'chinese', 'chin', 'japanese', 'japon', 'mongol',
+    ].join('|'),
+)
+
+const SLAVIC_AND_EUROPEAN_CIS = new RegExp(
+    ['rus', 'ukrain', 'ucrania', 'belarus', 'bielorrus', 'moldov', 'moldav'].join('|'),
+)
+
+function nationalityRank(nationality: string | null): number {
+    if (!nationality) return 30
+
+    const value = normalizeText(nationality)
+
+    if (ASIAN_AND_SIBERIAN.test(value)) return 10
+    if (SLAVIC_AND_EUROPEAN_CIS.test(value)) return 20
+
+    return 30
+}
+
+/**
  * Peso de cada color de ojos dentro del orden por defecto: primero los azules,
  * después las mezclas de azul y verde, luego el resto de tonos claros y al
  * final los oscuros. Es el orden con el que la clínica quiere que se entre al
@@ -147,12 +191,14 @@ export function sortDonors(donors: Donor[], sort: DonorSort): Donor[] {
             return sorted.sort((a, b) => compareDonorIds(a.id, b.id))
         case 'default':
         default:
-            // Primero quien tiene foto: una ficha sin retrato se descarta de un
-            // vistazo, así que ocupando los primeros huecos solo estorba. Ya
-            // dentro de cada bloque manda el color de ojos.
+            // Primero quien tiene foto: una ficha sin retrato se descarta de
+            // un vistazo, así que ocupando los primeros huecos solo estorba.
+            // Después el grupo de nacionalidad, y ya dentro de cada bloque
+            // manda el color de ojos.
             return sorted.sort(
                 (a, b) =>
                     Number(b.photos.length > 0) - Number(a.photos.length > 0) ||
+                    nationalityRank(a.nationality) - nationalityRank(b.nationality) ||
                     eyeColorRank(a.eyeColor) - eyeColorRank(b.eyeColor) ||
                     compareDonorIds(a.id, b.id),
             )
@@ -276,9 +322,11 @@ const RANGE_KEYS = ['heightMin', 'heightMax', 'weightMin', 'weightMax'] as const
 
 /**
  * Orden con el que se entra al catálogo y al que se vuelve si el visitante
- * deshace su elección. No se nombra en el desplegable —ahí solo aparece la
- * invitación a ordenar— y tampoco viaja en la URL, porque es el estado de
- * partida y no una decisión de quien navega.
+ * deshace su elección: primero con foto, después por grupo de nacionalidad,
+ * luego el color de ojos y por último el número de ficha.
+ * No se nombra en el desplegable —ahí solo aparece la invitación a ordenar— y
+ * tampoco viaja en la URL, porque es el estado de partida y no una decisión de
+ * quien navega.
  */
 export const DEFAULT_SORT: DonorSort = 'default'
 
