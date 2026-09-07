@@ -64,14 +64,21 @@ export default function Hero({ rightContent }: HeroProps) {
                                 verde sobre el violeta, y con un enlace por tipo de
                                 donante, que son dos catálogos distintos. Va delante de
                                 los botones porque detrás, en un móvil de 812 px de
-                                alto, quedaba justo por debajo del pliegue. */}
-                            <div className="mb-8 flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl border border-brand-green/40 bg-brand-green/10 backdrop-blur-md px-5 py-4">
-                                <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-green shrink-0">
-                                    <BookUser className="w-5 h-5" />
+                                alto, quedaba justo por debajo del pliegue, y con el
+                                mismo `max-w-xl` que la descripción: sin él se estiraba
+                                a lo ancho de la columna y su borde derecho sobresalía
+                                del resto del contenido. */}
+                            <div className="mb-8 max-w-xl flex flex-col items-start gap-3 sm:gap-4 rounded-2xl border border-brand-green/40 bg-brand-green/10 backdrop-blur-md px-5 py-4 sm:px-6 sm:py-5">
+                                {/* Sin `tracking-widest`: ese espaciado existe para que
+                                    un rótulo diminuto se lea, y a este tamaño solo
+                                    alarga el texto hasta desbordar la caja en
+                                    castellano, que es el idioma con la etiqueta larga. */}
+                                <span className="inline-flex items-center gap-2 sm:gap-3 text-2xl sm:text-[2.625rem] leading-none font-bold uppercase text-brand-green">
+                                    <BookUser className="w-6 h-6 sm:w-10 sm:h-10 shrink-0" />
                                     {t('donors.label')}
                                 </span>
 
-                                <div className="flex flex-wrap gap-2 sm:ml-auto">
+                                <div className="flex flex-wrap gap-3">
                                     <a
                                         href={donorCatalogHref('egg', locale)}
                                         className="inline-flex items-center gap-1.5 rounded-full bg-white text-brand-violet px-5 py-2.5 text-sm font-bold hover:bg-brand-green transition-colors"
