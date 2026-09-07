@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { Container } from '@/components/ui/Container';
-import { ChevronRight, MessageCircle, Sparkles } from 'lucide-react';
+import { BookUser, ChevronRight, MessageCircle, Sparkles } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { donorCatalogHref } from '@/lib/donors/routes';
 
 interface HeroProps {
     rightContent: React.ReactNode;
@@ -56,6 +57,37 @@ export default function Hero({ rightContent }: HeroProps) {
                             <p className="text-xl text-white/80 font-light mb-10 max-w-xl leading-relaxed">
                                 {t('description')}
                             </p>
+
+                            {/* Acceso al catálogo desde la portada. No se suma a la
+                                fila de botones de arriba: con tres el visitante ya
+                                no sabe cuál es la acción principal. Va aparte, en
+                                verde sobre el violeta, y con un enlace por tipo de
+                                donante, que son dos catálogos distintos. Va delante de
+                                los botones porque detrás, en un móvil de 812 px de
+                                alto, quedaba justo por debajo del pliegue. */}
+                            <div className="mb-8 flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl border border-brand-green/40 bg-brand-green/10 backdrop-blur-md px-5 py-4">
+                                <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-green shrink-0">
+                                    <BookUser className="w-5 h-5" />
+                                    {t('donors.label')}
+                                </span>
+
+                                <div className="flex flex-wrap gap-2 sm:ml-auto">
+                                    <a
+                                        href={donorCatalogHref('egg', locale)}
+                                        className="inline-flex items-center gap-1.5 rounded-full bg-white text-brand-violet px-5 py-2.5 text-sm font-bold hover:bg-brand-green transition-colors"
+                                    >
+                                        {t('donors.egg')}
+                                        <ChevronRight className="w-4 h-4" />
+                                    </a>
+                                    <a
+                                        href={donorCatalogHref('sperm', locale)}
+                                        className="inline-flex items-center gap-1.5 rounded-full bg-white text-brand-violet px-5 py-2.5 text-sm font-bold hover:bg-brand-green transition-colors"
+                                    >
+                                        {t('donors.sperm')}
+                                        <ChevronRight className="w-4 h-4" />
+                                    </a>
+                                </div>
+                            </div>
 
                             <div className="flex flex-col sm:flex-row gap-4 mb-12">
                                 <a href={isEs ? '/es/promociones' : '/en/promotions'} className="bg-brand-green text-brand-violet px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl flex items-center justify-center gap-2 group">

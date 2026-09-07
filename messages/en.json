@@ -5,6 +5,11 @@
         "description": "At Advanced Fertility Center Cancun, we combine cutting-edge technology with a warm and inclusive approach to provide you with the highest probability of success in your treatment.",
         "cta": "Promotions",
         "stats_button": "Schedule a free video call",
+        "donors": {
+            "label": "Donor catalog",
+            "egg": "Egg",
+            "sperm": "Sperm"
+        },
         "care_title": "Human Care",
         "care_subtitle": "Personalized attention 24/7",
         "stats": {
