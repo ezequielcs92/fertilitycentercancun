@@ -140,10 +140,9 @@ function nationalityRank(nationality: string | null): number {
 }
 
 /**
- * Peso de cada color de ojos dentro del orden por defecto: primero los azules,
- * después las mezclas de azul y verde, luego el resto de tonos claros y al
- * final los oscuros. Es el orden con el que la clínica quiere que se entre al
- * catálogo, y por eso no se anuncia en ningún sitio de la interfaz.
+ * Peso de cada color de ojos dentro del orden por defecto, tal y como lo pidió
+ * la clínica: azules, azul grisáceo, verdes, verde grisáceo, grises, avellana
+ * y marrones. Por eso no se anuncia en ningún sitio de la interfaz.
  *
  * Se resuelve por palabras sueltas y no por la cadena exacta porque el mismo
  * matiz llega en dos idiomas («Blue-gray» y «Azul grisáceo»), y así un tono
@@ -157,10 +156,14 @@ function eyeColorRank(eyeColor: string | null): number {
     const green = /(green|verde)/.test(value)
     const gray = /(gray|grey|gris)/.test(value)
 
+    // El orden de las comprobaciones no sigue al de los pesos: los matices
+    // mezclados se miran antes que los puros, porque «Green-gray» también
+    // cumple la condición de «green» y si no se comprobara primero caería en
+    // el grupo de los verdes.
     if (blue && (green || gray)) return 20
     if (blue) return 10
-    if (green && gray) return 30
-    if (green) return 40
+    if (green && gray) return 40
+    if (green) return 30
     if (gray) return 50
     if (/(hazel|avellana|miel)/.test(value)) return 60
     if (/(brown|marron|castan|cafe|black|negro)/.test(value)) return 70
