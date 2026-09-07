@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server'
+import Image from 'next/image'
 import Link from 'next/link'
 import { AlertCircle } from 'lucide-react'
 import InnerPageLayout from '@/components/layout/InnerPageLayout'
@@ -56,7 +57,23 @@ export default async function DonorCatalogPage({ type, locale, searchParams }: D
             ]}
         >
             <p className="lead text-2xl font-serif text-brand-violet italic mb-6">{t(`catalog.${type}.subtitle`)}</p>
-            <p className="text-slate-600 font-light mb-12 max-w-3xl">{t('catalog.intro')}</p>
+
+            {/* `not-prose` porque el contenedor de la página le pone a toda
+                imagen un radio de 2rem y una sombra XXL. Aquí la foto acompaña
+                al texto: en escritorio va a su derecha en una columna estrecha
+                y en móvil cae debajo, alineada con el texto de punta a punta. */}
+            <div className="not-prose mb-10 md:mb-12 grid gap-5 md:gap-8 md:grid-cols-[minmax(0,1fr)_15rem] md:items-start lg:grid-cols-[minmax(0,1fr)_18rem]">
+                <p className="text-slate-600 font-light leading-relaxed whitespace-pre-line">{t(`catalog.${type}.intro`)}</p>
+
+                <Image
+                    src="/images/kuwayama-lab.jpg"
+                    alt={t('catalog.intro_image_alt')}
+                    width={1400}
+                    height={1009}
+                    sizes="(min-width: 1024px) 288px, (min-width: 768px) 240px, 92vw"
+                    className="w-full rounded-2xl border border-slate-100 shadow-sm"
+                />
+            </div>
 
             {donors.length === 0 ? (
                 <div className="not-prose bg-slate-50 rounded-3xl p-12 text-center">
@@ -73,7 +90,7 @@ export default async function DonorCatalogPage({ type, locale, searchParams }: D
                     </Link>
                 </div>
             ) : (
-                <DonorCatalog donors={donors} initialSearch={toSearchString(searchParams)} />
+                <DonorCatalog donors={donors} type={type} initialSearch={toSearchString(searchParams)} />
             )}
         </InnerPageLayout>
     )

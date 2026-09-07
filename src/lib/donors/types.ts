@@ -99,7 +99,7 @@ export const EMPTY_FILTERS: DonorFilters = {
     withPhoto: false,
 }
 
-export type DonorSort = 'id-asc' | 'id-desc' | 'height-asc' | 'height-desc'
+export type DonorSort = 'default' | 'id-asc' | 'id-desc' | 'height-asc' | 'height-desc'
 
 /** Claves de `DonorFilters` que son listas de valores seleccionables. */
 export const FACET_KEYS = [

@@ -279,16 +279,20 @@
                 "subtitle": "Consulta las fichas de nuestras donantes de óvulos y filtra por los rasgos que te importan.",
                 "breadcrumb": "Donantes de óvulos",
                 "meta_title": "Catálogo de donantes de óvulos",
-                "meta_description": "Explora el catálogo de donantes de óvulos de Advanced Fertility Center Cancún: nacionalidad, grupo sanguíneo, color de ojos y cabello, altura y formación de cada donante."
+                "meta_description": "Explora el catálogo de donantes de óvulos de Advanced Fertility Center Cancún: nacionalidad, grupo sanguíneo, color de ojos y cabello, altura y formación de cada donante.",
+                "intro": "Todas nuestras donantes de óvulos son donantes premium. Todos los donantes son de nacionalidad rusa, ruso-asiática (CEI) o siberiana.\nTodas las donantes de óvulos fueron estudiadas por una clínica acreditada por el CAP (College of American Pathologists).\nLos óvulos de donante se conservan en un criobanco también acreditado por el CAP.\nLos óvulos de donante se vitrificaron (congelaron) con la tecnología de vitrificación más eficaz y actual, desarrollada por el Prof. M. Kuwayama.\nLos embriólogos se formaron personalmente con el Prof. M. Kuwayama.",
+                "price_note": "Precio de 1 óvulo de donante vitrificado: 2500 USD en la clínica AFCC (o + envío)."
             },
             "sperm": {
                 "title": "Catálogo de donantes de esperma",
                 "subtitle": "Consulta las fichas de nuestros donantes de esperma y filtra por los rasgos que te importan.",
                 "breadcrumb": "Donantes de esperma",
                 "meta_title": "Catálogo de donantes de esperma",
-                "meta_description": "Explora el catálogo de donantes de esperma de Advanced Fertility Center Cancún: nacionalidad, grupo sanguíneo, color de ojos y cabello, altura y formación de cada donante."
+                "meta_description": "Explora el catálogo de donantes de esperma de Advanced Fertility Center Cancún: nacionalidad, grupo sanguíneo, color de ojos y cabello, altura y formación de cada donante.",
+                "intro": "Todos nuestros donantes de esperma son donantes premium. Todos los donantes son de nacionalidad rusa, ruso-asiática (CEI) o siberiana.\nTodos los donantes de esperma fueron estudiados por una clínica acreditada por el CAP (College of American Pathologists).\nEl esperma de donante se conserva en un criobanco también acreditado por el CAP.",
+                "price_note": "Precio de 1 vial de esperma de donante criopreservado: 2500 USD en la clínica AFCC (o + envío)."
             },
-            "intro": "Todas las fichas proceden de nuestro banco de donantes asociado. Los donantes han superado los estudios médicos, genéticos y psicológicos que exige el programa.",
+            "intro_image_alt": "Embriólogos en el laboratorio de vitrificación",
             "results": "{count, plural, =0 {Ningún donante} one {# donante} other {# donantes}}",
             "results_filtered": "{count, plural, =0 {Ningún donante} one {# donante} other {# donantes}} de {total}",
             "empty_title": "No hay donantes que coincidan",
@@ -312,6 +316,7 @@
             "with_photo": "Solo con fotografía",
             "sort_label": "Ordenar por",
             "sort": {
+                "default": "Ordenar por…",
                 "id_asc": "Número de donante (ascendente)",
                 "id_desc": "Número de donante (descendente)",
                 "height_asc": "Altura (menor a mayor)",

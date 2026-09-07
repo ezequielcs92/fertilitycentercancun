@@ -95,6 +95,35 @@ export function matchesFilters(donor: Donor, filters: DonorFilters): boolean {
     return true
 }
 
+/**
+ * Peso de cada color de ojos dentro del orden por defecto: primero los azules,
+ * después las mezclas de azul y verde, luego el resto de tonos claros y al
+ * final los oscuros. Es el orden con el que la clínica quiere que se entre al
+ * catálogo, y por eso no se anuncia en ningún sitio de la interfaz.
+ *
+ * Se resuelve por palabras sueltas y no por la cadena exacta porque el mismo
+ * matiz llega en dos idiomas («Blue-gray» y «Azul grisáceo»), y así un tono
+ * nuevo en el feed cae en su grupo sin tener que tocar esta lista.
+ */
+function eyeColorRank(eyeColor: string | null): number {
+    if (!eyeColor) return 90
+
+    const value = normalizeText(eyeColor)
+    const blue = /(blue|azul)/.test(value)
+    const green = /(green|verde)/.test(value)
+    const gray = /(gray|grey|gris)/.test(value)
+
+    if (blue && (green || gray)) return 20
+    if (blue) return 10
+    if (green && gray) return 30
+    if (green) return 40
+    if (gray) return 50
+    if (/(hazel|avellana|miel)/.test(value)) return 60
+    if (/(brown|marron|castan|cafe|black|negro)/.test(value)) return 70
+
+    return 80
+}
+
 export function sortDonors(donors: Donor[], sort: DonorSort): Donor[] {
     const sorted = [...donors]
 
@@ -115,8 +144,18 @@ export function sortDonors(donors: Donor[], sort: DonorSort): Donor[] {
             })
         }
         case 'id-asc':
-        default:
             return sorted.sort((a, b) => compareDonorIds(a.id, b.id))
+        case 'default':
+        default:
+            // Primero quien tiene foto: una ficha sin retrato se descarta de un
+            // vistazo, así que ocupando los primeros huecos solo estorba. Ya
+            // dentro de cada bloque manda el color de ojos.
+            return sorted.sort(
+                (a, b) =>
+                    Number(b.photos.length > 0) - Number(a.photos.length > 0) ||
+                    eyeColorRank(a.eyeColor) - eyeColorRank(b.eyeColor) ||
+                    compareDonorIds(a.id, b.id),
+            )
     }
 }
 
@@ -235,6 +274,14 @@ export function findSimilarDonors(donor: Donor, catalogue: Donor[], limit = 4): 
 
 const RANGE_KEYS = ['heightMin', 'heightMax', 'weightMin', 'weightMax'] as const
 
+/**
+ * Orden con el que se entra al catálogo y al que se vuelve si el visitante
+ * deshace su elección. No se nombra en el desplegable —ahí solo aparece la
+ * invitación a ordenar— y tampoco viaja en la URL, porque es el estado de
+ * partida y no una decisión de quien navega.
+ */
+export const DEFAULT_SORT: DonorSort = 'default'
+
 export function filtersToSearchParams(filters: DonorFilters, sort: DonorSort): URLSearchParams {
     const params = new URLSearchParams()
 
@@ -253,12 +300,12 @@ export function filtersToSearchParams(filters: DonorFilters, sort: DonorSort): U
     }
 
     if (filters.withPhoto) params.set('withPhoto', '1')
-    if (sort !== 'id-asc') params.set('sort', sort)
+    if (sort !== DEFAULT_SORT) params.set('sort', sort)
 
     return params
 }
 
-const SORT_VALUES: DonorSort[] = ['id-asc', 'id-desc', 'height-asc', 'height-desc']
+const SORT_VALUES: DonorSort[] = ['default', 'id-asc', 'id-desc', 'height-asc', 'height-desc']
 
 export function filtersFromSearchParams(params: URLSearchParams): {
     filters: DonorFilters
@@ -282,7 +329,7 @@ export function filtersFromSearchParams(params: URLSearchParams): {
     filters.withPhoto = params.get('withPhoto') === '1'
 
     const rawSort = params.get('sort')
-    const sort = SORT_VALUES.includes(rawSort as DonorSort) ? (rawSort as DonorSort) : 'id-asc'
+    const sort = SORT_VALUES.includes(rawSort as DonorSort) ? (rawSort as DonorSort) : DEFAULT_SORT
 
     return { filters, sort }
 }

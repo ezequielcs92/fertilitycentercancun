@@ -279,16 +279,20 @@
                 "subtitle": "Browse our egg donor profiles and filter by the traits that matter to you.",
                 "breadcrumb": "Egg donors",
                 "meta_title": "Egg donor catalog",
-                "meta_description": "Browse the egg donor catalog at Advanced Fertility Center Cancun: nationality, blood type, eye and hair color, height and education for every donor."
+                "meta_description": "Browse the egg donor catalog at Advanced Fertility Center Cancun: nationality, blood type, eye and hair color, height and education for every donor.",
+                "intro": "All egg donors are premium donors. All donors are Russian or Russian Asian (CIS) or Siberian nationalities.\nAll egg donors were screened by the clinic accredited by CAP (College of American Pathologists).\nDonor eggs are stored in cryobank also accredited by CAP.\nDonor eggs were vitrified (frozen) by the most effective up-to-date vitrification technology developed by Prof. M. Kuwayama.\nEmbryologists were trained by Prof. M. Kuwayama personally.",
+                "price_note": "Price for 1 vitrified donor egg - 2500 USD at AFCC clinic (or + shipping)."
             },
             "sperm": {
                 "title": "Sperm donor catalog",
                 "subtitle": "Browse our sperm donor profiles and filter by the traits that matter to you.",
                 "breadcrumb": "Sperm donors",
                 "meta_title": "Sperm donor catalog",
-                "meta_description": "Browse the sperm donor catalog at Advanced Fertility Center Cancun: nationality, blood type, eye and hair color, height and education for every donor."
+                "meta_description": "Browse the sperm donor catalog at Advanced Fertility Center Cancun: nationality, blood type, eye and hair color, height and education for every donor.",
+                "intro": "All sperm donors are premium donors. All donors are Russian or Russian Asian (CIS) or Siberian nationalities.\nAll sperm donors were screened by the clinic accredited by CAP (College of American Pathologists).\nDonor sperm is stored in cryobank also accredited by CAP.",
+                "price_note": "Price for 1 cryopreserved donor sperm vial - 2500 USD at AFCC clinic (or + shipping)."
             },
-            "intro": "All profiles come from our partner donor bank. Every donor has passed the medical, genetic and psychological screening the program requires.",
+            "intro_image_alt": "Embryologists in the vitrification laboratory",
             "results": "{count, plural, =0 {No donors} one {# donor} other {# donors}}",
             "results_filtered": "{count, plural, =0 {No donors} one {# donor} other {# donors}} of {total}",
             "empty_title": "No donors match your search",
@@ -312,6 +316,7 @@
             "with_photo": "With photo only",
             "sort_label": "Sort by",
             "sort": {
+                "default": "Sort by…",
                 "id_asc": "Donor number (ascending)",
                 "id_desc": "Donor number (descending)",
                 "height_asc": "Height (low to high)",
