@@ -1,10 +1,11 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Search, SlidersHorizontal, X, RotateCcw } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
+    DEFAULT_SORT,
     buildFacets,
     buildRanges,
     countActiveFilters,
@@ -13,7 +14,7 @@ import {
     matchesFilters,
     sortDonors,
 } from '@/lib/donors/filters'
-import { EMPTY_FILTERS, type Donor, type DonorFilters, type DonorSort } from '@/lib/donors/types'
+import { EMPTY_FILTERS, type Donor, type DonorFilters, type DonorSort, type DonorType } from '@/lib/donors/types'
 import DonorCard from './DonorCard'
 import DonorFilterPanel from './DonorFilterPanel'
 import DonorSelectionBar from './DonorSelectionBar'
@@ -31,11 +32,13 @@ const PAGE_SIZE = 24
 
 interface DonorCatalogProps {
     donors: Donor[]
+    /** Decide qué precio se pinta bajo el listado. */
+    type: DonorType
     /** Query string de entrada, para poder compartir una búsqueda por enlace. */
     initialSearch: string
 }
 
-export default function DonorCatalog({ donors, initialSearch }: DonorCatalogProps) {
+export default function DonorCatalog({ donors, type, initialSearch }: DonorCatalogProps) {
     const t = useTranslations('Donors')
 
     const initial = useMemo(() => filtersFromSearchParams(new URLSearchParams(initialSearch)), [initialSearch])
@@ -43,6 +46,7 @@ export default function DonorCatalog({ donors, initialSearch }: DonorCatalogProp
     const [filters, setFilters] = useState<DonorFilters>(initial.filters)
     const [sort, setSort] = useState<DonorSort>(initial.sort)
     const [visible, setVisible] = useState(PAGE_SIZE)
+    const rootRef = useRef<HTMLDivElement>(null)
     const [drawerOpen, setDrawerOpen] = useState(false)
 
     const facets = useMemo(() => buildFacets(donors), [donors])
@@ -67,6 +71,26 @@ export default function DonorCatalog({ donors, initialSearch }: DonorCatalogProp
             window.history.replaceState(null, '', next)
         }
     }, [filters, sort])
+
+    // Al filtrar, la lista se acorta y el documento encoge de golpe. El
+    // navegador conserva la posición de desplazamiento, así que quien estaba a
+    // media página aparece de pronto en el pie, lejos de los donantes y del
+    // panel de filtros, justo cuando lo más probable es que quiera seguir
+    // ajustando la búsqueda. Si la posición se ha quedado más allá del final
+    // del contenido, se sube lo justo para dejar ese final al borde inferior
+    // de la ventana. Cuando la lista crece —«ver más»— la condición no se
+    // cumple y no se toca nada.
+    useEffect(() => {
+        const main = rootRef.current?.closest('main')
+        if (!main) return
+
+        const contentBottom = main.getBoundingClientRect().bottom + window.scrollY
+        const lastUsefulScroll = Math.max(0, contentBottom - window.innerHeight)
+
+        if (window.scrollY > lastUsefulScroll) {
+            window.scrollTo({ top: lastUsefulScroll })
+        }
+    }, [results.length, visible])
 
     // El cajón de filtros ocupa toda la pantalla en móvil; con el fondo
     // desplazable se pierde la posición del listado al cerrarlo.
@@ -103,7 +127,7 @@ export default function DonorCatalog({ donors, initialSearch }: DonorCatalogProp
 
     const reset = useCallback(() => {
         updateFilters({ ...EMPTY_FILTERS })
-        updateSort('id-asc')
+        updateSort(DEFAULT_SORT)
     }, [updateFilters, updateSort])
 
     const panel = (
@@ -117,7 +141,7 @@ export default function DonorCatalog({ donors, initialSearch }: DonorCatalogProp
     )
 
     return (
-        <div className="not-prose">
+        <div ref={rootRef} className="not-prose">
             {/* Buscador y orden */}
             <div className="flex flex-col lg:flex-row gap-4 mb-10">
                 <div className="relative flex-1">
@@ -147,6 +171,10 @@ export default function DonorCatalog({ donors, initialSearch }: DonorCatalogProp
                         // pantalla y aparecía scroll horizontal en toda la página.
                         className="h-14 min-w-0 flex-1 lg:flex-none rounded-2xl bg-slate-50 px-5 pr-10 text-sm text-brand-violet transition-all appearance-none cursor-pointer focus:outline-none focus:ring-4 focus:ring-brand-green/20 focus:bg-white"
                     >
+                        {/* Volver aquí devuelve el orden de entrada. La opción
+                            no dice cómo ordena: ese criterio lo decide la
+                            clínica y al visitante no se le anuncia. */}
+                        <option value="default">{t('filters.sort.default')}</option>
                         <option value="id-asc">{t('filters.sort.id_asc')}</option>
                         <option value="id-desc">{t('filters.sort.id_desc')}</option>
                         <option value="height-asc">{t('filters.sort.height_asc')}</option>
@@ -171,7 +199,15 @@ export default function DonorCatalog({ donors, initialSearch }: DonorCatalogProp
 
             <div className="flex flex-col lg:flex-row gap-10 items-start">
                 {/* Filtros en escritorio */}
-                <aside className="hidden lg:block w-72 xl:w-80 shrink-0 lg:sticky lg:top-28">{panel}</aside>
+                {/* Con todas las facetas desplegadas el panel es más alto que
+                    la pantalla. Al ser `sticky` sin límite de altura, el final
+                    quedaba fuera y solo se alcanzaba desplazando la página
+                    entera hasta abajo. Con altura máxima y scroll propio, la
+                    rueda del ratón recorre el panel mientras el cursor está
+                    encima y sigue con la página al llegar al final. */}
+                <aside className="hidden lg:block w-72 xl:w-80 shrink-0 lg:sticky lg:top-28 lg:max-h-[calc(100vh-9rem)] lg:overflow-y-auto lg:pr-2">
+                    {panel}
+                </aside>
 
                 <div className="flex-1 min-w-0 w-full">
                     <div className="flex items-center justify-between gap-4 mb-6">
@@ -229,6 +265,14 @@ export default function DonorCatalog({ donors, initialSearch }: DonorCatalogProp
                                     </p>
                                 </div>
                             )}
+
+                            {/* El precio va aquí, dentro de la columna del
+                                listado, y no al final de la página: colgado del
+                                contenedor entero se salía bajo el panel de
+                                filtros y quedaba desalineado con las tarjetas. */}
+                            <p className="mt-12 rounded-2xl bg-slate-50 px-6 py-5 text-base text-brand-violet font-medium">
+                                {t(`catalog.${type}.price_note`)}
+                            </p>
                         </>
                     )}
                 </div>
