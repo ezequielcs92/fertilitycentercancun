@@ -66,10 +66,10 @@ export default async function DonorCatalogPage({ type, locale, searchParams }: D
                 <p className="text-slate-600 font-light leading-relaxed whitespace-pre-line">{t(`catalog.${type}.intro`)}</p>
 
                 <Image
-                    src="/images/kuwayama-lab.jpg"
+                    src="/images/kuwayama-team.jpg"
                     alt={t('catalog.intro_image_alt')}
-                    width={1400}
-                    height={1009}
+                    width={1164}
+                    height={780}
                     sizes="(min-width: 1024px) 288px, (min-width: 768px) 240px, 92vw"
                     className="w-full rounded-2xl border border-slate-100 shadow-sm"
                 />
