@@ -168,7 +168,7 @@ export default function Footer() {
                         </div>
                         <div className="flex items-center gap-3">
                             <Mail className="w-4 h-4 text-brand-green" />
-                            <span>contacto@fertilitycentercancun.com</span>
+                            <span>info@fertilitycentercancun.com.mx</span>
                         </div>
                         <div className="flex items-center gap-3">
                             <MapPin className="w-4 h-4 text-brand-green" />
