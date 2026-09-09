@@ -10,8 +10,20 @@ import { cn } from '@/lib/utils'
  * Galería de fotografías de la ficha.
  *
  * Sin librería de carrusel: son cuatro fotos como mucho, así que basta con
- * mantener el índice visible y precargar todas. Cualquier carrusel del mercado
- * pesaría más que las propias imágenes.
+ * mantener el índice visible. Cualquier carrusel del mercado pesaría más que
+ * las propias imágenes.
+ *
+ * Las fotos se pintan todas a la vez y se alternan con la opacidad, en lugar de
+ * cambiarle el `src` a una sola. Con el `src` cambiante, cada miniatura pulsada
+ * estrenaba una URL que nadie había pedido nunca, y el visitante se quedaba
+ * mirando un hueco unos dos segundos: no por el peso —36 KB que llegan en un
+ * milisegundo— sino porque el optimizador tenía que ir a buscar el original a
+ * Moscú y recodificarlo en ese momento. La miniatura ya cargada no servía de
+ * nada, porque pide 120 px y el visor 640: son dos ficheros distintos.
+ *
+ * Así el navegador se las trae mientras se lee la ficha y el cambio es
+ * instantáneo. La primera visita a cada donante paga varias optimizaciones en
+ * vez de una, pero solo la primera: después las sirve el volumen de caché.
  */
 
 interface DonorGalleryProps {
@@ -38,14 +50,24 @@ export default function DonorGallery({ photos, alt }: DonorGalleryProps) {
     return (
         <div className="flex flex-col gap-4">
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-slate-100 shadow-lg">
-                <Image
-                    src={photos[current]}
-                    alt={`${alt} — ${current + 1}/${photos.length}`}
-                    fill
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    priority
-                    className="object-cover"
-                />
+                {photos.map((photo, position) => (
+                    <Image
+                        key={photo}
+                        src={photo}
+                        // Solo la visible se anuncia; las demás son decorado que
+                        // está ahí para no hacer esperar en el siguiente clic.
+                        alt={position === current ? `${alt} — ${current + 1}/${photos.length}` : ''}
+                        aria-hidden={position !== current}
+                        fill
+                        sizes="(min-width: 1024px) 40vw, 100vw"
+                        priority={position === 0}
+                        loading={position === 0 ? undefined : 'eager'}
+                        className={cn(
+                            'object-cover transition-opacity duration-300',
+                            position === current ? 'opacity-100' : 'opacity-0',
+                        )}
+                    />
+                ))}
 
                 {photos.length > 1 && (
                     <>
