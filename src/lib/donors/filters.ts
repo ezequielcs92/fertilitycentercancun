@@ -323,6 +323,9 @@ export function findSimilarDonors(donor: Donor, catalogue: Donor[], limit = 4): 
 
 const RANGE_KEYS = ['heightMin', 'heightMax', 'weightMin', 'weightMax'] as const
 
+/** Tarjetas que se pintan de golpe, y de cuántas en cuántas crece el listado. */
+export const PAGE_SIZE = 24
+
 /**
  * Orden con el que se entra al catálogo y al que se vuelve si el visitante
  * deshace su elección: primero con foto, después por grupo de nacionalidad,
@@ -333,7 +336,11 @@ const RANGE_KEYS = ['heightMin', 'heightMax', 'weightMin', 'weightMax'] as const
  */
 export const DEFAULT_SORT: DonorSort = 'default'
 
-export function filtersToSearchParams(filters: DonorFilters, sort: DonorSort): URLSearchParams {
+export function filtersToSearchParams(
+    filters: DonorFilters,
+    sort: DonorSort,
+    visible: number = PAGE_SIZE,
+): URLSearchParams {
     const params = new URLSearchParams()
 
     if (filters.q.trim()) params.set('q', filters.q.trim())
@@ -353,6 +360,13 @@ export function filtersToSearchParams(filters: DonorFilters, sort: DonorSort): U
     if (filters.withPhoto) params.set('withPhoto', '1')
     if (sort !== DEFAULT_SORT) params.set('sort', sort)
 
+    // Cuántas tarjetas se han desplegado también viaja en la URL. Sin esto, al
+    // volver desde una ficha el listado se rehacía con las 24 de partida: la
+    // página quedaba mucho más corta que cuando se salió de ella y la posición
+    // que el navegador intenta restaurar caía más allá del final, así que el
+    // visitante aterrizaba en el pie en lugar de donde estaba.
+    if (visible > PAGE_SIZE) params.set('shown', String(visible))
+
     return params
 }
 
@@ -361,6 +375,7 @@ const SORT_VALUES: DonorSort[] = ['default', 'id-asc', 'id-desc', 'height-asc', 
 export function filtersFromSearchParams(params: URLSearchParams): {
     filters: DonorFilters
     sort: DonorSort
+    visible: number
 } {
     const filters: DonorFilters = { ...EMPTY_FILTERS }
 
@@ -382,5 +397,13 @@ export function filtersFromSearchParams(params: URLSearchParams): {
     const rawSort = params.get('sort')
     const sort = SORT_VALUES.includes(rawSort as DonorSort) ? (rawSort as DonorSort) : DEFAULT_SORT
 
-    return { filters, sort }
+    // Se redondea al alza a un múltiplo de página y se le pone techo: el valor
+    // llega de la URL y puede venir a mano, y sin tope una cifra enorme haría
+    // que el navegador intentara pintar de una vez una lista sin final.
+    const rawShown = Number(params.get('shown'))
+    const visible = Number.isFinite(rawShown) && rawShown > PAGE_SIZE
+        ? Math.min(Math.ceil(rawShown / PAGE_SIZE) * PAGE_SIZE, PAGE_SIZE * 20)
+        : PAGE_SIZE
+
+    return { filters, sort, visible }
 }
