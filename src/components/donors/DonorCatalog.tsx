@@ -1,11 +1,13 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Search, SlidersHorizontal, X, RotateCcw } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
     DEFAULT_SORT,
+    PAGE_SIZE,
     buildFacets,
     buildRanges,
     countActiveFilters,
@@ -27,9 +29,6 @@ import DonorSelectionBar from './DonorSelectionBar'
  * una casilla sea instantáneo, sin ir al servidor ni pintar estados de carga.
  */
 
-/** Fichas por tanda. Tres filas completas en escritorio. */
-const PAGE_SIZE = 24
-
 interface DonorCatalogProps {
     donors: Donor[]
     /** Decide qué precio se pinta bajo el listado. */
@@ -40,12 +39,13 @@ interface DonorCatalogProps {
 
 export default function DonorCatalog({ donors, type, initialSearch }: DonorCatalogProps) {
     const t = useTranslations('Donors')
+    const router = useRouter()
 
     const initial = useMemo(() => filtersFromSearchParams(new URLSearchParams(initialSearch)), [initialSearch])
 
     const [filters, setFilters] = useState<DonorFilters>(initial.filters)
     const [sort, setSort] = useState<DonorSort>(initial.sort)
-    const [visible, setVisible] = useState(PAGE_SIZE)
+    const [visible, setVisible] = useState(initial.visible)
     const rootRef = useRef<HTMLDivElement>(null)
     const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -59,18 +59,30 @@ export default function DonorCatalog({ donors, type, initialSearch }: DonorCatal
 
     const activeCount = countActiveFilters(filters)
 
-    // La selección se refleja en la URL con `replaceState` en lugar de con el
-    // router: filtrar no debe crear una entrada nueva en el historial por cada
-    // casilla, pero el enlace sí tiene que poder copiarse y compartirse.
+    // La selección se refleja en la URL con `replace` y no con `push`: filtrar
+    // no debe dejar una entrada nueva en el historial por cada casilla, pero el
+    // enlace sí tiene que poder copiarse y compartirse.
+    //
+    // Se hace con el router y no con `window.history.replaceState`, que es lo
+    // que había antes: aquello cambiaba la barra de direcciones pero no el
+    // estado que guarda el router, así que al volver desde una ficha la página
+    // se rehacía con la URL de partida. Se perdían los filtros y, con ellos,
+    // las tarjetas desplegadas; la página quedaba mucho más corta que al salir
+    // y la posición restaurada caía en el pie.
+    //
+    // Va con retardo porque escribir en el buscador cambia el estado en cada
+    // tecla y cada `replace` pide de nuevo la página al servidor. La URL solo
+    // hace falta para compartir y para volver, así que puede ir un paso por
+    // detrás; `scroll: false` evita que el listado salte arriba al escribir.
     useEffect(() => {
-        const params = filtersToSearchParams(filters, sort)
-        const query = params.toString()
+        const query = filtersToSearchParams(filters, sort, visible).toString()
         const next = `${window.location.pathname}${query ? `?${query}` : ''}`
 
-        if (next !== `${window.location.pathname}${window.location.search}`) {
-            window.history.replaceState(null, '', next)
-        }
-    }, [filters, sort])
+        if (next === `${window.location.pathname}${window.location.search}`) return
+
+        const id = setTimeout(() => router.replace(next, { scroll: false }), 400)
+        return () => clearTimeout(id)
+    }, [filters, sort, visible, router])
 
     // Al filtrar, la lista se acorta y el documento encoge de golpe. El
     // navegador conserva la posición de desplazamiento, así que quien estaba a
