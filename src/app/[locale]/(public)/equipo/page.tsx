@@ -98,12 +98,6 @@ const supportTeam = [
     roleEn: 'Donor Coordinator',
     image: '/images/team/yhadira-serrano.jpg',
   },
-  {
-    name: 'Luis Iván Hernández Fuentes',
-    roleEs: 'Director Comercial',
-    roleEn: 'Commercial Director',
-    image: '/images/team/luis-hernandez.jpg',
-  },
 ];
 
 function MemberCard({ name, role, image }: { name: string; role: string; image: string }) {
