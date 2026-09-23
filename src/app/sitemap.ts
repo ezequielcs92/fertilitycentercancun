@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { createPublicClient } from '@/lib/supabase/public'
 import { getIndexablePages } from '@/content/pages/registry'
+import { donorCatalogSeoPath } from '@/lib/donors/routes'
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://fertilitycentercancun.com').replace(/\/$/, '')
 
@@ -17,7 +18,25 @@ const FIXED_ROUTES: Array<{ es: string; en: string; priority: number; changeFreq
     { es: 'experiencia', en: 'experiencia', priority: 0.7, changeFrequency: 'monthly' },
     { es: 'podcast', en: 'podcast', priority: 0.7, changeFrequency: 'weekly' },
     { es: 'blog', en: 'blog', priority: 0.9, changeFrequency: 'daily' },
+    // Los slugs salen del mismo sitio que las rutas y que el canonical, para
+    // que no puedan separarse si algún día se renombran. `daily` porque el
+    // listado se rehace cada mañana con la exportación de la clínica.
+    {
+        es: donorCatalogSeoPath('egg', 'es'),
+        en: donorCatalogSeoPath('egg', 'en'),
+        priority: 0.9,
+        changeFrequency: 'daily',
+    },
+    {
+        es: donorCatalogSeoPath('sperm', 'es'),
+        en: donorCatalogSeoPath('sperm', 'en'),
+        priority: 0.9,
+        changeFrequency: 'daily',
+    },
 ]
+
+// Comparador y favoritos se quedan fuera a propósito: sin selección previa no
+// tienen contenido, así que no hay nada que indexar.
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const now = new Date()
