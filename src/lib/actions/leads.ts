@@ -1,7 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
-import { resolveNotificationRecipients } from '@/lib/notifications'
+import { LIFESTART_DONOR_INBOX, resolveNotificationRecipients, withPrimaryRecipient } from '@/lib/notifications'
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key_to_prevent_crash')
@@ -35,6 +35,30 @@ export interface LeadFormData {
     utm?: Record<string, string | undefined>
     locale?: 'es' | 'en'
     captchaToken?: string | null
+    /**
+     * Origen que Upnify debe guardar en el prospecto. Solo lo envía la
+     * solicitud LifeStart; el formulario de pacientes sigue usando el origen
+     * configurado en la integración.
+     */
+    origen?: string
+    /** Destinatario principal del aviso. Los destinatarios habituales quedan en copia. */
+    notificationTo?: string
+    /** Copia la solicitud en la bandeja de la administración (mensajes_contacto). */
+    saveToInbox?: boolean
+}
+
+export interface LifeStartApplication {
+    nombre: string
+    edad: string
+    fechaNacimiento: string
+    peso: string
+    talla: string
+    nacionalidad: string
+    telefono: string
+    email: string
+    locale?: 'es' | 'en'
+    captchaToken?: string | null
+    utm?: Record<string, string | undefined>
 }
 
 /**
@@ -284,7 +308,7 @@ function buildUpnifyPayload(formData: LeadFormData, locale: 'es' | 'en'): Record
         .filter(Boolean)
         .join('\n\n') || undefined
 
-    const origen = process.env.UPNIFY_ORIGEN?.trim()
+    const origen = formData.origen?.trim() || process.env.UPNIFY_ORIGEN?.trim()
     if (origen) {
         payload.origen = origen
     }
@@ -389,7 +413,7 @@ async function sendLeadToCrm(formData: LeadFormData): Promise<{ delivered: boole
         mensaje: formData.mensaje?.trim() || null,
         utm: formData.utm && Object.keys(formData.utm).length > 0 ? formData.utm : null,
         locale: formData.locale === 'en' ? 'en' : 'es',
-        source: 'fertilitycentercancun_web_form',
+        source: formData.origen?.trim() || 'fertilitycentercancun_web_form',
         submittedAt: new Date().toISOString(),
     }
 
@@ -450,10 +474,14 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
         const isProduction = process.env.NODE_ENV === 'production';
         const isCaptchaEnabled = Boolean(secretKey && !isTurnstileTestSecret);
 
+        const isEn = formData.locale === 'en'
+
         if (isProduction && !isCaptchaEnabled) {
             return {
                 success: false,
-                message: 'Sistema anti-spam no configurado. Contacte al administrador del sitio.',
+                message: isEn
+                    ? 'The anti-spam system is not configured. Please contact the site administrator.'
+                    : 'Sistema anti-spam no configurado. Contacte al administrador del sitio.',
                 error: 'CAPTCHA_UNCONFIGURED'
             }
         }
@@ -462,7 +490,7 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
             if (!formData.captchaToken) {
                 return {
                     success: false,
-                    message: 'Verificación de seguridad requerida',
+                    message: isEn ? 'Security verification is required.' : 'Verificación de seguridad requerida',
                     error: 'CAPTCHA_REQUIRED'
                 }
             }
@@ -481,7 +509,9 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
             if (!verifyData.success) {
                 return {
                     success: false,
-                    message: 'La verificación de seguridad ha fallado. Por favor intente de nuevo.',
+                    message: isEn
+                        ? 'The security check failed. Please try again.'
+                        : 'La verificación de seguridad ha fallado. Por favor intente de nuevo.',
                     error: 'CAPTCHA_FAILED'
                 }
             }
@@ -491,7 +521,7 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
         if (!formData.nombre || !formData.email) {
             return {
                 success: false,
-                message: 'Nombre y email son requeridos',
+                message: isEn ? 'Name and email are required.' : 'Nombre y email son requeridos',
                 error: 'VALIDATION_ERROR'
             }
         }
@@ -501,7 +531,7 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
         if (!emailRegex.test(formData.email)) {
             return {
                 success: false,
-                message: 'Por favor ingrese un email válido',
+                message: isEn ? 'Please enter a valid email address.' : 'Por favor ingrese un email válido',
                 error: 'INVALID_EMAIL'
             }
         }
@@ -534,6 +564,23 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
             // CRM y correo son canales independientes; continuamos para evitar perder el lead.
         }
 
+        if (formData.saveToInbox) {
+            const { error: inboxError } = await supabase
+                .from('mensajes_contacto')
+                .insert([
+                    {
+                        nombre: formData.nombre.trim(),
+                        email: formData.email.trim().toLowerCase(),
+                        telefono: formData.telefono?.trim() || null,
+                        mensaje: formData.mensaje?.trim() || formData.nombre.trim(),
+                    }
+                ])
+
+            if (inboxError) {
+                console.error('Error al guardar la solicitud en la bandeja:', inboxError)
+            }
+        }
+
         // Entregar lead al CRM: primero Upnify (si está configurado), luego webhook genérico.
         const upnifyResult = await sendLeadToUpnify(formData)
         const crmResult = upnifyResult.delivered
@@ -561,7 +608,11 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
             console.error('Error fetching notification settings:', settingsError);
         }
 
-        const { to: notificationTo, cc: notificationCc } = resolveNotificationRecipients(configuredNotificationEmail)
+        const { to: notificationTo, cc: notificationCc } = withPrimaryRecipient(
+            resolveNotificationRecipients(configuredNotificationEmail),
+            formData.notificationTo
+        )
+        const isLifeStart = formData.origen === 'LifeStart'
 
         const attributionSummary = Object.entries(formData.utm || {})
             .filter(([, value]) => Boolean(value))
@@ -575,9 +626,11 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
                     from: process.env.RESEND_FROM_EMAIL || 'Fertility Center Cancun <onboarding@resend.dev>',
                     to: notificationTo,
                     ...(notificationCc.length > 0 ? { cc: notificationCc } : {}),
-                    subject: `${crmResult.delivered ? 'Nuevo Lead' : '[NO ENTRÓ AL CRM] Nuevo Lead'}: ${formData.nombre} - ${formData.tratamiento || 'Consulta general'}`,
+                    subject: isLifeStart
+                        ? `${crmResult.delivered ? 'Nueva solicitud LifeStart' : '[NO ENTRÓ AL CRM] Nueva solicitud LifeStart'}: ${formData.nombre}`
+                        : `${crmResult.delivered ? 'Nuevo Lead' : '[NO ENTRÓ AL CRM] Nuevo Lead'}: ${formData.nombre} - ${formData.tratamiento || 'Consulta general'}`,
                     html: `
-                        <h2>Nueva Solicitud de Consulta</h2>
+                        <h2>${isLifeStart ? 'Nueva solicitud LifeStart Donors' : 'Nueva Solicitud de Consulta'}</h2>
                         ${crmResult.delivered ? '' : `
                         <div style="margin: 16px 0; padding: 14px; background-color: #fef2f2; border-left: 4px solid #dc2626; color: #7f1d1d;">
                             <strong>Este prospecto NO se registró en el CRM.</strong>
@@ -596,7 +649,7 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
                             ${attributionSummary ? `<tr style="background-color: #f8fafc;"><td style="padding: 10px; border: 1px solid #e2e8f0;"><strong>Atribución:</strong></td><td style="padding: 10px; border: 1px solid #e2e8f0;">${escapeHtml(attributionSummary)}</td></tr>` : ''}
                         </table>
                         <div style="margin-top: 20px; padding: 15px; background-color: #f8fafc; border-left: 4px solid #8b5cf6;">
-                            <strong>Mensaje del paciente:</strong><br/>
+                            <strong>${isLifeStart ? 'Datos de la solicitud:' : 'Mensaje del paciente:'}</strong><br/>
                             <p style="white-space: pre-wrap;">${escapeHtml(formData.mensaje) || 'Vacío.'}</p>
                         </div>
                         <p style="margin-top: 30px; font-size: 12px; color: #64748b;">Este mensaje fue generado automáticamente por Fertility Center Cancun.</p>
@@ -620,9 +673,13 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
 
         return {
             success: true,
-            message: formData.locale === 'en'
-                ? 'Thank you for contacting us. Our medical team will contact you within 24 hours.'
-                : 'Gracias por contactarnos. Nuestro equipo médico se pondrá en contacto en menos de 24 horas.'
+            message: isLifeStart
+                ? (formData.locale === 'en'
+                    ? 'Thank you for your application. The LifeStart team will contact you soon.'
+                    : 'Gracias por tu solicitud. El equipo de LifeStart se pondrá en contacto contigo pronto.')
+                : (formData.locale === 'en'
+                    ? 'Thank you for contacting us. Our medical team will contact you within 24 hours.'
+                    : 'Gracias por contactarnos. Nuestro equipo médico se pondrá en contacto en menos de 24 horas.')
         }
 
     } catch (error) {
@@ -633,4 +690,134 @@ export async function submitLead(formData: LeadFormData): Promise<ActionResult> 
             error: error instanceof Error ? error.message : 'UNKNOWN_ERROR'
         }
     }
+}
+
+const LIFESTART_MIN_AGE = 18
+const LIFESTART_MAX_AGE = 29
+
+function fail(locale: 'es' | 'en', es: string, en: string, error: string): ActionResult {
+    return {
+        success: false,
+        message: locale === 'en' ? en : es,
+        error,
+    }
+}
+
+function ageFromDateOfBirth(value: string): number | null {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value.trim())
+    if (!match) return null
+
+    const year = Number(match[1])
+    const month = Number(match[2])
+    const day = Number(match[3])
+    const birth = new Date(year, month - 1, day)
+    if (
+        birth.getFullYear() !== year ||
+        birth.getMonth() !== month - 1 ||
+        birth.getDate() !== day
+    ) {
+        return null
+    }
+
+    const today = new Date()
+    if (birth > today) return null
+
+    let age = today.getFullYear() - year
+    const hadBirthday =
+        today.getMonth() > birth.getMonth() ||
+        (today.getMonth() === birth.getMonth() && today.getDate() >= birth.getDate())
+    if (!hadBirthday) age -= 1
+
+    return age
+}
+
+function containsNumber(value: string): boolean {
+    return /\d/.test(value)
+}
+
+/**
+ * Solicitud del programa LifeStart Donors.
+ *
+ * Valida el cuestionario, la guarda en la bandeja, avisa a
+ * donantes@afcc.com.mx y la entrega a Upnify con origen «LifeStart».
+ * El formulario de pacientes no pasa por aquí.
+ */
+export async function submitLifeStartApplication(application: LifeStartApplication): Promise<ActionResult> {
+    const locale = application.locale === 'en' ? 'en' : 'es'
+    const nombre = application.nombre?.trim() ?? ''
+    const email = application.email?.trim() ?? ''
+    const telefono = application.telefono?.trim() ?? ''
+    const nacionalidad = application.nacionalidad?.trim() ?? ''
+    const edadTexto = application.edad?.trim() ?? ''
+    const fechaNacimiento = application.fechaNacimiento?.trim() ?? ''
+    const peso = application.peso?.trim() ?? ''
+    const talla = application.talla?.trim() ?? ''
+
+    if (nombre.length < 2) {
+        return fail(locale, 'Escribe tu nombre completo.', 'Enter your full name.', 'VALIDATION_ERROR')
+    }
+
+    const edad = Number(edadTexto)
+    if (!Number.isInteger(edad) || edad < LIFESTART_MIN_AGE || edad > LIFESTART_MAX_AGE) {
+        return fail(
+            locale,
+            'El programa es para mujeres de 18 a 29 años.',
+            'The program is for women between 18 and 29 years old.',
+            'INVALID_AGE'
+        )
+    }
+
+    const edadPorFecha = ageFromDateOfBirth(fechaNacimiento)
+    if (edadPorFecha === null || edadPorFecha < LIFESTART_MIN_AGE || edadPorFecha > LIFESTART_MAX_AGE) {
+        return fail(
+            locale,
+            'La fecha de nacimiento debe corresponder a una edad de 18 a 29 años.',
+            'The date of birth must correspond to an age between 18 and 29.',
+            'INVALID_BIRTHDATE'
+        )
+    }
+
+    if (!containsNumber(peso) || peso.length > 40) {
+        return fail(locale, 'Indica tu peso.', 'Enter your weight.', 'INVALID_WEIGHT')
+    }
+
+    if (!containsNumber(talla) || talla.length > 40) {
+        return fail(locale, 'Indica tu talla.', 'Enter your height.', 'INVALID_HEIGHT')
+    }
+
+    if (nacionalidad.length < 2) {
+        return fail(locale, 'Indica tu nacionalidad.', 'Enter your nationality.', 'INVALID_NATIONALITY')
+    }
+
+    const digitos = telefono.replace(/\D/g, '')
+    if (digitos.length < 8) {
+        return fail(locale, 'Indica un teléfono de WhatsApp válido.', 'Enter a valid WhatsApp number.', 'INVALID_PHONE')
+    }
+
+    const tratamiento = locale === 'en' ? 'LifeStart Donation Program' : 'Programa Donación LifeStart'
+    const mensaje = [
+        'Solicitud LifeStart Donors',
+        'Origen: LifeStart',
+        `Edad: ${edad}`,
+        `Fecha de nacimiento: ${fechaNacimiento}`,
+        `Peso: ${peso}`,
+        `Talla: ${talla}`,
+        `Nacionalidad: ${nacionalidad}`,
+        `WhatsApp: ${telefono}`,
+    ].join('\n')
+
+    return submitLead({
+        nombre,
+        email,
+        telefono,
+        pais: nacionalidad,
+        tratamiento,
+        mensaje,
+        utm: application.utm,
+        locale,
+        captchaToken: application.captchaToken,
+        origen: 'LifeStart',
+        notificationTo: LIFESTART_DONOR_INBOX,
+        saveToInbox: true,
+    })
 }

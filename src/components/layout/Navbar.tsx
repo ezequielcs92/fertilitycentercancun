@@ -107,7 +107,7 @@ export default function Navbar() {
                 { name: t('items.treatments.links.mini_fiv'), href: route('/mini-fiv', '/mini-ivf'), icon: Zap },
                 { name: t('items.treatments.links.artificial_insemination'), href: route('/inseminacion-artificial', '/artificial-insemination'), icon: UserCheck },
                 { name: t('items.treatments.links.egg_donation'), href: route('/ovodon', '/ovodon'), icon: Heart },
-                { name: t('items.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/programa-donacion-lifestart'), icon: Droplets },
+                { name: t('items.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/lifestart-donation-program'), icon: Droplets },
                 { name: t('items.treatments.links.embryo'), href: route('/donacion-y-adopcion-embriones', '/embryo-donation-and-adoption'), icon: Baby },
                 { name: t('items.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method'), icon: Users },
                 { name: t('items.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation'), icon: Clock },

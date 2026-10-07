@@ -2,7 +2,7 @@
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import { Globe, ShieldCheck, CheckCircle } from 'lucide-react';
-import Link from 'next/link';
+import LifeStartApplicationForm from '@/components/forms/LifeStartApplicationForm';
 
 export default function Page() {
   const reasons = [
@@ -42,17 +42,6 @@ export default function Page() {
     }
   ];
 
-  const formFields = [
-    'Nombre completo',
-    'Edad',
-    'Fecha de nacimiento',
-    'Peso',
-    'Talla',
-    'Nacionalidad',
-    'Tel. WhatsApp',
-    'Email'
-  ];
-
   return (
     <InnerPageLayout
       title="Programa Donación LifeStart"
@@ -76,12 +65,12 @@ export default function Page() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="mailto:donantes@afcc.com.mx?subject=Aplicaci%C3%B3n%20LifeStart%20Donors"
+            <a
+              href="#solicitud"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
             >
               Aplica ahora
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -175,35 +164,19 @@ export default function Page() {
           Cada donación representa una nueva historia, una oportunidad y una familia. Hoy puedes ser parte de ese comienzo.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
-          <Link
-            href="mailto:donantes@afcc.com.mx?subject=Aplicaci%C3%B3n%20LifeStart%20Donors"
+          <a
+            href="#solicitud"
             className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
           >
             Aplica ahora
-          </Link>
+          </a>
           <p className="text-slate-600 text-sm sm:text-base">
             Correo de recepción: <a className="font-semibold text-brand-violet" href="mailto:donantes@afcc.com.mx">donantes@afcc.com.mx</a>
           </p>
         </div>
       </div>
 
-      <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-        <h2 className="text-3xl font-serif text-brand-violet mb-4">Formulario de aplicación</h2>
-        <p className="text-slate-600 mb-6 leading-relaxed">
-          En el cuestionario deberá contemplarse la siguiente información:
-        </p>
-        <div className="grid md:grid-cols-2 gap-3 mb-6">
-          {formFields.map((field) => (
-            <div key={field} className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
-              <CheckCircle className="w-4 h-4 text-brand-green shrink-0" />
-              <span className="text-slate-700">{field}</span>
-            </div>
-          ))}
-        </div>
-        <p className="text-slate-600">
-          El botón de envío debe dirigir la solicitud al correo <a className="font-semibold text-brand-violet" href="mailto:donantes@afcc.com.mx">donantes@afcc.com.mx</a>.
-        </p>
-      </div>
+      <LifeStartApplicationForm />
 
     </InnerPageLayout>
   );

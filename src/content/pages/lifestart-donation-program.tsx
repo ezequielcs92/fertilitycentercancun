@@ -2,7 +2,7 @@
 import InnerPageLayout from '@/components/layout/InnerPageLayout';
 import Image from 'next/image';
 import { Globe, ShieldCheck, CheckCircle } from 'lucide-react';
-import Link from 'next/link';
+import LifeStartApplicationForm from '@/components/forms/LifeStartApplicationForm';
 
 export default function Page() {
   const reasons = [
@@ -42,17 +42,6 @@ export default function Page() {
     }
   ];
 
-  const formFields = [
-    'Full Name',
-    'Age',
-    'Date of Birth',
-    'Weight',
-    'Height',
-    'Nationality',
-    'WhatsApp Number',
-    'Email Address'
-  ];
-
   return (
     <InnerPageLayout
       title="LifeStart Donation Program"
@@ -76,12 +65,12 @@ export default function Page() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="mailto:donantes@afcc.com.mx?subject=LifeStart%20Donors%20Application"
+            <a
+              href="#solicitud"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
             >
               Apply now
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -175,35 +164,19 @@ export default function Page() {
           Every donation represents a new story, a new opportunity, and a new family. Today, you can be part of that beginning.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
-          <Link
-            href="mailto:donantes@afcc.com.mx?subject=LifeStart%20Donors%20Application"
+          <a
+            href="#solicitud"
             className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
           >
             Apply now
-          </Link>
+          </a>
           <p className="text-slate-600 text-sm sm:text-base">
             Application inbox: <a className="font-semibold text-brand-violet" href="mailto:donantes@afcc.com.mx">donantes@afcc.com.mx</a>
           </p>
         </div>
       </div>
 
-      <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-        <h2 className="text-3xl font-serif text-brand-violet mb-4">Application Form</h2>
-        <p className="text-slate-600 mb-6 leading-relaxed">
-          Please complete the following information:
-        </p>
-        <div className="grid md:grid-cols-2 gap-3 mb-6">
-          {formFields.map((field) => (
-            <div key={field} className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
-              <CheckCircle className="w-4 h-4 text-brand-green shrink-0" />
-              <span className="text-slate-700">{field}</span>
-            </div>
-          ))}
-        </div>
-        <p className="text-slate-600">
-          The submit button should send applications to <a className="font-semibold text-brand-violet" href="mailto:donantes@afcc.com.mx">donantes@afcc.com.mx</a>.
-        </p>
-      </div>
+      <LifeStartApplicationForm />
 
     </InnerPageLayout>
   );
