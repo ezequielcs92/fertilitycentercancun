@@ -347,25 +347,25 @@ export const contentPages: Record<string, ContentPage> = {
         priority: 0.9,
         load: () => import('@/content/pages/egg-donation'),
     },
-    'donacion-de-espermatozoides': {
+    'programa-donacion-lifestart': {
         locale: 'es',
-        title: 'Donación de Espermatozoides — Programa LifeStart',
+        title: 'Programa Donación LifeStart — Donación de Óvulos',
         description:
-            'Nuestro programa de donación de gametos: requisitos, estudios previos y acompañamiento para donantes en Advanced Fertility Center Cancún.',
-        counterpart: 'sperm-donation',
+            'Programa LifeStart de donación de óvulos en Cancún para mujeres de 18 a 29 años. Conoce los requisitos y envía tu solicitud en línea.',
+        counterpart: 'lifestart-donation-program',
         isTreatment: true,
         priority: 0.7,
-        load: () => import('@/content/pages/donacion-de-espermatozoides'),
+        load: () => import('@/content/pages/programa-donacion-lifestart'),
     },
-    'sperm-donation': {
+    'lifestart-donation-program': {
         locale: 'en',
-        title: 'Sperm Donation — LifeStart Program',
+        title: 'LifeStart Donation Program — Egg Donation',
         description:
-            'Our gamete donation program: requirements, screening tests and full support for donors at Advanced Fertility Center Cancun.',
-        counterpart: 'donacion-de-espermatozoides',
+            'LifeStart egg donation program in Cancun for women aged 18 to 29. Review the requirements and submit your application online.',
+        counterpart: 'programa-donacion-lifestart',
         isTreatment: true,
         priority: 0.7,
-        load: () => import('@/content/pages/sperm-donation'),
+        load: () => import('@/content/pages/lifestart-donation-program'),
     },
     'donacion-y-adopcion-embriones': {
         locale: 'es',
@@ -689,7 +689,7 @@ export const esToEnSlug: Record<string, string> = {
     'mini-fiv': 'mini-ivf',
     'inseminacion-artificial': 'artificial-insemination',
     'donacion-de-ovulos': 'egg-donation',
-    'donacion-de-espermatozoides': 'sperm-donation',
+    'programa-donacion-lifestart': 'lifestart-donation-program',
     'donacion-y-adopcion-embriones': 'embryo-donation-and-adoption',
     'metodo-ropa': 'ropa-method',
     'preservacion-de-la-fertilidad': 'fertility-preservation',
@@ -720,7 +720,8 @@ export const enToEsSlug: Record<string, string> = Object.fromEntries(
  */
 export const legacySlugRedirects: Record<string, string> = {
     'ovodon': 'donacion-de-ovulos',
-    'programa-donacion-lifestart': 'donacion-de-espermatozoides',
+    'donacion-de-espermatozoides': 'programa-donacion-lifestart',
+    'sperm-donation': 'lifestart-donation-program',
     'comunidad-lgbt-tratamiento': 'construyendo-familias',
     'lgbt-community-treatments': 'building-families',
 }
