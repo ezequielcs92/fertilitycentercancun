@@ -12,6 +12,9 @@
 const DEFAULT_NOTIFICATION_TO = 'comercial@afcc.com.mx'
 const DEFAULT_NOTIFICATION_CC = ['info@fertilitycentercancun.com.mx']
 
+/** Buzón del programa de donantes LifeStart, distinto del de pacientes. */
+export const LIFESTART_DONOR_INBOX = 'donantes@afcc.com.mx'
+
 /**
  * Copia de las solicitudes del catálogo para el equipo de AltraVita.
  *
@@ -111,4 +114,25 @@ export function resolveNotificationRecipients(
     }
 
     return { to, cc }
+}
+
+/**
+ * Pone un correo como destinatario principal y conserva el resto en copia,
+ * sin repetir direcciones. Lo usa la solicitud LifeStart: el original va a
+ * donantes@ y la clínica sigue recibiendo la copia habitual.
+ */
+export function withPrimaryRecipient(base: NotificationRecipients, primary?: string | null): NotificationRecipients {
+    const email = primary?.trim()
+    if (!email) return base
+
+    const normalized = email.toLowerCase()
+    const cc: string[] = []
+
+    for (const candidate of [...base.to, ...base.cc]) {
+        if (!candidate || candidate.toLowerCase() === normalized) continue
+        if (cc.some((existing) => existing.toLowerCase() === candidate.toLowerCase())) continue
+        cc.push(candidate)
+    }
+
+    return { to: [email], cc }
 }
