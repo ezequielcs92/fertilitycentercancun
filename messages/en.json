@@ -351,6 +351,7 @@
             "donor_short": "#{id}"
         },
         "fields": {
+            "eggsAvailable": "Eggs available",
             "nationality": "Nationality",
             "bloodType": "Blood type",
             "rhesusFactor": "Rh factor",
