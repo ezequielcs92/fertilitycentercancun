@@ -10,6 +10,7 @@ import type { Donor } from './types'
 
 /** Campos del donante que se pintan como fila de «característica → valor». */
 export type DonorAttributeKey =
+    | 'eggsAvailable'
     | 'nationality'
     | 'bloodType'
     | 'rhesusFactor'
@@ -39,7 +40,18 @@ export type DonorSectionKey = 'general' | 'appearance' | 'education' | 'measurem
 export const DONOR_SECTIONS: Array<{ key: DonorSectionKey; fields: DonorAttributeKey[] }> = [
     {
         key: 'general',
-        fields: ['nationality', 'bloodType', 'rhesusFactor', 'height', 'weight', 'constitution', 'handedness'],
+        // Las existencias van primero: es el dato que decide una compra, y en
+        // esperma el feed no lo trae, así que la fila ni se pinta.
+        fields: [
+            'eggsAvailable',
+            'nationality',
+            'bloodType',
+            'rhesusFactor',
+            'height',
+            'weight',
+            'constitution',
+            'handedness',
+        ],
     },
     {
         key: 'appearance',

@@ -139,6 +139,7 @@ export function parseDonorsXml(xml: string, type: DonorType): Donor[] {
             education: tag(block, 'education'),
             gpaSchool: numericTag(block, 'gpa_school'),
             gpaUniversity: numericTag(block, 'gpa_university'),
+            eggsAvailable: numericTag(block, 'cryobank'),
             dressSize: tag(block, 'dress_size'),
             shoesSize: tag(block, 'shoes_size'),
             braSize: tag(block, 'bra_size'),

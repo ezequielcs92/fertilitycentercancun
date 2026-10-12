@@ -11,9 +11,9 @@ import DonorSelectionButtons from './DonorSelectionButtons'
 /**
  * Tarjeta de donante del listado.
  *
- * Muestra solo los cuatro rasgos por los que más se filtra. La ficha completa
- * tiene otros veinte campos, pero volcarlos aquí convertiría la cuadrícula en
- * una tabla y haría imposible barrer el catálogo de un vistazo.
+ * Muestra las existencias y los rasgos por los que más se filtra. La ficha
+ * completa tiene otros veinte campos, pero volcarlos aquí convertiría la
+ * cuadrícula en una tabla y haría imposible barrer el catálogo de un vistazo.
  */
 
 interface DonorCardProps {
@@ -29,6 +29,11 @@ export default function DonorCard({ donor, priority = false }: DonorCardProps) {
     const cover = donor.photos[0]
 
     const traits: Array<{ label: string; value: string }> = []
+    // Las existencias abren la lista: es lo que primero se mira al elegir. En
+    // esperma el feed no trae el dato, así que ahí no aparece la fila.
+    if (donor.eggsAvailable !== null) {
+        traits.push({ label: t('fields.eggsAvailable'), value: String(donor.eggsAvailable) })
+    }
     if (donor.nationality) traits.push({ label: t('fields.nationality'), value: donor.nationality })
     if (donor.eyeColor) traits.push({ label: t('fields.eyeColor'), value: donor.eyeColor })
     if (donor.hairColor) traits.push({ label: t('fields.hairColor'), value: donor.hairColor })

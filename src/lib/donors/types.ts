@@ -56,6 +56,14 @@ export interface Donor {
     /** Nota media universitaria (escala rusa de 1 a 5). Solo ovocitos. */
     gpaUniversity: number | null
 
+    /**
+     * Unidades que quedan en el criobanco. En el feed es `<cryobank>`, y solo
+     * viene en el de ovocitos: en el de esperma la etiqueta no existe.
+     * Comprobado contra la ficha de origen, que publica el mismo número como
+     * «Availability in cryobank» / «Disponibilidad en el criobanco».
+     */
+    eggsAvailable: number | null
+
     /** Solo ovocitos. */
     dressSize: string | null
     shoesSize: string | null

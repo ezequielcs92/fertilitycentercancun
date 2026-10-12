@@ -351,6 +351,7 @@
             "donor_short": "n.º {id}"
         },
         "fields": {
+            "eggsAvailable": "Óvulos disponibles",
             "nationality": "Nacionalidad",
             "bloodType": "Grupo sanguíneo",
             "rhesusFactor": "Factor Rh",
