@@ -379,7 +379,7 @@
         "units": {
             "cm": "{value} cm",
             "kg": "{value} kg",
-            "pcs": "{value} pcs"
+            "pcs": "{value} uds."
         },
         "sections": {
             "general": "Datos generales",
