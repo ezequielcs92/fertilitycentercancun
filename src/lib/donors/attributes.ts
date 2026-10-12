@@ -77,16 +77,20 @@ export const DONOR_SECTIONS: Array<{ key: DonorSectionKey; fields: DonorAttribut
 /** Todos los campos en orden, aplanados. Es el orden de filas del comparador. */
 export const DONOR_ATTRIBUTE_ORDER: DonorAttributeKey[] = DONOR_SECTIONS.flatMap((section) => section.fields)
 
+/** Unidades que puede llevar un valor numérico. */
+export type DonorUnit = 'cm' | 'kg' | 'pcs'
+
 /** Campos cuyo valor lleva unidad. */
-const UNITS: Partial<Record<DonorAttributeKey, 'cm' | 'kg'>> = {
+const UNITS: Partial<Record<DonorAttributeKey, DonorUnit>> = {
+    eggsAvailable: 'pcs',
     height: 'cm',
     weight: 'kg',
     hairLength: 'cm',
 }
 
 export interface FormatOptions {
-    /** Traduce `Donors.units.cm` / `Donors.units.kg`. */
-    unit: (unit: 'cm' | 'kg', value: number) => string
+    /** Traduce `Donors.units.*`. */
+    unit: (unit: DonorUnit, value: number) => string
 }
 
 /**

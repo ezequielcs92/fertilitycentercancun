@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { ImageOff, Scale, Trash2, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { donorCatalogHref, donorDetailHref } from '@/lib/donors/routes'
-import { DONOR_ATTRIBUTE_ORDER, formatDonorAttribute } from '@/lib/donors/attributes'
+import { DONOR_ATTRIBUTE_ORDER, formatDonorAttribute, type DonorUnit } from '@/lib/donors/attributes'
 import type { Donor } from '@/lib/donors/types'
 import DonorInquiryForm from './DonorInquiryForm'
 import DonorSelectionBar from './DonorSelectionBar'
@@ -43,7 +43,7 @@ export default function DonorCompareView({ donors }: DonorCompareViewProps) {
     }, [donors, compare.refs])
 
     const rows = useMemo(() => {
-        const unit = (suffix: 'cm' | 'kg', value: number) => t(`units.${suffix}`, { value })
+        const unit = (suffix: DonorUnit, value: number) => t(`units.${suffix}`, { value })
 
         return DONOR_ATTRIBUTE_ORDER.map((key) => ({
             key,

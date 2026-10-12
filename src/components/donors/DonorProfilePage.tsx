@@ -11,6 +11,7 @@ import {
     formatDonorAttribute,
     sectionHasData,
     type DonorAttributeKey,
+    type DonorUnit,
 } from '@/lib/donors/attributes'
 import type { Donor, DonorType } from '@/lib/donors/types'
 import DonorGallery from './DonorGallery'
@@ -41,7 +42,7 @@ function AttributeRows({
 }: {
     donor: Donor
     fields: DonorAttributeKey[]
-    unit: (unit: 'cm' | 'kg', value: number) => string
+    unit: (unit: DonorUnit, value: number) => string
     noData: string
     label: (key: DonorAttributeKey) => string
 }) {
@@ -80,7 +81,7 @@ export default async function DonorProfilePage({ type, locale, id }: DonorProfil
     const title = t(type === 'egg' ? 'detail.title_egg' : 'detail.title_sperm', { id: donor.id })
     const catalogHref = donorCatalogHref(type, current)
 
-    const unit = (suffix: 'cm' | 'kg', value: number) => t(`units.${suffix}`, { value })
+    const unit = (suffix: DonorUnit, value: number) => t(`units.${suffix}`, { value })
     const label = (key: DonorAttributeKey) => t(`fields.${key}`)
 
     return (

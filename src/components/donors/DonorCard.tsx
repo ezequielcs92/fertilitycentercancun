@@ -32,7 +32,7 @@ export default function DonorCard({ donor, priority = false }: DonorCardProps) {
     // Las existencias abren la lista: es lo que primero se mira al elegir. En
     // esperma el feed no trae el dato, así que ahí no aparece la fila.
     if (donor.eggsAvailable !== null) {
-        traits.push({ label: t('fields.eggsAvailable'), value: String(donor.eggsAvailable) })
+        traits.push({ label: t('fields.eggsAvailable'), value: t('units.pcs', { value: donor.eggsAvailable }) })
     }
     if (donor.nationality) traits.push({ label: t('fields.nationality'), value: donor.nationality })
     if (donor.eyeColor) traits.push({ label: t('fields.eyeColor'), value: donor.eyeColor })

@@ -378,7 +378,8 @@
         },
         "units": {
             "cm": "{value} cm",
-            "kg": "{value} kg"
+            "kg": "{value} kg",
+            "pcs": "{value} pcs"
         },
         "sections": {
             "general": "Datos generales",
