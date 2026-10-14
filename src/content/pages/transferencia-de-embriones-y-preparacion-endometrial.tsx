@@ -9,7 +9,7 @@ export default function Page() {
       title="Transferencia de Embriones"
       breadcrumb={[
         { label: 'Inicio', href: '/' },
-        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Tratamientos', href: '/tratamientos' },
         { label: 'Transferencia Embrionaria', href: '#' }
       ]}
     >

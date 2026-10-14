@@ -39,24 +39,20 @@ const FIXED_ROUTES: Array<{ es: string; en: string; priority: number; changeFreq
 // tienen contenido, así que no hay nada que indexar.
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const now = new Date()
-
     const fixedPages: MetadataRoute.Sitemap = FIXED_ROUTES.flatMap((route) =>
         (['es', 'en'] as const).map((locale) => {
             const slug = route[locale]
             return {
                 url: slug ? `${siteUrl}/${locale}/${slug}` : `${siteUrl}/${locale}`,
-                lastModified: now,
                 changeFrequency: route.changeFrequency,
                 priority: route.priority,
             }
         })
     )
 
-    // Las ~66 páginas de contenido estático, cada una en su idioma.
+    // Las páginas de contenido estático, cada una en su idioma canónico.
     const contentPages: MetadataRoute.Sitemap = getIndexablePages().map(({ slug, page }) => ({
         url: `${siteUrl}/${page.locale}/${slug}`,
-        lastModified: now,
         changeFrequency: 'monthly' as const,
         priority: page.priority ?? 0.7,
     }))
@@ -75,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             blogPosts = (data || []).flatMap((post) =>
                 (['es', 'en'] as const).map((locale) => ({
                     url: `${siteUrl}/${locale}/blog/${post.slug}`,
-                    lastModified: post.updated_at ? new Date(post.updated_at) : now,
+                    ...(post.updated_at ? { lastModified: new Date(post.updated_at) } : {}),
                     changeFrequency: 'weekly' as const,
                     priority: 0.8,
                 }))

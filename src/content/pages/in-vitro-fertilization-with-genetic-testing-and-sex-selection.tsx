@@ -61,7 +61,7 @@ export default function Page() {
               </p>
             </div>
             <a
-              href="https://api.whatsapp.com/send?phone=5219983050373&text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call."
+              href="https://api.whatsapp.com/send?phone=529983050373&text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call."
               target="_blank"
               rel="noopener nofollow"
               className="inline-flex items-center gap-3 bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all hover:-translate-y-1"
@@ -166,7 +166,7 @@ export default function Page() {
             Our embryology and genetics team uses advanced technology to improve your chances of a healthy pregnancy.
           </p>
           <a
-            href="https://api.whatsapp.com/send?phone=5219983050373&text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call."
+            href="https://api.whatsapp.com/send?phone=529983050373&text=I%20visited%20your%20website%20and%20would%20like%20to%20schedule%20my%20free%20video%20call."
             target="_blank"
             rel="noopener nofollow"
             className="inline-flex items-center gap-3 bg-brand-violet text-white px-10 py-5 rounded-full font-bold hover:bg-brand-violet/90 transition-all hover:scale-105 shadow-xl"

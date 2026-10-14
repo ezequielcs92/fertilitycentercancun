@@ -47,7 +47,7 @@ export default function Page() {
       title="Programa Donación LifeStart"
       breadcrumb={[
         { label: 'Inicio', href: '/' },
-        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Tratamientos', href: '/tratamientos' },
         { label: 'Programa Donación LifeStart', href: '#' }
       ]}
     >

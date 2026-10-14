@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { whatsAppHref, whatsAppTextForPath } from '@/lib/whatsapp';
 
 declare global {
   interface Window {
@@ -26,7 +27,6 @@ declare global {
 }
 
 const LIVECHAT_LICENSE = 10113817;
-const WHATSAPP_URL = 'https://wa.me/5219983050373';
 
 function loadOriginalLiveChat() {
   if (document.querySelector('script[src="https://cdn.livechatinc.com/tracking.js"]')) return;
@@ -99,11 +99,27 @@ export default function FloatingContactButtons() {
   });
 
   useEffect(() => {
-    window.__lc = window.__lc || {};
-    window.__lc.license = LIVECHAT_LICENSE;
-    window.__lc.integration_name = 'manual_channels';
-    window.__lc.product_name = 'livechat';
-    loadOriginalLiveChat();
+    let loaded = false;
+
+    const start = () => {
+      if (loaded) return;
+      loaded = true;
+      window.__lc = window.__lc || {};
+      window.__lc.license = LIVECHAT_LICENSE;
+      window.__lc.integration_name = 'manual_channels';
+      window.__lc.product_name = 'livechat';
+      loadOriginalLiveChat();
+      window.removeEventListener('pointerdown', start);
+      window.removeEventListener('keydown', start);
+    };
+
+    window.addEventListener('pointerdown', start, { once: true });
+    window.addEventListener('keydown', start, { once: true });
+
+    return () => {
+      window.removeEventListener('pointerdown', start);
+      window.removeEventListener('keydown', start);
+    };
   }, []);
 
   useEffect(() => {
@@ -144,7 +160,7 @@ export default function FloatingContactButtons() {
   return (
     <div className="fixed z-[80]" style={whatsAppPosition}>
       <a
-        href={WHATSAPP_URL}
+        href={whatsAppHref(whatsAppTextForPath(pathname || '', isEs))}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={isEs ? 'Abrir WhatsApp' : 'Open WhatsApp'}

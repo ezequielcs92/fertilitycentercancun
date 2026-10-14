@@ -64,7 +64,7 @@ export default function GeneticStudyPage() {
             </div>
 
             <a
-              href="https://api.whatsapp.com/send?phone=5219983050373&text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita."
+              href="https://api.whatsapp.com/send?phone=529983050373&text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita."
               target="_blank"
               rel="noopener nofollow"
               className="inline-flex items-center gap-3 bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold hover:shadow-lg transition-all hover:-translate-y-1"
@@ -170,7 +170,7 @@ export default function GeneticStudyPage() {
             Nuestro equipo de embriólogos y genetistas utiliza la tecnología más avanzada del mundo para ayudarte a formar una familia saludable.
           </p>
           <a
-            href="https://api.whatsapp.com/send?phone=5219983050373&text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita."
+            href="https://api.whatsapp.com/send?phone=529983050373&text=Visit%C3%A9%20su%20sitio%20web%20y%20quisiera%20agendar%20mi%20videollamada%20gratuita."
             target="_blank"
             rel="noopener nofollow"
             className="inline-flex items-center gap-3 bg-brand-violet text-white px-10 py-5 rounded-full font-bold hover:bg-brand-violet/90 transition-all hover:scale-105 shadow-xl"

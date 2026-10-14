@@ -50,7 +50,7 @@ export default async function Page({
 
           <div className="flex items-center gap-4 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">
             <Link
-              href="/blog"
+              href={`/${locale}/blog`}
               className="px-6 py-3 rounded-xl bg-brand-violet text-white font-bold whitespace-nowrap shadow-md shadow-brand-violet/20 hover:scale-105 transition-transform"
             >
               {isEs ? 'Todos' : 'All'}
@@ -58,7 +58,7 @@ export default async function Page({
             {categories?.length > 0 ? categories.map((cat: Category) => (
               <Link
                 key={cat.id}
-                href={`/blog/categoria/${cat.slug}`}
+                href={`/${locale}/blog/categoria/${cat.slug}`}
                 className="px-6 py-3 rounded-xl bg-white text-slate-600 font-medium whitespace-nowrap border border-slate-100 hover:border-brand-green/30 hover:text-brand-violet transition-all shadow-sm"
               >
                 {cat.nombre}

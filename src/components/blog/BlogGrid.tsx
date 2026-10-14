@@ -56,7 +56,7 @@ export default function BlogGrid({ posts, locale = 'es' }: BlogGridProps) {
                             </time>
                         </div>
 
-                        <Link href={`/blog/${post.slug}`}>
+                        <Link href={`/${locale}/blog/${post.slug}`}>
                             <h3 className="text-2xl font-serif text-brand-violet mb-4 leading-tight group-hover:text-brand-green transition-colors line-clamp-2 underline decoration-transparent group-hover:decoration-brand-green/30 px-px">
                                 {post.titulo}
                             </h3>
@@ -68,7 +68,7 @@ export default function BlogGrid({ posts, locale = 'es' }: BlogGridProps) {
 
                         <div className="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
                             <Link
-                                href={`/blog/${post.slug}`}
+                                href={`/${locale}/blog/${post.slug}`}
                                 className="flex items-center gap-2 text-brand-violet font-bold text-sm tracking-wider uppercase group/link"
                             >
                                 <span>{isEs ? 'Leer artículo' : 'Read article'}</span>

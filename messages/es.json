@@ -171,6 +171,7 @@
                     "fiv": "FIV - In Vitro",
                     "artificial_insemination": "Inseminación Artificial",
                     "egg_donation": "Ovodón",
+                    "sperm_treatment": "Donación de espermatozoides",
                     "sperm_donation": "Programa Donación LifeStart",
                     "ropa": "Método ROPA",
                     "preservation": "Preservación Fertilidad"
@@ -254,6 +255,7 @@
                     "artificial_insemination": "Inseminación Artificial",
                     "egg_donation": "Ovodón",
                     "egg_donor_catalog": "Catálogo de donantes de óvulos",
+                    "sperm_treatment": "Donación de espermatozoides",
                     "sperm_donation": "Programa Donación LifeStart",
                     "sperm_donor_catalog": "Catálogo de donantes de esperma",
                     "embryo": "Donación y Adopción de Embriones",
