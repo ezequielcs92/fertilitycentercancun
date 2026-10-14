@@ -7,6 +7,8 @@ import { autoTranslateHtml, autoTranslateText } from '@/lib/i18n/auto-translate'
 import { getPostBySlug } from '@/lib/actions/posts';
 import { siteUrl } from '@/lib/seo';
 import legacyPosts from '@/data/legacy-posts.json';
+import JsonLd from '@/components/seo/JsonLd';
+import { articleGraph } from '@/lib/schema';
 
 export const revalidate = 60;
 
@@ -97,14 +99,14 @@ export async function generateMetadata({
       url: canonical,
       type: 'article',
       publishedTime: article.publishedAt ?? undefined,
-      images: article.image ? [article.image] : undefined,
+      images: [{ url: article.image || '/images/og-afcc.png', width: 1200, height: 630 }],
       locale: current === 'es' ? 'es_MX' : 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description: article.excerpt,
-      images: article.image ? [article.image] : undefined,
+      images: [article.image || '/images/og-afcc.png'],
     },
   };
 }
@@ -123,6 +125,16 @@ export default async function BlogArticlePage({
 
   return (
     <main className="bg-white pb-24">
+      <JsonLd
+        data={articleGraph({
+          locale: isEs ? 'es' : 'en',
+          slug,
+          title: article.title,
+          description: article.excerpt,
+          publishedAt: article.publishedAt,
+          image: article.image,
+        })}
+      />
       <PageHeader
         title={article.title}
         breadcrumb={[

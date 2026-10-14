@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { Container } from '@/components/ui/Container';
-import { ChevronRight, MessageCircle, Sparkles } from 'lucide-react';
+import { BookUser, ChevronRight, MessageCircle, Sparkles } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { donorCatalogHref } from '@/lib/donors/routes';
 
 interface HeroProps {
     rightContent: React.ReactNode;
@@ -56,6 +57,44 @@ export default function Hero({ rightContent }: HeroProps) {
                             <p className="text-xl text-white/80 font-light mb-10 max-w-xl leading-relaxed">
                                 {t('description')}
                             </p>
+
+                            {/* Acceso al catálogo desde la portada. No se suma a la
+                                fila de botones de arriba: con tres el visitante ya
+                                no sabe cuál es la acción principal. Va aparte, en
+                                verde sobre el violeta, y con un enlace por tipo de
+                                donante, que son dos catálogos distintos. Va delante de
+                                los botones porque detrás, en un móvil de 812 px de
+                                alto, quedaba justo por debajo del pliegue, y con el
+                                mismo `max-w-xl` que la descripción: sin él se estiraba
+                                a lo ancho de la columna y su borde derecho sobresalía
+                                del resto del contenido. */}
+                            <div className="mb-8 max-w-xl flex flex-col items-start gap-3 sm:gap-4 rounded-2xl border border-brand-green/40 bg-brand-green/10 backdrop-blur-md px-5 py-4 sm:px-6 sm:py-5">
+                                {/* Sin `tracking-widest`: ese espaciado existe para que
+                                    un rótulo diminuto se lea, y a este tamaño solo
+                                    alarga el texto hasta desbordar la caja en
+                                    castellano, que es el idioma con la etiqueta larga. */}
+                                <span className="inline-flex items-center gap-2 sm:gap-3 text-2xl sm:text-[2.625rem] leading-none font-bold uppercase text-brand-green">
+                                    <BookUser className="w-6 h-6 sm:w-10 sm:h-10 shrink-0" />
+                                    {t('donors.label')}
+                                </span>
+
+                                <div className="flex flex-wrap gap-3">
+                                    <a
+                                        href={donorCatalogHref('egg', locale)}
+                                        className="inline-flex items-center gap-1.5 rounded-full bg-white text-brand-violet px-5 py-2.5 text-sm font-bold hover:bg-brand-green transition-colors"
+                                    >
+                                        {t('donors.egg')}
+                                        <ChevronRight className="w-4 h-4" />
+                                    </a>
+                                    <a
+                                        href={donorCatalogHref('sperm', locale)}
+                                        className="inline-flex items-center gap-1.5 rounded-full bg-white text-brand-violet px-5 py-2.5 text-sm font-bold hover:bg-brand-green transition-colors"
+                                    >
+                                        {t('donors.sperm')}
+                                        <ChevronRight className="w-4 h-4" />
+                                    </a>
+                                </div>
+                            </div>
 
                             <div className="flex flex-col sm:flex-row gap-4 mb-12">
                                 <a href={isEs ? '/es/promociones' : '/en/promotions'} className="bg-brand-green text-brand-violet px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white transition-all shadow-xl flex items-center justify-center gap-2 group">

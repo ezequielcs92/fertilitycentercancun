@@ -9,7 +9,7 @@ export default function Page() {
       title="Inseminación Artificial"
       breadcrumb={[
         { label: 'Inicio', href: '/' },
-        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Tratamientos', href: '/tratamientos' },
         { label: 'Inseminación Artificial', href: '#' }
       ]}
     >

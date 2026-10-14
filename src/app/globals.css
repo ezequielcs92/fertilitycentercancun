@@ -22,6 +22,17 @@ body {
   font-family: var(--font-sans);
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #99e5d8;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px #3d2f6b;
+}
+
 h1,
 h2,
 h3,

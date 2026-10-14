@@ -10,7 +10,7 @@ export default function Page() {
       title="Ovodón"
       breadcrumb={[
         { label: 'Inicio', href: '/' },
-        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Tratamientos', href: '/tratamientos' },
         { label: 'Ovodón', href: '#' }
       ]}
     >
@@ -29,7 +29,7 @@ export default function Page() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contacto"
+              href="/es/contacto"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
             >
               Agendar consulta
@@ -143,7 +143,7 @@ export default function Page() {
           Estamos listos para acompañarte en este camino y ayudarte a determinar si la ovodonación es la mejor opción para ti.
         </p>
         <Link
-          href="/contacto"
+          href="/es/contacto"
           className="inline-flex items-center justify-center px-7 py-3 bg-brand-green text-brand-violet rounded-full font-bold hover:bg-white transition-colors"
         >
           Agendar consulta

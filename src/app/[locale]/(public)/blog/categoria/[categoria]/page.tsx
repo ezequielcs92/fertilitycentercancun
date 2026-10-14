@@ -42,7 +42,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             <section className="bg-gradient-to-b from-brand-slate to-white py-16">
                 <div className="container mx-auto px-6">
                     <div className="max-w-3xl">
-                        <Link href="/blog" className="text-brand-violet hover:underline mb-4 inline-block">
+                        <Link href={`/${isEs ? 'es' : 'en'}/blog`} className="text-brand-violet hover:underline mb-4 inline-block">
                             {isEs ? '← Volver al blog' : '← Back to blog'}
                         </Link>
                         <h1 className="text-5xl md:text-7xl font-serif text-brand-violet mb-6">

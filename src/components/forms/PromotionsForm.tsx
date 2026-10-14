@@ -94,6 +94,9 @@ export default function PromotionsForm({ locale }: PromotionsFormProps) {
             }
 
             setStatus('success');
+            if (typeof window.gtagSendEvent === 'function') {
+                window.gtagSendEvent();
+            }
             setMessage(isEs ? 'Gracias. Nuestro equipo te contactará pronto.' : 'Thank you. Our team will contact you soon.');
             setFormData({ nombre: '', email: '', telefono: '', promocion: '', mensaje: '' });
             setCaptchaToken(null);

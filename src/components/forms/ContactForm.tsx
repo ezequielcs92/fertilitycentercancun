@@ -112,6 +112,9 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
             if (result.success) {
                 setSubmitStatus('success')
                 setSubmitMessage(result.message) // This might need translate if backend returns Spanish only
+                if (typeof window.gtagSendEvent === 'function') {
+                    window.gtagSendEvent()
+                }
                 // Limpiar formulario
                 setFormData({
                     nombre: '',

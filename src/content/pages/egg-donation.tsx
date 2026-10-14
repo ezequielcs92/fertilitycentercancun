@@ -29,7 +29,7 @@ export default function Page() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact-ivf-doctors"
+              href="/en/contact-ivf-doctors"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
             >
               Schedule consultation
@@ -143,7 +143,7 @@ export default function Page() {
           We are ready to guide you through this journey and help you discover if egg donation is the best option for you.
         </p>
         <Link
-          href="/contact-ivf-doctors"
+          href="/en/contact-ivf-doctors"
           className="inline-flex items-center justify-center px-7 py-3 bg-brand-green text-brand-violet rounded-full font-bold hover:bg-white transition-colors"
         >
           Schedule consultation

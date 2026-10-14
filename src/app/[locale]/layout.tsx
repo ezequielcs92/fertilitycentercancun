@@ -8,7 +8,10 @@ import FloatingElements from '@/components/ui/FloatingElements';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import PromoPopup from '@/components/ui/PromoPopup';
+import GoogleAdsTracking from '@/components/GoogleAdsTracking';
 import UtmTracker from '@/components/analytics/UtmTracker';
+import JsonLd from '@/components/seo/JsonLd';
+import { clinicGraph } from '@/lib/schema';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://fertilitycentercancun.com').replace(/\/$/, '');
 
@@ -53,13 +56,19 @@ export async function generateMetadata({
             url: canonical,
             siteName: 'Advanced Fertility Center Cancun',
             locale: isEs ? 'es_MX' : 'en_US',
-            type: 'website'
+            type: 'website',
+            images: [{ url: '/images/og-afcc.png', width: 1200, height: 630, alt: siteName }],
         },
         twitter: {
             card: 'summary_large_image',
             title,
-            description
-        }
+            description,
+            images: ['/images/og-afcc.png'],
+        },
+        icons: {
+            icon: '/images/logotipo-AFCC.svg',
+            apple: '/images/apple-touch-icon.png',
+        },
     };
 }
 
@@ -90,6 +99,7 @@ export default async function LocaleLayout({
 
     return (
         <NextIntlClientProvider messages={messages}>
+            <JsonLd data={clinicGraph()} />
             <UtmTracker />
             <FloatingElements />
             <div className="relative z-10">
@@ -98,6 +108,7 @@ export default async function LocaleLayout({
                 <Footer />
             </div>
             <PromoPopup />
+            <GoogleAdsTracking />
         </NextIntlClientProvider>
     );
 }

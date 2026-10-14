@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { createPublicClient } from '@/lib/supabase/public'
 import { getIndexablePages } from '@/content/pages/registry'
+import { donorCatalogSeoPath } from '@/lib/donors/routes'
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://fertilitycentercancun.com').replace(/\/$/, '')
 
@@ -17,27 +18,41 @@ const FIXED_ROUTES: Array<{ es: string; en: string; priority: number; changeFreq
     { es: 'experiencia', en: 'experiencia', priority: 0.7, changeFrequency: 'monthly' },
     { es: 'podcast', en: 'podcast', priority: 0.7, changeFrequency: 'weekly' },
     { es: 'blog', en: 'blog', priority: 0.9, changeFrequency: 'daily' },
+    // Los slugs salen del mismo sitio que las rutas y que el canonical, para
+    // que no puedan separarse si algún día se renombran. `daily` porque el
+    // listado se rehace cada mañana con la exportación de la clínica.
+    {
+        es: donorCatalogSeoPath('egg', 'es'),
+        en: donorCatalogSeoPath('egg', 'en'),
+        priority: 0.9,
+        changeFrequency: 'daily',
+    },
+    {
+        es: donorCatalogSeoPath('sperm', 'es'),
+        en: donorCatalogSeoPath('sperm', 'en'),
+        priority: 0.9,
+        changeFrequency: 'daily',
+    },
 ]
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const now = new Date()
+// Comparador y favoritos se quedan fuera a propósito: sin selección previa no
+// tienen contenido, así que no hay nada que indexar.
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const fixedPages: MetadataRoute.Sitemap = FIXED_ROUTES.flatMap((route) =>
         (['es', 'en'] as const).map((locale) => {
             const slug = route[locale]
             return {
                 url: slug ? `${siteUrl}/${locale}/${slug}` : `${siteUrl}/${locale}`,
-                lastModified: now,
                 changeFrequency: route.changeFrequency,
                 priority: route.priority,
             }
         })
     )
 
-    // Las ~66 páginas de contenido estático, cada una en su idioma.
+    // Las páginas de contenido estático, cada una en su idioma canónico.
     const contentPages: MetadataRoute.Sitemap = getIndexablePages().map(({ slug, page }) => ({
         url: `${siteUrl}/${page.locale}/${slug}`,
-        lastModified: now,
         changeFrequency: 'monthly' as const,
         priority: page.priority ?? 0.7,
     }))
@@ -56,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             blogPosts = (data || []).flatMap((post) =>
                 (['es', 'en'] as const).map((locale) => ({
                     url: `${siteUrl}/${locale}/blog/${post.slug}`,
-                    lastModified: post.updated_at ? new Date(post.updated_at) : now,
+                    ...(post.updated_at ? { lastModified: new Date(post.updated_at) } : {}),
                     changeFrequency: 'weekly' as const,
                     priority: 0.8,
                 }))

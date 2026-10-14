@@ -2,6 +2,8 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
 import TreatmentCTA from '@/components/sections/TreatmentCTA'
+import JsonLd from '@/components/seo/JsonLd'
+import { contentPageGraph } from '@/lib/schema'
 import {
   contentPages,
   enToEsSlug,
@@ -83,11 +85,13 @@ export async function generateMetadata({ params }: { params: Promise<PageParams>
       siteName: 'Advanced Fertility Center Cancun',
       locale: page.locale === 'es' ? 'es_MX' : 'en_US',
       type: 'article',
+      images: [{ url: '/images/og-afcc.png', width: 1200, height: 630, alt: 'Advanced Fertility Center Cancún' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: fullTitle,
       description: page.description,
+      images: ['/images/og-afcc.png'],
     },
   }
 }
@@ -111,6 +115,15 @@ export default async function ContentPageRoute({ params }: { params: Promise<Pag
 
   return (
     <>
+      <JsonLd
+        data={contentPageGraph({
+          locale: page.locale,
+          slug: resolution.page,
+          title: page.title,
+          description: page.description,
+          isTreatment: page.isTreatment,
+        })}
+      />
       <PageComponent locale={page.locale} />
       {page.isTreatment && <TreatmentCTA locale={page.locale} />}
     </>

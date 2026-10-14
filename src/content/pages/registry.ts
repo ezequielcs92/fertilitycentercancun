@@ -347,6 +347,26 @@ export const contentPages: Record<string, ContentPage> = {
         priority: 0.9,
         load: () => import('@/content/pages/egg-donation'),
     },
+    'donacion-de-espermatozoides': {
+        locale: 'es',
+        title: 'Donación de espermatozoides',
+        description:
+            'Tratamiento con semen de donante para pacientes: inseminación o FIV, catálogo de donantes y consulta médica en Cancún.',
+        counterpart: 'sperm-donation',
+        isTreatment: true,
+        priority: 0.9,
+        load: () => import('@/content/pages/donacion-de-espermatozoides'),
+    },
+    'sperm-donation': {
+        locale: 'en',
+        title: 'Sperm Donation',
+        description:
+            'Donor sperm treatment for patients: insemination or IVF, a donor catalog and a medical consultation in Cancun.',
+        counterpart: 'donacion-de-espermatozoides',
+        isTreatment: true,
+        priority: 0.9,
+        load: () => import('@/content/pages/sperm-donation'),
+    },
     'programa-donacion-lifestart': {
         locale: 'es',
         title: 'Programa Donación LifeStart — Donación de Óvulos',
@@ -689,6 +709,7 @@ export const esToEnSlug: Record<string, string> = {
     'mini-fiv': 'mini-ivf',
     'inseminacion-artificial': 'artificial-insemination',
     'donacion-de-ovulos': 'egg-donation',
+    'donacion-de-espermatozoides': 'sperm-donation',
     'programa-donacion-lifestart': 'lifestart-donation-program',
     'donacion-y-adopcion-embriones': 'embryo-donation-and-adoption',
     'metodo-ropa': 'ropa-method',
@@ -720,8 +741,6 @@ export const enToEsSlug: Record<string, string> = Object.fromEntries(
  */
 export const legacySlugRedirects: Record<string, string> = {
     'ovodon': 'donacion-de-ovulos',
-    'donacion-de-espermatozoides': 'programa-donacion-lifestart',
-    'sperm-donation': 'lifestart-donation-program',
     'comunidad-lgbt-tratamiento': 'construyendo-familias',
     'lgbt-community-treatments': 'building-families',
 }

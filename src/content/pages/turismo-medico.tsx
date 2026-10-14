@@ -61,7 +61,7 @@ export default function Page() {
           Contamos con coordinadores de pacientes internacionales que pueden ayudarte a planear tu visita, sugerir hospedaje y coordinar tus citas médicas para optimizar tu tiempo en Cancún.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/contacto" className="inline-flex items-center justify-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-colors font-medium">
+          <Link href="/es/contacto" className="inline-flex items-center justify-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-colors font-medium">
             Contactar Coordinador
             <ArrowRight className="w-4 h-4" />
           </Link>

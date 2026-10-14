@@ -7,6 +7,8 @@ import { Container } from '@/components/ui/Container';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useSitePhone } from '@/components/ui/SitePhoneLink';
+import { CLINIC_ADDRESS_EN, CLINIC_ADDRESS_ES, MAPS_URL } from '@/lib/clinic';
+import { localeHref } from '@/lib/locale-href';
 
 // Social icon SVGs inline para Tiktok, X, Spotify, Maps
 const TiktokIcon = () => (
@@ -59,6 +61,7 @@ export default function Footer() {
                 { name: t('sections.treatments.links.fiv'), href: route('/fiv-fertilizacion-in-vitro', '/ivf-in-vitro-fertilization') },
                 { name: t('sections.treatments.links.artificial_insemination'), href: route('/inseminacion-artificial', '/artificial-insemination') },
                 { name: t('sections.treatments.links.egg_donation'), href: route('/ovodon', '/ovodon') },
+                { name: t('sections.treatments.links.sperm_treatment'), href: route('/donacion-de-espermatozoides', '/sperm-donation') },
                 { name: t('sections.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/lifestart-donation-program') },
                 { name: t('sections.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method') },
                 { name: t('sections.treatments.links.preservation'), href: route('/preservacion-de-la-fertilidad', '/fertility-preservation') },
@@ -69,16 +72,16 @@ export default function Footer() {
             links: [
                 { name: t('sections.about.links.why_afcc'), href: route('/sobre-fertility-center-cancun', '/about-fertility-center') },
                 { name: t('sections.about.links.team'), href: route('/equipo', '/ivf-team') },
-                { name: t('sections.about.links.facilities'), href: route('/laboratorios-y-servicios', '/laboratories-and-services') },
+                { name: t('sections.about.links.facilities'), href: route('/instalaciones', '/clinic-tour') },
                 { name: t('sections.about.links.tourism'), href: route('/turismo-medico', '/international-patients') },
-                { name: t('sections.about.links.faqs'), href: '/faqs' },
+                { name: t('sections.about.links.faqs'), href: route('/faqs', '/faqs') },
             ]
         },
         {
             title: t('sections.legal.title'),
             links: [
                 { name: t('sections.legal.links.privacy'), href: route('/aviso-de-privacidad', '/privacy-notice') },
-                { name: t('sections.legal.links.terms'), href: '#' },
+                { name: t('sections.legal.links.terms'), href: route('/terminos-y-condiciones', '/terminos-y-condiciones') },
             ]
         }
     ];
@@ -94,16 +97,16 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 mb-20">
                     {/* Brand Section */}
                     <div className="lg:col-span-2">
-                        <Link href="/" className="inline-flex mb-8">
+                        <Link href={localeHref(locale, '/')} className="inline-flex mb-8">
                             <div className="relative w-80 h-24">
                                 <Image src="/images/logo-afcc.png" alt="Advanced Fertility Center Cancun" fill className="object-contain object-left" />
                             </div>
                         </Link>
-                        <p className="text-white/60 font-light leading-relaxed mb-8 max-w-sm">
+                        <p className="text-white font-light leading-relaxed mb-8 max-w-sm">
                             {t('description')}
                         </p>
                         <div className="flex flex-wrap gap-3">
-                            <Link href="https://share.google/ESPToAzwRd2je1P8r" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-green hover:text-brand-violet transition-all border border-white/10" aria-label="Google Maps">
+                            <Link href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-green hover:text-brand-violet transition-all border border-white/20" aria-label="Google Maps">
                                 <MapsIcon />
                             </Link>
                             <Link href="https://www.facebook.com/AdvancedFertilityCenterCancun" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-green hover:text-brand-violet transition-all border border-white/10" aria-label="Facebook">
@@ -134,7 +137,7 @@ export default function Footer() {
                             <ul className="space-y-4">
                                 {group.links.map((link) => (
                                     <li key={link.name}>
-                                        <Link href={link.href} className="text-white/60 hover:text-brand-green transition-colors text-base font-medium">
+                                        <Link href={localeHref(locale, link.href)} className="text-white hover:text-brand-green transition-colors text-base font-medium">
                                             {link.name}
                                         </Link>
                                     </li>
@@ -161,21 +164,21 @@ export default function Footer() {
                         ))}
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-base text-white/40">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-base text-white">
                         <div className="flex items-center gap-3">
                             <Phone className="w-4 h-4 text-brand-green" />
                             <a href={sitePhone.href} className="hover:text-white transition-colors">{sitePhone.display}</a>
                         </div>
                         <div className="flex items-center gap-3">
                             <Mail className="w-4 h-4 text-brand-green" />
-                            <span>contacto@fertilitycentercancun.com</span>
+                            <span>info@fertilitycentercancun.com.mx</span>
                         </div>
                         <div className="flex items-center gap-3">
                             <MapPin className="w-4 h-4 text-brand-green" />
-                            <span>{isEs ? 'Cancun, Quintana Roo, México' : 'Cancun, Quintana Roo, Mexico'}</span>
+                            <span>{isEs ? CLINIC_ADDRESS_ES : CLINIC_ADDRESS_EN}</span>
                         </div>
                     </div>
-                    <div className="mt-12 text-center text-[10px] uppercase font-bold tracking-[0.2em] text-white/20">
+                    <div className="mt-12 text-center text-[10px] uppercase font-bold tracking-[0.2em] text-white/80">
                         © {new Date().getFullYear()} Advanced Fertility Center Cancun. {t('developed_by')}
                     </div>
                 </div>

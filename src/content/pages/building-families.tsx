@@ -34,7 +34,7 @@ export default function Page() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact-ivf-doctors"
+              href="/en/contact-ivf-doctors"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
             >
               Schedule a Consultation

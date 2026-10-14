@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CheckCircle2 } from 'lucide-react';
 import { buildRouteMetadata } from '@/lib/seo';
+import JsonLd from '@/components/seo/JsonLd';
+import { physicianGraph } from '@/lib/schema';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -98,12 +100,6 @@ const supportTeam = [
     roleEn: 'Donor Coordinator',
     image: '/images/team/yhadira-serrano.jpg',
   },
-  {
-    name: 'Luis Iván Hernández Fuentes',
-    roleEs: 'Director Comercial',
-    roleEn: 'Commercial Director',
-    image: '/images/team/luis-hernandez.jpg',
-  },
 ];
 
 function MemberCard({ name, role, image }: { name: string; role: string; image: string }) {
@@ -125,11 +121,22 @@ export default async function MedicalTeamPage({ params }: { params: Promise<{ lo
   const isEs = locale === 'es';
 
   return (
+    <>
+    <JsonLd
+      data={physicianGraph(
+        isEs ? 'es' : 'en',
+        specialists.map((person) => ({
+          name: person.name,
+          jobTitle: isEs ? person.roleEs : person.roleEn,
+          image: person.image,
+        })),
+      )}
+    />
     <InnerPageLayout
       title={isEs ? 'Nuestro Equipo Médico' : 'Our Medical Team'}
       breadcrumb={[
         { label: isEs ? 'Inicio' : 'Home', href: '/' },
-        { label: isEs ? 'Nosotros' : 'About Us', href: '#' },
+        { label: isEs ? 'Nosotros' : 'About Us', href: isEs ? '/sobre-fertility-center-cancun' : '/about-fertility-center' },
         { label: isEs ? 'Equipo Médico' : 'Medical Team', href: '#' },
       ]}
     >
@@ -183,7 +190,7 @@ export default async function MedicalTeamPage({ params }: { params: Promise<{ lo
         </ul>
         <div className="mt-8">
           <Link
-            href={isEs ? '/contacto' : '/en/contact-ivf-doctors'}
+            href={isEs ? '/es/contacto' : '/en/contact-ivf-doctors'}
             className="inline-block bg-brand-green text-brand-violet px-8 py-4 rounded-full font-bold text-base hover:bg-white transition-colors shadow-lg"
           >
             {isEs ? 'Agendar consulta' : 'Book a consultation'}
@@ -191,5 +198,6 @@ export default async function MedicalTeamPage({ params }: { params: Promise<{ lo
         </div>
       </div>
     </InnerPageLayout>
+    </>
   );
 }
