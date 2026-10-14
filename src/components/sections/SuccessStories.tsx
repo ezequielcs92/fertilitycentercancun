@@ -7,11 +7,13 @@ import Image from 'next/image';
 import { Quote } from 'lucide-react';
 import { getTestimonials, type Testimonial } from '@/lib/actions/testimonials';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { localeHref } from '@/lib/locale-href';
 
 export default function SuccessStories() {
     const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
     const t = useTranslations('SuccessStories');
+    const locale = useLocale();
 
     useEffect(() => {
         const fetchTestimonials = async () => {
@@ -37,7 +39,7 @@ export default function SuccessStories() {
                             })}
                         </h2>
                     </div>
-                    <Link href="/testimonios" className="text-brand-violet font-bold border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors">
+                    <Link href={localeHref(locale, locale === 'en' ? '/testimonials' : '/testimonios')} className="text-brand-violet font-bold border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors">
                         {t('view_more')}
                     </Link>
                 </div>

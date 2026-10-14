@@ -10,7 +10,7 @@ export default function Page() {
       title="Construyendo Familias"
       breadcrumb={[
         { label: 'Inicio', href: '/' },
-        { label: 'Tratamientos', href: '/tratamientos-de-fertilidad' },
+        { label: 'Tratamientos', href: '/tratamientos' },
         { label: 'Construyendo Familias', href: '#' }
       ]}
     >
@@ -34,7 +34,7 @@ export default function Page() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contacto"
+              href="/es/contacto"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-violet text-white rounded-full font-bold hover:bg-brand-violet/90 transition-all shadow-lg hover:-translate-y-1"
             >
               Agendar Consulta de Valoración

@@ -10,6 +10,8 @@ import { donorCatalogHref } from '@/lib/donors/routes';
 import { useLocale, useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { useSitePhone } from '@/components/ui/SitePhoneLink';
+import { MAPS_URL } from '@/lib/clinic';
+import { localeHref } from '@/lib/locale-href';
 
 function TiktokIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
     return (
@@ -55,7 +57,7 @@ export default function Navbar() {
     const sitePhone = useSitePhone();
 
     const socialLinks: Array<{ href: string; label: string; icon: React.ElementType }> = [
-        { href: 'https://share.google/ESPToAzwRd2je1P8r', label: 'Google Maps', icon: MapPin },
+        { href: MAPS_URL, label: 'Google Maps', icon: MapPin },
         { href: 'https://www.facebook.com/AdvancedFertilityCenterCancun', label: 'Facebook', icon: Facebook },
         { href: 'https://www.youtube.com/channel/UCC2jGdKaXHDn9G6J0NcSjAQ', label: 'YouTube', icon: YoutubeIcon },
         { href: 'https://www.instagram.com/advancedfertilitycentercancun/', label: 'Instagram', icon: Instagram },
@@ -93,7 +95,7 @@ export default function Navbar() {
     const navigation: NavItem[] = [
         {
             name: t('items.about.name'),
-            href: '#',
+            href: route('/sobre-fertility-center-cancun', '/about-fertility-center'),
             submenu: [
                 { name: t('items.about.links.philosophy.name'), href: route('/sobre-fertility-center-cancun', '/about-fertility-center'), description: t('items.about.links.philosophy.description') },
                 { name: t('items.about.links.tourism.name'), href: route('/turismo-medico', '/international-patients'), description: t('items.about.links.tourism.description') },
@@ -114,7 +116,8 @@ export default function Navbar() {
                 { name: t('items.treatments.links.mini_fiv'), href: route('/mini-fiv', '/mini-ivf'), icon: Zap },
                 { name: t('items.treatments.links.artificial_insemination'), href: route('/inseminacion-artificial', '/artificial-insemination'), icon: UserCheck },
                 { name: t('items.treatments.links.egg_donation'), href: route('/ovodon', '/ovodon'), icon: Heart },
-                { name: t('items.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/lifestart-donation-program'), icon: Droplets },
+                { name: t('items.treatments.links.sperm_treatment'), href: route('/donacion-de-espermatozoides', '/sperm-donation'), icon: Droplets },
+                { name: t('items.treatments.links.sperm_donation'), href: route('/programa-donacion-lifestart', '/lifestart-donation-program'), icon: Heart },
                 { name: t('items.treatments.links.embryo'), href: route('/donacion-y-adopcion-embriones', '/embryo-donation-and-adoption'), icon: Baby },
                 { name: t('items.treatments.links.ropa'), href: route('/metodo-ropa', '/ropa-method'), icon: Users },
                 { name: t('items.treatments.links.egg_donor_catalog'), href: donorCatalogHref('egg', locale), icon: BookUser, mobileLast: true },
@@ -127,7 +130,7 @@ export default function Navbar() {
         },
         {
             name: t('items.experience.name'),
-            href: '#',
+            href: route('/experiencia', '/experiencia'),
             submenu: [
                 { name: t('items.experience.links.testimonials'), href: route('/testimonios', '/testimonials') },
                 { name: t('items.experience.links.blog'), href: '/blog' },
@@ -137,7 +140,7 @@ export default function Navbar() {
         },
         {
             name: tFooter('sections.legal.title'),
-            href: '#',
+            href: route('/aviso-de-privacidad', '/privacy-notice'),
             submenu: [
                 { name: tFooter('sections.legal.links.privacy'), href: route('/aviso-de-privacidad', '/privacy-notice') },
                 { name: tFooter('sections.legal.links.terms'), href: route('/terminos-y-condiciones', '/terminos-y-condiciones') },
@@ -150,9 +153,9 @@ export default function Navbar() {
     return (
         <>
             {/* Top Bar - High Premium Detail */}
-            <div className={`fixed top-0 left-0 right-0 z-[60] py-2 bg-brand-violet border-b border-white/5 transition-all duration-500 ${scrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
+            <div className={`fixed top-0 left-0 right-0 z-[60] py-2 bg-brand-violet border-b border-white/10 transition-all duration-500 ${scrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
                 <Container className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-white/50 tracking-widest uppercase">
+                    <div className="flex items-center gap-2 text-[10px] font-bold text-white/80 tracking-widest uppercase">
                         {socialLinks.map(({ href, label, icon: Icon }) => (
                             <Link
                                 key={label}
@@ -166,7 +169,7 @@ export default function Navbar() {
                             </Link>
                         ))}
                     </div>
-                    <div className="flex items-center gap-6 text-[10px] font-bold text-white/60 tracking-widest uppercase">
+                    <div className="flex items-center gap-6 text-[10px] font-bold text-white/90 tracking-widest uppercase">
                         <Link href={sitePhone.href} className="hover:text-brand-green transition-colors flex items-center gap-1.5 font-sans">
                             <Phone className="w-3 h-3 text-brand-green" /> {sitePhone.display}
                         </Link>
@@ -177,14 +180,14 @@ export default function Navbar() {
 
             <header
                 className={`fixed left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? 'top-0 py-3 backdrop-blur-xl bg-brand-violet/90 shadow-2xl border-b border-white/10'
+                    ? 'top-0 py-3 bg-brand-violet shadow-2xl border-b border-white/10'
                     : 'top-10 py-6 bg-transparent'
                     }`}
             >
                 <Container className="flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3 group shrink-0">
-                        <div className="relative w-48 h-12 md:w-56 md:h-16 lg:w-44 xl:w-56 flex items-center group-hover:scale-105 transition-transform duration-500">
+                    <Link href={localeHref(locale, '/')} className="flex items-center gap-3 group shrink-0">
+                        <div className="relative w-48 h-12 md:w-56 md:h-16 lg:w-40 lg:h-12 min-[1440px]:w-56 min-[1440px]:h-16 flex items-center group-hover:scale-105 transition-transform duration-500">
                             <Image
                                 src="/images/logotipo-AFCC.svg"
                                 alt="Advanced Fertility Center Cancun"
@@ -195,7 +198,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center gap-4 xl:gap-8">
+                    <nav className="hidden lg:flex items-center gap-2 xl:gap-3 min-[1440px]:gap-6 min-w-0">
                         {navigation.map((item) => (
                             <div
                                 key={item.name}
@@ -204,8 +207,8 @@ export default function Navbar() {
                                 onMouseLeave={() => setActiveMega(null)}
                             >
                                 <Link
-                                    href={item.href}
-                                    className="text-white/80 hover:text-white text-[11px] xl:text-[13px] font-bold uppercase tracking-wider xl:tracking-widest flex items-center gap-1.5 py-2 transition-colors relative whitespace-nowrap"
+                                    href={localeHref(locale, item.href)}
+                                    className="text-white hover:text-brand-green text-[10px] xl:text-[11px] min-[1440px]:text-[13px] font-bold uppercase tracking-wide min-[1440px]:tracking-widest flex items-center gap-1 py-2 transition-colors relative whitespace-nowrap"
                                 >
                                     {item.name}
                                     {item.submenu && <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${activeMega === item.name ? 'rotate-180' : ''}`} />}
@@ -221,7 +224,7 @@ export default function Navbar() {
                                                 {item.submenu.map((sub) => (
                                                     <Link
                                                         key={sub.name}
-                                                        href={sub.href}
+                                                        href={localeHref(locale, sub.href)}
                                                         className="group/sub flex flex-col p-3 rounded-xl hover:bg-brand-violet/5 transition-colors"
                                                     >
                                                         <span className="text-brand-violet font-bold text-base">
@@ -239,10 +242,10 @@ export default function Navbar() {
                     </nav>
 
                     {/* CTA & Mobile Trigger */}
-                    <div className="flex items-center gap-4 md:gap-6">
+                    <div className="flex items-center gap-3 md:gap-4 shrink-0">
                         <Link
-                            href={route('/contacto', '/contact-ivf-doctors')}
-                            className="hidden sm:flex items-center gap-2 bg-brand-green text-brand-violet px-4 xl:px-6 py-2.5 rounded-full text-sm xl:text-base font-bold hover:bg-white transition-all shadow-lg hover:-translate-y-0.5 whitespace-nowrap"
+                            href={localeHref(locale, route('/contacto', '/contact-ivf-doctors'))}
+                            className="hidden sm:flex items-center gap-2 bg-brand-green text-brand-violet px-3 xl:px-4 min-[1440px]:px-6 py-2.5 rounded-full text-xs xl:text-sm min-[1440px]:text-base font-bold hover:bg-white transition-all shadow-lg hover:-translate-y-0.5 whitespace-nowrap"
                         >
                             {t('cta')}
                         </Link>
@@ -278,8 +281,8 @@ export default function Navbar() {
                                                     italic: (chunks) => <span className="text-brand-green italic">{chunks}</span>
                                                 })}
                                             </h4>
-                                            <p className="text-white/60 text-base leading-relaxed mb-8 relative z-10">{t('items.treatments.card.description')}</p>
-                                            <Link href={route('/tratamientos', '/fertility-treatments')} className="inline-flex items-center gap-2 text-brand-green text-base font-bold uppercase tracking-widest hover:text-white transition-colors relative z-10">
+                                            <p className="text-white/90 text-base leading-relaxed mb-8 relative z-10">{t('items.treatments.card.description')}</p>
+                                            <Link href={localeHref(locale, route('/tratamientos', '/fertility-treatments'))} className="inline-flex items-center gap-2 text-brand-green text-base font-bold uppercase tracking-widest hover:text-white transition-colors relative z-10">
                                                 {t('items.treatments.card.view_all')}
                                                 <ChevronDown className="w-4 h-4 -rotate-90" />
                                             </Link>
@@ -289,7 +292,7 @@ export default function Navbar() {
                                         {navigation[1].submenu?.map((sub) => (
                                             <Link
                                                 key={sub.name}
-                                                href={sub.href}
+                                                href={localeHref(locale, sub.href)}
                                                 className="group/item flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
                                             >
                                                 <div className="w-10 h-10 bg-brand-violet/5 rounded-xl flex items-center justify-center group-hover/item:bg-brand-green group-hover/item:scale-110 transition-all">
@@ -337,7 +340,7 @@ export default function Navbar() {
                                 {navigation.map((item) => (
                                     <div key={item.name} className="flex flex-col gap-4">
                                         <Link
-                                            href={item.href}
+                                            href={localeHref(locale, item.href)}
                                             onClick={() => !item.submenu && setMobileOpen(false)}
                                             className="text-2xl font-serif text-white flex items-center justify-between"
                                         >
@@ -351,9 +354,9 @@ export default function Navbar() {
                                                     .map((sub) => (
                                                     <Link
                                                         key={sub.name}
-                                                        href={sub.href}
+                                                        href={localeHref(locale, sub.href)}
                                                         onClick={() => setMobileOpen(false)}
-                                                        className="text-white/50 hover:text-brand-green text-base flex items-center gap-2"
+                                                        className="text-white/90 hover:text-brand-green text-base flex items-center gap-2"
                                                     >
                                                         <span className="w-1 h-1 bg-brand-green rounded-full" />
                                                         {sub.name}

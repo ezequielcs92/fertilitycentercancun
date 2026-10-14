@@ -6,6 +6,9 @@ import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import FAQAccordion from '@/components/layout/FAQAccordion';
 import { FAQ_DATA, FAQ_DATA_EN, type FAQItem } from '@/data/faqs';
+import JsonLd from '@/components/seo/JsonLd';
+import { faqPageGraph } from '@/lib/schema';
+import { localeHref } from '@/lib/locale-href';
 import { Search, Stethoscope, Heart, Users, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
@@ -44,6 +47,7 @@ export default function Page() {
 
   return (
     <main className="bg-brand-slate min-h-screen pb-24">
+      <JsonLd data={faqPageGraph(isEnglish ? 'en' : 'es', faqSource)} />
       <PageHeader
         title={isEnglish ? 'Frequently Asked Questions' : 'Preguntas Frecuentes'}
         breadcrumb={[
@@ -81,7 +85,7 @@ export default function Page() {
                 {isEnglish ? 'We are here to support you at every step of your journey.' : 'Estamos aquí para ayudarte en cada paso de tu camino.'}
               </p>
               <a
-                href={isEnglish ? '/contact-ivf-doctors' : '/contacto'}
+                href={localeHref(isEnglish ? 'en' : 'es', isEnglish ? '/contact-ivf-doctors' : '/contacto')}
                 className="block text-center py-4 bg-brand-green text-brand-violet font-bold rounded-xl hover:bg-brand-violet hover:text-white transition-all shadow-md"
               >
                 {isEnglish ? 'Contact us now' : 'Contactar ahora'}

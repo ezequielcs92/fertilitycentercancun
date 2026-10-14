@@ -6,6 +6,8 @@ import { Phone, Mail, MapPin, ExternalLink, Globe, Instagram, Facebook, Youtube,
 import Link from 'next/link';
 import SitePhoneLink, { SitePhoneText } from '@/components/ui/SitePhoneLink';
 import { buildRouteMetadata } from '@/lib/seo';
+import JsonLd from '@/components/seo/JsonLd';
+import { contactPageGraph } from '@/lib/schema';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -34,6 +36,7 @@ export default async function Page({
 
   return (
     <main className="bg-white min-h-screen pb-24">
+      <JsonLd data={contactPageGraph(isEs ? 'es' : 'en')} />
       <PageHeader
         title={isEs ? 'Contacto' : 'Contact'}
         breadcrumb={[

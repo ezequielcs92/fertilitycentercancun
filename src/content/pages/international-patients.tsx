@@ -61,7 +61,7 @@ export default function Page() {
           We have international patient coordinators who can help you plan your visit, suggest accommodation, and coordinate your medical appointments to optimize your time in Cancún.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/contact-ivf-doctors" className="inline-flex items-center justify-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-colors font-medium">
+          <Link href="/en/contact-ivf-doctors" className="inline-flex items-center justify-center gap-2 bg-brand-violet text-white px-8 py-3 rounded-full hover:bg-brand-violet/90 transition-colors font-medium">
             Contact Coordinator
             <ArrowRight className="w-4 h-4" />
           </Link>

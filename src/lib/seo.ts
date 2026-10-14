@@ -56,11 +56,13 @@ export function buildRouteMetadata({ locale, es, en, noIndex }: RouteSeoInput): 
             siteName: 'Advanced Fertility Center Cancun',
             locale: current === 'es' ? 'es_MX' : 'en_US',
             type: 'website',
+            images: [{ url: '/images/og-afcc.png', width: 1200, height: 630, alt: SITE_NAME }],
         },
         twitter: {
             card: 'summary_large_image',
             title: fullTitle,
             description: copy.description,
+            images: ['/images/og-afcc.png'],
         },
     }
 }

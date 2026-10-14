@@ -122,7 +122,7 @@ const InternationalSupportPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
-              href="/contact-ivf-doctors"
+              href="/en/contact-ivf-doctors"
               className="bg-brand-green text-brand-violet px-10 py-4 rounded-full font-bold text-lg hover:bg-white transition-all shadow-xl hover:-translate-y-1 inline-block"
             >
               Schedule a Video Call

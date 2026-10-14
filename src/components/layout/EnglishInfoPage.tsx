@@ -22,7 +22,7 @@ export default function EnglishInfoPage({
       title={title}
       breadcrumb={[
         { label: 'Home', href: '/' },
-        { label: breadcrumbSection, href: '#' },
+        { label: breadcrumbSection, href: '/fertility-treatments' },
       ]}
     >
       <p className="lead text-2xl font-serif text-brand-violet italic mb-8">{subtitle}</p>

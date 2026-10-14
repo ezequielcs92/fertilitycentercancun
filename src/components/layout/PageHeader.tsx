@@ -1,7 +1,11 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { useLocale } from 'next-intl';
 import { Container } from '@/components/ui/Container';
+import { localeHref } from '@/lib/locale-href';
 
 interface BreadcrumbItem {
     label: string;
@@ -14,6 +18,8 @@ interface PageHeaderProps {
 }
 
 export default function PageHeader({ title, breadcrumb }: PageHeaderProps) {
+    const locale = useLocale();
+
     return (
         <section className="bg-brand-violet pt-40 pb-20 relative overflow-hidden">
             {/* Abstract Background Decor */}
@@ -22,14 +28,14 @@ export default function PageHeader({ title, breadcrumb }: PageHeaderProps) {
             </div>
 
             <Container className="relative z-10">
-                <nav className="flex items-center gap-2 text-white/60 text-base mb-6 uppercase tracking-widest font-bold">
+                <nav className="flex items-center gap-2 text-white/90 text-base mb-6 uppercase tracking-widest font-bold">
                     {breadcrumb.map((item, index) => (
                         <React.Fragment key={index}>
                             {index > 0 && <ChevronRight className="w-4 h-4" />}
                             {index === breadcrumb.length - 1 ? (
                                 <span className="text-brand-green">{item.label}</span>
                             ) : (
-                                <Link href={item.href} className="hover:text-white transition-colors">
+                                <Link href={localeHref(locale, item.href)} className="hover:text-white transition-colors">
                                     {item.label}
                                 </Link>
                             )}
