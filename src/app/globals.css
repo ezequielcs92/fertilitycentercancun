@@ -30,7 +30,6 @@ select:focus-visible,
 summary:focus-visible {
   outline: 2px solid #99e5d8;
   outline-offset: 3px;
-  box-shadow: 0 0 0 2px #3d2f6b;
 }
 
 h1,
