@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import PageHeader from '@/components/layout/PageHeader';
 import { Container } from '@/components/ui/Container';
 import PromotionsForm from '@/components/forms/PromotionsForm';
@@ -17,7 +17,7 @@ export default function PromotionsPage({ locale }: { locale: 'es' | 'en' }) {
                 ]}
             />
 
-            {/* Imagen promocional al 70% de ancho */}
+            {/* Imagen promocional al 70% de ancho 
             <section className="w-full">
                 <div className="w-[70%] mx-auto">
                     <Image
@@ -32,6 +32,7 @@ export default function PromotionsPage({ locale }: { locale: 'es' | 'en' }) {
                     />
                 </div>
             </section>
+            */}
 
             {/* Formulario al final */}
             <section className="py-20 bg-white">
