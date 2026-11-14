@@ -7,7 +7,7 @@ import React from 'react';
 import FloatingElements from '@/components/ui/FloatingElements';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import PromoPopup from '@/components/ui/PromoPopup';
+// import PromoPopup from '@/components/ui/PromoPopup';
 import GoogleAdsTracking from '@/components/GoogleAdsTracking';
 import UtmTracker from '@/components/analytics/UtmTracker';
 import JsonLd from '@/components/seo/JsonLd';
@@ -107,7 +107,7 @@ export default async function LocaleLayout({
                 {children}
                 <Footer />
             </div>
-            <PromoPopup />
+            {/* <PromoPopup /> */}
             <GoogleAdsTracking />
         </NextIntlClientProvider>
     );
